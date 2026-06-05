@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { PanelLeftClose } from "lucide-react";
+import { ExternalLink, PanelLeftClose } from "lucide-react";
 import { NAV_GROUPS, NAV_ITEMS } from "@/lib/navigation";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3011";
 import { useUIStore } from "@/store/ui";
 import { SidebarItem } from "./sidebar-item";
 import { cn } from "@/lib/utils";
@@ -49,7 +51,15 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
         ))}
       </nav>
 
-      <div className="border-t border-border p-4">
+      <div className="space-y-2.5 border-t border-border p-4">
+        <a
+          href={SITE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-primary/10 px-3 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-white"
+        >
+          <ExternalLink className="h-4 w-4" /> Ir para o site
+        </a>
         <div className="rounded-lg bg-gradient-to-br from-primary/15 to-secondary/10 p-3.5">
           <p className="text-xs font-semibold text-foreground">
             Dica do dia 🐍

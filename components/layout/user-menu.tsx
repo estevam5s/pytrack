@@ -2,9 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { LogOut, Settings, User as UserIcon, ChevronDown } from "lucide-react";
+import {
+  LogOut,
+  Settings,
+  User as UserIcon,
+  ChevronDown,
+  Globe,
+} from "lucide-react";
 import { signOut } from "@/app/auth/actions";
 import { initials } from "@/lib/utils";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3011";
 
 export function UserMenu({
   name,
@@ -62,6 +70,15 @@ export function UserMenu({
               >
                 <UserIcon className="h-4 w-4" /> Perfil
               </Link>
+              <a
+                href={SITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-text-secondary hover:bg-surface hover:text-foreground"
+              >
+                <Globe className="h-4 w-4" /> Ir para o site
+              </a>
               <Link
                 href="/configuracoes"
                 onClick={() => setOpen(false)}
