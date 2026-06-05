@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 9999px;
+    border: 2px solid #09090b;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+}
+
+@layer components {
+  .card-gradient {
+    background:
+      radial-gradient(
+        120% 120% at 0% 0%,
+        rgba(130, 87, 229, 0.08) 0%,
+        transparent 45%
+      ),
+      #18181b;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 0 1px rgba(130, 87, 229, 0.25),
+      0 8px 30px -12px rgba(130, 87, 229, 0.45);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-[#a78bfa] to-secondary bg-clip-text text-transparent;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Markdown (reader de lições)                                       */
+/* ---------------------------------------------------------------- */
+.markdown {
+  color: #d4d4d8;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  word-wrap: break-word;
+}
+.markdown > *:first-child {
+  margin-top: 0 !important;
+}
+.markdown h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #f4f4f5;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+.markdown h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f4f4f5;
+  margin: 2.25rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #27272a;
+  scroll-margin-top: 6rem;
+}
+.markdown h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #f4f4f5;
+  margin: 1.75rem 0 0.75rem;
+  scroll-margin-top: 6rem;
+}
+.markdown h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  margin: 1.25rem 0 0.5rem;
+}
+.markdown p {
+  margin: 0 0 1rem;
+}
+.markdown a {
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 500;
+}
+.markdown a:hover {
+  text-decoration: underline;
+}
+.markdown strong {
+  color: #f4f4f5;
+  font-weight: 600;
+}
+.markdown ul,
+.markdown ol {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+.markdown li {
+  margin: 0.35rem 0;
+}
+.markdown ul li::marker {
+  color: #8257e5;
+}
+.markdown ol li::marker {
+  color: #04d361;
+  font-weight: 600;
+}
+.markdown blockquote {
+  margin: 1.25rem 0;
+  padding: 0.75rem 1.1rem;
+  border-left: 3px solid #8257e5;
+  background: rgba(130, 87, 229, 0.06);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: #a1a1aa;
+}
+.markdown blockquote p {
+  margin: 0;
+}
+.markdown code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.85em;
+  background: #27272a;
+  color: #f0abfc;
+  padding: 0.15em 0.4em;
+  border-radius: 0.3rem;
+}
+.markdown pre {
+  margin: 0 0 1.25rem;
+  padding: 1.1rem 1.25rem;
+  background: #0d0d10 !important;
+  border: 1px solid #27272a;
+  border-radius: 0.65rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.markdown pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+.markdown table {
+  width: 100%;
+  margin: 0 0 1.25rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  display: block;
+  overflow-x: auto;
+}
+.markdown th,
+.markdown td {
+  border: 1px solid #27272a;
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+}
+.markdown th {
+  background: #18181b;
+  color: #f4f4f5;
+  font-weight: 600;
+}
+.markdown tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.015);
+}
+.markdown hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid #27272a;
+}
+.markdown img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+
+/* Vapor do café (pomodoro) */
+@keyframes steam {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scaleX(1);
+  }
+  30% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-16px) scaleX(1.6);
+  }
+}
+.steam {
+  animation: steam 2.6s ease-out infinite;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.04),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
