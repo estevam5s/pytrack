@@ -8,6 +8,7 @@ import { DashboardShell } from "@/components/layout/dashboard-shell";
 import { LevelUpNotifier } from "@/components/dashboard/level-up-notifier";
 import { OnboardingTour } from "@/components/dashboard/onboarding-tour";
 import { PomodoroProvider } from "@/components/home/pomodoro-provider";
+import { userHasAccess } from "@/lib/stripe/subscriptions";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default async function DashboardLayout({
@@ -21,6 +22,10 @@ export default async function DashboardLayout({
   } = await supabase.auth.getUser();
 
   if (!user) redirect("/auth/login");
+
+  // bloqueia o dashboard se não houver assinatura válida
+  // (libera automaticamente enquanto o billing não estiver configurado)
+  if (!(await userHasAccess(user.id))) redirect("/assinar");
 
   const [{ data: profile }, levelCounts, searchIndex] = await Promise.all([
     supabase

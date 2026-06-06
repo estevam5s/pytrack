@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  CreditCard,
   Database,
   Info,
   Palette,
@@ -15,6 +16,7 @@ import { cn } from "@/lib/utils";
 const ITEMS = [
   { href: "/configuracoes/conta", label: "Conta", icon: UserCircle },
   { href: "/configuracoes/perfil", label: "Perfil", icon: UserCog },
+  { href: "/configuracoes/plano", label: "Plano e cobrança", icon: CreditCard },
   { href: "/configuracoes/aparencia", label: "Aparência", icon: Palette },
   { href: "/configuracoes/plataforma", label: "Plataforma", icon: Database },
   {

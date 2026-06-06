@@ -11,6 +11,7 @@ const PUBLIC_PREFIX = [
   "/projetos",
   "/carreira",
   "/auth",
+  "/api", // rotas de API fazem a própria autenticação (ex.: webhook Stripe)
 ];
 
 export async function updateSession(request: NextRequest) {

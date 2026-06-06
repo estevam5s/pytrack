@@ -398,6 +398,72 @@ export default async function HomePage() {
           </CardContent>
         </Card>
       </section>
+
+      {/* Como construir uma carreira em Python */}
+      <MotionSection>
+        <div className="mb-4 flex items-center gap-2">
+          <Target className="h-5 w-5 text-primary" />
+          <h2 className="text-lg font-bold">Como construir uma carreira em Python</h2>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {[
+            ["1", "Fundamentos", "Domine sintaxe, lógica, estruturas de dados e POO.", "/conteudos", "from-green/20 to-green/5"],
+            ["2", "Especialização", "Escolha uma área: Backend, Dados, IoT, Automação...", "/especializacoes", "from-blue/20 to-blue/5"],
+            ["3", "Prática", "Resolva exercícios e use a IDE para fixar o conteúdo.", "/exercicios", "from-primary/20 to-primary/5"],
+            ["4", "Portfólio", "Construa projetos reais que comprovam suas skills.", "/meus-projetos", "from-magenta/20 to-magenta/5"],
+            ["5", "Mercado", "Prepare entrevistas, monte o currículo e busque vagas.", "/minha-carreira", "from-warning/20 to-warning/5"],
+          ].map(([n, title, desc, href, grad]) => (
+            <Link key={n} href={href}>
+              <Card hover className="h-full">
+                <CardContent className={`flex h-full flex-col bg-gradient-to-br ${grad} p-5`}>
+                  <span className="text-3xl font-bold text-gradient">{n}</span>
+                  <h3 className="mt-2 font-semibold">{title}</h3>
+                  <p className="mt-1 flex-1 text-xs text-text-secondary">{desc}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary-light">
+                    Começar <ArrowRight className="h-3 w-3" />
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </MotionSection>
+
+      {/* Como usar cada rota da plataforma */}
+      <MotionSection>
+        <div className="mb-4 flex items-center gap-2">
+          <Sparkles className="h-5 w-5 text-primary" />
+          <h2 className="text-lg font-bold">Como usar a plataforma</h2>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            ["📚", "Conteúdos", "Trilhas e lições guiadas de todo o ecossistema Python.", "/conteudos"],
+            ["💬", "Comunidade", "Tire dúvidas, compartilhe projetos e conecte-se.", "/comunidade"],
+            ["💻", "Exercícios", "Pratique com correção automática por IA.", "/exercicios"],
+            ["⌨️", "IDE Python", "Escreva e rode Python no navegador, sem instalar nada.", "/ide"],
+            ["🚀", "Projetos", "Projetos reais para construir seu portfólio.", "/meus-projetos"],
+            ["📈", "Evolução", "Acompanhe seu progresso, XP e proficiência.", "/evolucao"],
+            ["🏆", "Especializações", "Roadmaps avançados para áreas de ponta.", "/especializacoes"],
+            ["🤖", "Consultor IA", "Receba orientação de carreira personalizada.", "/consultor-ia"],
+            ["💼", "Vagas & Carreira", "Encontre vagas e prepare-se para entrevistas.", "/minha-carreira"],
+            ["🎓", "Aulas (Udemy/YT)", "Organize e analise seus cursos com IA.", "/aulas-udemy"],
+            ["📄", "Material & Livros", "Salve PDFs, cheatsheets e sua biblioteca.", "/material"],
+            ["⚙️", "Configurações", "Ajuste conta, perfil, tema e seus dados.", "/configuracoes"],
+          ].map(([emoji, title, desc, href]) => (
+            <Link key={href} href={href}>
+              <Card hover className="h-full">
+                <CardContent className="flex items-start gap-3 p-4">
+                  <span className="text-2xl">{emoji}</span>
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-semibold">{title}</h3>
+                    <p className="mt-0.5 text-xs text-text-secondary">{desc}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </MotionSection>
     </div>
   );
 }

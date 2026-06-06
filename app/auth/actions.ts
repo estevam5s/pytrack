@@ -42,7 +42,7 @@ export async function signUp(
   if (error) return { error: traduzir(error.message) };
 
   revalidatePath("/", "layout");
-  redirect("/inicio");
+  redirect("/assinar");
 }
 
 export async function signOut() {

@@ -88,9 +88,21 @@ export interface Material {
   description: string | null;
   type: string;
   url: string | null;
+  file_url: string | null;
   category: string | null;
   level: LearningLevel;
+  user_id: string | null;
   created_at: string;
+}
+
+export interface MaterialInput {
+  title: string;
+  description?: string | null;
+  type: string;
+  url?: string | null;
+  file_url?: string | null;
+  category?: string | null;
+  level: LearningLevel;
 }
 
 export interface Book {
