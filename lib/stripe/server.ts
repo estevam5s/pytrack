@@ -5,6 +5,9 @@ const key = process.env.STRIPE_SECRET_KEY;
 
 export const stripe = key ? new Stripe(key) : null;
 export const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
+export const STRIPE_PRICE_ID_ANNUAL = process.env.STRIPE_PRICE_ID_ANNUAL;
+export const STRIPE_TRIAL_DAYS = Number(process.env.STRIPE_TRIAL_DAYS ?? 0) || 0;
+export const STRIPE_REFERRAL_COUPON = process.env.STRIPE_REFERRAL_COUPON;
 
 /** Billing só é considerado ativo quando há chave + price configurados. */
 export const billingEnabled = Boolean(key && STRIPE_PRICE_ID);

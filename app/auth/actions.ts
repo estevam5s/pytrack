@@ -31,15 +31,39 @@ export async function signUp(
   const name = String(formData.get("name") ?? "");
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
+  const ref = String(formData.get("ref") ?? "").trim().toLowerCase();
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: { data: { name } },
   });
 
   if (error) return { error: traduzir(error.message) };
+
+  // registra a indicação, se houver
+  if (ref && data.user) {
+    try {
+      const { createAdminClient } = await import("@/lib/supabase/admin");
+      const admin = createAdminClient();
+      const { data: referrer } = await admin
+        .from("community_profiles")
+        .select("user_id")
+        .eq("referral_code", ref)
+        .maybeSingle();
+      if (referrer && referrer.user_id !== data.user.id) {
+        await admin.from("referrals").insert({
+          referrer_user_id: referrer.user_id,
+          referred_user_id: data.user.id,
+          referred_email: email,
+          status: "pending",
+        });
+      }
+    } catch {
+      /* não bloqueia o cadastro se a indicação falhar */
+    }
+  }
 
   revalidatePath("/", "layout");
   redirect("/assinar");

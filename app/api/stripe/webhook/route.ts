@@ -53,7 +53,48 @@ async function syncSubscriptionById(admin: Admin, subId: string, userHint?: stri
   const stripe = requireStripe();
   const sub = await stripe.subscriptions.retrieve(subId);
   const userId = userHint ?? (await resolveUserId(admin, sub));
-  if (userId) await upsertSubscription(admin, sub, userId);
+  if (userId) {
+    await upsertSubscription(admin, sub, userId);
+    if (sub.status === "active" || sub.status === "trialing") {
+      await maybeRewardReferral(admin, userId);
+    }
+  }
+}
+
+/** Quando o indicado vira assinante, premia quem indicou com um cupom. */
+async function maybeRewardReferral(admin: Admin, referredUserId: string) {
+  const coupon = process.env.STRIPE_REFERRAL_COUPON;
+  if (!coupon) return;
+  try {
+    const { data: ref } = await admin
+      .from("referrals")
+      .select("id, referrer_user_id, reward_granted")
+      .eq("referred_user_id", referredUserId)
+      .eq("reward_granted", false)
+      .maybeSingle();
+    if (!ref) return;
+    await admin
+      .from("referrals")
+      .update({ status: "converted", converted_at: new Date().toISOString() })
+      .eq("id", ref.id);
+    const { data: cust } = await admin
+      .from("stripe_customers")
+      .select("stripe_customer_id")
+      .eq("user_id", ref.referrer_user_id)
+      .maybeSingle();
+    if (cust?.stripe_customer_id) {
+      const stripe = requireStripe();
+      // crédito de R$10 (1 mês) na próxima fatura do indicador
+      await stripe.customers.createBalanceTransaction(cust.stripe_customer_id, {
+        amount: -1000,
+        currency: "brl",
+        description: "Recompensa por indicação — 1 mês grátis",
+      });
+      await admin.from("referrals").update({ reward_granted: true }).eq("id", ref.id);
+    }
+  } catch (e) {
+    console.error("[referral] recompensa falhou:", e);
+  }
 }
 
 export async function POST(req: Request) {
@@ -116,7 +157,12 @@ export async function POST(req: Request) {
       case "customer.subscription.deleted": {
         const sub = event.data.object as any;
         const userId = await resolveUserId(admin, sub);
-        if (userId) await upsertSubscription(admin, sub, userId);
+        if (userId) {
+          await upsertSubscription(admin, sub, userId);
+          if (sub.status === "active" || sub.status === "trialing") {
+            await maybeRewardReferral(admin, userId);
+          }
+        }
         break;
       }
       case "invoice.payment_succeeded":

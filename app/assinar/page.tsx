@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { userHasAccess } from "@/lib/stripe/subscriptions";
+import { STRIPE_TRIAL_DAYS } from "@/lib/stripe/server";
 import { PricingCard } from "@/components/billing/PricingCard";
 
 export const metadata = { title: "Assinar · PyTrack" };
@@ -84,7 +85,7 @@ export default async function AssinarPage({
         </div>
 
         <div>
-          <PricingCard />
+          <PricingCard trialDays={STRIPE_TRIAL_DAYS} />
         </div>
       </main>
     </div>

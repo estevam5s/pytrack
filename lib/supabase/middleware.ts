@@ -10,8 +10,13 @@ const PUBLIC_PREFIX = [
   "/precos",
   "/projetos",
   "/carreira",
+  "/blog",
   "/auth",
   "/api", // rotas de API fazem a própria autenticação (ex.: webhook Stripe)
+  "/sitemap",
+  "/robots",
+  "/opengraph-image",
+  "/twitter-image",
 ];
 
 export async function updateSession(request: NextRequest) {

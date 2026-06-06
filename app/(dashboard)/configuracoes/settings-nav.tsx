@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   CreditCard,
   Database,
+  Gift,
   Info,
   Palette,
   ShieldAlert,
@@ -17,6 +18,7 @@ const ITEMS = [
   { href: "/configuracoes/conta", label: "Conta", icon: UserCircle },
   { href: "/configuracoes/perfil", label: "Perfil", icon: UserCog },
   { href: "/configuracoes/plano", label: "Plano e cobrança", icon: CreditCard },
+  { href: "/configuracoes/indicacoes", label: "Indique e ganhe", icon: Gift },
   { href: "/configuracoes/aparencia", label: "Aparência", icon: Palette },
   { href: "/configuracoes/plataforma", label: "Plataforma", icon: Database },
   {

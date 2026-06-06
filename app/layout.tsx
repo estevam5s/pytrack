@@ -15,9 +15,42 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PyTrack — Plataforma de Aprendizado Python",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL ?? "https://plataforma-python.vercel.app",
+  ),
+  title: {
+    default: "PyTrack — Domine Python do básico à carreira",
+    template: "%s · PyTrack",
+  },
   description:
-    "Dashboard educacional para dominar todo o ecossistema Python: do básico a Data, IoT, DevOps e Engenharia.",
+    "Plataforma completa para aprender todo o ecossistema Python: trilhas guiadas, exercícios com IA, IDE no navegador, projetos reais, comunidade e carreira. Comece grátis.",
+  keywords: [
+    "aprender python",
+    "curso de python",
+    "python para dados",
+    "python backend",
+    "fastapi",
+    "django",
+    "exercícios de python",
+    "carreira python",
+    "python do zero",
+  ],
+  authors: [{ name: "PyTrack" }],
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: "PyTrack",
+    title: "PyTrack — Domine Python do básico à carreira",
+    description:
+      "Trilhas, exercícios com IA, IDE Python, projetos reais e comunidade. Aprenda Python de verdade.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PyTrack — Domine Python do básico à carreira",
+    description:
+      "Trilhas, exercícios com IA, IDE Python, projetos e comunidade.",
+  },
+  robots: { index: true, follow: true },
 };
 
 const THEME_SCRIPT = `

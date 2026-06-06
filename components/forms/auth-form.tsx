@@ -19,7 +19,13 @@ function SubmitButton({ label }: { label: string }) {
   );
 }
 
-export function AuthForm({ mode }: { mode: "login" | "register" }) {
+export function AuthForm({
+  mode,
+  referralCode,
+}: {
+  mode: "login" | "register";
+  referralCode?: string;
+}) {
   const action = mode === "login" ? signIn : signUp;
   const [state, formAction] = useActionState<AuthResult, FormData>(action, {});
   const [showPw, setShowPw] = useState(false);
@@ -46,6 +52,14 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
       </div>
 
       <form action={formAction} className="space-y-4">
+        {mode === "register" && referralCode && (
+          <input type="hidden" name="ref" value={referralCode} />
+        )}
+        {mode === "register" && referralCode && (
+          <div className="rounded-lg border border-secondary/30 bg-secondary/10 px-3 py-2 text-xs text-secondary">
+            🎁 Você foi convidado! Crie sua conta para começar.
+          </div>
+        )}
         {mode === "register" && (
           <div className="space-y-1.5">
             <label htmlFor="name" className="text-sm font-medium">

@@ -6,9 +6,11 @@ import { cn } from "@/lib/utils";
 
 export function SubscribeButton({
   label = "Assinar agora",
+  plan = "monthly",
   className,
 }: {
   label?: string;
+  plan?: "monthly" | "annual";
   className?: string;
 }) {
   const [loading, setLoading] = useState(false);
@@ -20,6 +22,8 @@ export function SubscribeButton({
     try {
       const res = await fetch("/api/stripe/create-checkout-session", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan }),
       });
       const data = await res.json();
       if (!res.ok || !data.url) {
