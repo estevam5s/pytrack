@@ -130,7 +130,7 @@ export default async function HomePage() {
 
       {/* Nível Python + Pomodoro */}
       <MotionSection className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+        <div className="min-w-0 lg:col-span-2">
           <PythonLevelCard
             serverCounts={{
               modules: stats.completed,
@@ -139,7 +139,9 @@ export default async function HomePage() {
             }}
           />
         </div>
-        <PomodoroCoffee />
+        <div className="min-w-0">
+          <PomodoroCoffee />
+        </div>
       </MotionSection>
 
       {/* Stats */}
@@ -173,7 +175,7 @@ export default async function HomePage() {
 
       {/* Gráficos */}
       <MotionSection className="grid gap-6 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
+        <Card className="min-w-0 lg:col-span-2">
           <CardHeader>
             <CardTitle>Progresso por área</CardTitle>
           </CardHeader>
@@ -185,7 +187,7 @@ export default async function HomePage() {
             />
           </CardContent>
         </Card>
-        <Card>
+        <Card className="min-w-0">
           <CardHeader>
             <CardTitle>Status dos conteúdos</CardTitle>
           </CardHeader>
@@ -201,7 +203,7 @@ export default async function HomePage() {
 
       {/* Mapa de proficiência */}
       <MotionSection className="grid gap-6 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
+        <Card className="min-w-0 lg:col-span-2">
           <CardHeader>
             <CardTitle>Mapa de proficiência no ecossistema</CardTitle>
           </CardHeader>

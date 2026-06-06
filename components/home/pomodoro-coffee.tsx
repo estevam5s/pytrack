@@ -4,83 +4,42 @@ import { useEffect, useState } from "react";
 import { Coffee, Pause, Play, RotateCcw } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-
-const FOCUS_PRESETS = [15, 25, 50];
-const breakFor = (focus: number) => Math.max(5, Math.round(focus / 5));
-
-function loadCups(): number {
-  if (typeof window === "undefined") return 0;
-  try {
-    const o = JSON.parse(localStorage.getItem("pytrack-pomodoros") ?? "null");
-    const today = new Date().toISOString().slice(0, 10);
-    if (o && o.date === today) return o.count;
-  } catch {
-    /* ignore */
-  }
-  return 0;
-}
-function saveCups(count: number) {
-  localStorage.setItem(
-    "pytrack-pomodoros",
-    JSON.stringify({ date: new Date().toISOString().slice(0, 10), count }),
-  );
-}
+import { usePomodoro, FOCUS_PRESETS, breakFor } from "@/store/pomodoro";
+import { primeAudio, requestNotify } from "@/lib/pomodoro-fx";
 
 export function PomodoroCoffee() {
-  const [focusMin, setFocusMin] = useState(25);
-  const [phase, setPhase] = useState<"focus" | "break">("focus");
-  const [secondsLeft, setSecondsLeft] = useState(25 * 60);
-  const [running, setRunning] = useState(false);
-  const [cups, setCups] = useState(0);
-  const [msg, setMsg] = useState<string | null>(null);
+  const focusMin = usePomodoro((s) => s.focusMin);
+  const phase = usePomodoro((s) => s.phase);
+  const secondsLeft = usePomodoro((s) => s.secondsLeft);
+  const running = usePomodoro((s) => s.running);
+  const cups = usePomodoro((s) => s.cups);
+  const toggle = usePomodoro((s) => s.toggle);
+  const reset = usePomodoro((s) => s.reset);
+  const setFocus = usePomodoro((s) => s.setFocus);
 
-  useEffect(() => setCups(loadCups()), []);
-
-  // troca de duração de foco (somente quando parado e em foco)
-  useEffect(() => {
-    if (!running && phase === "focus") setSecondsLeft(focusMin * 60);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [focusMin]);
-
-  // tick (1s) + transição de fase
-  useEffect(() => {
-    if (!running) return;
-    if (secondsLeft <= 0) {
-      if (phase === "focus") {
-        const n = cups + 1;
-        setCups(n);
-        saveCups(n);
-        setPhase("break");
-        setSecondsLeft(breakFor(focusMin) * 60);
-        setMsg("Foco concluído! Hora da pausa ☕");
-      } else {
-        setPhase("focus");
-        setSecondsLeft(focusMin * 60);
-        setRunning(false);
-        setMsg("Pausa encerrada. Pronto para focar? 🐍");
-      }
-      return;
-    }
-    const id = setTimeout(() => setSecondsLeft((s) => s - 1), 1000);
-    return () => clearTimeout(id);
-  }, [running, secondsLeft, phase, focusMin, cups]);
-
-  const total = (phase === "focus" ? focusMin : breakFor(focusMin)) * 60;
-  const frac = total ? secondsLeft / total : 0;
-  // foco: a xícara esvazia (você "toma o café"); pausa: enche de novo
-  const liquid = Math.max(0, Math.min(1, phase === "focus" ? frac : 1 - frac));
-
-  const mm = String(Math.floor(secondsLeft / 60)).padStart(2, "0");
-  const ss = String(secondsLeft % 60).padStart(2, "0");
-
-  const reset = () => {
-    setRunning(false);
-    setPhase("focus");
-    setSecondsLeft(focusMin * 60);
-    setMsg(null);
-  };
+  // evita mismatch de hidratação (o estado vem do localStorage no cliente)
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const isFocus = phase === "focus";
+  const total = (isFocus ? focusMin : breakFor(focusMin)) * 60;
+  const frac = total ? secondsLeft / total : 0;
+  // foco: a xícara esvazia conforme o tempo passa; pausa: enche de novo
+  const liquid = mounted
+    ? Math.max(0, Math.min(1, isFocus ? frac : 1 - frac))
+    : 1;
+
+  const shown = mounted ? secondsLeft : focusMin * 60;
+  const mm = String(Math.floor(shown / 60)).padStart(2, "0");
+  const ss = String(shown % 60).padStart(2, "0");
+  const isRunning = mounted && running;
+
+  const onToggle = () => {
+    // gesto do usuário: libera áudio e pede permissão de notificação
+    primeAudio();
+    requestNotify();
+    toggle();
+  };
 
   return (
     <Card className="card-gradient h-full">
@@ -91,7 +50,7 @@ export function PomodoroCoffee() {
             <h2 className="font-semibold">Foco com café</h2>
           </div>
           <span className="rounded-full bg-surface px-2.5 py-1 text-xs text-text-secondary">
-            ☕ {cups} hoje
+            ☕ {mounted ? cups : 0} hoje
           </span>
         </div>
 
@@ -99,7 +58,7 @@ export function PomodoroCoffee() {
           {/* Caneca */}
           <div className="relative mb-3 h-36 w-32">
             {/* vapor */}
-            {running && isFocus && (
+            {isRunning && isFocus && (
               <div className="absolute -top-2 left-0 right-6 flex justify-center gap-3">
                 {[0, 1, 2].map((i) => (
                   <span
@@ -146,7 +105,6 @@ export function PomodoroCoffee() {
           >
             {isFocus ? "Tempo de foco" : "Pausa / descanso"}
           </p>
-          {msg && <p className="mt-1 text-xs text-text-secondary">{msg}</p>}
         </div>
 
         {/* presets de foco */}
@@ -154,13 +112,7 @@ export function PomodoroCoffee() {
           {FOCUS_PRESETS.map((m) => (
             <button
               key={m}
-              onClick={() => {
-                setFocusMin(m);
-                if (!running) {
-                  setPhase("focus");
-                  setSecondsLeft(m * 60);
-                }
-              }}
+              onClick={() => setFocus(m)}
               className={cn(
                 "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
                 focusMin === m
@@ -176,13 +128,10 @@ export function PomodoroCoffee() {
         {/* controles */}
         <div className="mt-3 flex items-center justify-center gap-2">
           <button
-            onClick={() => {
-              setMsg(null);
-              setRunning((r) => !r);
-            }}
+            onClick={onToggle}
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
           >
-            {running ? (
+            {isRunning ? (
               <>
                 <Pause className="h-4 w-4" /> Pausar
               </>

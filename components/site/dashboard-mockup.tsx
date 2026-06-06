@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   BookOpen,
   Code2,
@@ -5,7 +6,6 @@ import {
   LayoutDashboard,
   Layers,
   Library,
-  Terminal,
   TrendingUp,
 } from "lucide-react";
 
@@ -36,9 +36,13 @@ export function DashboardMockup() {
         {/* sidebar */}
         <aside className="hidden w-44 shrink-0 border-r border-border p-3 sm:block">
           <div className="mb-4 flex items-center gap-2 px-1">
-            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-brand">
-              <Terminal className="h-4 w-4 text-background" />
-            </span>
+            <Image
+              src="/logo.png"
+              alt="PyTrack"
+              width={28}
+              height={28}
+              className="h-7 w-7 rounded-md object-contain"
+            />
             <span className="text-xs font-bold">PyTrack</span>
           </div>
           <div className="space-y-1">

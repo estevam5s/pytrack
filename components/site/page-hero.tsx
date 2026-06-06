@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { GradientText } from "./gradient-text";
 import { Reveal } from "./reveal";
 
@@ -18,6 +19,14 @@ export function PageHero({
       <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[640px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
       <div className="container relative py-16 text-center sm:py-20">
         <Reveal>
+          <Image
+            src="/logo.png"
+            alt="PyTrack"
+            width={64}
+            height={64}
+            priority
+            className="mx-auto mb-5 h-14 w-14 rounded-xl object-contain"
+          />
           <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-light">
             {badge}
           </span>

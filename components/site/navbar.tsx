@@ -50,14 +50,15 @@ export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
   }, [open]);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 border-b transition-colors duration-300",
-        scrolled || open
-          ? "border-border bg-surface/95 backdrop-blur-md"
-          : "border-transparent bg-surface",
-      )}
-    >
+    <>
+      <header
+        className={cn(
+          "sticky top-0 z-50 border-b transition-colors duration-300",
+          scrolled || open
+            ? "border-border bg-surface/95 backdrop-blur-md"
+            : "border-transparent bg-surface",
+        )}
+      >
       <nav className="container flex h-[77px] items-center justify-between">
         <Logo />
 
@@ -108,8 +109,9 @@ export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
           </button>
         </div>
       </nav>
+      </header>
 
-      {/* Menu full-screen no mobile */}
+      {/* Menu full-screen no mobile (fora do header p/ não herdar o backdrop-blur) */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -117,9 +119,10 @@ export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 bottom-0 top-[77px] z-40 flex flex-col bg-background lg:hidden"
+            style={{ backgroundColor: "rgb(var(--background))" }}
+            className="fixed inset-x-0 bottom-0 top-[77px] z-[60] flex flex-col overflow-y-auto bg-background lg:hidden"
           >
-            <div className="bg-grid radial-fade pointer-events-none absolute inset-0 opacity-50" />
+            <div className="bg-grid radial-fade pointer-events-none absolute inset-0 opacity-40" />
             <nav className="relative flex flex-1 flex-col justify-center gap-1 px-6">
               {NAV_LINKS.map((l, i) => {
                 const active = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
@@ -169,6 +172,6 @@ export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

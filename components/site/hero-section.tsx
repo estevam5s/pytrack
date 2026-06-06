@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, PlayCircle, Sparkles } from "lucide-react";
 import { Button } from "@/components/site/site-button";
@@ -22,8 +23,23 @@ export function HeroSection() {
 
       <div className="container relative grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
         <div>
-          <motion.span
+          <motion.div
             {...fade(0)}
+            className="mb-5 flex items-center gap-3"
+          >
+            <Image
+              src="/logo.png"
+              alt="PyTrack"
+              width={56}
+              height={56}
+              priority
+              className="h-12 w-12 rounded-xl object-contain sm:h-14 sm:w-14"
+            />
+            <span className="text-xl font-bold tracking-tight">PyTrack</span>
+          </motion.div>
+
+          <motion.span
+            {...fade(0.04)}
             className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-light"
           >
             <Sparkles className="h-3.5 w-3.5" /> Sua jornada Python começa aqui
