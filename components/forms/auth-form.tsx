@@ -1,10 +1,10 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
-import { AlertCircle, Loader2 } from "lucide-react";
+import { AlertCircle, Eye, EyeOff, Loader2 } from "lucide-react";
 import { signIn, signUp, type AuthResult } from "@/app/auth/actions";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,7 @@ function SubmitButton({ label }: { label: string }) {
 export function AuthForm({ mode }: { mode: "login" | "register" }) {
   const action = mode === "login" ? signIn : signUp;
   const [state, formAction] = useActionState<AuthResult, FormData>(action, {});
+  const [showPw, setShowPw] = useState(false);
 
   return (
     <div className="w-full max-w-md">
@@ -70,15 +71,29 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
           <label htmlFor="password" className="text-sm font-medium">
             Senha
           </label>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="••••••••"
-            autoComplete={mode === "login" ? "current-password" : "new-password"}
-            minLength={6}
-            required
-          />
+          <div className="relative">
+            <Input
+              id="password"
+              name="password"
+              type={showPw ? "text" : "password"}
+              placeholder="••••••••"
+              autoComplete={mode === "login" ? "current-password" : "new-password"}
+              minLength={6}
+              required
+              className="pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPw((v) => !v)}
+              aria-label={showPw ? "Ocultar senha" : "Mostrar senha"}
+              className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-text-secondary hover:text-foreground"
+            >
+              {showPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+          {mode === "register" && (
+            <p className="text-xs text-text-secondary">Mínimo de 6 caracteres.</p>
+          )}
         </div>
 
         {state.error && (

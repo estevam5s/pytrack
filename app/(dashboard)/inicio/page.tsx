@@ -347,7 +347,7 @@ export default async function HomePage() {
                 ))}
               </div>
               <Button asChild variant="outline" size="sm" className="mt-4 w-full">
-                <Link href="/carreira">Ver roadmap de carreira</Link>
+                <Link href="/minha-carreira">Ver roadmap de carreira</Link>
               </Button>
             </CardContent>
           </Card>
@@ -378,7 +378,7 @@ export default async function HomePage() {
             {featuredProjects.map((p) => (
               <Link
                 key={p.id}
-                href="/projetos"
+                href="/meus-projetos"
                 className="flex items-center gap-3 rounded-lg border border-border bg-surface px-3 py-2.5 transition-colors hover:border-primary/40"
               >
                 <FolderGit2 className="h-4 w-4 text-secondary" />
@@ -391,7 +391,7 @@ export default async function HomePage() {
               </Link>
             ))}
             <Button asChild variant="ghost" size="sm" className="w-full">
-              <Link href="/projetos">
+              <Link href="/meus-projetos">
                 Ver todos os projetos <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>

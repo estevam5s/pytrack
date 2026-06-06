@@ -29,8 +29,8 @@ const COLS = [
     links: [
       { label: "Conteúdos", href: "/recursos" },
       { label: "Exercícios", href: "/recursos" },
-      { label: "Projetos", href: "/#projetos" },
-      { label: "Carreira", href: "/#carreira" },
+      { label: "Projetos", href: "/projetos" },
+      { label: "Carreira", href: "/carreira" },
       { label: "Preços", href: "/precos" },
     ],
   },

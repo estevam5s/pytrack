@@ -201,7 +201,7 @@ export async function getSearchIndex(): Promise<SearchItem[]> {
       external: !!s.documentation_url,
     });
   for (const c of careers.data ?? [])
-    items.push({ label: c.title, sub: c.area, href: "/carreira", group: "Carreiras" });
+    items.push({ label: c.title, sub: c.area, href: "/minha-carreira", group: "Carreiras" });
   for (const b of books.data ?? [])
     items.push({ label: b.title, sub: b.author ?? "Livro", href: "/livros", group: "Livros" });
   for (const m of materials.data ?? [])
@@ -213,7 +213,7 @@ export async function getSearchIndex(): Promise<SearchItem[]> {
       external: !!m.url,
     });
   for (const p of projects.data ?? [])
-    items.push({ label: p.title, sub: p.area ?? "Projeto", href: "/projetos", group: "Projetos" });
+    items.push({ label: p.title, sub: p.area ?? "Projeto", href: "/meus-projetos", group: "Projetos" });
 
   return items;
 }

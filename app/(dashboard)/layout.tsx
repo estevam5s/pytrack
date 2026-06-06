@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/header";
 import { CommandMenu } from "@/components/layout/command-menu";
 import { DashboardShell } from "@/components/layout/dashboard-shell";
 import { LevelUpNotifier } from "@/components/dashboard/level-up-notifier";
+import { OnboardingTour } from "@/components/dashboard/onboarding-tour";
 import { PomodoroProvider } from "@/components/home/pomodoro-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -36,6 +37,7 @@ export default async function DashboardLayout({
       <div className="min-h-screen overflow-x-hidden bg-background">
         <LevelUpNotifier serverCounts={levelCounts} />
         <PomodoroProvider />
+        <OnboardingTour />
         <MobileSidebar />
         <CommandMenu index={searchIndex} />
         <DashboardShell>

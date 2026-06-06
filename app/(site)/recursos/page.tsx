@@ -36,6 +36,23 @@ export default function RecursosPage() {
         </div>
       </section>
 
+      {/* números */}
+      <section className="container pb-8">
+        <Reveal className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-surface/40 p-8 sm:grid-cols-4">
+          {[
+            ["74", "módulos de conteúdo"],
+            ["2.4k+", "exercícios com IA"],
+            ["1.3k+", "projetos práticos"],
+            ["1.7k+", "perguntas de entrevista"],
+          ].map(([n, l]) => (
+            <div key={l} className="text-center">
+              <p className="text-3xl font-bold text-gradient">{n}</p>
+              <p className="mt-1 text-xs text-text-secondary">{l}</p>
+            </div>
+          ))}
+        </Reveal>
+      </section>
+
       <section className="container pb-16">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>

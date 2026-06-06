@@ -193,3 +193,162 @@ export async function analyzeCareer(
     model: res.model,
   };
 }
+
+// ============================== Cursos (Udemy) ==============================
+export interface CourseAnalysis {
+  summary: string;
+  stack: string[];
+  learnings: string[];
+  prerequisites: string[];
+  audience: string;
+  difficulty: number; // 0-100
+  career_fit: string;
+  tips: string[];
+  model?: string;
+  error?: string;
+}
+
+export async function analyzeUdemyCourse(input: {
+  title: string;
+  instructor?: string | null;
+  category?: string | null;
+  level?: string | null;
+  duration?: string | null;
+  description?: string | null;
+}): Promise<CourseAnalysis> {
+  const empty: CourseAnalysis = {
+    summary: "",
+    stack: [],
+    learnings: [],
+    prerequisites: [],
+    audience: "",
+    difficulty: 0,
+    career_fit: "",
+    tips: [],
+  };
+
+  const res = await chatJson<Partial<CourseAnalysis>>(
+    [
+      {
+        role: "system",
+        content:
+          "Você é um mentor sênior do ecossistema Python que avalia cursos para estudantes. " +
+          "Com base nos metadados do curso, produza uma análise útil e honesta. " +
+          "Responda SOMENTE com JSON válido com as chaves: " +
+          "summary (parágrafo em pt-BR sobre o que é o curso e seu valor), " +
+          "stack (array de tecnologias/ferramentas prováveis abordadas), " +
+          "learnings (array do que o aluno vai aprender), " +
+          "prerequisites (array de pré-requisitos), " +
+          "audience (para quem é o curso), " +
+          "difficulty (inteiro 0-100), " +
+          "career_fit (como o curso ajuda na carreira Python), " +
+          "tips (array de dicas para aproveitar melhor). Não invente fatos específicos não inferíveis.",
+      },
+      {
+        role: "user",
+        content:
+          `Analise este curso:\n` +
+          `- Título: ${input.title}\n` +
+          (input.instructor ? `- Instrutor: ${input.instructor}\n` : "") +
+          (input.category ? `- Categoria: ${input.category}\n` : "") +
+          (input.level ? `- Nível: ${input.level}\n` : "") +
+          (input.duration ? `- Duração: ${input.duration}\n` : "") +
+          (input.description ? `- Descrição: ${input.description}\n` : "") +
+          `\nFoque no contexto de aprendizado de Python.`,
+      },
+    ],
+    { maxTokens: 1100, temperature: 0.4 },
+  );
+
+  const p = res.data;
+  if (!p) return { ...empty, error: res.error ?? "Não consegui analisar o curso.", model: res.model };
+  const arr = (v: unknown) => (Array.isArray(v) ? v.map(String) : []);
+  return {
+    summary: String(p.summary ?? ""),
+    stack: arr(p.stack),
+    learnings: arr(p.learnings),
+    prerequisites: arr(p.prerequisites),
+    audience: String(p.audience ?? ""),
+    difficulty: Math.max(0, Math.min(100, Number(p.difficulty ?? 0))),
+    career_fit: String(p.career_fit ?? ""),
+    tips: arr(p.tips),
+    model: res.model,
+  };
+}
+
+export interface CollectionAnalysis {
+  summary: string;
+  coverage: { area: string; level: string }[];
+  strengths: string[];
+  gaps: string[];
+  recommendations: string[];
+  suggested_order: string[];
+  model?: string;
+  error?: string;
+}
+
+export async function analyzeUdemyCollection(input: {
+  courses: { title: string; category?: string | null; level?: string | null; status?: string | null }[];
+}): Promise<CollectionAnalysis> {
+  const empty: CollectionAnalysis = {
+    summary: "",
+    coverage: [],
+    strengths: [],
+    gaps: [],
+    recommendations: [],
+    suggested_order: [],
+  };
+  if (!input.courses.length) {
+    return { ...empty, error: "Adicione cursos para analisar a trilha." };
+  }
+
+  const list = input.courses
+    .map(
+      (c, i) =>
+        `${i + 1}. ${c.title}${c.category ? ` [${c.category}]` : ""}${c.level ? ` (${c.level})` : ""}${c.status ? ` - ${c.status}` : ""}`,
+    )
+    .join("\n");
+
+  const res = await chatJson<Partial<CollectionAnalysis>>(
+    [
+      {
+        role: "system",
+        content:
+          "Você é um mentor de carreira Python que avalia a TRILHA de cursos de um estudante como um todo. " +
+          "Avalie cobertura do ecossistema, equilíbrio, lacunas e ordem ideal de estudo. " +
+          "Responda SOMENTE com JSON válido com as chaves: " +
+          "summary (parágrafo em pt-BR), " +
+          "coverage (array de objetos {area, level} onde level é 'forte'|'media'|'fraca'), " +
+          "strengths (array), gaps (array de áreas pouco cobertas), " +
+          "recommendations (array de cursos/temas a adicionar), " +
+          "suggested_order (array com a ordem ideal de estudo dos cursos atuais). Baseie-se na lista.",
+      },
+      {
+        role: "user",
+        content: `Cursos do estudante (Udemy):\n${list}\n\nAvalie a trilha de cursos no contexto do ecossistema Python.`,
+      },
+    ],
+    { maxTokens: 1300, temperature: 0.4 },
+  );
+
+  const p = res.data;
+  if (!p) return { ...empty, error: res.error ?? "Não consegui analisar a trilha.", model: res.model };
+  const arr = (v: unknown) => (Array.isArray(v) ? v.map(String) : []);
+  const cov = Array.isArray(p.coverage)
+    ? p.coverage
+        .map((c: unknown) => {
+          const o = c as { area?: unknown; level?: unknown };
+          return { area: String(o.area ?? ""), level: String(o.level ?? "media") };
+        })
+        .filter((c) => c.area)
+    : [];
+  return {
+    summary: String(p.summary ?? ""),
+    coverage: cov,
+    strengths: arr(p.strengths),
+    gaps: arr(p.gaps),
+    recommendations: arr(p.recommendations),
+    suggested_order: arr(p.suggested_order),
+    model: res.model,
+  };
+}

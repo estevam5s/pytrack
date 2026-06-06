@@ -11,7 +11,7 @@ export default async function UdemyPage() {
     <div>
       <PageHeader
         title="Aulas Udemy"
-        description="Organize seus cursos da Udemy: adicione, edite e remova. Cole a URL para importar o banner e as informações automaticamente."
+        description="Organize seus cursos, acompanhe a evolução em gráficos e clique em cada curso para ver detalhes, stack e análise com IA — além de analisar sua trilha de cursos como um todo."
       />
       <UdemyView courses={courses} />
     </div>

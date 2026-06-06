@@ -47,7 +47,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     title: "Projetos",
-    href: "/projetos",
+    href: "/meus-projetos",
     icon: FolderGit2,
     group: "Estudar",
   },
@@ -67,7 +67,7 @@ export const NAV_ITEMS: NavItem[] = [
   { title: "Livros", href: "/livros", icon: Library, group: "Recursos" },
   {
     title: "Carreira",
-    href: "/carreira",
+    href: "/minha-carreira",
     icon: Briefcase,
     group: "Carreira",
   },

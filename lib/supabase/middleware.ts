@@ -3,7 +3,15 @@ import { NextResponse, type NextRequest } from "next/server";
 
 // Rotas públicas (site institucional) acessíveis sem login.
 const PUBLIC_EXACT = ["/"];
-const PUBLIC_PREFIX = ["/sobre", "/trilhas", "/recursos", "/precos", "/auth"];
+const PUBLIC_PREFIX = [
+  "/sobre",
+  "/trilhas",
+  "/recursos",
+  "/precos",
+  "/projetos",
+  "/carreira",
+  "/auth",
+];
 
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });

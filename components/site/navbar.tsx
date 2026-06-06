@@ -70,11 +70,16 @@ export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
                 key={l.href}
                 href={l.href}
                 className={cn(
-                  "rounded-lg px-3.5 py-2 text-sm font-medium transition-colors",
-                  active ? "text-foreground" : "text-text-secondary hover:text-foreground",
+                  "relative rounded-lg px-3.5 py-2 text-sm font-medium transition-colors",
+                  active
+                    ? "bg-primary/10 text-primary-light"
+                    : "text-text-secondary hover:bg-surface-2 hover:text-foreground",
                 )}
               >
                 {l.label}
+                {active && (
+                  <span className="absolute inset-x-3.5 -bottom-px h-0.5 rounded-full bg-brand" />
+                )}
               </Link>
             );
           })}
