@@ -9,6 +9,8 @@ const nextConfig = {
   outputFileTracingIncludes: {
     "/conteudos/[modulo]/[licao]": ["./doc/Conteudos/**/*.md"],
     "/conteudos/[modulo]": ["./doc/Conteudos/**/*.md"],
+    "/aprender/[licao]": ["./doc/Conteudos/**/*.md"],
+    "/aprender": ["./doc/Conteudos/**/*.md"],
   },
 };
 

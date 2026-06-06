@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import {
   requireStripe,
   STRIPE_PRICE_ID,
-  STRIPE_PRICE_ID_ANNUAL,
   STRIPE_TRIAL_DAYS,
   APP_URL,
+  priceForPlan,
 } from "@/lib/stripe/server";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { getStripeCustomerId } from "@/lib/stripe/subscriptions";
@@ -20,18 +20,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Não autenticado" }, { status: 401 });
     }
 
-    let plan: "monthly" | "annual" = "monthly";
+    let plan = "essencial_monthly";
     try {
       const body = await req.json();
-      if (body?.plan === "annual") plan = "annual";
+      if (typeof body?.plan === "string") plan = body.plan;
     } catch {
-      /* sem body = mensal */
+      /* sem body = essencial mensal */
     }
 
-    const priceId =
-      plan === "annual" && STRIPE_PRICE_ID_ANNUAL
-        ? STRIPE_PRICE_ID_ANNUAL
-        : STRIPE_PRICE_ID;
+    const priceId = priceForPlan(plan) ?? STRIPE_PRICE_ID;
 
     if (!priceId) {
       return NextResponse.json(

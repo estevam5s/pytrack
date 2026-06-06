@@ -1,5 +1,11 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import {
+  hasDashboardAccess,
+  isFreeDashboardPath,
+  requiresCompleto,
+  tierOf,
+} from "@/lib/billing-access";
 
 // Rotas públicas (site institucional) acessíveis sem login.
 const PUBLIC_EXACT = ["/"];
@@ -11,12 +17,14 @@ const PUBLIC_PREFIX = [
   "/projetos",
   "/carreira",
   "/blog",
+  "/aprender", // lições públicas (SEO)
   "/auth",
   "/api", // rotas de API fazem a própria autenticação (ex.: webhook Stripe)
   "/sitemap",
   "/robots",
   "/opengraph-image",
   "/twitter-image",
+  "/google", // arquivo de verificação do Google Search Console
 ];
 
 export async function updateSession(request: NextRequest) {
@@ -70,6 +78,37 @@ export async function updateSession(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = "/inicio";
     return NextResponse.redirect(url);
+  }
+
+  // gating de assinatura (freemium): rotas pagas do dashboard exigem plano válido.
+  // Rotas gratuitas (/inicio, /ide, catálogo + 1º módulo, /perfil, /configuracoes)
+  // ficam liberadas. Se o billing não estiver configurado, libera tudo.
+  const billingEnabled = Boolean(
+    process.env.STRIPE_SECRET_KEY && process.env.STRIPE_PRICE_ID,
+  );
+  if (
+    user &&
+    !isPublic &&
+    billingEnabled &&
+    !isFreeDashboardPath(pathname)
+  ) {
+    const { data: sub } = await supabase
+      .from("subscriptions")
+      .select("status, current_period_end, stripe_price_id, metadata")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    if (!hasDashboardAccess(sub)) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/assinar";
+      return NextResponse.redirect(url);
+    }
+    // recursos exclusivos do plano Completo
+    if (requiresCompleto(pathname) && tierOf(sub) !== "completo") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/assinar";
+      url.searchParams.set("upgrade", "completo");
+      return NextResponse.redirect(url);
+    }
   }
 
   return response;

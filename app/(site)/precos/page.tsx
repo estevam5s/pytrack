@@ -1,126 +1,150 @@
 import type { Metadata } from "next";
-import { Check, Minus, ShieldCheck, Sparkles, Zap } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check, Minus, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
-import { PricingCard } from "@/components/site/pricing-card";
 import { FaqItem } from "@/components/site/faq-item";
 import { SectionHeader } from "@/components/site/section-header";
 import { Reveal } from "@/components/site/reveal";
-import { GradientText } from "@/components/site/gradient-text";
 import { CTASection } from "@/components/site/cta-section";
-import { FAQS, TESTIMONIALS } from "@/lib/site-data";
+import { FAQS } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Preços",
   description:
-    "Plano Python Pro: acesso completo a trilhas guiadas, exercícios com IA, IDE Python, projetos, comunidade, vagas, materiais, livros e carreira — sem cobranças escondidas.",
+    "Planos da PyTrack: comece grátis, assine o Essencial (R$10/mês) para todas as trilhas Python, ou o Completo (R$19/mês) com comunidade, projetos, especializações e carreira.",
 };
 
-const INCLUDED = [
+const PLANS = [
   {
-    group: "Aprendizado",
-    items: [
-      "74 módulos de conteúdo guiado",
-      "Trilhas do básico à especialização",
-      "Leitor de lições em Markdown",
-      "Atualizações contínuas de conteúdo",
+    name: "Grátis",
+    price: "R$ 0",
+    period: "para sempre",
+    desc: "Comece a aprender sem pagar nada.",
+    cta: "Criar conta grátis",
+    href: "/auth/register",
+    highlight: false,
+    features: [
+      "Trilha de Fundamentos de Python",
+      "IDE Python no navegador",
+      "Acesso à comunidade (leitura)",
     ],
   },
   {
-    group: "Prática",
-    items: [
-      "2.400+ exercícios com correção por IA",
-      "IDE Python no navegador (sem instalar nada)",
-      "1.300+ projetos para portfólio",
-      "Editor com syntax highlight",
+    name: "Essencial",
+    price: "R$ 10",
+    period: "/mês",
+    desc: "Aprenda Python a fundo, todas as trilhas.",
+    cta: "Assinar Essencial",
+    href: "/assinar",
+    highlight: false,
+    features: [
+      "Todas as trilhas de conteúdo",
+      "Exercícios com correção por IA",
+      "IDE Python + evolução e XP",
+      "Materiais, livros e aulas",
+      "7 dias grátis",
     ],
   },
   {
-    group: "Carreira & Comunidade",
-    items: [
-      "Consultor de carreira com IA",
-      "1.700+ perguntas de entrevista",
-      "Vagas do ecossistema Python",
+    name: "Completo",
+    price: "R$ 19",
+    period: "/mês",
+    desc: "A plataforma inteira, do estudo à carreira.",
+    cta: "Assinar Completo",
+    href: "/assinar",
+    highlight: true,
+    features: [
+      "Tudo do Essencial, mais:",
       "Comunidade, ranking e conexões",
-    ],
-  },
-  {
-    group: "Acompanhamento",
-    items: [
-      "Dashboard de evolução com XP e níveis",
-      "Mapa de proficiência por área",
-      "Materiais e biblioteca de livros",
-      "Tema claro/escuro e acesso multiplataforma",
+      "+1.300 projetos para portfólio",
+      "Especializações avançadas",
+      "Consultor de carreira com IA",
+      "Vagas e perguntas de entrevista",
+      "7 dias grátis",
     ],
   },
 ];
 
-const COMPARISON: { feature: string; free: boolean; pro: boolean }[] = [
-  { feature: "Trilhas e conteúdos", free: true, pro: true },
-  { feature: "Exercícios com correção por IA", free: false, pro: true },
-  { feature: "IDE Python no navegador", free: true, pro: true },
-  { feature: "Projetos para portfólio", free: false, pro: true },
-  { feature: "Consultor de carreira (IA)", free: false, pro: true },
-  { feature: "Comunidade e vagas", free: true, pro: true },
-  { feature: "Dashboard de evolução completo", free: false, pro: true },
-  { feature: "Especializações avançadas", free: false, pro: true },
+const COMPARISON: { feature: string; free: boolean; ess: boolean; comp: boolean }[] = [
+  { feature: "Fundamentos de Python", free: true, ess: true, comp: true },
+  { feature: "IDE Python no navegador", free: true, ess: true, comp: true },
+  { feature: "Todas as trilhas de conteúdo", free: false, ess: true, comp: true },
+  { feature: "Exercícios com correção por IA", free: false, ess: true, comp: true },
+  { feature: "Evolução, XP e níveis", free: false, ess: true, comp: true },
+  { feature: "Materiais, livros e aulas", free: false, ess: true, comp: true },
+  { feature: "Comunidade completa", free: false, ess: false, comp: true },
+  { feature: "Projetos para portfólio", free: false, ess: false, comp: true },
+  { feature: "Especializações avançadas", free: false, ess: false, comp: true },
+  { feature: "Consultor de carreira (IA)", free: false, ess: false, comp: true },
+  { feature: "Vagas e entrevistas", free: false, ess: false, comp: true },
 ];
+
+function Cell({ on }: { on: boolean }) {
+  return on ? (
+    <Check className="mx-auto h-4 w-4 text-green" />
+  ) : (
+    <Minus className="mx-auto h-4 w-4 text-text-secondary/40" />
+  );
+}
 
 export default function PrecosPage() {
   return (
     <>
       <PageHero
-        badge="Acesso"
-        title="Um plano,"
-        highlight="acesso completo"
-        description="Tudo o que você precisa para evoluir em Python, dados, IoT, backend e engenharia — em um único lugar, sem cobranças escondidas."
+        badge="Planos"
+        title="Escolha o plano ideal para"
+        highlight="sua jornada"
+        description="Comece grátis e evolua quando quiser. Sem cobranças escondidas, cancele a qualquer momento."
       />
 
-      {/* faixa de benefícios */}
-      <section className="container -mt-6">
-        <Reveal className="grid gap-3 sm:grid-cols-3">
-          {[
-            { icon: Zap, title: "Comece em segundos", text: "Crie a conta e acesse tudo na hora." },
-            { icon: ShieldCheck, title: "Sem pegadinhas", text: "Sem cartão para começar, cancele quando quiser." },
-            { icon: Sparkles, title: "Sempre evoluindo", text: "Novos conteúdos e recursos com frequência." },
-          ].map((b) => (
-            <div key={b.title} className="card flex items-start gap-3 p-5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary-light">
-                <b.icon className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="font-semibold">{b.title}</p>
-                <p className="text-sm text-text-secondary">{b.text}</p>
-              </div>
-            </div>
-          ))}
-        </Reveal>
-      </section>
-
-      {/* card de preço */}
+      {/* planos */}
       <section className="container py-16">
-        <PricingCard />
-      </section>
-
-      {/* tudo incluído */}
-      <section className="container py-12">
-        <SectionHeader
-          badge="Tudo incluído"
-          title={<>O que vem no <GradientText>Python Pro</GradientText></>}
-          description="Acesso total a toda a plataforma — aprendizado, prática, carreira e acompanhamento."
-        />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {INCLUDED.map((col, i) => (
-            <Reveal key={col.group} delay={i * 0.05}>
-              <div className="card h-full p-6">
-                <h3 className="font-semibold text-primary-light">{col.group}</h3>
-                <ul className="mt-4 space-y-2.5">
-                  {col.items.map((it) => (
-                    <li key={it} className="flex items-start gap-2 text-sm">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-green" />
-                      <span className="text-text-secondary">{it}</span>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {PLANS.map((p, i) => (
+            <Reveal key={p.name} delay={i * 0.06}>
+              <div
+                className={cn(
+                  "relative flex h-full flex-col rounded-2xl border p-7",
+                  p.highlight ? "border-primary/40 bg-surface" : "border-border bg-card",
+                )}
+              >
+                {p.highlight && (
+                  <>
+                    <div className="pointer-events-none absolute -inset-0.5 -z-10 rounded-2xl bg-brand opacity-25 blur" />
+                    <span className="absolute right-5 top-5 rounded-full bg-primary/15 px-2.5 py-0.5 text-[10px] font-bold uppercase text-primary-light">
+                      Recomendado
+                    </span>
+                  </>
+                )}
+                <p className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-text-secondary">
+                  {p.highlight && <Sparkles className="h-3.5 w-3.5 text-primary-light" />}
+                  {p.name}
+                </p>
+                <div className="mt-3 flex items-end gap-1">
+                  <span className="text-4xl font-bold tracking-tight">{p.price}</span>
+                  <span className="pb-1 text-text-secondary">{p.period}</span>
+                </div>
+                <p className="mt-2 text-sm text-text-secondary">{p.desc}</p>
+                <ul className="mt-5 flex-1 space-y-2.5">
+                  {p.features.map((f, idx) => (
+                    <li key={f} className="flex items-start gap-2 text-sm">
+                      <Check className={cn("mt-0.5 h-4 w-4 shrink-0", idx === 0 && p.highlight ? "text-primary-light" : "text-green")} />
+                      <span className={idx === 0 && p.highlight ? "font-medium" : "text-text-secondary"}>{f}</span>
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href={p.href}
+                  className={cn(
+                    "mt-7 inline-flex items-center justify-center gap-1.5 rounded-xl px-5 py-3 text-sm font-semibold transition-opacity hover:opacity-90",
+                    p.highlight
+                      ? "bg-gradient-to-r from-primary to-primary-light text-white shadow-lg shadow-primary/25"
+                      : "border border-border bg-surface-2 text-foreground",
+                  )}
+                >
+                  {p.cta} <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </Reveal>
           ))}
@@ -129,64 +153,29 @@ export default function PrecosPage() {
 
       {/* comparativo */}
       <section className="container py-12">
-        <SectionHeader badge="Comparativo" title="Gratuito vs Python Pro" />
+        <SectionHeader badge="Comparativo" title="O que cada plano inclui" />
         <Reveal className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-border">
-          <div className="grid grid-cols-[1fr_auto_auto] bg-surface-2 text-sm font-semibold">
+          <div className="grid grid-cols-[1fr_70px_70px_80px] bg-surface-2 text-xs font-semibold sm:grid-cols-[1fr_90px_90px_100px]">
             <div className="p-4">Recurso</div>
-            <div className="w-24 p-4 text-center text-text-secondary">Grátis</div>
-            <div className="w-24 p-4 text-center text-primary-light">Pro</div>
+            <div className="p-4 text-center text-text-secondary">Grátis</div>
+            <div className="p-4 text-center text-text-secondary">Essencial</div>
+            <div className="p-4 text-center text-primary-light">Completo</div>
           </div>
           {COMPARISON.map((row, i) => (
             <div
               key={row.feature}
-              className={`grid grid-cols-[1fr_auto_auto] items-center border-t border-border text-sm ${
-                i % 2 ? "bg-surface/40" : ""
-              }`}
+              className={cn(
+                "grid grid-cols-[1fr_70px_70px_80px] items-center border-t border-border text-sm sm:grid-cols-[1fr_90px_90px_100px]",
+                i % 2 && "bg-surface/40",
+              )}
             >
               <div className="p-4 text-text-secondary">{row.feature}</div>
-              <div className="flex w-24 justify-center p-4">
-                {row.free ? (
-                  <Check className="h-4 w-4 text-green" />
-                ) : (
-                  <Minus className="h-4 w-4 text-text-secondary/50" />
-                )}
-              </div>
-              <div className="flex w-24 justify-center p-4">
-                {row.pro ? (
-                  <Check className="h-4 w-4 text-green" />
-                ) : (
-                  <Minus className="h-4 w-4 text-text-secondary/50" />
-                )}
-              </div>
+              <div className="p-4"><Cell on={row.free} /></div>
+              <div className="p-4"><Cell on={row.ess} /></div>
+              <div className="p-4"><Cell on={row.comp} /></div>
             </div>
           ))}
         </Reveal>
-      </section>
-
-      {/* depoimentos */}
-      <section className="container py-12">
-        <SectionHeader badge="Depoimentos" title="Quem usa, recomenda" description="Exemplos ilustrativos de como a plataforma acelera o aprendizado." />
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.08}>
-              <div className="card h-full p-7">
-                <p className="text-sm leading-relaxed text-text-secondary">“{t.text}”</p>
-                <div className="mt-6 flex items-center gap-3">
-                  <span className={`flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br ${t.color} text-sm font-bold text-background`}>
-                    {t.initials}
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold">{t.name}</p>
-                    <p className="text-xs text-text-secondary">{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <p className="mt-6 text-center text-xs text-text-secondary">
-          * Depoimentos fictícios, apenas para demonstração.
-        </p>
       </section>
 
       {/* FAQ */}

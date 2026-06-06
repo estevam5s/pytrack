@@ -6,6 +6,24 @@ const key = process.env.STRIPE_SECRET_KEY;
 export const stripe = key ? new Stripe(key) : null;
 export const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
 export const STRIPE_PRICE_ID_ANNUAL = process.env.STRIPE_PRICE_ID_ANNUAL;
+export const STRIPE_PRICE_ID_COMPLETO = process.env.STRIPE_PRICE_ID_COMPLETO;
+export const STRIPE_PRICE_ID_COMPLETO_ANNUAL =
+  process.env.STRIPE_PRICE_ID_COMPLETO_ANNUAL;
+
+/** Mapa de plano -> price id (para o checkout). */
+export function priceForPlan(plan?: string): string | undefined {
+  switch (plan) {
+    case "completo_monthly":
+      return STRIPE_PRICE_ID_COMPLETO ?? undefined;
+    case "completo_annual":
+      return STRIPE_PRICE_ID_COMPLETO_ANNUAL ?? undefined;
+    case "essencial_annual":
+      return STRIPE_PRICE_ID_ANNUAL ?? undefined;
+    case "essencial_monthly":
+    default:
+      return STRIPE_PRICE_ID ?? undefined;
+  }
+}
 export const STRIPE_TRIAL_DAYS = Number(process.env.STRIPE_TRIAL_DAYS ?? 0) || 0;
 export const STRIPE_REFERRAL_COUPON = process.env.STRIPE_REFERRAL_COUPON;
 

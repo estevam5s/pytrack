@@ -66,7 +66,7 @@ export async function signUp(
   }
 
   revalidatePath("/", "layout");
-  redirect("/assinar");
+  redirect("/inicio");
 }
 
 export async function signOut() {

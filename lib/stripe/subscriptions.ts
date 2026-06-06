@@ -1,6 +1,9 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { billingEnabled } from "@/lib/stripe/server";
+import { hasDashboardAccess } from "@/lib/billing-access";
+
+export { hasDashboardAccess };
 
 export interface SubscriptionRow {
   id: string;
@@ -17,20 +20,6 @@ export interface SubscriptionRow {
   trial_end: string | null;
   created_at: string;
   updated_at: string;
-}
-
-const BLOCKED = ["unpaid", "incomplete_expired"];
-
-/** Regra de acesso ao dashboard. */
-export function hasDashboardAccess(sub: SubscriptionRow | null): boolean {
-  if (!sub) return false;
-  if (sub.status === "active" || sub.status === "trialing") return true;
-  if (BLOCKED.includes(sub.status)) return false;
-  // mantém acesso até o fim do período pago (mesmo cancelado no fim do ciclo)
-  if (sub.current_period_end && new Date(sub.current_period_end) > new Date()) {
-    return true;
-  }
-  return false;
 }
 
 export async function getUserSubscription(

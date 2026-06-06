@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 
 export function SubscribeButton({
   label = "Assinar agora",
-  plan = "monthly",
+  plan = "essencial_monthly",
   className,
 }: {
   label?: string;
-  plan?: "monthly" | "annual";
+  plan?: string;
   className?: string;
 }) {
   const [loading, setLoading] = useState(false);

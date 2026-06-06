@@ -62,6 +62,29 @@ try {
 } catch (e) {}
 `;
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_APP_URL ?? "https://plataforma-python.vercel.app";
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: "PyTrack",
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+      description:
+        "Plataforma de aprendizado de Python: trilhas, exercícios com IA, IDE, projetos e carreira.",
+    },
+    {
+      "@type": "WebSite",
+      name: "PyTrack",
+      url: SITE_URL,
+      inLanguage: "pt-BR",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -71,6 +94,10 @@ export default function RootLayout({
     <html lang="pt-BR" className="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
       </head>
       <body className={`${inter.variable} ${mono.variable} font-sans`}>
         {children}

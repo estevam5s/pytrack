@@ -9,6 +9,7 @@ import { LevelUpNotifier } from "@/components/dashboard/level-up-notifier";
 import { OnboardingTour } from "@/components/dashboard/onboarding-tour";
 import { PomodoroProvider } from "@/components/home/pomodoro-provider";
 import { userHasAccess } from "@/lib/stripe/subscriptions";
+import { UpgradeBanner } from "@/components/billing/UpgradeBanner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default async function DashboardLayout({
@@ -23,9 +24,9 @@ export default async function DashboardLayout({
 
   if (!user) redirect("/auth/login");
 
-  // bloqueia o dashboard se não houver assinatura válida
-  // (libera automaticamente enquanto o billing não estiver configurado)
-  if (!(await userHasAccess(user.id))) redirect("/assinar");
+  // o gating de assinatura é feito no middleware (freemium: rotas grátis
+  // liberadas). Aqui só descobrimos se mostramos o banner de upgrade.
+  const hasAccess = await userHasAccess(user.id);
 
   const [{ data: profile }, levelCounts, searchIndex] = await Promise.all([
     supabase
@@ -53,6 +54,7 @@ export default async function DashboardLayout({
             levelCounts={levelCounts}
           />
           <main className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 sm:py-8 lg:px-10 xl:px-12">
+            {!hasAccess && <UpgradeBanner />}
             {children}
           </main>
         </DashboardShell>
