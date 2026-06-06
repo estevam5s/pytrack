@@ -16,6 +16,7 @@ import {
   Youtube,
   Award,
   SquareTerminal,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 
@@ -28,6 +29,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { title: "Início", href: "/inicio", icon: LayoutDashboard, group: "Estudar" },
+  { title: "Comunidade", href: "/comunidade", icon: Users, group: "Estudar" },
   { title: "Conteúdos", href: "/conteudos", icon: BookOpen, group: "Estudar" },
   { title: "Evolução", href: "/evolucao", icon: TrendingUp, group: "Estudar" },
   { title: "Stack", href: "/stack", icon: Layers, group: "Estudar" },
