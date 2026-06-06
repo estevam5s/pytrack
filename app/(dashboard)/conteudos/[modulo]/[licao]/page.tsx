@@ -35,7 +35,7 @@ export default async function LessonPage({
   return (
     <div>
       <nav className="mb-5 flex items-center gap-1.5 text-xs text-text-secondary">
-        <Link href="/" className="hover:text-foreground">
+        <Link href="/inicio" className="hover:text-foreground">
           <Home className="h-3.5 w-3.5" />
         </Link>
         <ChevronRight className="h-3.5 w-3.5" />

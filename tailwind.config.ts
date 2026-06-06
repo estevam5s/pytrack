@@ -15,33 +15,41 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "#09090B",
-        surface: "#111113",
+        // tokens semânticos = variáveis CSS (mudam com o tema light/dark)
+        background: "rgb(var(--background) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        "surface-2": "rgb(var(--surface-2) / <alpha-value>)",
         card: {
-          DEFAULT: "#18181B",
-          foreground: "#F4F4F5",
+          DEFAULT: "rgb(var(--card) / <alpha-value>)",
+          foreground: "rgb(var(--foreground) / <alpha-value>)",
         },
-        border: "#27272A",
-        input: "#27272A",
+        border: "rgb(var(--border) / <alpha-value>)",
+        input: "rgb(var(--input) / <alpha-value>)",
         ring: "#8257E5",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        "text-primary": "rgb(var(--text-primary) / <alpha-value>)",
+        "text-secondary": "rgb(var(--text-secondary) / <alpha-value>)",
+        muted: {
+          DEFAULT: "rgb(var(--muted) / <alpha-value>)",
+          foreground: "rgb(var(--text-secondary) / <alpha-value>)",
+        },
+        // cores de marca/estado (fixas nos dois temas)
         primary: {
           DEFAULT: "#8257E5",
           foreground: "#FFFFFF",
           muted: "#6943c0",
+          light: "#9956F6",
         },
         secondary: {
           DEFAULT: "#04D361",
           foreground: "#04261a",
         },
-        muted: {
-          DEFAULT: "#1c1c1f",
-          foreground: "#A1A1AA",
-        },
         danger: "#EF4444",
         warning: "#F59E0B",
         success: "#22C55E",
-        foreground: "#F4F4F5",
-        "text-secondary": "#A1A1AA",
+        green: "#29E0A9",
+        blue: "#5F75F2",
+        magenta: "#E254FF",
       },
       borderRadius: {
         lg: "0.75rem",
@@ -64,14 +72,21 @@ const config: Config = {
         shimmer: {
           "100%": { transform: "translateX(100%)" },
         },
+        float: {
+          "0%,100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 6s ease-in-out infinite",
       },
       backgroundImage: {
         "grid-pattern":
           "linear-gradient(to right, #27272A 1px, transparent 1px), linear-gradient(to bottom, #27272A 1px, transparent 1px)",
+        brand:
+          "linear-gradient(97.57deg, #29E0A9 -12.7%, #5F75F2 32.64%, #9956F6 78.49%, #E254FF 109.78%)",
       },
     },
   },

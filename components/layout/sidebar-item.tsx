@@ -14,7 +14,9 @@ export function SidebarItem({
 }) {
   const pathname = usePathname();
   const active =
-    item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+    item.href === "/inicio"
+      ? pathname === "/inicio"
+      : pathname.startsWith(item.href);
   const Icon = item.icon;
 
   return (

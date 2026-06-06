@@ -5,6 +5,7 @@ import { MobileSidebar } from "@/components/layout/mobile-sidebar";
 import { Header } from "@/components/layout/header";
 import { CommandMenu } from "@/components/layout/command-menu";
 import { DashboardShell } from "@/components/layout/dashboard-shell";
+import { LevelUpNotifier } from "@/components/dashboard/level-up-notifier";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default async function DashboardLayout({
@@ -31,7 +32,8 @@ export default async function DashboardLayout({
 
   return (
     <TooltipProvider delayDuration={200}>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen overflow-x-hidden bg-background">
+        <LevelUpNotifier serverCounts={levelCounts} />
         <MobileSidebar />
         <CommandMenu index={searchIndex} />
         <DashboardShell>
@@ -41,7 +43,7 @@ export default async function DashboardLayout({
             avatarUrl={profile?.avatar_url ?? null}
             levelCounts={levelCounts}
           />
-          <main className="mx-auto w-full max-w-[1720px] px-5 py-8 lg:px-10 xl:px-12">
+          <main className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 sm:py-8 lg:px-10 xl:px-12">
             {children}
           </main>
         </DashboardShell>

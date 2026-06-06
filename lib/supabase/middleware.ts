@@ -1,7 +1,9 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/auth/login", "/auth/register", "/auth/callback"];
+// Rotas públicas (site institucional) acessíveis sem login.
+const PUBLIC_EXACT = ["/"];
+const PUBLIC_PREFIX = ["/sobre", "/trilhas", "/recursos", "/precos", "/auth"];
 
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -38,17 +40,21 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const { pathname } = request.nextUrl;
-  const isPublic = PUBLIC_PATHS.some((p) => pathname.startsWith(p));
+  const isPublic =
+    PUBLIC_EXACT.includes(pathname) ||
+    PUBLIC_PREFIX.some((p) => pathname.startsWith(p));
 
+  // rota protegida (dashboard) sem login -> vai para o login
   if (!user && !isPublic) {
     const url = request.nextUrl.clone();
     url.pathname = "/auth/login";
     return NextResponse.redirect(url);
   }
 
-  if (user && isPublic) {
+  // logado tentando ver as telas de auth -> vai para o dashboard
+  if (user && pathname.startsWith("/auth")) {
     const url = request.nextUrl.clone();
-    url.pathname = "/";
+    url.pathname = "/inicio";
     return NextResponse.redirect(url);
   }
 

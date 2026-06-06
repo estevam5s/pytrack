@@ -19,20 +19,17 @@ export function ThemeToggle() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
-    const saved = localStorage.getItem("pytrack-theme") as
-      | "dark"
-      | "light"
-      | null;
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.classList.toggle("dark", saved === "dark");
-    }
+    setTheme(
+      document.documentElement.classList.contains("light") ? "light" : "dark",
+    );
   }, []);
 
   const change = (next: "dark" | "light") => {
     setTheme(next);
     localStorage.setItem("pytrack-theme", next);
-    document.documentElement.classList.toggle("dark", next === "dark");
+    const el = document.documentElement;
+    el.classList.toggle("light", next === "light");
+    el.classList.toggle("dark", next === "dark");
   };
 
   return (

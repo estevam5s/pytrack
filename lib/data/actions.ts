@@ -32,7 +32,7 @@ export async function setContentStatus(
   if (error) return { error: error.message };
   revalidatePath("/conteudos");
   revalidatePath("/evolucao");
-  revalidatePath("/");
+  revalidatePath("/inicio");
   return { ok: true };
 }
 
@@ -104,7 +104,7 @@ export async function setModuleProgressBySlug(slug: string, percentage: number) 
   if (error) return { error: error.message };
   revalidatePath("/conteudos");
   revalidatePath("/evolucao");
-  revalidatePath("/");
+  revalidatePath("/inicio");
   return { ok: true };
 }
 

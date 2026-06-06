@@ -4,6 +4,7 @@ import { Menu, PanelLeft, Search } from "lucide-react";
 import { useUIStore } from "@/store/ui";
 import { UserMenu } from "./user-menu";
 import { HeaderLevelBar } from "./header-level-bar";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Header({
   name,
@@ -48,6 +49,7 @@ export function Header({
       </button>
 
       <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
+        <ThemeToggle />
         <HeaderLevelBar serverCounts={levelCounts} />
         <UserMenu name={name} email={email} avatarUrl={avatarUrl} />
       </div>

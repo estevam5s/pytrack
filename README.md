@@ -1,267 +1,209 @@
-# 🐍 PyTrack — Python Learning Dashboard
+<div align="center">
 
-Plataforma educacional completa para aprender e acompanhar a evolução em todo o
-ecossistema Python — dos fundamentos a Data Science, IoT, DevOps, Engenharia de
-Dados e Arquitetura. Visual escuro, moderno e tecnológico, inspirado em
-plataformas premium de tecnologia.
+<img src="public/logo.png" alt="PyTrack" width="130" />
 
-Construída a partir do guia **`informacao.md`** (Stack Python Profissional), com
-dados persistidos no **Supabase**.
+# PyTrack — Plataforma de Aprendizado Python
 
----
+**Aprenda, pratique e domine todo o ecossistema Python — do básico à carreira profissional — em um único dashboard inteligente.**
 
-## ✨ Stack
+PyTrack é uma plataforma educacional completa e funcional que reúne trilhas de estudo, conteúdos, exercícios com correção por IA, uma **IDE Python que roda no navegador**, projetos reais, livros, cursos, vagas e um consultor de carreira — tudo com acompanhamento de evolução por XP e níveis.
 
-| Camada | Tecnologias |
-|---|---|
-| Framework | Next.js 15 (App Router) + React 19 |
-| Linguagem | TypeScript (strict) |
-| Estilo | Tailwind CSS 3 + design system próprio |
-| UI | Radix UI, Lucide React, Framer Motion, cmdk |
-| Estado | Zustand |
-| Formulários | React Hook Form + Zod + Server Actions |
-| Gráficos | Recharts |
-| Backend | Supabase (Postgres 17, Auth, RLS) |
+<br/>
 
----
+![Next.js](https://img.shields.io/badge/Next.js_15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![Pyodide](https://img.shields.io/badge/Pyodide_(WASM)-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deploy_Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-## 🎨 Design system
+🌐 **Em produção:** [plataforma-python.vercel.app](https://plataforma-python.vercel.app)
 
-Tema dark por padrão (com toggle para claro), tons de roxo e verde:
-
-```
-background #09090B · surface #111113 · card #18181B · border #27272A
-primary #8257E5 · secondary #04D361 · text #F4F4F5 / #A1A1AA
-danger #EF4444 · warning #F59E0B · success #22C55E
-```
-
-Componentes em `components/ui`: Button, Card, Badge, Progress, Tabs, Tooltip,
-Dialog (Modal), Input/Textarea, EmptyState, LoadingState, Skeleton, Command
-Search e DynamicIcon.
+</div>
 
 ---
 
-## 📁 Estrutura
+## 📖 Sobre a plataforma
 
-```txt
-app/
-  (dashboard)/         # rotas protegidas (sidebar + header)
-    page.tsx           # / — dashboard inicial
-    conteudos/ evolucao/ stack/ aulas-udemy/ material/ livros/
-    carreira/ vagas/ perguntas-carreira-python/ exercicios/
-    projetos/ perfil/ configuracoes/
-    layout.tsx loading.tsx error.tsx
-  auth/                # login, register (layout próprio)
-  layout.tsx globals.css not-found.tsx
-components/  ui/ dashboard/ cards/ forms/ layout/
-lib/
-  supabase/  client.ts server.ts middleware.ts
-  data/      queries.ts actions.ts
-  parser/    informacao.ts        # parser do informacao.md
-  navigation.ts utils.ts
-store/  ui.ts
-types/  index.ts
-supabase/ schema.sql seed.sql
-scripts/ import-informacao.ts
-middleware.ts            # proteção de rotas
-```
+PyTrack resolve um problema real de quem aprende Python: estudo desorganizado, materiais espalhados e falta de clareza sobre a própria evolução. A plataforma centraliza **todo o ciclo de aprendizado** em uma experiência única e moderna (dark/light), com **site institucional público** e um **dashboard privado** após o login.
+
+- **Site público** (`/`): apresentação, trilhas, recursos, projetos, carreira e preços.
+- **Dashboard** (`/inicio` e demais rotas): a área de estudo, protegida por autenticação.
+
+Tudo é **real e funcional**: os dados vêm do Supabase (PostgreSQL), a correção de código e a análise de vagas usam IA (OpenRouter), e a IDE executa Python de verdade no navegador via WebAssembly.
 
 ---
 
-## 🚀 Executando localmente
+## ✨ Funcionalidades
 
-Pré-requisitos: **Node 18+**.
+### Estudar
+| Rota | O que faz |
+|------|-----------|
+| `/inicio` | Home com nível, XP, gráficos, atividades e pomodoro. |
+| `/conteudos` | Trilhas e módulos com **leitor de lições** em Markdown (todo o ecossistema Python). |
+| `/evolucao` | Análise profissional da sua evolução, ferramentas e experiência. |
+| `/stack` | Catálogo de tecnologias do ecossistema Python com ícones e descrições. |
+| `/exercicios` | Centenas de exercícios com editor de código e **correção por IA**. |
+| **`/ide`** | **IDE Python completa que roda no navegador (Pyodide/WASM)** — escreva, execute, use `input()` e bibliotecas como `numpy`/`pandas`. |
+| `/projetos` | +1.300 projetos práticos para portfólio, com dificuldade e tecnologias. |
+
+### Recursos
+`/aulas-udemy` · `/aulas-youtube` (CRUD com extração de banner/infos pela URL) · `/material` · `/livros` (CRUD com upload de capa e arquivo).
+
+### Carreira
+`/carreira` · **`/especializacoes`** (10 trilhas avançadas: Eng. de Dados, Eng. de Software, Analista de Dados, Arquiteto de Software/Soluções, ML, DevOps/Cloud, IA/LLMs, Segurança, IoT — com roadmap, tecnologias, projetos e faixa salarial) · `/consultor-ia` · `/vagas` (importa vaga por link e extrai os campos com IA) · `/perguntas-carreira-python`.
+
+### Conta
+`/perfil` · `/configuracoes` (subrotas: **conta, perfil, aparência, plataforma, dados, sobre**).
+
+### Recursos transversais
+- 🏆 **Sistema de XP e níveis** (🌱 Iniciante → 🐍 Especialista) com **notificação de level‑up** no topo.
+- 🌗 **Tema claro/escuro** aplicado a todo o site e dashboard (variáveis CSS, sem flash).
+- 🔎 **Busca global** (⌘K).
+- 🤖 **IA** para revisão de exercícios, consultor de carreira e análise de vagas.
+- 📱 **Responsivo** (mobile → desktop).
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+| Camada | Stack |
+|--------|-------|
+| **Framework** | Next.js 15 (App Router, RSC) · React 19 · TypeScript |
+| **UI** | Tailwind CSS · Radix UI · lucide-react · class-variance-authority · Framer Motion |
+| **Estado/Forms** | Zustand · React Hook Form · Zod |
+| **Dados/Auth** | Supabase (PostgreSQL, Auth, Storage) via `@supabase/ssr` |
+| **Conteúdo** | react-markdown · remark-gfm · rehype-highlight · highlight.js |
+| **Gráficos** | Recharts |
+| **IDE Python** | Pyodide (CPython em WebAssembly) · CodeMirror (`@uiw/react-codemirror`, `@codemirror/lang-python`) |
+| **IA** | OpenRouter (modelos gratuitos com fallback) |
+| **Busca** | cmdk |
+| **Deploy** | Vercel |
+
+---
+
+## 🚀 Como utilizar
+
+### Pré-requisitos
+- Node.js 18+ e npm
+- Uma conta no [Supabase](https://supabase.com) e uma chave da [OpenRouter](https://openrouter.ai)
+
+### Instalação
 
 ```bash
-# 1. Instalar dependências
+git clone https://github.com/estevam5s/analista-de-dados.git
+cd analista-de-dados
 npm install
-
-# 2. Variáveis de ambiente (já incluídas em .env.local)
-#    NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY / SUPABASE_SERVICE_ROLE
-
-# 3. Rodar em desenvolvimento
-npm run dev      # http://localhost:3000
-
-# build de produção
-npm run build && npm run start
 ```
 
-### Conta de demonstração
+### Variáveis de ambiente
+Crie um arquivo `.env.local` na raiz:
 
-Já existe um usuário de teste pronto para login:
+```env
+# Supabase (públicas — protegidas por RLS)
+NEXT_PUBLIC_SUPABASE_URL=https://SEU-PROJETO.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sua-anon-key
 
+# Apenas para scripts locais (NÃO vai para o cliente/Vercel)
+SUPABASE_SERVICE_ROLE=sua-service-role-key
+
+# IA (somente servidor)
+OPENROUTER_API_KEY=sua-chave-openrouter
 ```
-e-mail: estudante.teste@pytrack.dev
-senha:  python123
-```
 
-Ou crie a sua em **/auth/register** (o cadastro já loga automaticamente).
-
----
-
-## 🗄️ Banco de dados (Supabase)
-
-O schema e o seed **já foram aplicados** ao projeto Supabase `Carreira`
-(`zohqgnhymtqppgzlammv`). Para reaplicar em outro projeto:
-
-1. Abra o **SQL Editor** do Supabase.
-2. Rode `supabase/schema.sql` (tabelas, enums, triggers, RLS).
-3. Rode `supabase/seed.sql` (catálogo curado).
-
-Tabelas: `users_profile`, `contents`, `progress`, `stack_items`,
-`udemy_courses`, `materials`, `books`, `career_paths`, `exercises`, `projects`.
-
-**Segurança (RLS):** o catálogo é legível por qualquer usuário autenticado;
-`users_profile` e `progress` são restritos ao próprio dono (`auth.uid()`). Um
-trigger cria o perfil automaticamente a cada novo cadastro.
-
-Catálogo: **30 módulos / 266 lições** (gerados a partir de `doc/Conteudos`) ·
-**60 tecnologias** · 10 materiais · 7 livros · **13 carreiras** ·
-**1230 exercícios de prática** (+ 8 com solução) · 10 projetos · cursos da Udemy
-(CRUD por usuário).
-
-### Banco de exercícios (`/exercicios`)
-
-`scripts/generate-exercises.mjs` faz o parsing de
-`doc/Conteudos/exercicio_python.md` (865 `EX` + 365 `PX`) e gera
-`supabase/practice_exercises.json` + `.sql`. As linhas são inseridas via REST
-(PostgREST + service role, em lotes). A página tem busca, filtro por categoria
-(17 grupos) e nível, cards expansíveis com objetivo, requisitos, critérios de
-aceite, checklist interativo e caminhos sugeridos de arquivo/teste — progresso
-no `localStorage`. Há ainda a aba "Com solução" (editor + solução escondida).
-
-### Perguntas por tecnologia (`/perguntas-carreira-python`)
-
-`scripts/generate-questions.mjs` faz o parsing de `doc/Conteudos/perguntas.md`
-(**577 perguntas**), classifica cada uma por tecnologia (13 categorias) e gera
-`supabase/interview_questions.json` + `.sql` (inseridos via REST). A página tem
-aba "Por tecnologia" (sidebar de categorias, busca, cards expansíveis com
-conceito-chave, aplicação prática, erros comuns, como fixar rápido e código com
-syntax highlight; progresso "estudada" em `localStorage`) e aba "Carreira" (FAQ).
-
-### Marca / ícone
-
-`logo.png` (na raiz) vira `public/logo.png` (sidebar e tela de login) e
-`app/icon.png` / `app/apple-icon.png` (favicon do navegador), gerados com
-`sips -Z 256`.
-
-### IA (OpenRouter)
-
-`/exercicios` tem **2462 exercícios** (dobrados) e, em cada um, um revisor de IA:
-o aluno escreve o código, a IA dá nota, feedback (pontos fortes, problemas,
-sugestões, complexidade) e uma **solução melhor** (`lib/ai/actions.ts` →
-`analyzeExercise`). A rota **`/consultor-ia`** é um agente que analisa toda a
-evolução/experiência e diz se você está apto a ser profissional Python
-(`analyzeCareer`: veredito, prontidão %, forças, lacunas, roadmap, cargos-alvo).
-
-Usa OpenRouter (`OPENROUTER_API_KEY` no `.env`) com modelos `:free` e fallback
-em cadeia: `openai/gpt-oss-120b` → `google/gemma-4-31b-it` →
-`nvidia/nemotron-nano-9b-v2`. Como os modelos gratuitos são instáveis, há retry
-e parser de JSON tolerante. **Reinicie o dev server após editar o `.env`.**
-
-### Cursos da Udemy (`/aulas-udemy`)
-
-CRUD completo por usuário (RLS por `user_id`): adicionar, editar e remover.
-Ao colar a URL do curso, o botão **Importar** lê os metadados Open Graph
-(`fetchCourseMeta`) e preenche título, banner, instrutor e descrição. A Udemy
-bloqueia fetch direto (Cloudflare/JA3), então há fallback automático via
-microlink.io. Os cards exibem o banner do curso.
-
-### Perfil avançado (`/perfil`)
-
-Perfil profissional com upload de foto (png/jpg/jpeg/gif/webp → bucket
-`avatars`), bio, localização e links sociais. O **nível em Python** é calculado
-automaticamente por um sistema de XP (`lib/level.ts`) que soma módulos
-concluídos, lições lidas, exercícios feitos, perguntas estudadas, livros lidos e
-cursos — com 6 tiers (Iniciante → Especialista) e barra de progresso para o
-próximo nível. Dados de progresso vêm do Supabase (`progress`, books, courses) +
-`localStorage` (lições/exercícios/perguntas).
-
-### Biblioteca com upload (`/livros`)
-
-CRUD por usuário (RLS por `user_id`; livros do seed continuam visíveis como
-"Recomendados", só os seus são editáveis). É possível **identificar a capa pela
-URL** (`fetchBookMeta` → Open Graph) ou **fazer upload da capa** (bucket
-`book-covers`) e do **arquivo do livro** PDF/EPUB (bucket `book-files`, até
-100 MB). Filtros por escopo (todos/meus/recomendados) e busca.
-
-### Storage
-
-Buckets públicos `avatars`, `book-covers`, `book-files` (criados em
-`supabase/profile_books.sql`) com políticas em `storage.objects` (leitura
-pública, escrita por autenticados). Upload no client via `lib/storage.ts`.
-
-### Home e Evolução
-
-A home (`/`) é um painel interativo: card de **nível no ecossistema Python**
-(XP/tiers, `components/home/python-level-card.tsx`), um **Pomodoro com xícara de
-café** que esvazia conforme o tempo de foco corre e enche de novo na pausa
-(`pomodoro-coffee.tsx`, sessões salvas no `localStorage`), gráficos (progresso
-por área + donut de status), e um **showcase de código Python** (FastAPI,
-pandas, asyncio) com syntax highlight. `/evolucao` foi reorganizado em seções:
-nível + radial, stats, gráficos (área + status) e ranking/próximos passos.
-
-### Currículo a partir de `doc/Conteudos`
-
-O diretório `doc/Conteudos` (Parte-1 … Parte-10, ~266 arquivos `.md`) é a fonte
-do currículo. O script `scripts/generate-content.mjs` percorre as pastas e gera:
-
-- `lib/content/manifest.ts` — módulos e lições tipados (título, área, nível, path);
-- `supabase/contents_docs.sql` — upsert dos módulos na tabela `contents`.
+### Rodando em desenvolvimento
 
 ```bash
-node scripts/generate-content.mjs   # regenera manifest + SQL
+npm run dev          # http://localhost:3000
+# (o projeto também roda em outra porta, ex.: PORT=6464 npm run dev)
 ```
 
-Em `/conteudos`, cada módulo abre uma página de estudo
-(`/conteudos/[modulo]/[licao]`) que renderiza o markdown completo da lição com
-syntax highlighting, sumário, navegação entre lições e marcação de progresso
-(sincronizada com o Supabase). Os corpos das lições são lidos do disco em tempo
-de request, então a pasta `doc/Conteudos` deve acompanhar o deploy.
-
----
-
-## 📄 Parser do `informacao.md`
-
-`lib/parser/informacao.ts` lê o Markdown, extrai headings, listas, tabelas e
-links, e transforma tudo em objetos `LearningContent` tipados.
-
-Importar o conteúdo parseado para a tabela `contents`:
+### Build de produção
 
 ```bash
-npx tsx scripts/import-informacao.ts            # dry-run (apenas mostra)
-npx tsx scripts/import-informacao.ts --apply    # grava no Supabase (service role)
+npm run build
+npm run start
 ```
 
 ---
 
-## 🧭 Rotas
+## 📜 Scripts
 
-| Rota | Descrição |
-|---|---|
-| `/` | Dashboard: saudação, progresso, em andamento, recomendados, projetos, stack, carreira |
-| `/conteudos` | Trilhas com filtro por nível/categoria/busca e marcação de progresso |
-| `/evolucao` | Progresso geral, por área, ranking de habilidades, próximos passos (gráficos) |
-| `/stack` | Tecnologias do ecossistema, agrupadas por categoria |
-| `/aulas-udemy` | Organização de cursos da Udemy |
-| `/material` | Documentação, artigos, cheatsheets, repositórios |
-| `/livros` | Biblioteca recomendada |
-| `/carreira` | 7 trilhas com habilidades, roadmap, tecnologias e faixa salarial |
-| `/vagas` | Plataformas, cargos e dicas de preparação |
-| `/perguntas-carreira-python` | FAQ de carreira |
-| `/exercicios` | Exercícios por dificuldade, editor e solução escondida |
-| `/projetos` | Projetos práticos com requisitos e passo a passo |
-| `/perfil` · `/configuracoes` | Perfil, objetivo, tema, exportar/resetar dados |
+| Script | Descrição |
+|--------|-----------|
+| `npm run dev` | Servidor de desenvolvimento (HMR). |
+| `npm run build` | Build de produção otimizado. |
+| `npm run start` | Sobe o build de produção. |
+| `npm run lint` | Linter do Next.js. |
+| `npm run db:seed` | Popula o banco (Supabase) com os dados iniciais. |
 
----
+### Scripts de geração de conteúdo (`/scripts`)
+Ferramentas que **geram e importam** o conteúdo da plataforma para o Supabase (executadas com `tsx`/`node`):
 
-## 🔐 Autenticação
+| Arquivo | Função |
+|---------|--------|
+| `import-informacao.ts` | Importa o currículo a partir de `doc/Conteudos`. |
+| `generate-content.mjs` / `gen-ecosystem-content.mjs` | Gera módulos e lições do ecossistema Python. |
+| `generate-exercises.mjs` / `expand-exercises.mjs` | Gera e expande os exercícios práticos. |
+| `generate-questions.mjs` / `generate-questions-v2.mjs` | Gera perguntas de entrevista (junior → senior). |
+| `generate-projects.mjs` / `generate-projects-mega.mjs` | Gera o catálogo de projetos. |
 
-Supabase Auth (e-mail/senha) com Server Actions. O `middleware.ts` protege todas
-as rotas do dashboard e redireciona usuários não autenticados para `/auth/login`.
-Sessão persistida via cookies (`@supabase/ssr`).
+> Conteúdo-fonte do currículo: pasta `doc/Conteudos` (Markdown), lida em runtime pelo leitor de lições.
 
 ---
 
-Feito com foco em código limpo, tipagem forte, componentes reutilizáveis e
-pronto para expansão. 🚀
+## 📂 Estrutura do projeto
+
+```
+.
+├── app/
+│   ├── (site)/                # Site público (navbar + footer): /, sobre, trilhas, recursos, precos
+│   ├── (dashboard)/           # Dashboard privado: inicio, conteudos, ide, especializacoes, ...
+│   │   └── configuracoes/     # Subrotas: conta, perfil, aparencia, plataforma, dados, sobre
+│   ├── auth/                  # Login e cadastro
+│   ├── layout.tsx             # Layout raiz + script de tema (no-FOUC)
+│   └── globals.css            # Variáveis de tema (light/dark) + utilitários
+├── components/
+│   ├── site/                  # Componentes do site institucional
+│   ├── dashboard/             # Cards, gráficos, notificador de level-up, etc.
+│   ├── ide/                   # IDE Python (Pyodide + CodeMirror)
+│   ├── layout/                # Sidebar, header, busca, tema
+│   └── ui/                    # Componentes base (button, card, badge, ...)
+├── lib/
+│   ├── supabase/              # Clients (server/browser) e middleware de auth
+│   ├── data/                  # Queries e server actions
+│   ├── ai/                    # Integração OpenRouter (com retry/fallback)
+│   ├── content/               # Manifesto e leitor das lições
+│   ├── level.ts               # Sistema de XP e níveis
+│   └── specializations.ts     # Dados das especializações
+├── doc/Conteudos/             # Currículo em Markdown (fonte das lições)
+├── scripts/                   # Geração/importação de conteúdo
+└── public/                    # Assets (logo.png, ícones)
+```
+
+---
+
+## 🔐 Autenticação e segurança
+
+- Auth via **Supabase** com middleware que protege as rotas do dashboard (`/inicio`, `/conteudos`, etc.) e libera o site público.
+- As chaves `NEXT_PUBLIC_*` são públicas por design (protegidas por **RLS** no Supabase). A `OPENROUTER_API_KEY` e a `SUPABASE_SERVICE_ROLE` ficam **apenas no servidor / scripts**.
+
+---
+
+## ☁️ Deploy (Vercel)
+
+1. Conecte o repositório à Vercel (framework detectado: **Next.js**).
+2. Em **Settings → Environment Variables**, adicione `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` e `OPENROUTER_API_KEY`.
+3. Faça `git push` na branch `main` (deploy automático) ou rode `vercel --prod`.
+
+> O `next.config.mjs` usa `outputFileTracingIncludes` para empacotar as lições em Markdown nas funções serverless.
+
+---
+
+<div align="center">
+
+Feito com 💜 e Python · **PyTrack**
+
+</div>

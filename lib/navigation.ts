@@ -14,6 +14,8 @@ import {
   HelpCircle,
   Bot,
   Youtube,
+  Award,
+  SquareTerminal,
   type LucideIcon,
 } from "lucide-react";
 
@@ -25,7 +27,7 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { title: "Início", href: "/", icon: LayoutDashboard, group: "Estudar" },
+  { title: "Início", href: "/inicio", icon: LayoutDashboard, group: "Estudar" },
   { title: "Conteúdos", href: "/conteudos", icon: BookOpen, group: "Estudar" },
   { title: "Evolução", href: "/evolucao", icon: TrendingUp, group: "Estudar" },
   { title: "Stack", href: "/stack", icon: Layers, group: "Estudar" },
@@ -33,6 +35,12 @@ export const NAV_ITEMS: NavItem[] = [
     title: "Exercícios",
     href: "/exercicios",
     icon: Code2,
+    group: "Estudar",
+  },
+  {
+    title: "IDE Python",
+    href: "/ide",
+    icon: SquareTerminal,
     group: "Estudar",
   },
   {
@@ -59,6 +67,12 @@ export const NAV_ITEMS: NavItem[] = [
     title: "Carreira",
     href: "/carreira",
     icon: Briefcase,
+    group: "Carreira",
+  },
+  {
+    title: "Especializações",
+    href: "/especializacoes",
+    icon: Award,
     group: "Carreira",
   },
   {
