@@ -38,6 +38,13 @@ export default async function AdminMensagensPage() {
     /* ignore */
   }
 
+  // marca mensagens dos usuários como lidas (limpa o badge do admin)
+  await admin
+    .from("support_messages")
+    .update({ read_by_admin: true })
+    .eq("sender", "user")
+    .eq("read_by_admin", false);
+
   // agrupa por usuário
   const threads = new Map<string, Msg[]>();
   for (const m of (msgs ?? []) as Msg[]) {

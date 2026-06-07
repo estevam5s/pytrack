@@ -7,18 +7,25 @@ import {
   Download,
   Lock,
   Monitor,
+  ShieldCheck,
   Smartphone,
   Sparkles,
   Terminal,
+  Trash2,
+  UploadCloud,
   WifiOff,
   Zap,
 } from "lucide-react";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { getUserTier } from "@/lib/stripe/subscriptions";
 import { tierAtLeast, TIER_LABEL } from "@/lib/billing-access";
+import { isAdmin } from "@/lib/admin";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { deleteRelease } from "./actions";
 import { PageHeader } from "@/components/dashboard/page-header";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { AppUploader } from "@/components/admin/app-uploader";
 import { cn } from "@/lib/utils";
 
 export const metadata = { title: "Aplicativo · PyTrack" };
@@ -33,15 +40,35 @@ const FEATURES = [
   { icon: Sparkles, title: "Consultor IA", desc: "Tire dúvidas com a IA onde estiver." },
 ];
 
-function DownloadButton({
+const PLATFORM_LABEL: Record<string, string> = {
+  android: "Android",
+  windows: "Windows",
+  macos: "macOS",
+  linux: "Linux",
+};
+
+function DownloadBtn({
   label,
   icon: Icon,
+  href,
   canDownload,
 }: {
   label: string;
   icon: React.ComponentType<{ className?: string }>;
+  href: string | null;
   canDownload: boolean;
 }) {
+  if (!href) {
+    return (
+      <span
+        className="inline-flex cursor-default items-center justify-center gap-2 rounded-lg bg-surface-2 px-4 py-2.5 text-sm font-medium text-text-secondary"
+        title="Em breve"
+      >
+        <Icon className="h-4 w-4" /> {label}
+        <span className="ml-1 rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] uppercase text-primary-light">Em breve</span>
+      </span>
+    );
+  }
   if (!canDownload) {
     return (
       <Link
@@ -53,21 +80,48 @@ function DownloadButton({
     );
   }
   return (
-    <button
-      disabled
-      className="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-lg bg-primary/15 px-4 py-2.5 text-sm font-semibold text-primary-light opacity-90"
-      title="Em breve"
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary/15 px-4 py-2.5 text-sm font-semibold text-primary-light transition-colors hover:bg-primary hover:text-white"
     >
-      <Icon className="h-4 w-4" /> {label}
-      <span className="ml-1 rounded-full bg-primary/20 px-1.5 py-0.5 text-[10px] uppercase">Em breve</span>
-    </button>
+      <Download className="h-4 w-4" /> {label}
+    </a>
   );
+}
+
+interface Release {
+  id: string;
+  platform: string;
+  version: string | null;
+  notes: string | null;
+  file_path: string | null;
+  download_url: string | null;
+  size_bytes: number | null;
+  created_at: string;
 }
 
 export default async function AplicativoPage() {
   const user = await getCurrentUser();
   const tier = user ? await getUserTier(user.id) : "free";
   const canDownload = tierAtLeast(tier, "completo");
+  const admin = isAdmin(user?.email);
+
+  // releases
+  let releases: Release[] = [];
+  try {
+    const db = createAdminClient();
+    const { data } = await db
+      .from("app_releases")
+      .select("*")
+      .order("created_at", { ascending: false });
+    releases = (data ?? []) as Release[];
+  } catch {
+    /* ignore */
+  }
+  const latest: Record<string, Release | undefined> = {};
+  for (const r of releases) if (!latest[r.platform]) latest[r.platform] = r;
 
   return (
     <div>
@@ -80,9 +134,7 @@ export default async function AplicativoPage() {
       <div
         className={cn(
           "mb-6 flex flex-col items-start gap-3 rounded-xl border p-4 sm:flex-row sm:items-center sm:justify-between",
-          canDownload
-            ? "border-secondary/30 bg-secondary/5"
-            : "border-primary/30 bg-primary/5",
+          canDownload ? "border-secondary/30 bg-secondary/5" : "border-primary/30 bg-primary/5",
         )}
       >
         <div className="flex items-start gap-3">
@@ -93,12 +145,12 @@ export default async function AplicativoPage() {
             <p className="text-sm font-semibold">
               {canDownload
                 ? `Download liberado no seu plano ${TIER_LABEL[tier]}`
-                : "Download exclusivo dos planos Completo e Suprema"}
+                : "Download exclusivo dos planos Completo, Suprema e Vitalício"}
             </p>
             <p className="text-xs text-text-secondary">
               {canDownload
-                ? "Os apps estão em desenvolvimento — você será avisado assim que lançarem."
-                : "Você pode conhecer o app aqui, mas o download é liberado a partir do plano Completo (R$19/mês)."}
+                ? "Baixe os apps disponíveis abaixo."
+                : "Conheça o app aqui — o download é liberado a partir do plano Completo (R$19/mês)."}
             </p>
           </div>
         </div>
@@ -113,7 +165,6 @@ export default async function AplicativoPage() {
 
       {/* apps */}
       <div className="grid gap-5 lg:grid-cols-2">
-        {/* Android */}
         <Card className="overflow-hidden">
           <div className="relative bg-gradient-to-br from-green/15 via-surface to-surface p-6">
             <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green/15 text-green">
@@ -121,39 +172,102 @@ export default async function AplicativoPage() {
             </span>
             <h2 className="mt-4 text-xl font-bold">PyTrack para Android</h2>
             <p className="mt-1 text-sm text-text-secondary">
-              App nativo para celulares e tablets Android. Estude em qualquer lugar.
+              App nativo para celulares e tablets Android.
+              {latest.android?.version ? ` Versão ${latest.android.version}.` : ""}
             </p>
           </div>
           <CardContent className="space-y-2.5 p-6">
-            <div className="grid gap-2.5 sm:grid-cols-2">
-              <DownloadButton label="Google Play" icon={Smartphone} canDownload={canDownload} />
-              <DownloadButton label="Baixar APK" icon={Download} canDownload={canDownload} />
-            </div>
+            <DownloadBtn label="Baixar APK" icon={Smartphone} href={latest.android?.download_url ?? null} canDownload={canDownload} />
             <p className="text-xs text-text-secondary">Android 8.0 ou superior.</p>
           </CardContent>
         </Card>
 
-        {/* Desktop */}
         <Card className="overflow-hidden">
           <div className="relative bg-gradient-to-br from-primary/15 via-surface to-surface p-6">
             <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/15 text-primary-light">
               <Monitor className="h-7 w-7" />
             </span>
             <h2 className="mt-4 text-xl font-bold">PyTrack para Desktop</h2>
-            <p className="mt-1 text-sm text-text-secondary">
-              App completo para Windows, macOS e Linux, com IDE integrada.
-            </p>
+            <p className="mt-1 text-sm text-text-secondary">App completo para Windows, macOS e Linux.</p>
           </div>
           <CardContent className="space-y-2.5 p-6">
             <div className="grid gap-2.5 sm:grid-cols-3">
-              <DownloadButton label="Windows" icon={Monitor} canDownload={canDownload} />
-              <DownloadButton label="macOS" icon={Apple} canDownload={canDownload} />
-              <DownloadButton label="Linux" icon={Terminal} canDownload={canDownload} />
+              <DownloadBtn label="Windows" icon={Monitor} href={latest.windows?.download_url ?? null} canDownload={canDownload} />
+              <DownloadBtn label="macOS" icon={Apple} href={latest.macos?.download_url ?? null} canDownload={canDownload} />
+              <DownloadBtn label="Linux" icon={Terminal} href={latest.linux?.download_url ?? null} canDownload={canDownload} />
             </div>
-            <p className="text-xs text-text-secondary">Windows 10+, macOS 12+, Linux (AppImage/.deb).</p>
           </CardContent>
         </Card>
       </div>
+
+      {/* GESTÃO (somente admin) */}
+      {admin && (
+        <Card className="mt-8 border-primary/30">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <ShieldCheck className="h-4 w-4 text-primary-light" /> Gerenciar aplicativos (admin)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <p className="mb-3 flex items-center gap-1.5 text-sm font-semibold">
+                <UploadCloud className="h-4 w-4 text-primary" /> Publicar novo app
+              </p>
+              <AppUploader />
+            </div>
+
+            {releases.length > 0 && (
+              <div>
+                <p className="mb-2 text-sm font-semibold">Releases publicados ({releases.length})</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[560px] text-sm">
+                    <thead className="bg-surface-2 text-left text-xs text-text-secondary">
+                      <tr>
+                        <th className="p-3 font-medium">Plataforma</th>
+                        <th className="p-3 font-medium">Versão</th>
+                        <th className="p-3 font-medium">Tamanho</th>
+                        <th className="p-3 font-medium">Data</th>
+                        <th className="p-3 font-medium">Link</th>
+                        <th className="p-3"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {releases.map((r, i) => (
+                        <tr key={r.id} className={cn("border-t border-border", i % 2 && "bg-surface/40")}>
+                          <td className="p-3">{PLATFORM_LABEL[r.platform] ?? r.platform}</td>
+                          <td className="p-3 text-text-secondary">{r.version ?? "—"}</td>
+                          <td className="p-3 text-text-secondary">
+                            {r.size_bytes ? `${(r.size_bytes / 1024 / 1024).toFixed(1)} MB` : "—"}
+                          </td>
+                          <td className="p-3 text-text-secondary">
+                            {new Date(r.created_at).toLocaleDateString("pt-BR")}
+                          </td>
+                          <td className="p-3">
+                            {r.download_url ? (
+                              <a href={r.download_url} target="_blank" rel="noopener noreferrer" className="text-primary-light hover:underline">
+                                abrir
+                              </a>
+                            ) : "—"}
+                          </td>
+                          <td className="p-3 text-right">
+                            <form action={deleteRelease}>
+                              <input type="hidden" name="id" value={r.id} />
+                              <input type="hidden" name="path" value={r.file_path ?? ""} />
+                              <button className="inline-flex items-center gap-1 text-xs text-red-400 hover:underline">
+                                <Trash2 className="h-3.5 w-3.5" /> excluir
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      )}
 
       {/* recursos do app */}
       <h2 className="mb-4 mt-10 text-lg font-semibold">Por que usar o app</h2>

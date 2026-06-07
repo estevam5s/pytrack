@@ -9,6 +9,8 @@ import { LevelUpNotifier } from "@/components/dashboard/level-up-notifier";
 import { OnboardingTour } from "@/components/dashboard/onboarding-tour";
 import { PomodoroProvider } from "@/components/home/pomodoro-provider";
 import { userHasAccess, getUserTier } from "@/lib/stripe/subscriptions";
+import { isAdmin } from "@/lib/admin";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { UpgradeBanner } from "@/components/billing/UpgradeBanner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -29,6 +31,29 @@ export default async function DashboardLayout({
   const hasAccess = await userHasAccess(user.id);
   const tier = await getUserTier(user.id);
 
+  // notificações de mensagens não lidas (badge no menu)
+  let notif = 0;
+  try {
+    if (isAdmin(user.email)) {
+      const adminDb = createAdminClient();
+      const { count } = await adminDb
+        .from("support_messages")
+        .select("id", { count: "exact", head: true })
+        .eq("sender", "user")
+        .eq("read_by_admin", false);
+      notif = count ?? 0;
+    } else {
+      const { count } = await supabase
+        .from("support_messages")
+        .select("id", { count: "exact", head: true })
+        .eq("sender", "admin")
+        .eq("read_by_user", false);
+      notif = count ?? 0;
+    }
+  } catch {
+    /* ignore */
+  }
+
   const [{ data: profile }, levelCounts, searchIndex] = await Promise.all([
     supabase
       .from("users_profile")
@@ -45,9 +70,9 @@ export default async function DashboardLayout({
         <LevelUpNotifier serverCounts={levelCounts} />
         <PomodoroProvider />
         <OnboardingTour />
-        <MobileSidebar tier={tier} />
+        <MobileSidebar tier={tier} notif={notif} />
         <CommandMenu index={searchIndex} />
-        <DashboardShell tier={tier}>
+        <DashboardShell tier={tier} notif={notif}>
           <Header
             name={profile?.name ?? null}
             email={user.email ?? ""}

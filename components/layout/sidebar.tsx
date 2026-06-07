@@ -11,9 +11,11 @@ import { cn } from "@/lib/utils";
 
 export function SidebarContent({
   tier = "free",
+  notif = 0,
   onNavigate,
 }: {
   tier?: Tier;
+  notif?: number;
   onNavigate?: () => void;
 }) {
   const toggleSidebar = useUIStore((s) => s.toggleSidebar);
@@ -51,7 +53,13 @@ export function SidebarContent({
               {group}
             </p>
             {NAV_ITEMS.filter((i) => i.group === group).map((item) => (
-              <SidebarItem key={item.href} item={item} tier={tier} onNavigate={onNavigate} />
+              <SidebarItem
+                key={item.href}
+                item={item}
+                tier={tier}
+                badge={item.href === "/configuracoes" ? notif : 0}
+                onNavigate={onNavigate}
+              />
             ))}
           </div>
         ))}
@@ -81,9 +89,11 @@ export function SidebarContent({
 export function DesktopSidebar({
   collapsed,
   tier = "free",
+  notif = 0,
 }: {
   collapsed?: boolean;
   tier?: Tier;
+  notif?: number;
 }) {
   return (
     <aside
@@ -92,7 +102,7 @@ export function DesktopSidebar({
         collapsed && "-translate-x-full",
       )}
     >
-      <SidebarContent tier={tier} />
+      <SidebarContent tier={tier} notif={notif} />
     </aside>
   );
 }

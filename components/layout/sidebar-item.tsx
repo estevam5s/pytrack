@@ -14,10 +14,12 @@ import {
 export function SidebarItem({
   item,
   tier = "free",
+  badge = 0,
   onNavigate,
 }: {
   item: NavItem;
   tier?: Tier;
+  badge?: number;
   onNavigate?: () => void;
 }) {
   const pathname = usePathname();
@@ -60,7 +62,12 @@ export function SidebarItem({
       <span className={cn("truncate", locked && "text-text-secondary/80")}>
         {item.title}
       </span>
-      {locked && (
+      {badge > 0 && (
+        <span className="ml-auto flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-bold text-white">
+          {badge > 99 ? "99+" : badge}
+        </span>
+      )}
+      {locked && badge === 0 && (
         <Lock className="ml-auto h-3.5 w-3.5 shrink-0 text-text-secondary/60" />
       )}
     </Link>

@@ -21,6 +21,16 @@ export default async function SuportePage() {
         .order("created_at", { ascending: true })
     : { data: [] };
 
+  // marca as respostas do admin como lidas (limpa o badge)
+  if (user) {
+    await supabase
+      .from("support_messages")
+      .update({ read_by_user: true })
+      .eq("user_id", user.id)
+      .eq("sender", "admin")
+      .eq("read_by_user", false);
+  }
+
   return (
     <div className="space-y-6">
       <Card className="border-primary/30">

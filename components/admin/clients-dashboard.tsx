@@ -5,6 +5,7 @@ import {
   Banknote,
   CreditCard,
   Crown,
+  Download,
   ExternalLink,
   Receipt,
   TrendingUp,
@@ -137,6 +138,28 @@ const tooltipStyle = {
   borderRadius: 12,
   fontSize: 12,
 };
+
+function exportCSV(customers: Props["customers"]) {
+  const header = ["Email", "Plano", "Status", "Desde", "Proximo ciclo", "Valor/mes (R$)"];
+  const lines = customers.map((c) => [
+    c.email,
+    TIER_LABEL[c.tier],
+    c.status,
+    new Date(c.since).toLocaleDateString("pt-BR"),
+    c.periodEnd ? new Date(c.periodEnd).toLocaleDateString("pt-BR") : "",
+    String(c.monthly ?? 0).replace(".", ","),
+  ]);
+  const csv = [header, ...lines]
+    .map((r) => r.map((f) => `"${String(f).replace(/"/g, '""')}"`).join(";"))
+    .join("\n");
+  const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `clientes-pytrack-${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, customers }: Props) {
   return (
@@ -274,9 +297,15 @@ export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, cust
 
       {/* Tabela de clientes */}
       <div className="card overflow-hidden">
-        <p className="border-b border-border p-4 text-sm font-semibold">
-          Clientes ({customers.length})
-        </p>
+        <div className="flex items-center justify-between border-b border-border p-4">
+          <p className="text-sm font-semibold">Clientes ({customers.length})</p>
+          <button
+            onClick={() => exportCSV(customers)}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-medium text-text-secondary transition-colors hover:text-foreground"
+          >
+            <Download className="h-3.5 w-3.5" /> Exportar CSV
+          </button>
+        </div>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[640px] text-sm">
             <thead className="bg-surface-2 text-left text-xs text-text-secondary">
