@@ -34,27 +34,41 @@ export default async function ClientesPage() {
   try {
     const { data: users } = await admin.auth.admin.listUsers({ perPage: 1000 });
     emailById = new Map(users.users.map((u) => [u.id, u.email ?? ""]));
-    usersList = users.users.map((u) => ({ id: u.id, email: u.email ?? "", created_at: u.created_at }));
-    totalUsers = users.users.length;
+    // exclui administradores (são quem mantém a plataforma — não são clientes)
+    usersList = users.users
+      .filter((u) => !ADMIN_EMAILS.includes((u.email ?? "").toLowerCase()))
+      .map((u) => ({ id: u.id, email: u.email ?? "", created_at: u.created_at }));
+    totalUsers = usersList.length;
   } catch {
     /* ignore */
   }
 
   const ACTIVE = new Set(["active", "trialing"]);
-  const rows = (subs ?? []).map((s) => {
-    const tier = tierOf(s as never);
-    const monthly = monthlyValue(s.stripe_price_id);
-    return {
-      email: emailById.get(s.user_id) ?? s.user_id.slice(0, 8),
-      tier,
-      status: s.status as string,
-      since: s.created_at as string,
-      periodEnd: (s.current_period_end as string) ?? null,
-      monthly,
-      active: ACTIVE.has(s.status as string),
-      oneTime: oneTimeValue(s.stripe_price_id),
-    };
-  });
+  const isCourtesy = (m: Record<string, unknown> | null | undefined) =>
+    Boolean(m && (m.comp || m.granted_by));
+
+  // faturamento: ignora administradores e acessos de cortesia (não são receita real)
+  const rows = (subs ?? [])
+    .filter((s) => {
+      const email = (emailById.get(s.user_id) ?? "").toLowerCase();
+      if (ADMIN_EMAILS.includes(email)) return false;
+      if (isCourtesy(s.metadata as Record<string, unknown> | null)) return false;
+      return true;
+    })
+    .map((s) => {
+      const tier = tierOf(s as never);
+      const monthly = monthlyValue(s.stripe_price_id);
+      return {
+        email: emailById.get(s.user_id) ?? s.user_id.slice(0, 8),
+        tier,
+        status: s.status as string,
+        since: s.created_at as string,
+        periodEnd: (s.current_period_end as string) ?? null,
+        monthly,
+        active: ACTIVE.has(s.status as string),
+        oneTime: oneTimeValue(s.stripe_price_id),
+      };
+    });
 
   // KPIs
   const activeRows = rows.filter((r) => r.active);

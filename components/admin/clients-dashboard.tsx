@@ -165,6 +165,10 @@ function exportCSV(customers: Props["customers"]) {
 }
 
 export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, customers }: Props) {
+  const [q, setQ] = useState("");
+  const filtered = q.trim()
+    ? customers.filter((c) => c.email.toLowerCase().includes(q.trim().toLowerCase()))
+    : customers;
   return (
     <div className="space-y-6">
       <div>
@@ -300,14 +304,22 @@ export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, cust
 
       {/* Tabela de clientes */}
       <div className="card overflow-hidden">
-        <div className="flex items-center justify-between border-b border-border p-4">
-          <p className="text-sm font-semibold">Clientes ({customers.length})</p>
-          <button
-            onClick={() => exportCSV(customers)}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-medium text-text-secondary transition-colors hover:text-foreground"
-          >
-            <Download className="h-3.5 w-3.5" /> Exportar CSV
-          </button>
+        <div className="flex flex-col gap-3 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm font-semibold">Clientes ({filtered.length})</p>
+          <div className="flex items-center gap-2">
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Buscar por e-mail…"
+              className="w-full rounded-lg border border-border bg-surface px-3 py-1.5 text-xs outline-none focus:border-primary sm:w-56"
+            />
+            <button
+              onClick={() => exportCSV(filtered)}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-border bg-surface-2 px-3 py-1.5 text-xs font-medium text-text-secondary transition-colors hover:text-foreground"
+            >
+              <Download className="h-3.5 w-3.5" /> CSV
+            </button>
+          </div>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[820px] text-sm">
@@ -323,8 +335,8 @@ export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, cust
               </tr>
             </thead>
             <tbody>
-              {customers.map((c, i) => (
-                <tr key={c.email + i} className={cn("border-t border-border", i % 2 && "bg-surface/40")}>
+              {filtered.map((c, i) => (
+                <tr key={c.userId + i} className={cn("border-t border-border", i % 2 && "bg-surface/40")}>
                   <td className="max-w-[220px] truncate p-3">{c.email}</td>
                   <td className="p-3">
                     <span
@@ -352,7 +364,7 @@ export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, cust
                   </td>
                 </tr>
               ))}
-              {customers.length === 0 && (
+              {filtered.length === 0 && (
                 <tr>
                   <td colSpan={7} className="p-6 text-center text-text-secondary">
                     Nenhum cliente ainda.
