@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { rateLimit } from "@/lib/rate-limit";
 import type { CommunityPostCategory, CommunityReportReason } from "@/types/community";
 
 async function uid() {
@@ -10,6 +11,16 @@ async function uid() {
     data: { user },
   } = await supabase.auth.getUser();
   return { supabase, user };
+}
+
+/** Bloqueado pela moderação? */
+async function isBlocked(supabase: Awaited<ReturnType<typeof createClient>>, userId: string) {
+  const { data } = await supabase
+    .from("community_profiles")
+    .select("is_blocked")
+    .eq("user_id", userId)
+    .maybeSingle();
+  return Boolean(data?.is_blocked);
 }
 
 export async function createPost(input: {
@@ -22,6 +33,10 @@ export async function createPost(input: {
 }) {
   const { supabase, user } = await uid();
   if (!user) return { error: "Não autenticado" };
+  if (await isBlocked(supabase, user.id))
+    return { error: "Sua conta está bloqueada na comunidade." };
+  if (!(await rateLimit(`post:${user.id}`, 8, 60)))
+    return { error: "Você está publicando rápido demais. Aguarde um pouco." };
   const content = input.content?.trim();
   if (!content || content.length > 5000) return { error: "Conteúdo inválido" };
   await supabase.rpc("community_ensure_profile", { uid: user.id });
@@ -101,6 +116,10 @@ export async function createComment(input: {
 }) {
   const { supabase, user } = await uid();
   if (!user) return { error: "Não autenticado" };
+  if (await isBlocked(supabase, user.id))
+    return { error: "Sua conta está bloqueada na comunidade." };
+  if (!(await rateLimit(`comment:${user.id}`, 15, 60)))
+    return { error: "Muitos comentários em pouco tempo. Aguarde." };
   const content = input.content?.trim();
   if (!content || content.length > 2000) return { error: "Comentário inválido" };
   await supabase.rpc("community_ensure_profile", { uid: user.id });

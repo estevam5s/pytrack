@@ -4,8 +4,9 @@ import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
-import { AlertCircle, Eye, EyeOff, Loader2 } from "lucide-react";
+import { AlertCircle, Eye, EyeOff, Github, Loader2 } from "lucide-react";
 import { signIn, signUp, type AuthResult } from "@/app/auth/actions";
+import { createClient } from "@/lib/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -29,6 +30,19 @@ export function AuthForm({
   const action = mode === "login" ? signIn : signUp;
   const [state, formAction] = useActionState<AuthResult, FormData>(action, {});
   const [showPw, setShowPw] = useState(false);
+  const [ghLoading, setGhLoading] = useState(false);
+
+  const signInWithGithub = async () => {
+    setGhLoading(true);
+    const supabase = createClient();
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=/inicio`,
+      },
+    });
+    if (error) setGhLoading(false);
+  };
 
   return (
     <div className="w-full max-w-md">
@@ -119,6 +133,30 @@ export function AuthForm({
 
         <SubmitButton label={mode === "login" ? "Entrar" : "Cadastrar"} />
       </form>
+
+      <div className="my-5 flex items-center gap-3">
+        <span className="h-px flex-1 bg-border" />
+        <span className="text-xs text-text-secondary">ou</span>
+        <span className="h-px flex-1 bg-border" />
+      </div>
+
+      <button
+        type="button"
+        onClick={signInWithGithub}
+        disabled={ghLoading}
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#24292e] px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-70"
+      >
+        {ghLoading ? (
+          <Loader2 className="h-4 w-4 animate-spin" />
+        ) : (
+          <Github className="h-4 w-4" />
+        )}
+        {ghLoading
+          ? "Redirecionando…"
+          : mode === "login"
+            ? "Entrar com GitHub"
+            : "Cadastrar com GitHub"}
+      </button>
 
       <p className="mt-6 text-center text-sm text-text-secondary">
         {mode === "login" ? (

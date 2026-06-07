@@ -93,6 +93,7 @@ export function isFreeDashboardPath(pathname: string): boolean {
   if (pathname === "/suporte") return true; // canal de suporte sempre acessível
   if (pathname === "/admin" || pathname.startsWith("/admin/")) return true; // gating de admin é na própria página
   if (pathname === "/inicio") return true; // hub com upsell
+  if (pathname === "/onboarding") return true; // escolha de objetivo pós-cadastro
   if (pathname === "/minhas-trilhas" || pathname.startsWith("/minhas-trilhas/"))
     return true; // navegar/escolher trilhas é livre (módulos é que travam)
   if (pathname === "/aplicativo") return true; // qualquer um acessa (download é que trava)

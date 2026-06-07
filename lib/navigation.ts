@@ -22,6 +22,7 @@ import {
   ShieldCheck,
   Inbox,
   LineChart,
+  Flag,
   type LucideIcon,
 } from "lucide-react";
 
@@ -110,6 +111,7 @@ export const NAV_ITEMS: NavItem[] = [
   // ── Admin (somente administradores) ──
   { title: "Admin", href: "/admin", icon: ShieldCheck, group: "Admin", adminOnly: true },
   { title: "Clientes & receita", href: "/admin/clientes", icon: LineChart, group: "Admin", adminOnly: true },
+  { title: "Moderação", href: "/admin/moderacao", icon: Flag, group: "Admin", adminOnly: true },
   { title: "Mensagens", href: "/admin/mensagens", icon: Inbox, group: "Admin", adminOnly: true },
 ];
 

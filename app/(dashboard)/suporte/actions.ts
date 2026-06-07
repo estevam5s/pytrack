@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { rateLimit } from "@/lib/rate-limit";
 
 export interface SupportResult {
   error?: string;
@@ -17,6 +18,11 @@ export async function sendSupportMessage(
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) return { error: "Não autenticado." };
+
+  // anti-spam: 5 mensagens por minuto
+  if (!(await rateLimit(`support:${user.id}`, 5, 60))) {
+    return { error: "Você enviou muitas mensagens. Aguarde um pouco." };
+  }
 
   const subject = String(formData.get("subject") ?? "").trim() || null;
   const body = String(formData.get("body") ?? "").trim();

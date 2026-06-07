@@ -54,3 +54,14 @@
     Gerenciar usuários, assinaturas, posts, denúncias, conteúdos, projetos e métricas.
 
 Minha ordem recomendada: **segurança → pagamentos → controle de acesso → testes → performance → SEO → analytics → painel admin**.
+
+Feito:
+
+- Rate limiting: Proteger login, cadastro, posts, comentários, uploads, webhook e APIs contra spam e abuso.
+- Backup e recuperação: Criar rotina de backup do banco, Storage e configurações críticas.
+- Política de privacidade e termos: Essencial para SaaS com login, pagamento, comunidade e dados pessoais.
+- Moderação da comunidade: Denúncias, bloqueio de usuários, filtros anti-spam e painel admin.
+- No painel administrativo: Gerenciar usuários, assinaturas, posts, denúncias, conteúdos, projetos e métricas.
+- LGPD: Permitir exportar dados, excluir conta, consentimento e controle de dados pessoais.
+- Onboarding: Após cadastro, perguntar objetivo do usuário: dados, backend, IoT, automação, carreira ou engenharia de dados.
+- Página de status: Ter uma página simples mostrando status do sistema, pagamentos, banco e APIs.

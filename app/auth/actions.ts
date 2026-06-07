@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { rateLimit } from "@/lib/rate-limit";
 
 export interface AuthResult {
   error?: string;
@@ -12,8 +13,13 @@ export async function signIn(
   _prev: AuthResult,
   formData: FormData,
 ): Promise<AuthResult> {
-  const email = String(formData.get("email") ?? "");
+  const email = String(formData.get("email") ?? "").toLowerCase();
   const password = String(formData.get("password") ?? "");
+
+  // anti-brute-force: 8 tentativas por minuto por e-mail
+  if (!(await rateLimit(`login:${email}`, 8, 60))) {
+    return { error: "Muitas tentativas. Aguarde um minuto e tente novamente." };
+  }
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -43,6 +49,11 @@ export async function signUp(
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
   const ref = String(formData.get("ref") ?? "").trim().toLowerCase();
+
+  // anti-spam: 5 cadastros por 10 min por e-mail
+  if (!(await rateLimit(`signup:${email.toLowerCase()}`, 5, 600))) {
+    return { error: "Muitas tentativas de cadastro. Tente novamente em alguns minutos." };
+  }
 
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signUp({
@@ -77,7 +88,7 @@ export async function signUp(
   }
 
   revalidatePath("/", "layout");
-  redirect("/inicio");
+  redirect("/onboarding");
 }
 
 export async function signOut() {

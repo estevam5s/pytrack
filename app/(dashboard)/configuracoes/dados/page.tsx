@@ -5,6 +5,7 @@ import {
   ExportDataButton,
   ResetProgressButton,
 } from "@/components/dashboard/settings-actions";
+import { DeleteAccountButton } from "@/components/settings/delete-account-button";
 
 export const metadata = { title: "Dados e privacidade · Configurações · PyTrack" };
 
@@ -45,6 +46,15 @@ export default function DadosPage() {
             </p>
           </div>
           <ResetProgressButton />
+        </div>
+        <div className="flex items-start justify-between gap-4 rounded-lg border border-red-500/30 bg-red-500/5 p-4">
+          <div>
+            <p className="text-sm font-medium text-red-400">Excluir minha conta (LGPD)</p>
+            <p className="text-xs text-text-secondary">
+              Remove permanentemente sua conta e seus dados pessoais. Não pode ser desfeito.
+            </p>
+          </div>
+          <DeleteAccountButton />
         </div>
       </CardContent>
     </Card>

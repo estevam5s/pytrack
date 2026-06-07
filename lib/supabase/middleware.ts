@@ -12,6 +12,7 @@ import {
 // que não existem caem na página 404 personalizada (não vão para o login).
 const PROTECTED_PREFIX = [
   "/inicio",
+  "/onboarding",
   "/minhas-trilhas",
   "/comunidade",
   "/evolucao",
