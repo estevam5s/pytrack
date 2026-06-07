@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -8,6 +9,7 @@ import {
   EyeOff,
   Lightbulb,
   Loader2,
+  Settings2,
   Sparkles,
   Wand2,
 } from "lucide-react";
@@ -79,9 +81,19 @@ export function AiExerciseReview({ exercise }: { exercise: PracticeExercise }) {
       </div>
 
       {result?.error && (
-        <div className="mt-3 flex items-center gap-2 rounded-md border border-danger/30 bg-danger/10 px-3 py-2 text-sm text-danger">
-          <AlertTriangle className="h-4 w-4 shrink-0" />
-          {result.error}
+        <div className="mt-3 space-y-1.5 rounded-md border border-danger/30 bg-danger/10 px-3 py-2 text-sm text-danger">
+          <p className="flex items-center gap-2">
+            <AlertTriangle className="h-4 w-4 shrink-0" />
+            {result.error}
+          </p>
+          <p className="flex items-center gap-1.5 text-xs text-text-secondary">
+            <Settings2 className="h-3.5 w-3.5" />
+            A IA padrão pode estar instável. Você pode usar a sua própria IA em{" "}
+            <Link href="/configuracoes/ia" className="font-semibold text-primary-light hover:underline">
+              Configurações → IA & Modelos
+            </Link>
+            .
+          </p>
         </div>
       )}
 

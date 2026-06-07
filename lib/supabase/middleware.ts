@@ -8,24 +8,32 @@ import {
   tierAtLeast,
 } from "@/lib/billing-access";
 
-// Rotas públicas (site institucional) acessíveis sem login.
-const PUBLIC_EXACT = ["/"];
-const PUBLIC_PREFIX = [
-  "/sobre",
-  "/trilhas",
-  "/recursos",
-  "/precos",
-  "/projetos",
-  "/carreira",
-  "/blog",
-  "/aprender", // lições públicas (SEO)
-  "/auth",
-  "/api", // rotas de API fazem a própria autenticação (ex.: webhook Stripe)
-  "/sitemap",
-  "/robots",
-  "/opengraph-image",
-  "/twitter-image",
-  "/google", // arquivo de verificação do Google Search Console
+// Rotas protegidas conhecidas (dashboard + assinar). Rotas fora desta lista
+// que não existem caem na página 404 personalizada (não vão para o login).
+const PROTECTED_PREFIX = [
+  "/inicio",
+  "/minhas-trilhas",
+  "/comunidade",
+  "/evolucao",
+  "/stack",
+  "/exercicios",
+  "/ide",
+  "/conteudos",
+  "/aulas-udemy",
+  "/aulas-youtube",
+  "/material",
+  "/livros",
+  "/aplicativo",
+  "/minha-carreira",
+  "/especializacoes",
+  "/consultor-ia",
+  "/vagas",
+  "/perguntas-carreira-python",
+  "/perfil",
+  "/configuracoes",
+  "/admin",
+  "/suporte",
+  "/assinar",
 ];
 
 export async function updateSession(request: NextRequest) {
@@ -63,29 +71,48 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const { pathname } = request.nextUrl;
-  const isPublic =
-    PUBLIC_EXACT.includes(pathname) ||
-    PUBLIC_PREFIX.some((p) => pathname.startsWith(p));
 
-  // rota protegida (dashboard) sem login -> vai para o login
-  if (!user && !isPublic) {
+  // rotas protegidas conhecidas (dashboard + assinar). Rotas desconhecidas
+  // NÃO entram aqui → caem na página 404 personalizada (não vão para o login).
+  const isProtected = PROTECTED_PREFIX.some(
+    (p) => pathname === p || pathname.startsWith(p + "/"),
+  );
+
+  // rota protegida sem login -> vai para o login
+  if (!user && isProtected) {
     const url = request.nextUrl.clone();
     url.pathname = "/auth/login";
     return NextResponse.redirect(url);
   }
 
   // logado tentando ver as telas de auth -> vai para o dashboard
-  if (user && pathname.startsWith("/auth")) {
+  // (exceto /auth/mfa, que é a verificação em duas etapas)
+  if (user && pathname.startsWith("/auth") && pathname !== "/auth/mfa") {
     const url = request.nextUrl.clone();
     url.pathname = "/inicio";
     return NextResponse.redirect(url);
+  }
+
+  // 2FA: se o usuário tem 2FA e ainda não verificou (aal1→aal2), exige o código
+  if (user && isProtected) {
+    try {
+      const { data: aal } =
+        await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+      if (aal?.currentLevel === "aal1" && aal?.nextLevel === "aal2") {
+        const url = request.nextUrl.clone();
+        url.pathname = "/auth/mfa";
+        return NextResponse.redirect(url);
+      }
+    } catch {
+      /* não bloqueia se a checagem falhar */
+    }
   }
 
   // gating de acesso. Se o billing não estiver configurado, libera tudo.
   const billingEnabled = Boolean(
     process.env.STRIPE_SECRET_KEY && process.env.STRIPE_PRICE_ID,
   );
-  if (user && !isPublic && billingEnabled) {
+  if (user && isProtected && billingEnabled) {
     // sempre acessível (para pagar/gerenciar a conta)
     const essential =
       pathname === "/assinar" ||

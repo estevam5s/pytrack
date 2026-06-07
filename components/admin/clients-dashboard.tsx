@@ -29,6 +29,7 @@ import {
 } from "recharts";
 import { fmtBRL } from "@/lib/billing-stats";
 import { TIER_LABEL, type Tier } from "@/lib/billing-access";
+import { ClientRowActions } from "@/components/admin/client-row-actions";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -52,6 +53,7 @@ interface Props {
     byMonth: { mes: string; total: number }[];
   } | null;
   customers: {
+    userId: string;
     email: string;
     tier: Tier;
     status: string;
@@ -59,6 +61,7 @@ interface Props {
     periodEnd: string | null;
     monthly: number;
     active: boolean;
+    isAdminUser: boolean;
   }[];
 }
 
@@ -307,7 +310,7 @@ export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, cust
           </button>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] text-sm">
+          <table className="w-full min-w-[820px] text-sm">
             <thead className="bg-surface-2 text-left text-xs text-text-secondary">
               <tr>
                 <th className="p-3 font-medium">Cliente</th>
@@ -316,6 +319,7 @@ export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, cust
                 <th className="p-3 font-medium">Desde</th>
                 <th className="p-3 font-medium">Próx. ciclo</th>
                 <th className="p-3 text-right font-medium">Valor/mês</th>
+                <th className="p-3 text-right font-medium">Gerenciar</th>
               </tr>
             </thead>
             <tbody>
@@ -338,11 +342,19 @@ export function ClientsDashboard({ kpis, monthly, planDistribution, stripe, cust
                   <td className="p-3 text-text-secondary">{new Date(c.since).toLocaleDateString("pt-BR")}</td>
                   <td className="p-3 text-text-secondary">{c.periodEnd ? new Date(c.periodEnd).toLocaleDateString("pt-BR") : "—"}</td>
                   <td className="p-3 text-right tabular-nums">{c.monthly ? fmtBRL(c.monthly) : "—"}</td>
+                  <td className="p-3">
+                    <ClientRowActions
+                      userId={c.userId}
+                      email={c.email}
+                      tier={c.tier}
+                      isAdminUser={c.isAdminUser}
+                    />
+                  </td>
                 </tr>
               ))}
               {customers.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="p-6 text-center text-text-secondary">
+                  <td colSpan={7} className="p-6 text-center text-text-secondary">
                     Nenhum cliente ainda.
                   </td>
                 </tr>

@@ -4,6 +4,7 @@ import { isAdmin } from "@/lib/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { stripe } from "@/lib/stripe/server";
 import { tierOf, TIER_LABEL, type Tier } from "@/lib/billing-access";
+import { ADMIN_EMAILS } from "@/lib/admin";
 import {
   monthlyValue,
   oneTimeValue,
@@ -29,9 +30,11 @@ export default async function ClientesPage() {
 
   let emailById = new Map<string, string>();
   let totalUsers = 0;
+  let usersList: { id: string; email: string; created_at?: string }[] = [];
   try {
     const { data: users } = await admin.auth.admin.listUsers({ perPage: 1000 });
     emailById = new Map(users.users.map((u) => [u.id, u.email ?? ""]));
+    usersList = users.users.map((u) => ({ id: u.id, email: u.email ?? "", created_at: u.created_at }));
     totalUsers = users.users.length;
   } catch {
     /* ignore */
@@ -124,9 +127,25 @@ export default async function ClientesPage() {
     }
   }
 
-  const customers = [...rows].sort(
-    (a, b) => new Date(b.since).getTime() - new Date(a.since).getTime(),
-  );
+  // tabela com TODOS os usuários (inclui gratuitos) para gerenciar/excluir
+  const subByUser = new Map((subs ?? []).map((s) => [s.user_id, s]));
+  const customers = usersList
+    .map((u) => {
+      const s = subByUser.get(u.id);
+      const tier = tierOf((s ?? null) as never);
+      return {
+        userId: u.id,
+        email: u.email || u.id.slice(0, 8),
+        tier,
+        status: (s?.status as string) ?? "—",
+        since: (u.created_at as string) ?? new Date().toISOString(),
+        periodEnd: (s?.current_period_end as string) ?? null,
+        monthly: monthlyValue(s?.stripe_price_id),
+        active: s ? ACTIVE.has(s.status as string) : false,
+        isAdminUser: ADMIN_EMAILS.includes((u.email || "").toLowerCase()),
+      };
+    })
+    .sort((a, b) => new Date(b.since).getTime() - new Date(a.since).getTime());
 
   return (
     <ClientsDashboard

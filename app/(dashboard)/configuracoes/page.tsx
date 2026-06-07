@@ -9,6 +9,7 @@ import {
   Info,
   Palette,
   ShieldAlert,
+  ShieldCheck,
   UserCircle,
   UserCog,
 } from "lucide-react";

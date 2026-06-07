@@ -21,7 +21,18 @@ export async function signIn(
   if (error) return { error: traduzir(error.message) };
 
   revalidatePath("/", "layout");
-  redirect("/inicio");
+
+  // se o usuário tem 2FA, exige o código antes de liberar o acesso
+  let needsMfa = false;
+  try {
+    const { data: aal } =
+      await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+    needsMfa = aal?.currentLevel === "aal1" && aal?.nextLevel === "aal2";
+  } catch {
+    /* ignora a checagem se falhar */
+  }
+
+  redirect(needsMfa ? "/auth/mfa" : "/inicio");
 }
 
 export async function signUp(

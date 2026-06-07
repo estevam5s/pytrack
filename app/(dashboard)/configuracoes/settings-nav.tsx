@@ -10,6 +10,7 @@ import {
   Info,
   Palette,
   ShieldAlert,
+  ShieldCheck,
   UserCircle,
   UserCog,
 } from "lucide-react";
@@ -19,6 +20,7 @@ const ITEMS = [
   { href: "/configuracoes/conta", label: "Conta", icon: UserCircle },
   { href: "/configuracoes/perfil", label: "Perfil", icon: UserCog },
   { href: "/configuracoes/plano", label: "Plano e cobrança", icon: CreditCard },
+  { href: "/configuracoes/seguranca", label: "Segurança (2FA)", icon: ShieldCheck },
   { href: "/configuracoes/ia", label: "IA & Modelos", icon: Bot },
   { href: "/configuracoes/indicacoes", label: "Indique e ganhe", icon: Gift },
   { href: "/configuracoes/aparencia", label: "Aparência", icon: Palette },
