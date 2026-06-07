@@ -4,8 +4,9 @@ import { X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useUIStore } from "@/store/ui";
 import { SidebarContent } from "./sidebar";
+import type { Tier } from "@/lib/billing-access";
 
-export function MobileSidebar() {
+export function MobileSidebar({ tier = "free" }: { tier?: Tier }) {
   const { mobileSidebarOpen, setMobileSidebar } = useUIStore();
 
   return (
@@ -33,7 +34,7 @@ export function MobileSidebar() {
             >
               <X className="h-5 w-5" />
             </button>
-            <SidebarContent onNavigate={() => setMobileSidebar(false)} />
+            <SidebarContent tier={tier} onNavigate={() => setMobileSidebar(false)} />
           </motion.aside>
         </div>
       )}

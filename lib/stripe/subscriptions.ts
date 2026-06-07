@@ -1,9 +1,14 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { billingEnabled } from "@/lib/stripe/server";
-import { hasDashboardAccess } from "@/lib/billing-access";
+import { hasDashboardAccess, tierOf, type Tier } from "@/lib/billing-access";
 
 export { hasDashboardAccess };
+
+export async function getUserTier(userId: string): Promise<Tier> {
+  const sub = await getUserSubscription(userId);
+  return tierOf(sub);
+}
 
 export interface SubscriptionRow {
   id: string;

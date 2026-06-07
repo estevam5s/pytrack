@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/logo.png" alt="PyTrack" width="130" />
+<img src="public/new-logo.png" alt="PyTrack" width="130" />
 
 # PyTrack — Plataforma de Aprendizado Python
 

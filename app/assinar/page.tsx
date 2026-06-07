@@ -3,7 +3,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
-import { userHasAccess } from "@/lib/stripe/subscriptions";
+import { userHasAccess, getUserTier } from "@/lib/stripe/subscriptions";
 import { STRIPE_TRIAL_DAYS } from "@/lib/stripe/server";
 import { PlanSelector } from "@/components/billing/PlanSelector";
 
@@ -19,6 +19,7 @@ export default async function AssinarPage({
   if (!user) redirect("/auth/login");
 
   const access = await userHasAccess(user.id);
+  const tier = await getUserTier(user.id);
   const { checkout, upgrade } = await searchParams;
 
   return (
@@ -28,7 +29,7 @@ export default async function AssinarPage({
 
       <header className="container relative flex h-[77px] items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="PyTrack" width={36} height={36} className="h-9 w-9 rounded-lg object-contain" />
+          <Image src="/new-logo.png" alt="PyTrack" width={36} height={36} className="h-9 w-9 rounded-lg object-contain" />
           <span className="text-lg font-bold">PyTrack</span>
         </Link>
         {access && (
@@ -57,14 +58,14 @@ export default async function AssinarPage({
           <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
             Desbloqueie o <span className="text-gradient">ecossistema Python</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-lg text-text-secondary">
-            Comece com {STRIPE_TRIAL_DAYS} dias grátis. Aprenda Python a fundo no
-            Essencial ou tenha a plataforma inteira no Completo. Cancele quando quiser.
+          <p className="mx-auto mt-4 max-w-xl text-text-secondary">
+            Comece com {STRIPE_TRIAL_DAYS} dias grátis. Do Essencial ao Suprema —
+            escolha o quanto do ecossistema Python você quer dominar. Cancele quando quiser.
           </p>
         </div>
 
-        <div className="mx-auto mt-10 max-w-3xl">
-          <PlanSelector trialDays={STRIPE_TRIAL_DAYS} />
+        <div className="mx-auto mt-10 max-w-5xl">
+          <PlanSelector trialDays={STRIPE_TRIAL_DAYS} currentTier={tier} />
         </div>
 
         {access && (

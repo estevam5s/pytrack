@@ -39,8 +39,8 @@ export default async function LessonPage({
           <Home className="h-3.5 w-3.5" />
         </Link>
         <ChevronRight className="h-3.5 w-3.5" />
-        <Link href="/conteudos" className="hover:text-foreground">
-          Conteúdos
+        <Link href="/minhas-trilhas" className="hover:text-foreground">
+          Trilhas
         </Link>
         <ChevronRight className="h-3.5 w-3.5" />
         <Link href={`/conteudos/${module.slug}`} className="hover:text-foreground">

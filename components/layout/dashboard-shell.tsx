@@ -3,9 +3,16 @@
 import { useEffect } from "react";
 import { useUIStore } from "@/store/ui";
 import { DesktopSidebar } from "./sidebar";
+import type { Tier } from "@/lib/billing-access";
 import { cn } from "@/lib/utils";
 
-export function DashboardShell({ children }: { children: React.ReactNode }) {
+export function DashboardShell({
+  children,
+  tier = "free",
+}: {
+  children: React.ReactNode;
+  tier?: Tier;
+}) {
   const collapsed = useUIStore((s) => s.sidebarCollapsed);
   const setCollapsed = useUIStore((s) => s.setSidebarCollapsed);
 
@@ -21,7 +28,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <DesktopSidebar collapsed={collapsed} />
+      <DesktopSidebar collapsed={collapsed} tier={tier} />
       <div
         className={cn(
           "transition-[padding] duration-300 ease-in-out",

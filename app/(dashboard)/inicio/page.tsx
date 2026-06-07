@@ -94,7 +94,7 @@ export default async function HomePage() {
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Button asChild>
-                <Link href="/conteudos">
+                <Link href="/minhas-trilhas">
                   Continuar estudando <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -257,14 +257,14 @@ export default async function HomePage() {
         <div>
           <div className="mb-3 flex items-center justify-between">
             <h2 className="text-lg font-semibold">Continue de onde parou</h2>
-            <Link href="/conteudos" className="text-sm text-primary hover:underline">
+            <Link href="/minhas-trilhas" className="text-sm text-primary hover:underline">
               Ver tudo
             </Link>
           </div>
           {inProgress.length ? (
             <div className="space-y-3">
               {inProgress.map((c) => (
-                <Link key={c.id} href={c.slug ? `/conteudos/${c.slug}` : "/conteudos"}>
+                <Link key={c.id} href={c.slug ? `/conteudos/${c.slug}` : "/minhas-trilhas"}>
                   <Card hover>
                     <CardContent className="flex items-center gap-4 p-4">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -293,7 +293,7 @@ export default async function HomePage() {
               description="Comece um conteúdo para acompanhar seu progresso aqui."
               action={
                 <Button asChild size="sm">
-                  <Link href="/conteudos">Explorar trilhas</Link>
+                  <Link href="/minhas-trilhas">Explorar trilhas</Link>
                 </Button>
               }
             />
@@ -304,7 +304,7 @@ export default async function HomePage() {
           <h2 className="mb-3 text-lg font-semibold">Próximos recomendados</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {recommended.map((c) => (
-              <Link key={c.id} href={c.slug ? `/conteudos/${c.slug}` : "/conteudos"}>
+              <Link key={c.id} href={c.slug ? `/conteudos/${c.slug}` : "/minhas-trilhas"}>
                 <Card hover className="h-full">
                   <CardContent className="p-4">
                     <Badge className={levelColor(c.level)}>
@@ -407,7 +407,7 @@ export default async function HomePage() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {[
-            ["1", "Fundamentos", "Domine sintaxe, lógica, estruturas de dados e POO.", "/conteudos", "from-green/20 to-green/5"],
+            ["1", "Fundamentos", "Domine sintaxe, lógica, estruturas de dados e POO.", "/minhas-trilhas", "from-green/20 to-green/5"],
             ["2", "Especialização", "Escolha uma área: Backend, Dados, IoT, Automação...", "/especializacoes", "from-blue/20 to-blue/5"],
             ["3", "Prática", "Resolva exercícios e use a IDE para fixar o conteúdo.", "/exercicios", "from-primary/20 to-primary/5"],
             ["4", "Portfólio", "Construa projetos reais que comprovam suas skills.", "/meus-projetos", "from-magenta/20 to-magenta/5"],
@@ -437,7 +437,7 @@ export default async function HomePage() {
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            ["📚", "Conteúdos", "Trilhas e lições guiadas de todo o ecossistema Python.", "/conteudos"],
+            ["📚", "Conteúdos", "Trilhas e lições guiadas de todo o ecossistema Python.", "/minhas-trilhas"],
             ["💬", "Comunidade", "Tire dúvidas, compartilhe projetos e conecte-se.", "/comunidade"],
             ["💻", "Exercícios", "Pratique com correção automática por IA.", "/exercicios"],
             ["⌨️", "IDE Python", "Escreva e rode Python no navegador, sem instalar nada.", "/ide"],

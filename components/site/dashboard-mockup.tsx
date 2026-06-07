@@ -37,7 +37,7 @@ export function DashboardMockup() {
         <aside className="hidden w-44 shrink-0 border-r border-border p-3 sm:block">
           <div className="mb-4 flex items-center gap-2 px-1">
             <Image
-              src="/logo.png"
+              src="/new-logo.png"
               alt="PyTrack"
               width={28}
               height={28}

@@ -54,7 +54,7 @@ const STEPS: Step[] = [
     title: "Conteúdos & Trilhas",
     description:
       "Aprenda por trilhas guiadas com lições em Markdown cobrindo todo o ecossistema: fundamentos, backend, dados, IoT e mais.",
-    href: "/conteudos",
+    href: "/minhas-trilhas",
   },
   {
     icon: Code2,

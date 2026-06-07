@@ -5,6 +5,7 @@ import {
   isFreeDashboardPath,
   requiresCompleto,
   tierOf,
+  tierAtLeast,
 } from "@/lib/billing-access";
 
 // Rotas públicas (site institucional) acessíveis sem login.
@@ -102,8 +103,8 @@ export async function updateSession(request: NextRequest) {
       url.pathname = "/assinar";
       return NextResponse.redirect(url);
     }
-    // recursos exclusivos do plano Completo
-    if (requiresCompleto(pathname) && tierOf(sub) !== "completo") {
+    // recursos exclusivos do plano Completo (Suprema também acessa)
+    if (requiresCompleto(pathname) && !tierAtLeast(tierOf(sub), "completo")) {
       const url = request.nextUrl.clone();
       url.pathname = "/assinar";
       url.searchParams.set("upgrade", "completo");

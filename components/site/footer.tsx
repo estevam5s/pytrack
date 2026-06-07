@@ -101,7 +101,7 @@ export function Footer() {
           <Reveal className="max-w-xs">
             <Link href="/" className="flex items-center gap-2.5">
               <Image
-                src="/logo.png"
+                src="/new-logo.png"
                 alt={BRAND.name}
                 width={40}
                 height={40}

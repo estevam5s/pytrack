@@ -1,22 +1,7 @@
-import { getContents, getProgressMap } from "@/lib/data/queries";
-import { PageHeader } from "@/components/dashboard/page-header";
-import { ConteudosView } from "@/components/dashboard/conteudos-view";
+import { redirect } from "next/navigation";
 
-export const metadata = { title: "Conteúdos · PyTrack" };
-
-export default async function ConteudosPage() {
-  const [contents, progressMap] = await Promise.all([
-    getContents(),
-    getProgressMap(),
-  ]);
-
-  return (
-    <div>
-      <PageHeader
-        title="Conteúdos"
-        description="Trilhas e módulos do ecossistema Python organizados por área, nível e categoria. Marque seu progresso à medida que avança."
-      />
-      <ConteudosView contents={contents} progressMap={progressMap} />
-    </div>
-  );
+// O catálogo de conteúdos foi unificado nas Trilhas de aprendizado.
+// Tudo agora vive em /minhas-trilhas (cada trilha agrupa seus módulos).
+export default function ConteudosPage() {
+  redirect("/minhas-trilhas");
 }

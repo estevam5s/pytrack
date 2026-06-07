@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookOpen, ChevronRight, Clock, Home, Layers } from "lucide-react";
+import { BookOpen, ChevronRight, Clock, Home, Layers, Lock } from "lucide-react";
 import { getModule } from "@/lib/content/registry";
 import { getProgressMap, getContents } from "@/lib/data/queries";
+import { getCurrentUser } from "@/lib/auth/get-current-user";
+import { getUserTier } from "@/lib/stripe/subscriptions";
+import { moduleTier, canAccess } from "@/lib/trilhas";
+import { TIER_LABEL } from "@/lib/billing-access";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ModuleLessons } from "@/components/content/module-lessons";
 import { LEVEL_LABELS, levelColor } from "@/lib/utils";
@@ -35,6 +40,11 @@ export default async function ModulePage({
   const progress = content ? progressMap[content.id] : undefined;
   const pct = progress?.progress_percentage ?? 0;
 
+  const user = await getCurrentUser();
+  const tier = user ? await getUserTier(user.id) : "free";
+  const reqTier = moduleTier(module.area, module.slug);
+  const locked = !canAccess(tier, reqTier);
+
   return (
     <div className="mx-auto max-w-4xl">
       <nav className="mb-5 flex items-center gap-1.5 text-xs text-text-secondary">
@@ -42,8 +52,8 @@ export default async function ModulePage({
           <Home className="h-3.5 w-3.5" />
         </Link>
         <ChevronRight className="h-3.5 w-3.5" />
-        <Link href="/conteudos" className="hover:text-foreground">
-          Conteúdos
+        <Link href="/minhas-trilhas" className="hover:text-foreground">
+          Trilhas
         </Link>
         <ChevronRight className="h-3.5 w-3.5" />
         <span className="text-foreground">{module.title}</span>
@@ -92,15 +102,38 @@ export default async function ModulePage({
         )}
       </div>
 
-      <h2 className="mb-4 text-lg font-semibold">Conteúdo do módulo</h2>
-      <ModuleLessons
-        moduleSlug={module.slug}
-        lessons={module.lessons.map((l) => ({
-          slug: l.slug,
-          title: l.title,
-          order: l.order,
-        }))}
-      />
+      {locked ? (
+        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-8 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/15 text-primary-light">
+            <Lock className="h-7 w-7" />
+          </div>
+          <h2 className="mt-4 text-xl font-bold">
+            Módulo do plano {TIER_LABEL[reqTier]}
+          </h2>
+          <p className="mx-auto mt-2 max-w-md text-sm text-text-secondary">
+            Este módulo de <strong>{module.area}</strong> faz parte do plano{" "}
+            {TIER_LABEL[reqTier]}. Faça upgrade para desbloquear este e todos os
+            outros módulos avançados.
+          </p>
+          <div className="mt-5">
+            <Button asChild>
+              <Link href="/assinar?upgrade=completo">Fazer upgrade</Link>
+            </Button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <h2 className="mb-4 text-lg font-semibold">Conteúdo do módulo</h2>
+          <ModuleLessons
+            moduleSlug={module.slug}
+            lessons={module.lessons.map((l) => ({
+              slug: l.slug,
+              title: l.title,
+              order: l.order,
+            }))}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -71,15 +71,18 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
-  { title: "Calculadora CLI", difficulty: "Básico", technologies: ["Python", "Typer"], result: "Uma ferramenta de terminal com histórico e validação." },
-  { title: "Sistema de tarefas", difficulty: "Básico", technologies: ["Python", "SQLite"], result: "CRUD com prioridades e persistência local." },
-  { title: "Web scraper", difficulty: "Intermediário", technologies: ["httpx", "BeautifulSoup"], result: "Coletor de dados com exportação para CSV." },
-  { title: "API REST com FastAPI", difficulty: "Intermediário", technologies: ["FastAPI", "PostgreSQL"], result: "API completa com autenticação JWT e testes." },
-  { title: "Dashboard de dados", difficulty: "Intermediário", technologies: ["Streamlit", "Plotly"], result: "Visualização interativa de um dataset real." },
-  { title: "Bot de automação", difficulty: "Intermediário", technologies: ["python-telegram-bot"], result: "Bot que executa tarefas e responde comandos." },
-  { title: "Sistema IoT com MQTT", difficulty: "Avançado", technologies: ["MicroPython", "MQTT"], result: "Sensores publicando dados em tempo real." },
-  { title: "Pipeline ETL", difficulty: "Avançado", technologies: ["Polars", "DuckDB"], result: "Ingestão, transformação e carga de dados." },
-  { title: "Projeto final full-stack", difficulty: "Desafio", technologies: ["FastAPI", "Docker", "CI/CD"], result: "Aplicação completa com deploy e observabilidade." },
+  { title: "SaaS multi-tenant com billing", difficulty: "Desafio", technologies: ["FastAPI", "PostgreSQL", "Stripe", "Redis"], result: "Plataforma de assinaturas com multi-tenant, webhooks e painel de métricas — pronta para produção." },
+  { title: "Assistente de IA com RAG", difficulty: "Desafio", technologies: ["LangChain", "pgvector", "OpenAI", "FastAPI"], result: "Chatbot que responde com base nos seus documentos, com citações e avaliação de qualidade." },
+  { title: "Pipeline de dados em tempo real", difficulty: "Avançado", technologies: ["Kafka", "PySpark", "Airflow", "Delta Lake"], result: "Ingestão streaming, transformação distribuída e data lakehouse versionado." },
+  { title: "Sistema de recomendação", difficulty: "Avançado", technologies: ["scikit-learn", "FastAPI", "Redis"], result: "Recomendações personalizadas servidas em produção com cache e A/B testing." },
+  { title: "Microsserviços event-driven", difficulty: "Desafio", technologies: ["FastAPI", "RabbitMQ", "Kubernetes"], result: "Serviços desacoplados por mensageria, com deploy em K8s e escala automática." },
+  { title: "Plataforma de e-commerce", difficulty: "Desafio", technologies: ["Django", "PostgreSQL", "Celery", "Docker"], result: "Catálogo, carrinho, checkout, pagamentos e painel administrativo completos." },
+  { title: "Bot de trading quantitativo", difficulty: "Avançado", technologies: ["pandas", "NumPy", "Backtesting"], result: "Estratégia com backtest, gestão de risco e execução automatizada." },
+  { title: "Visão computacional em tempo real", difficulty: "Avançado", technologies: ["PyTorch", "OpenCV", "FastAPI"], result: "Detecção de objetos em vídeo com API de inferência de baixa latência." },
+  { title: "MLOps: do treino ao deploy", difficulty: "Desafio", technologies: ["MLflow", "Docker", "FastAPI", "CI/CD"], result: "Pipeline de ML versionado, com registro de modelos, monitoramento e deploy contínuo." },
+  { title: "Observabilidade distribuída", difficulty: "Avançado", technologies: ["OpenTelemetry", "Prometheus", "Grafana"], result: "Métricas, logs e traces de um sistema distribuído, com alertas por SLO." },
+  { title: "Data Warehouse + BI", difficulty: "Avançado", technologies: ["DuckDB", "dbt", "Streamlit"], result: "Modelagem dimensional, transformações testadas e dashboards executivos." },
+  { title: "Plataforma IoT inteligente", difficulty: "Avançado", technologies: ["MicroPython", "MQTT", "scikit-learn"], result: "Sensores + modelo de ML para automação e detecção de anomalias em tempo real." },
 ];
 
 export interface Career {

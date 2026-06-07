@@ -1099,5 +1099,236 @@ export const EXTRA_MODULES: ContentModule[] = [
         "order": 1
       }
     ]
+  },
+  {
+    "slug": "ext-langchain-e-rag",
+    "title": "LangChain e RAG",
+    "description": "Trilha prática e direta sobre langchain e rag, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "langchain-e-rag",
+    "area": "Machine Learning",
+    "level": "avancado",
+    "category": "IA Generativa",
+    "orderIndex": 145,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "fundamentos-de-llms-e-langchain",
+        "title": "Fundamentos de LLMs e LangChain",
+        "file": "doc/Conteudos/Ecossistema/langchain-e-rag/01_fundamentos-de-llms-e-langchain.md",
+        "order": 1
+      },
+      {
+        "slug": "embeddings-e-bancos-vetoriais",
+        "title": "Embeddings e bancos vetoriais",
+        "file": "doc/Conteudos/Ecossistema/langchain-e-rag/02_embeddings-e-bancos-vetoriais.md",
+        "order": 2
+      },
+      {
+        "slug": "pipeline-rag-completo",
+        "title": "Pipeline RAG completo",
+        "file": "doc/Conteudos/Ecossistema/langchain-e-rag/03_pipeline-rag-completo.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-agentes-de-ia-com-python",
+    "title": "Agentes de IA com Python",
+    "description": "Trilha prática e direta sobre agentes de ia com python, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "agentes-de-ia-com-python",
+    "area": "Machine Learning",
+    "level": "avancado",
+    "category": "IA Generativa",
+    "orderIndex": 146,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "o-que-sao-agentes-de-ia",
+        "title": "O que são agentes de IA",
+        "file": "doc/Conteudos/Ecossistema/agentes-de-ia-com-python/01_o-que-sao-agentes-de-ia.md",
+        "order": 1
+      },
+      {
+        "slug": "ferramentas-e-function-calling",
+        "title": "Ferramentas e function calling",
+        "file": "doc/Conteudos/Ecossistema/agentes-de-ia-com-python/02_ferramentas-e-function-calling.md",
+        "order": 2
+      },
+      {
+        "slug": "multi-agentes-com-langgraph",
+        "title": "Multi-agentes com LangGraph",
+        "file": "doc/Conteudos/Ecossistema/agentes-de-ia-com-python/03_multi-agentes-com-langgraph.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-web-full-stack-com-python",
+    "title": "Web Full-Stack com Python",
+    "description": "Trilha prática e direta sobre web full-stack com python, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "web-full-stack-com-python",
+    "area": "Backend",
+    "level": "intermediario",
+    "category": "Web",
+    "orderIndex": 147,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "full-stack-com-fastapi-e-templates",
+        "title": "Full-stack com FastAPI e templates",
+        "file": "doc/Conteudos/Ecossistema/web-full-stack-com-python/01_full-stack-com-fastapi-e-templates.md",
+        "order": 1
+      },
+      {
+        "slug": "interatividade-com-htmx",
+        "title": "Interatividade com HTMX",
+        "file": "doc/Conteudos/Ecossistema/web-full-stack-com-python/02_interatividade-com-htmx.md",
+        "order": 2
+      },
+      {
+        "slug": "autenticacao-e-deploy-full-stack",
+        "title": "Autenticação e deploy full-stack",
+        "file": "doc/Conteudos/Ecossistema/web-full-stack-com-python/03_autenticacao-e-deploy-full-stack.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-aws-para-python",
+    "title": "AWS para Python",
+    "description": "Trilha prática e direta sobre aws para python, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "aws-para-python",
+    "area": "DevOps",
+    "level": "avancado",
+    "category": "Cloud",
+    "orderIndex": 148,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "boto3-o-sdk-da-aws",
+        "title": "boto3: o SDK da AWS",
+        "file": "doc/Conteudos/Ecossistema/aws-para-python/01_boto3-o-sdk-da-aws.md",
+        "order": 1
+      },
+      {
+        "slug": "lambda-e-serverless",
+        "title": "Lambda e serverless",
+        "file": "doc/Conteudos/Ecossistema/aws-para-python/02_lambda-e-serverless.md",
+        "order": 2
+      },
+      {
+        "slug": "infraestrutura-como-codigo-cdk",
+        "title": "Infraestrutura como código (CDK)",
+        "file": "doc/Conteudos/Ecossistema/aws-para-python/03_infraestrutura-como-codigo-cdk.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-cloud-e-serverless",
+    "title": "Cloud e Serverless",
+    "description": "Trilha prática e direta sobre cloud e serverless, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "cloud-e-serverless",
+    "area": "DevOps",
+    "level": "avancado",
+    "category": "Cloud",
+    "orderIndex": 149,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "containers-na-nuvem",
+        "title": "Containers na nuvem",
+        "file": "doc/Conteudos/Ecossistema/cloud-e-serverless/01_containers-na-nuvem.md",
+        "order": 1
+      },
+      {
+        "slug": "filas-eventos-e-mensageria",
+        "title": "Filas, eventos e mensageria",
+        "file": "doc/Conteudos/Ecossistema/cloud-e-serverless/02_filas-eventos-e-mensageria.md",
+        "order": 2
+      },
+      {
+        "slug": "observabilidade-e-custos",
+        "title": "Observabilidade e custos",
+        "file": "doc/Conteudos/Ecossistema/cloud-e-serverless/03_observabilidade-e-custos.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-poo-avancada-em-python",
+    "title": "POO Avançada em Python",
+    "description": "Trilha prática e direta sobre poo avançada em python, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "poo-avancada-em-python",
+    "area": "Engenharia de Software",
+    "level": "avancado",
+    "category": "POO",
+    "orderIndex": 150,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "dunder-methods-e-modelo-de-dados",
+        "title": "Dunder methods e modelo de dados",
+        "file": "doc/Conteudos/Ecossistema/poo-avancada-em-python/01_dunder-methods-e-modelo-de-dados.md",
+        "order": 1
+      },
+      {
+        "slug": "properties-descritores-e-slots",
+        "title": "Properties, descritores e slots",
+        "file": "doc/Conteudos/Ecossistema/poo-avancada-em-python/02_properties-descritores-e-slots.md",
+        "order": 2
+      },
+      {
+        "slug": "heranca-mixins-e-abcs",
+        "title": "Herança, mixins e ABCs",
+        "file": "doc/Conteudos/Ecossistema/poo-avancada-em-python/03_heranca-mixins-e-abcs.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-solid-avancado-e-design-patterns",
+    "title": "SOLID Avançado e Design Patterns",
+    "description": "Trilha prática e direta sobre solid avançado e design patterns, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "solid-avancado-e-design-patterns",
+    "area": "Arquitetura",
+    "level": "avancado",
+    "category": "Arquitetura",
+    "orderIndex": 151,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "solid-na-pratica",
+        "title": "SOLID na prática",
+        "file": "doc/Conteudos/Ecossistema/solid-avancado-e-design-patterns/01_solid-na-pratica.md",
+        "order": 1
+      },
+      {
+        "slug": "padroes-criacionais-e-estruturais",
+        "title": "Padrões criacionais e estruturais",
+        "file": "doc/Conteudos/Ecossistema/solid-avancado-e-design-patterns/02_padroes-criacionais-e-estruturais.md",
+        "order": 2
+      },
+      {
+        "slug": "arquitetura-limpa-e-ddd",
+        "title": "Arquitetura limpa e DDD",
+        "file": "doc/Conteudos/Ecossistema/solid-avancado-e-design-patterns/03_arquitetura-limpa-e-ddd.md",
+        "order": 3
+      }
+    ]
   }
 ];

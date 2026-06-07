@@ -2,14 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/lib/navigation";
+import {
+  requiredTierForPath,
+  tierAtLeast,
+  type Tier,
+} from "@/lib/billing-access";
 
 export function SidebarItem({
   item,
+  tier = "free",
   onNavigate,
 }: {
   item: NavItem;
+  tier?: Tier;
   onNavigate?: () => void;
 }) {
   const pathname = usePathname();
@@ -19,10 +27,20 @@ export function SidebarItem({
       : pathname.startsWith(item.href);
   const Icon = item.icon;
 
+  const required = requiredTierForPath(item.href);
+  const locked = !tierAtLeast(tier, required);
+  // rota bloqueada leva direto para a tela de upgrade
+  const href = locked ? `/assinar?upgrade=${required}` : item.href;
+
   return (
     <Link
-      href={item.href}
+      href={href}
       onClick={onNavigate}
+      title={
+        locked
+          ? `Disponível no plano ${required === "completo" ? "Completo" : "Essencial"}`
+          : undefined
+      }
       className={cn(
         "group relative flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all",
         active
@@ -39,7 +57,12 @@ export function SidebarItem({
           active ? "text-primary" : "text-text-secondary group-hover:text-foreground",
         )}
       />
-      <span className="truncate">{item.title}</span>
+      <span className={cn("truncate", locked && "text-text-secondary/80")}>
+        {item.title}
+      </span>
+      {locked && (
+        <Lock className="ml-auto h-3.5 w-3.5 shrink-0 text-text-secondary/60" />
+      )}
     </Link>
   );
 }

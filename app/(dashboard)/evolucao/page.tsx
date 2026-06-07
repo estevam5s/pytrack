@@ -211,7 +211,7 @@ export default async function EvolucaoPage() {
             {nextSteps.map((c, i) => (
               <Link
                 key={c.id}
-                href={c.slug ? `/conteudos/${c.slug}` : "/conteudos"}
+                href={c.slug ? `/conteudos/${c.slug}` : "/minhas-trilhas"}
                 className="flex items-center gap-3 rounded-lg border border-border bg-surface px-3 py-2.5 transition-colors hover:border-primary/40"
               >
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">
@@ -226,7 +226,7 @@ export default async function EvolucaoPage() {
             ))}
           </div>
           <Button asChild variant="outline" className="mt-4 w-full sm:w-auto">
-            <Link href="/conteudos">Ir para os conteúdos</Link>
+            <Link href="/minhas-trilhas">Ir para os conteúdos</Link>
           </Button>
         </CardContent>
       </Card>

@@ -189,7 +189,7 @@ export async function getSearchIndex(): Promise<SearchItem[]> {
     items.push({
       label: c.title,
       sub: c.area,
-      href: c.slug ? `/conteudos/${c.slug}` : "/conteudos",
+      href: c.slug ? `/conteudos/${c.slug}` : "/minhas-trilhas",
       group: "Conteúdos",
     });
   for (const s of stack.data ?? [])

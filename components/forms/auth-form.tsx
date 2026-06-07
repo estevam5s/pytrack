@@ -34,7 +34,7 @@ export function AuthForm({
     <div className="w-full max-w-md">
       <div className="mb-8 flex flex-col items-center text-center">
         <Image
-          src="/logo.png"
+          src="/new-logo.png"
           alt="PyTrack"
           width={56}
           height={56}

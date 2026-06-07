@@ -6,15 +6,22 @@ import { ExternalLink, PanelLeftClose } from "lucide-react";
 import { NAV_GROUPS, NAV_ITEMS } from "@/lib/navigation";
 import { useUIStore } from "@/store/ui";
 import { SidebarItem } from "./sidebar-item";
+import type { Tier } from "@/lib/billing-access";
 import { cn } from "@/lib/utils";
 
-export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
+export function SidebarContent({
+  tier = "free",
+  onNavigate,
+}: {
+  tier?: Tier;
+  onNavigate?: () => void;
+}) {
   const toggleSidebar = useUIStore((s) => s.toggleSidebar);
   return (
     <div className="flex h-full flex-col">
       <div className="flex h-16 items-center gap-2.5 border-b border-border px-5">
         <Image
-          src="/logo.png"
+          src="/new-logo.png"
           alt="PyTrack"
           width={40}
           height={40}
@@ -44,7 +51,7 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
               {group}
             </p>
             {NAV_ITEMS.filter((i) => i.group === group).map((item) => (
-              <SidebarItem key={item.href} item={item} onNavigate={onNavigate} />
+              <SidebarItem key={item.href} item={item} tier={tier} onNavigate={onNavigate} />
             ))}
           </div>
         ))}
@@ -71,7 +78,13 @@ export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
-export function DesktopSidebar({ collapsed }: { collapsed?: boolean }) {
+export function DesktopSidebar({
+  collapsed,
+  tier = "free",
+}: {
+  collapsed?: boolean;
+  tier?: Tier;
+}) {
   return (
     <aside
       className={cn(
@@ -79,7 +92,7 @@ export function DesktopSidebar({ collapsed }: { collapsed?: boolean }) {
         collapsed && "-translate-x-full",
       )}
     >
-      <SidebarContent />
+      <SidebarContent tier={tier} />
     </aside>
   );
 }

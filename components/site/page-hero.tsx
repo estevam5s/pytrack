@@ -20,7 +20,7 @@ export function PageHero({
       <div className="container relative py-16 text-center sm:py-20">
         <Reveal>
           <Image
-            src="/logo.png"
+            src="/new-logo.png"
             alt="PyTrack"
             width={64}
             height={64}

@@ -7,7 +7,23 @@ export interface AccessSubscription {
   metadata?: Record<string, unknown> | null;
 }
 
-export type Tier = "free" | "essencial" | "completo";
+export type Tier = "free" | "essencial" | "completo" | "suprema" | "vitalicio";
+
+export const TIER_LABEL: Record<Tier, string> = {
+  free: "Gratuito",
+  essencial: "Essencial",
+  completo: "Completo",
+  suprema: "Suprema",
+  vitalicio: "Vitalício",
+};
+
+export const TIER_RANK: Record<Tier, number> = {
+  free: 0,
+  essencial: 1,
+  completo: 2,
+  suprema: 3,
+  vitalicio: 4,
+};
 
 // Mapa price_id -> tier (price IDs não são segredos).
 export const TIER_BY_PRICE: Record<string, Tier> = {
@@ -15,19 +31,28 @@ export const TIER_BY_PRICE: Record<string, Tier> = {
   price_1TfQ0ACB6Dz1wPei7hdTfaQS: "essencial", // R$96/ano
   price_1TfQedCB6Dz1wPeiXWheSFrk: "completo", // R$19/mês
   price_1TfQeeCB6Dz1wPeiv5tsuwdx: "completo", // R$182/ano
+  price_1TfUEdCB6Dz1wPeiyag2DQIn: "suprema", // R$46/mês
+  price_1TfUEeCB6Dz1wPeiNGrINbKd: "suprema", // R$442/ano
+  price_1TfV9dCB6Dz1wPeibUtTjFbZ: "vitalicio", // R$697 vitalício (one-time)
 };
 
 /** Descobre o tier de uma assinatura. */
 export function tierOf(sub: AccessSubscription | null): Tier {
   if (!sub) return "free";
-  if (sub.metadata && (sub.metadata as Record<string, unknown>).comp) return "completo";
+  const meta = (sub.metadata ?? {}) as Record<string, unknown>;
+  if (meta.lifetime) return "vitalicio";
+  if (meta.comp) return "suprema";
   const t = sub.stripe_price_id ? TIER_BY_PRICE[sub.stripe_price_id] : undefined;
   return t ?? "essencial";
 }
 
-// Rotas do dashboard que exigem o plano Completo.
+export function tierAtLeast(userTier: Tier, required: Tier): boolean {
+  return TIER_RANK[userTier] >= TIER_RANK[required];
+}
+
+// Rotas do dashboard que exigem pelo menos o plano Completo.
+// (Comunidade fica no Essencial.)
 const COMPLETO_ONLY = [
-  "/comunidade",
   "/meus-projetos",
   "/especializacoes",
   "/consultor-ia",
@@ -38,6 +63,13 @@ const COMPLETO_ONLY = [
 
 export function requiresCompleto(pathname: string): boolean {
   return COMPLETO_ONLY.some((p) => pathname === p || pathname.startsWith(p + "/"));
+}
+
+/** Tier mínimo necessário para acessar uma rota do dashboard. */
+export function requiredTierForPath(pathname: string): Tier {
+  if (isFreeDashboardPath(pathname)) return "free";
+  if (requiresCompleto(pathname)) return "completo";
+  return "essencial";
 }
 
 const BLOCKED = ["unpaid", "incomplete_expired"];
@@ -57,7 +89,11 @@ export const FREE_MODULE_SLUG = "parte-1-basico";
 
 /** Rotas do dashboard acessíveis no plano gratuito (sem assinatura). */
 export function isFreeDashboardPath(pathname: string): boolean {
+  if (pathname === "/assinar") return true; // página de assinatura (evita loop)
   if (pathname === "/inicio") return true; // hub com upsell
+  if (pathname === "/minhas-trilhas" || pathname.startsWith("/minhas-trilhas/"))
+    return true; // navegar/escolher trilhas é livre (módulos é que travam)
+  if (pathname === "/aplicativo") return true; // qualquer um acessa (download é que trava)
   if (pathname === "/ide" || pathname.startsWith("/ide/")) return true; // IDE grátis
   if (pathname === "/conteudos") return true; // catálogo
   if (pathname.startsWith(`/conteudos/${FREE_MODULE_SLUG}`)) return true; // 1º módulo

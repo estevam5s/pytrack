@@ -9,6 +9,7 @@ import {
   Info,
   Palette,
   ShieldAlert,
+  ShieldCheck,
   UserCircle,
   UserCog,
 } from "lucide-react";
@@ -29,12 +30,15 @@ const ITEMS = [
   { href: "/configuracoes/sobre", label: "Sobre", icon: Info },
 ];
 
-export function SettingsNav() {
+const ADMIN_ITEM = { href: "/configuracoes/admin", label: "Admin", icon: ShieldCheck };
+
+export function SettingsNav({ isAdmin = false }: { isAdmin?: boolean }) {
   const pathname = usePathname();
+  const items = isAdmin ? [...ITEMS, ADMIN_ITEM] : ITEMS;
   return (
     <aside className="lg:sticky lg:top-20 lg:self-start">
       <nav className="flex gap-1.5 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
-        {ITEMS.map((n) => {
+        {items.map((n) => {
           const active = pathname === n.href;
           return (
             <Link

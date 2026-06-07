@@ -1,9 +1,12 @@
 import { Calendar, Mail, UserCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { getProfile } from "@/lib/data/queries";
+import { getUserTier } from "@/lib/stripe/subscriptions";
+import { TIER_LABEL } from "@/lib/billing-access";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AvatarUpload } from "@/components/profile/avatar-upload";
+import { cn } from "@/lib/utils";
 
 export const metadata = { title: "Conta · Configurações · PyTrack" };
 
@@ -13,6 +16,7 @@ export default async function ContaPage() {
     data: { user },
   } = await supabase.auth.getUser();
   const profile = await getProfile();
+  const tier = user ? await getUserTier(user.id) : "free";
 
   const memberSince = profile?.created_at
     ? new Date(profile.created_at).toLocaleDateString("pt-BR", {
@@ -44,8 +48,16 @@ export default async function ContaPage() {
               <h2 className="text-lg font-bold">
                 {profile?.name ?? "Estudante Python"}
               </h2>
-              <Badge className="border-secondary/30 bg-secondary/10 text-secondary">
-                Plano Gratuito
+              <Badge
+                className={cn(
+                  tier === "suprema" || tier === "completo"
+                    ? "border-primary/30 bg-primary/10 text-primary-light"
+                    : tier === "essencial"
+                      ? "border-secondary/30 bg-secondary/10 text-secondary"
+                      : "border-border bg-surface-2 text-text-secondary",
+                )}
+              >
+                Plano {TIER_LABEL[tier]}
               </Badge>
             </div>
             <div className="mt-1.5 flex flex-col gap-1 text-sm text-text-secondary sm:flex-row sm:gap-4">

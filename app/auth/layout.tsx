@@ -29,7 +29,7 @@ export default function AuthLayout({
 
         <Link href="/" className="relative flex items-center gap-2.5">
           <Image
-            src="/logo.png"
+            src="/new-logo.png"
             alt="PyTrack"
             width={40}
             height={40}

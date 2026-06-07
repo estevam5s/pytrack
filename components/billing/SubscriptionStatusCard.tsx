@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { SubscriptionRow } from "@/lib/stripe/subscriptions";
 import { hasDashboardAccess } from "@/lib/stripe/subscriptions";
+import { TIER_LABEL, type Tier } from "@/lib/billing-access";
 
 const STATUS_PT: Record<string, string> = {
   active: "Ativa",
@@ -26,8 +27,10 @@ function fmt(d: string | null) {
 
 export function SubscriptionStatusCard({
   subscription,
+  tier = "free",
 }: {
   subscription: SubscriptionRow | null;
+  tier?: Tier;
 }) {
   const active = hasDashboardAccess(subscription);
   const isActiveStatus =
@@ -42,7 +45,7 @@ export function SubscriptionStatusCard({
               Plano atual
             </p>
             <p className="mt-1 text-lg font-bold">
-              {subscription ? "Python Learning Platform Pro" : "Sem assinatura"}
+              {subscription ? `PyTrack ${TIER_LABEL[tier]}` : "Sem assinatura"}
             </p>
           </div>
           <span

@@ -65,7 +65,7 @@ export default function OpengraphImage() {
             fontWeight: 700,
           }}
         >
-          plataforma-python.vercel.app
+          pytrack.com.br
         </div>
       </div>
     ),

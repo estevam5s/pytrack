@@ -72,7 +72,7 @@ const JSON_LD = {
       "@type": "Organization",
       name: "PyTrack",
       url: SITE_URL,
-      logo: `${SITE_URL}/logo.png`,
+      logo: `${SITE_URL}/new-logo.png`,
       description:
         "Plataforma de aprendizado de Python: trilhas, exercícios com IA, IDE, projetos e carreira.",
     },

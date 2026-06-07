@@ -28,7 +28,7 @@ export function HeroSection() {
             className="mb-5 flex items-center gap-3"
           >
             <Image
-              src="/logo.png"
+              src="/new-logo.png"
               alt="PyTrack"
               width={56}
               height={56}

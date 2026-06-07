@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { CreditCard, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import {
   getUserSubscription,
   getStripeCustomerId,
+  getUserTier,
   hasDashboardAccess,
 } from "@/lib/stripe/subscriptions";
 import { billingEnabled } from "@/lib/stripe/server";
@@ -19,11 +21,37 @@ export default async function PlanoPage() {
   const user = await getCurrentUser();
   const subscription = user ? await getUserSubscription(user.id) : null;
   const customerId = user ? await getStripeCustomerId(user.id) : null;
+  const tier = user ? await getUserTier(user.id) : "free";
   const active = hasDashboardAccess(subscription);
 
   return (
     <div className="space-y-6">
-      <SubscriptionStatusCard subscription={subscription} />
+      <SubscriptionStatusCard subscription={subscription} tier={tier} />
+
+      {/* upgrade (quem ainda não está no plano máximo) */}
+      {active && tier !== "suprema" && billingEnabled && (
+        <Card className="border-primary/30">
+          <CardContent className="flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="flex items-center gap-1.5 font-semibold">
+                <Sparkles className="h-4 w-4 text-primary-light" />
+                {tier === "essencial"
+                  ? "Desbloqueie mais com o Completo ou Suprema"
+                  : "Vá além com o plano Suprema"}
+              </p>
+              <p className="mt-1 text-sm text-text-secondary">
+                {tier === "essencial"
+                  ? "Comunidade, projetos, especializações, consultor IA e mais."
+                  : "Trilha Suprema Python Mastery (120+ módulos) + projeto final SaaS."}{" "}
+                A diferença é cobrada proporcionalmente.
+              </p>
+            </div>
+            <Button asChild>
+              <Link href="/assinar">Ver planos</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      )}
 
       <Card>
         <CardHeader>

@@ -68,7 +68,7 @@ export function notify(title: string, body: string) {
       "Notification" in window &&
       Notification.permission === "granted"
     ) {
-      new Notification(title, { body, icon: "/logo.png", badge: "/logo.png" });
+      new Notification(title, { body, icon: "/new-logo.png", badge: "/new-logo.png" });
     }
   } catch {
     /* ignore */

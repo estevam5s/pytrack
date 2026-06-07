@@ -1,6 +1,5 @@
 import {
   LayoutDashboard,
-  BookOpen,
   TrendingUp,
   Layers,
   GraduationCap,
@@ -17,6 +16,8 @@ import {
   Award,
   SquareTerminal,
   Users,
+  Route,
+  Smartphone,
   type LucideIcon,
 } from "lucide-react";
 
@@ -29,8 +30,8 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { title: "Início", href: "/inicio", icon: LayoutDashboard, group: "Estudar" },
+  { title: "Trilhas", href: "/minhas-trilhas", icon: Route, group: "Estudar" },
   { title: "Comunidade", href: "/comunidade", icon: Users, group: "Estudar" },
-  { title: "Conteúdos", href: "/conteudos", icon: BookOpen, group: "Estudar" },
   { title: "Evolução", href: "/evolucao", icon: TrendingUp, group: "Estudar" },
   { title: "Stack", href: "/stack", icon: Layers, group: "Estudar" },
   {
@@ -65,6 +66,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   { title: "Material", href: "/material", icon: FileText, group: "Recursos" },
   { title: "Livros", href: "/livros", icon: Library, group: "Recursos" },
+  { title: "Aplicativo", href: "/aplicativo", icon: Smartphone, group: "Recursos" },
   {
     title: "Carreira",
     href: "/minha-carreira",

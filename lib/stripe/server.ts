@@ -9,10 +9,25 @@ export const STRIPE_PRICE_ID_ANNUAL = process.env.STRIPE_PRICE_ID_ANNUAL;
 export const STRIPE_PRICE_ID_COMPLETO = process.env.STRIPE_PRICE_ID_COMPLETO;
 export const STRIPE_PRICE_ID_COMPLETO_ANNUAL =
   process.env.STRIPE_PRICE_ID_COMPLETO_ANNUAL;
+export const STRIPE_PRICE_ID_SUPREMA = process.env.STRIPE_PRICE_ID_SUPREMA;
+export const STRIPE_PRICE_ID_SUPREMA_ANNUAL =
+  process.env.STRIPE_PRICE_ID_SUPREMA_ANNUAL;
+export const STRIPE_PRICE_ID_VITALICIO = process.env.STRIPE_PRICE_ID_VITALICIO;
+
+/** Planos de pagamento único (one-time, mode=payment). */
+export function isLifetimePlan(plan?: string): boolean {
+  return plan === "vitalicio";
+}
 
 /** Mapa de plano -> price id (para o checkout). */
 export function priceForPlan(plan?: string): string | undefined {
   switch (plan) {
+    case "vitalicio":
+      return STRIPE_PRICE_ID_VITALICIO ?? undefined;
+    case "suprema_monthly":
+      return STRIPE_PRICE_ID_SUPREMA ?? undefined;
+    case "suprema_annual":
+      return STRIPE_PRICE_ID_SUPREMA_ANNUAL ?? undefined;
     case "completo_monthly":
       return STRIPE_PRICE_ID_COMPLETO ?? undefined;
     case "completo_annual":

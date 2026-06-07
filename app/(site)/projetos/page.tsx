@@ -17,14 +17,18 @@ export default function ProjetosPage() {
   return (
     <>
       <PageHero
-        badge="Projetos reais"
-        title="Construa um portfólio que"
-        highlight="impressiona"
-        description="Aprenda construindo de verdade. São mais de 1.300 projetos na plataforma — dos primeiros scripts a sistemas completos com deploy."
+        badge="Projetos de alto nível"
+        title="Projetos que provam que você"
+        highlight="está pronto"
+        description="Nada de tutoriais de brinquedo. Aqui você constrói SaaS, IA com RAG, pipelines de dados, microsserviços e sistemas em produção — no nível de empresas de tecnologia. São +1.300 projetos na plataforma."
       />
 
       <section className="container py-16">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionHeader
+          badge="Em destaque"
+          title={<>Os <GradientText>melhores projetos</GradientText> da plataforma</>}
+        />
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.title} delay={(i % 3) * 0.05}>
               <ProjectCard project={p} />

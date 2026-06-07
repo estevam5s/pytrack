@@ -1,17 +1,32 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, BookOpen, Clock, Layers } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
-import { TrackCard } from "@/components/site/track-card";
 import { Reveal } from "@/components/site/reveal";
-import { SectionHeader } from "@/components/site/section-header";
-import { GradientText } from "@/components/site/gradient-text";
 import { CTASection } from "@/components/site/cta-section";
-import { TRACKS, STEPS } from "@/lib/site-data";
+import { TRILHAS } from "@/lib/trilhas";
+import { TIER_LABEL, type Tier } from "@/lib/billing-access";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Trilhas de aprendizado",
   description:
-    "Trilhas guiadas de Python: fundamentos, backend, análise e engenharia de dados, IoT, automação e engenharia de software — com conteúdo, exercícios e projetos.",
+    "16 trilhas guiadas de Python: do zero ao avançado — Backend, Dados, IA, DevOps & Cloud, Arquitetura, IoT, Segurança e a Trilha Suprema Python Mastery.",
 };
+
+const TIER_BADGE: Record<Tier, string> = {
+  free: "border-green/30 bg-green/10 text-green",
+  essencial: "border-secondary/30 bg-secondary/10 text-secondary",
+  completo: "border-primary/30 bg-primary/10 text-primary-light",
+  suprema: "border-primary/40 bg-gradient-to-r from-primary/20 to-magenta/10 text-primary-light",
+};
+
+const GROUPS: { tier: Tier; label: string; price: string }[] = [
+  { tier: "free", label: "Grátis", price: "Comece sem pagar" },
+  { tier: "essencial", label: "Plano Essencial", price: "R$ 10/mês" },
+  { tier: "completo", label: "Plano Completo", price: "R$ 19/mês" },
+  { tier: "suprema", label: "Plano Suprema", price: "R$ 46/mês" },
+];
 
 export default function TrilhasPage() {
   return (
@@ -20,70 +35,74 @@ export default function TrilhasPage() {
         badge="Trilhas"
         title="Escolha o seu caminho em"
         highlight="Python"
-        description="Do zero à especialização. Cada trilha combina conteúdos, exercícios e projetos para você evoluir com direção."
+        description="16 trilhas guiadas — do primeiro print() à Trilha Suprema Python Mastery. Cada trilha combina conteúdos, exercícios e projetos para você evoluir com direção."
       />
 
-      <section className="container py-16">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {TRACKS.map((t, i) => (
-            <Reveal key={t.title} delay={(i % 3) * 0.05}>
-              <TrackCard track={t} />
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      {GROUPS.map((g) => {
+        const trilhas = TRILHAS.filter((t) => t.tier === g.tier);
+        if (!trilhas.length) return null;
+        return (
+          <section key={g.tier} className="container py-10">
+            <div className="mb-6 flex items-center gap-3">
+              <h2 className="text-xl font-bold">{g.label}</h2>
+              <span className={cn("rounded-full border px-3 py-0.5 text-xs font-semibold", TIER_BADGE[g.tier])}>
+                {g.price}
+              </span>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {trilhas.map((t, i) => {
+                const Icon = t.icon;
+                return (
+                  <Reveal key={t.id} delay={(i % 3) * 0.05}>
+                    <Link href="/precos">
+                      <div className={cn("card card-hover flex h-full flex-col p-5", t.tier === "suprema" && "border-primary/40")}>
+                        <div className="flex items-start justify-between">
+                          <div className={cn("flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br", t.accent)}>
+                            <Icon className="h-6 w-6" />
+                          </div>
+                          <span className={cn("rounded-full border px-2.5 py-0.5 text-[11px] font-semibold", TIER_BADGE[t.tier])}>
+                            {t.tier === "free" ? "Grátis" : TIER_LABEL[t.tier]}
+                          </span>
+                        </div>
+                        <h3 className="mt-4 text-lg font-bold">{t.title}</h3>
+                        <p className="text-xs text-text-secondary">{t.subtitle}</p>
+                        <div className="mt-3 flex flex-wrap gap-1.5">
+                          {t.topics.slice(0, 5).map((tp) => (
+                            <span key={tp} className="rounded-md bg-surface-2 px-2 py-0.5 text-[11px] text-text-secondary">
+                              {tp}
+                            </span>
+                          ))}
+                          {t.topics.length > 5 && (
+                            <span className="rounded-md bg-surface-2 px-2 py-0.5 text-[11px] text-primary-light">
+                              +{t.topics.length - 5}
+                            </span>
+                          )}
+                        </div>
+                        <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-4 text-xs text-text-secondary">
+                          <span className="inline-flex items-center gap-1"><Layers className="h-3.5 w-3.5" /> {t.adModules} módulos</span>
+                          <span className="inline-flex items-center gap-1"><BookOpen className="h-3.5 w-3.5" /> {t.adLessons} aulas</span>
+                          <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> ~{t.adHours}h</span>
+                        </div>
+                      </div>
+                    </Link>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
 
-      {/* como cada trilha funciona */}
-      <section className="bg-surface/40 py-16">
-        <div className="container">
-          <SectionHeader
-            badge="Como funciona"
-            title={<>Cada trilha foi pensada para a <GradientText>sua evolução</GradientText></>}
-            description="Um método consistente do início ao fim: você aprende, pratica e comprova o conhecimento em projetos reais."
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map((s, i) => (
-              <Reveal key={s.number} delay={i * 0.06}>
-                <div className="card h-full p-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-4xl font-bold text-gradient">{s.number}</span>
-                    <s.icon className="h-6 w-6 text-primary-light" />
-                  </div>
-                  <h3 className="mt-4 font-semibold">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                    {s.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div className="container">
+        <Link
+          href="/precos"
+          className="mx-auto mt-4 flex w-fit items-center gap-1.5 text-sm font-semibold text-primary-light hover:underline"
+        >
+          Ver planos e preços <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
 
-      {/* o que você ganha */}
-      <section className="container py-16">
-        <SectionHeader badge="Em cada trilha" title="O que está incluído" />
-        <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            ["📚", "Conteúdo guiado", "Lições objetivas com exemplos de código e boas práticas."],
-            ["💻", "Exercícios práticos", "Pratique com correção por IA e feedback imediato."],
-            ["🚀", "Projetos reais", "Construa um portfólio que comprova suas habilidades."],
-            ["📈", "Progresso visível", "Acompanhe XP, nível e conclusão por área."],
-            ["🧭", "Roadmap claro", "Sempre saiba qual é o próximo passo."],
-            ["🤝", "Comunidade", "Tire dúvidas e evolua junto com outros alunos."],
-          ].map(([emoji, title, text]) => (
-            <Reveal key={title}>
-              <div className="card h-full p-5">
-                <div className="text-2xl">{emoji}</div>
-                <h3 className="mt-2 font-semibold">{title}</h3>
-                <p className="mt-1 text-sm text-text-secondary">{text}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <CTASection title="Pronto para começar sua trilha Python?" />
+      <CTASection />
     </>
   );
 }

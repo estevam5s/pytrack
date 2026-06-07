@@ -31,6 +31,7 @@ export async function setContentStatus(
 
   if (error) return { error: error.message };
   revalidatePath("/conteudos");
+  revalidatePath("/minhas-trilhas");
   revalidatePath("/evolucao");
   revalidatePath("/inicio");
   return { ok: true };
@@ -67,6 +68,7 @@ export async function setContentProgress(
 
   if (error) return { error: error.message };
   revalidatePath("/conteudos");
+  revalidatePath("/minhas-trilhas");
   revalidatePath("/evolucao");
   return { ok: true };
 }
@@ -103,6 +105,7 @@ export async function setModuleProgressBySlug(slug: string, percentage: number) 
 
   if (error) return { error: error.message };
   revalidatePath("/conteudos");
+  revalidatePath("/minhas-trilhas");
   revalidatePath("/evolucao");
   revalidatePath("/inicio");
   return { ok: true };

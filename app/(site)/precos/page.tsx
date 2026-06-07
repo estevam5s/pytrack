@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Minus, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Crown, Minus, ShieldCheck, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { FaqItem } from "@/components/site/faq-item";
 import { SectionHeader } from "@/components/site/section-header";
@@ -61,23 +61,51 @@ const PLANS = [
       "Especializações avançadas",
       "Consultor de carreira com IA",
       "Vagas e perguntas de entrevista",
+      "App Android e Desktop (download)",
+      "7 dias grátis",
+    ],
+  },
+  {
+    name: "Suprema",
+    price: "R$ 46",
+    period: "/mês",
+    desc: "Domine tudo + a Trilha Suprema e projeto final.",
+    cta: "Assinar Suprema",
+    href: "/assinar",
+    highlight: false,
+    features: [
+      "Tudo do Completo, mais:",
+      "Trilha Suprema Python Mastery",
+      "120+ módulos · 1000+ aulas",
+      "Projeto final: SaaS completo (FastAPI, K8s)",
+      "Deploy AWS + RAG + Agentes IA",
       "7 dias grátis",
     ],
   },
 ];
 
-const COMPARISON: { feature: string; free: boolean; ess: boolean; comp: boolean }[] = [
-  { feature: "Fundamentos de Python", free: true, ess: true, comp: true },
-  { feature: "IDE Python no navegador", free: true, ess: true, comp: true },
-  { feature: "Todas as trilhas de conteúdo", free: false, ess: true, comp: true },
-  { feature: "Exercícios com correção por IA", free: false, ess: true, comp: true },
-  { feature: "Evolução, XP e níveis", free: false, ess: true, comp: true },
-  { feature: "Materiais, livros e aulas", free: false, ess: true, comp: true },
-  { feature: "Comunidade completa", free: false, ess: false, comp: true },
-  { feature: "Projetos para portfólio", free: false, ess: false, comp: true },
-  { feature: "Especializações avançadas", free: false, ess: false, comp: true },
-  { feature: "Consultor de carreira (IA)", free: false, ess: false, comp: true },
-  { feature: "Vagas e entrevistas", free: false, ess: false, comp: true },
+const COMPARISON: {
+  feature: string;
+  free: boolean;
+  ess: boolean;
+  comp: boolean;
+  sup: boolean;
+}[] = [
+  { feature: "Fundamentos de Python", free: true, ess: true, comp: true, sup: true },
+  { feature: "IDE Python no navegador", free: true, ess: true, comp: true, sup: true },
+  { feature: "Todas as trilhas de conteúdo", free: false, ess: true, comp: true, sup: true },
+  { feature: "Exercícios com correção por IA", free: false, ess: true, comp: true, sup: true },
+  { feature: "Evolução, XP e níveis", free: false, ess: true, comp: true, sup: true },
+  { feature: "Materiais, livros e aulas", free: false, ess: true, comp: true, sup: true },
+  { feature: "Comunidade completa", free: false, ess: false, comp: true, sup: true },
+  { feature: "Projetos para portfólio", free: false, ess: false, comp: true, sup: true },
+  { feature: "Especializações avançadas", free: false, ess: false, comp: true, sup: true },
+  { feature: "Consultor de carreira (IA)", free: false, ess: false, comp: true, sup: true },
+  { feature: "Vagas e entrevistas", free: false, ess: false, comp: true, sup: true },
+  { feature: "App Android e Desktop (download)", free: false, ess: false, comp: true, sup: true },
+  { feature: "Trilha Suprema Python Mastery", free: false, ess: false, comp: false, sup: true },
+  { feature: "Projeto final: SaaS completo", free: false, ess: false, comp: false, sup: true },
+  { feature: "Deploy AWS + IA Generativa + RAG", free: false, ess: false, comp: false, sup: true },
 ];
 
 function Cell({ on }: { on: boolean }) {
@@ -100,7 +128,7 @@ export default function PrecosPage() {
 
       {/* planos */}
       <section className="container py-16">
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {PLANS.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.06}>
               <div
@@ -155,24 +183,26 @@ export default function PrecosPage() {
       <section className="container py-12">
         <SectionHeader badge="Comparativo" title="O que cada plano inclui" />
         <Reveal className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-border">
-          <div className="grid grid-cols-[1fr_70px_70px_80px] bg-surface-2 text-xs font-semibold sm:grid-cols-[1fr_90px_90px_100px]">
-            <div className="p-4">Recurso</div>
-            <div className="p-4 text-center text-text-secondary">Grátis</div>
-            <div className="p-4 text-center text-text-secondary">Essencial</div>
-            <div className="p-4 text-center text-primary-light">Completo</div>
+          <div className="grid grid-cols-[1fr_52px_64px_64px_64px] bg-surface-2 text-[11px] font-semibold sm:grid-cols-[1fr_72px_84px_84px_84px] sm:text-xs">
+            <div className="p-3 sm:p-4">Recurso</div>
+            <div className="p-3 text-center text-text-secondary sm:p-4">Grátis</div>
+            <div className="p-3 text-center text-text-secondary sm:p-4">Essencial</div>
+            <div className="p-3 text-center text-text-secondary sm:p-4">Completo</div>
+            <div className="p-3 text-center text-primary-light sm:p-4">Suprema</div>
           </div>
           {COMPARISON.map((row, i) => (
             <div
               key={row.feature}
               className={cn(
-                "grid grid-cols-[1fr_70px_70px_80px] items-center border-t border-border text-sm sm:grid-cols-[1fr_90px_90px_100px]",
+                "grid grid-cols-[1fr_52px_64px_64px_64px] items-center border-t border-border text-xs sm:grid-cols-[1fr_72px_84px_84px_84px] sm:text-sm",
                 i % 2 && "bg-surface/40",
               )}
             >
-              <div className="p-4 text-text-secondary">{row.feature}</div>
-              <div className="p-4"><Cell on={row.free} /></div>
-              <div className="p-4"><Cell on={row.ess} /></div>
-              <div className="p-4"><Cell on={row.comp} /></div>
+              <div className="p-3 text-text-secondary sm:p-4">{row.feature}</div>
+              <div className="p-3 sm:p-4"><Cell on={row.free} /></div>
+              <div className="p-3 sm:p-4"><Cell on={row.ess} /></div>
+              <div className="p-3 sm:p-4"><Cell on={row.comp} /></div>
+              <div className="p-3 sm:p-4"><Cell on={row.sup} /></div>
             </div>
           ))}
         </Reveal>

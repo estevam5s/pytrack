@@ -150,6 +150,21 @@ export async function POST(req: Request) {
         if (s.subscription) {
           await syncSubscriptionById(admin, s.subscription as string, userId);
         }
+        // pagamento único (Vitalício) — concede acesso vitalício
+        if (s.mode === "payment" && userId && s.metadata?.plan === "vitalicio") {
+          await admin.from("subscriptions").upsert(
+            {
+              user_id: userId,
+              status: "active",
+              stripe_price_id: process.env.STRIPE_PRICE_ID_VITALICIO ?? null,
+              stripe_customer_id: customerId ?? null,
+              current_period_end: "2126-06-06T00:00:00+00:00",
+              cancel_at_period_end: false,
+              metadata: { lifetime: true, payment_intent: s.payment_intent ?? null },
+            },
+            { onConflict: "user_id" },
+          );
+        }
         break;
       }
       case "customer.subscription.created":
