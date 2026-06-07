@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { isAdmin } from "@/lib/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { UPLOAD_RULES, getExt } from "@/lib/upload-validation";
 
 const BUCKET = "app-releases";
 
@@ -21,6 +22,11 @@ export async function createUploadUrl(
   const me = await getCurrentUser();
   if (!isAdmin(me?.email)) return { error: "Sem permissão." };
 
+  // valida a extensão contra a whitelist de apps
+  const ext = getExt(filename);
+  if (!UPLOAD_RULES["app-releases"].ext.includes(ext)) {
+    return { error: `Extensão .${ext} não permitida para aplicativos.` };
+  }
   const safe = filename.replace(/[^a-zA-Z0-9._-]/g, "_");
   const path = `${platform}/${Date.now()}-${safe}`;
   const admin = createAdminClient();

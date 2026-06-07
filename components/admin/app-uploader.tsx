@@ -8,6 +8,7 @@ import {
   createUploadUrl,
   recordRelease,
 } from "@/app/(dashboard)/aplicativo/actions";
+import { validateUpload } from "@/lib/upload-validation";
 import { Input } from "@/components/ui/input";
 
 const PLATFORMS = [
@@ -28,6 +29,8 @@ export function AppUploader() {
 
   async function handleUpload() {
     if (!file) return setMsg({ err: "Selecione um arquivo." });
+    const v = validateUpload("app-releases", { name: file.name, size: file.size, type: file.type });
+    if (!v.ok) return setMsg({ err: v.error });
     setBusy(true);
     setMsg({});
     try {

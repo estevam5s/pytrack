@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/client";
+import { validateUpload, safeStoragePath } from "@/lib/upload-validation";
 
 export interface UploadResult {
   url?: string;
@@ -11,11 +12,12 @@ export async function uploadToBucket(
   file: File,
   userId: string,
 ): Promise<UploadResult> {
+  // validação: tamanho, extensão e MIME por bucket + nome seguro
+  const v = validateUpload(bucket, { name: file.name, size: file.size, type: file.type });
+  if (!v.ok) return { error: v.error };
+
   const supabase = createClient();
-  const ext = (file.name.split(".").pop() ?? "bin").toLowerCase();
-  const path = `${userId}/${Date.now()}-${Math.random()
-    .toString(36)
-    .slice(2, 8)}.${ext}`;
+  const path = safeStoragePath(userId, file.name);
 
   const { error } = await supabase.storage.from(bucket).upload(path, file, {
     upsert: true,

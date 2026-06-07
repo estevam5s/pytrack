@@ -124,6 +124,28 @@ export function AuthForm({
           )}
         </div>
 
+        {mode === "register" && (
+          <label className="flex items-start gap-2 text-xs text-text-secondary">
+            <input
+              type="checkbox"
+              name="consent"
+              required
+              className="mt-0.5 h-4 w-4 shrink-0 rounded border-border accent-[rgb(var(--primary))]"
+            />
+            <span>
+              Li e aceito os{" "}
+              <Link href="/termos" target="_blank" className="text-primary hover:underline">
+                Termos de Uso
+              </Link>{" "}
+              e a{" "}
+              <Link href="/privacidade" target="_blank" className="text-primary hover:underline">
+                Política de Privacidade
+              </Link>
+              .
+            </span>
+          </label>
+        )}
+
         {state.error && (
           <div className="flex items-center gap-2 rounded-md border border-danger/30 bg-danger/10 px-3 py-2 text-sm text-danger">
             <AlertCircle className="h-4 w-4 shrink-0" />

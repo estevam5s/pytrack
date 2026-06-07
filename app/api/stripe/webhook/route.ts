@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { requireStripe } from "@/lib/stripe/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { logError } from "@/lib/logger";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -203,6 +204,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ received: true });
   } catch (e) {
     const msg = e instanceof Error ? e.message : "erro ao processar";
+    await logError("stripe.webhook", e);
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

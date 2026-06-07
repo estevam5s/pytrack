@@ -172,6 +172,93 @@ Não faça 10 projetos pela metade — faça **3 muito bem feitos**, com README,
 
 > A PyTrack tem mais de 1.300 projetos com requisitos e passo a passo para você praticar.`,
   },
+
+  {
+    slug: "python-para-automacao",
+    title: "Python para automação: economize horas de trabalho",
+    description:
+      "Automatize tarefas repetitivas com Python: planilhas, e-mails, PDFs, web scraping e bots.",
+    date: "2026-06-05",
+    readingTime: "6 min",
+    emoji: "\U0001F916",
+    tags: ["automação", "python", "produtividade"],
+    content: `## Por que automatizar com Python
+
+Python é a linguagem nº 1 para automação: simples, com bibliotecas para quase tudo. Tarefas que levam horas viram minutos.
+
+## O que dá para automatizar
+
+- **Planilhas e relatórios** (openpyxl, pandas)
+- **E-mails e PDFs** (smtplib, pypdf, reportlab)
+- **Web scraping** (httpx + BeautifulSoup, Playwright)
+- **Tarefas no SO** (os, pathlib, shutil)
+- **Bots** (Telegram, Discord, WhatsApp)
+
+## Próximo passo
+
+Comece automatizando UMA tarefa chata do seu dia. Depois agende com cron/Task Scheduler.
+
+> A trilha de **Automação & Produtividade** da PyTrack te leva de scripts simples a RPA empresarial.`,
+  },
+  {
+    slug: "machine-learning-com-python-ia",
+    title: "Machine Learning e IA com Python: por onde começar",
+    description:
+      "Do scikit-learn ao PyTorch, LangChain e RAG — o caminho para trabalhar com IA em Python.",
+    date: "2026-06-05",
+    readingTime: "7 min",
+    emoji: "\U0001F9E0",
+    tags: ["machine learning", "ia", "python"],
+    content: `## Python é a língua da IA
+
+Praticamente todo o ecossistema de IA é em Python: scikit-learn, TensorFlow, PyTorch, HuggingFace, LangChain.
+
+## Roteiro
+
+1. **Fundamentos** — Python, NumPy, Pandas, estatística.
+2. **ML clássico** — scikit-learn: regressão, classificação, pipelines.
+3. **Deep Learning** — PyTorch/TensorFlow: redes neurais.
+4. **IA Generativa** — LLMs, RAG e agentes com LangChain.
+5. **MLOps** — versionar, servir e monitorar modelos.
+
+## Dica
+
+Não pule a base. Modelos são fáceis de treinar; difícil é entender dados e avaliar resultados.
+
+> A trilha **Machine Learning & IA** da PyTrack cobre de scikit-learn a RAG e agentes de IA.`,
+  },
+  {
+    slug: "roadmap-python-2026",
+    title: "Roadmap Python 2026: do zero à contratação",
+    description:
+      "Um plano completo e atualizado para aprender Python e conseguir o primeiro emprego como dev.",
+    date: "2026-06-06",
+    readingTime: "8 min",
+    emoji: "\U0001F5FA️",
+    tags: ["roadmap", "carreira", "python"],
+    content: `## O caminho completo
+
+### 1. Fundamentos (1-2 meses)
+Sintaxe, tipos, estruturas, funções, POO, Git e PEP8.
+
+### 2. Escolha uma área
+- **Backend** — FastAPI/Django, SQL, APIs
+- **Dados** — Pandas, visualização, SQL, BI
+- **Engenharia de Dados** — ETL, Spark, Airflow
+- **IA/ML** — scikit-learn, PyTorch, LLMs
+- **Automação/IoT** — scraping, bots, MicroPython
+
+### 3. Pratique de verdade
+Exercícios diários + projetos reais para o portfólio.
+
+### 4. Prepare a carreira
+README caprichado, GitHub ativo, perguntas de entrevista, deploy na nuvem.
+
+## Quanto tempo leva?
+Com 1h/dia e consistência, **6 a 9 meses** até um nível júnior empregável.
+
+> A PyTrack reúne **16 trilhas** que seguem exatamente este roadmap, com IA, IDE e projetos.`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

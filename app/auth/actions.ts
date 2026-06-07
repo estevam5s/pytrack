@@ -49,6 +49,11 @@ export async function signUp(
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
   const ref = String(formData.get("ref") ?? "").trim().toLowerCase();
+  const consent = formData.get("consent");
+
+  if (!consent) {
+    return { error: "Você precisa aceitar os Termos de Uso e a Política de Privacidade." };
+  }
 
   // anti-spam: 5 cadastros por 10 min por e-mail
   if (!(await rateLimit(`signup:${email.toLowerCase()}`, 5, 600))) {
