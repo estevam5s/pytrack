@@ -7,9 +7,12 @@ import {
   Database,
   Gift,
   Info,
+  LifeBuoy,
   Palette,
   ShieldAlert,
   ShieldCheck,
+  Users,
+  Inbox,
   UserCircle,
   UserCog,
 } from "lucide-react";
@@ -20,6 +23,7 @@ const ITEMS = [
   { href: "/configuracoes/perfil", label: "Perfil", icon: UserCog },
   { href: "/configuracoes/plano", label: "Plano e cobrança", icon: CreditCard },
   { href: "/configuracoes/indicacoes", label: "Indique e ganhe", icon: Gift },
+  { href: "/configuracoes/suporte", label: "Suporte", icon: LifeBuoy },
   { href: "/configuracoes/aparencia", label: "Aparência", icon: Palette },
   { href: "/configuracoes/plataforma", label: "Plataforma", icon: Database },
   {
@@ -30,11 +34,15 @@ const ITEMS = [
   { href: "/configuracoes/sobre", label: "Sobre", icon: Info },
 ];
 
-const ADMIN_ITEM = { href: "/configuracoes/admin", label: "Admin", icon: ShieldCheck };
+const ADMIN_ITEMS = [
+  { href: "/configuracoes/admin", label: "Admin", icon: ShieldCheck },
+  { href: "/configuracoes/admin/clientes", label: "Clientes & receita", icon: Users },
+  { href: "/configuracoes/admin/mensagens", label: "Mensagens", icon: Inbox },
+];
 
 export function SettingsNav({ isAdmin = false }: { isAdmin?: boolean }) {
   const pathname = usePathname();
-  const items = isAdmin ? [...ITEMS, ADMIN_ITEM] : ITEMS;
+  const items = isAdmin ? [...ITEMS, ...ADMIN_ITEMS] : ITEMS;
   return (
     <aside className="lg:sticky lg:top-20 lg:self-start">
       <nav className="flex gap-1.5 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">

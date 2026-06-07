@@ -13,14 +13,14 @@ export const dynamic = "force-dynamic";
 export default async function AssinarPage({
   searchParams,
 }: {
-  searchParams: Promise<{ checkout?: string; upgrade?: string }>;
+  searchParams: Promise<{ checkout?: string; upgrade?: string; trial?: string }>;
 }) {
   const user = await getCurrentUser();
   if (!user) redirect("/auth/login");
 
   const access = await userHasAccess(user.id);
   const tier = await getUserTier(user.id);
-  const { checkout, upgrade } = await searchParams;
+  const { checkout, upgrade, trial } = await searchParams;
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
@@ -44,6 +44,12 @@ export default async function AssinarPage({
           {checkout === "cancelled" && (
             <div className="mb-5 rounded-lg border border-warning/30 bg-warning/10 px-4 py-2.5 text-sm text-warning">
               Pagamento cancelado. Você pode tentar novamente quando quiser.
+            </div>
+          )}
+          {trial === "expired" && (
+            <div className="mb-5 rounded-lg border border-warning/30 bg-warning/10 px-4 py-2.5 text-sm text-warning">
+              Seu período grátis de 7 dias terminou. Assine um plano para continuar
+              de onde parou — seu progresso está salvo.
             </div>
           )}
           {upgrade === "completo" && (

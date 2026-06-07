@@ -19,15 +19,16 @@ const PLANS = [
   {
     name: "Grátis",
     price: "R$ 0",
-    period: "para sempre",
-    desc: "Comece a aprender sem pagar nada.",
-    cta: "Criar conta grátis",
+    period: "7 dias",
+    desc: "Experimente a plataforma por 7 dias, sem cartão.",
+    cta: "Começar grátis",
     href: "/auth/register",
     highlight: false,
     features: [
+      "7 dias de acesso grátis",
       "Trilha de Fundamentos de Python",
       "IDE Python no navegador",
-      "Acesso à comunidade (leitura)",
+      "Depois de 7 dias, escolha um plano",
     ],
   },
   {
@@ -90,22 +91,26 @@ const COMPARISON: {
   ess: boolean;
   comp: boolean;
   sup: boolean;
+  vit: boolean;
 }[] = [
-  { feature: "Fundamentos de Python", free: true, ess: true, comp: true, sup: true },
-  { feature: "IDE Python no navegador", free: true, ess: true, comp: true, sup: true },
-  { feature: "Todas as trilhas de conteúdo", free: false, ess: true, comp: true, sup: true },
-  { feature: "Exercícios com correção por IA", free: false, ess: true, comp: true, sup: true },
-  { feature: "Evolução, XP e níveis", free: false, ess: true, comp: true, sup: true },
-  { feature: "Materiais, livros e aulas", free: false, ess: true, comp: true, sup: true },
-  { feature: "Comunidade completa", free: false, ess: false, comp: true, sup: true },
-  { feature: "Projetos para portfólio", free: false, ess: false, comp: true, sup: true },
-  { feature: "Especializações avançadas", free: false, ess: false, comp: true, sup: true },
-  { feature: "Consultor de carreira (IA)", free: false, ess: false, comp: true, sup: true },
-  { feature: "Vagas e entrevistas", free: false, ess: false, comp: true, sup: true },
-  { feature: "App Android e Desktop (download)", free: false, ess: false, comp: true, sup: true },
-  { feature: "Trilha Suprema Python Mastery", free: false, ess: false, comp: false, sup: true },
-  { feature: "Projeto final: SaaS completo", free: false, ess: false, comp: false, sup: true },
-  { feature: "Deploy AWS + IA Generativa + RAG", free: false, ess: false, comp: false, sup: true },
+  { feature: "Acesso por 7 dias grátis", free: true, ess: true, comp: true, sup: true, vit: true },
+  { feature: "Fundamentos de Python", free: true, ess: true, comp: true, sup: true, vit: true },
+  { feature: "IDE Python no navegador", free: true, ess: true, comp: true, sup: true, vit: true },
+  { feature: "Todas as trilhas de conteúdo", free: false, ess: true, comp: true, sup: true, vit: true },
+  { feature: "Exercícios com correção por IA", free: false, ess: true, comp: true, sup: true, vit: true },
+  { feature: "Evolução, XP e níveis", free: false, ess: true, comp: true, sup: true, vit: true },
+  { feature: "Materiais, livros e aulas", free: false, ess: true, comp: true, sup: true, vit: true },
+  { feature: "Comunidade completa", free: false, ess: false, comp: true, sup: true, vit: true },
+  { feature: "Projetos para portfólio", free: false, ess: false, comp: true, sup: true, vit: true },
+  { feature: "Especializações avançadas", free: false, ess: false, comp: true, sup: true, vit: true },
+  { feature: "Consultor de carreira (IA)", free: false, ess: false, comp: true, sup: true, vit: true },
+  { feature: "Vagas e entrevistas", free: false, ess: false, comp: true, sup: true, vit: true },
+  { feature: "App Android e Desktop (download)", free: false, ess: false, comp: true, sup: true, vit: true },
+  { feature: "Trilha Suprema Python Mastery", free: false, ess: false, comp: false, sup: true, vit: true },
+  { feature: "Projeto final: SaaS completo", free: false, ess: false, comp: false, sup: true, vit: true },
+  { feature: "Deploy AWS + IA Generativa + RAG", free: false, ess: false, comp: false, sup: true, vit: true },
+  { feature: "Pagamento único (sem mensalidade)", free: false, ess: false, comp: false, sup: false, vit: true },
+  { feature: "Atualizações futuras para sempre", free: false, ess: false, comp: false, sup: false, vit: true },
 ];
 
 function Cell({ on }: { on: boolean }) {
@@ -177,34 +182,86 @@ export default function PrecosPage() {
             </Reveal>
           ))}
         </div>
+
+        {/* Vitalício — pagamento único */}
+        <Reveal className="mt-6">
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-primary/40 bg-surface p-7">
+            <div className="pointer-events-none absolute -inset-0.5 -z-10 rounded-2xl bg-brand opacity-25 blur" />
+            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-wider text-primary-light">
+                  <Crown className="h-4 w-4" /> Vitalício · pague uma vez, use para sempre
+                </p>
+                <p className="mt-1 max-w-xl text-sm text-text-secondary">
+                  Acesso total e permanente a <strong>tudo</strong> — todas as trilhas,
+                  exercícios com IA, app Android/Desktop, comunidade e todas as
+                  atualizações futuras. Sem mensalidade, nunca mais.
+                </p>
+              </div>
+              <div className="shrink-0 sm:text-right">
+                <div className="mb-2 flex items-end gap-1 sm:justify-end">
+                  <span className="text-4xl font-bold">R$ 697</span>
+                  <span className="pb-1 text-text-secondary">único</span>
+                </div>
+                <Link
+                  href="/assinar"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-primary to-primary-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-opacity hover:opacity-90"
+                >
+                  Quero o vitalício <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Garantia de reembolso */}
+        <Reveal className="mt-6">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 rounded-2xl border border-green/30 bg-green/5 p-6 text-center sm:flex-row sm:text-left">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-green/15 text-green">
+              <ShieldCheck className="h-7 w-7" />
+            </span>
+            <div>
+              <p className="text-lg font-bold">Garantia de 7 dias — reembolso 100% do dinheiro</p>
+              <p className="mt-1 text-sm text-text-secondary">
+                Experimente sem risco. Se não gostar, você mesmo solicita o
+                reembolso integral em <strong>Configurações → Plano</strong> dentro de
+                7 dias — sem perguntas, sem burocracia.
+              </p>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* comparativo */}
       <section className="container py-12">
         <SectionHeader badge="Comparativo" title="O que cada plano inclui" />
-        <Reveal className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-border">
-          <div className="grid grid-cols-[1fr_52px_64px_64px_64px] bg-surface-2 text-[11px] font-semibold sm:grid-cols-[1fr_72px_84px_84px_84px] sm:text-xs">
-            <div className="p-3 sm:p-4">Recurso</div>
-            <div className="p-3 text-center text-text-secondary sm:p-4">Grátis</div>
-            <div className="p-3 text-center text-text-secondary sm:p-4">Essencial</div>
-            <div className="p-3 text-center text-text-secondary sm:p-4">Completo</div>
-            <div className="p-3 text-center text-primary-light sm:p-4">Suprema</div>
-          </div>
-          {COMPARISON.map((row, i) => (
-            <div
-              key={row.feature}
-              className={cn(
-                "grid grid-cols-[1fr_52px_64px_64px_64px] items-center border-t border-border text-xs sm:grid-cols-[1fr_72px_84px_84px_84px] sm:text-sm",
-                i % 2 && "bg-surface/40",
-              )}
-            >
-              <div className="p-3 text-text-secondary sm:p-4">{row.feature}</div>
-              <div className="p-3 sm:p-4"><Cell on={row.free} /></div>
-              <div className="p-3 sm:p-4"><Cell on={row.ess} /></div>
-              <div className="p-3 sm:p-4"><Cell on={row.comp} /></div>
-              <div className="p-3 sm:p-4"><Cell on={row.sup} /></div>
+        <Reveal className="mx-auto mt-10 max-w-4xl overflow-x-auto rounded-2xl border border-border">
+          <div className="min-w-[680px]">
+            <div className="grid grid-cols-[1.5fr_repeat(5,1fr)] bg-surface-2 text-xs font-semibold">
+              <div className="p-4">Recurso</div>
+              <div className="p-4 text-center text-text-secondary">Grátis</div>
+              <div className="p-4 text-center text-text-secondary">Essencial</div>
+              <div className="p-4 text-center text-primary-light">Completo</div>
+              <div className="p-4 text-center text-text-secondary">Suprema</div>
+              <div className="bg-primary/5 p-4 text-center text-primary-light">Vitalício</div>
             </div>
-          ))}
+            {COMPARISON.map((row, i) => (
+              <div
+                key={row.feature}
+                className={cn(
+                  "grid grid-cols-[1.5fr_repeat(5,1fr)] items-center border-t border-border text-sm",
+                  i % 2 && "bg-surface/40",
+                )}
+              >
+                <div className="p-4 text-text-secondary">{row.feature}</div>
+                <div className="p-4"><Cell on={row.free} /></div>
+                <div className="p-4"><Cell on={row.ess} /></div>
+                <div className="p-4"><Cell on={row.comp} /></div>
+                <div className="p-4"><Cell on={row.sup} /></div>
+                <div className="bg-primary/5 p-4"><Cell on={row.vit} /></div>
+              </div>
+            ))}
+          </div>
         </Reveal>
       </section>
 

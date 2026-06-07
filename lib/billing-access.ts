@@ -51,8 +51,8 @@ export function tierAtLeast(userTier: Tier, required: Tier): boolean {
 }
 
 // Rotas do dashboard que exigem pelo menos o plano Completo.
-// (Comunidade fica no Essencial.)
 const COMPLETO_ONLY = [
+  "/comunidade",
   "/meus-projetos",
   "/especializacoes",
   "/consultor-ia",

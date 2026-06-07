@@ -8,12 +8,14 @@ import { FeatureCard } from "@/components/site/feature-card";
 import { TrackCard } from "@/components/site/track-card";
 import { ProjectCard } from "@/components/site/project-card";
 import { CareerCard } from "@/components/site/career-card";
-import { PricingCard } from "@/components/site/pricing-card";
 import { FaqItem } from "@/components/site/faq-item";
 import { CTASection } from "@/components/site/cta-section";
 import { DashboardMockup } from "@/components/site/dashboard-mockup";
 import { Button } from "@/components/site/site-button";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { SIGNUP_URL } from "@/lib/site-links";
+import { TRILHAS } from "@/lib/trilhas";
 import {
   CAREERS,
   DASHBOARD_FEATURES,
@@ -22,8 +24,13 @@ import {
   PROJECTS,
   STEPS,
   TESTIMONIALS,
-  TRACKS,
 } from "@/lib/site-data";
+
+const LEVEL_LABEL: Record<string, string> = {
+  basico: "Iniciante",
+  intermediario: "Intermediário",
+  avancado: "Avançado",
+};
 
 export const metadata: Metadata = {
   title: "Python Learning Platform — Domine Python do básico à carreira",
@@ -80,15 +87,32 @@ export default function HomePage() {
       <section className="container py-20">
         <SectionHeader
           badge="Trilhas de aprendizado"
-          title={<>Escolha o seu <GradientText>caminho em Python</GradientText></>}
-          description="Trilhas guiadas para cada objetivo — dos fundamentos às especializações mais buscadas do mercado."
+          title={<>16 trilhas, um <GradientText>caminho em Python</GradientText></>}
+          description="Trilhas guiadas para cada objetivo — dos fundamentos às especializações mais buscadas do mercado (Backend, Dados, IA, DevOps, Arquitetura, IoT, Segurança e mais)."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {TRACKS.map((t, i) => (
-            <Reveal key={t.title} delay={(i % 4) * 0.06}>
-              <TrackCard track={t} />
+          {TRILHAS.map((t, i) => (
+            <Reveal key={t.id} delay={(i % 4) * 0.05}>
+              <TrackCard
+                track={{
+                  icon: t.icon,
+                  title: t.title,
+                  description: t.subtitle,
+                  level: LEVEL_LABEL[t.level] ?? t.level,
+                  duration: `~${t.adHours}h`,
+                  accent: t.accent,
+                }}
+              />
             </Reveal>
           ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Link
+            href="/trilhas"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-light hover:underline"
+          >
+            Ver todas as trilhas e o que cada plano inclui →
+          </Link>
         </div>
       </section>
 
@@ -259,13 +283,61 @@ export default function HomePage() {
       {/* Preços */}
       <section className="container py-20">
         <SectionHeader
-          badge="Acesso"
-          title={<>Um plano, <GradientText>acesso completo</GradientText></>}
-          description="Tudo incluído para você evoluir em Python, dados, IoT, backend e engenharia."
+          badge="Planos"
+          title={<>Comece grátis, <GradientText>evolua quando quiser</GradientText></>}
+          description="Do grátis ao vitalício — escolha o quanto do ecossistema Python você quer dominar. 7 dias grátis, cancele quando quiser, com garantia de reembolso."
         />
-        <div className="mt-12">
-          <PricingCard />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { name: "Grátis", price: "R$ 0", period: "7 dias", desc: "Experimente a plataforma por 7 dias." },
+            { name: "Essencial", price: "R$ 10", period: "/mês", desc: "Todas as trilhas + exercícios com IA." },
+            { name: "Completo", price: "R$ 19", period: "/mês", desc: "Tudo + comunidade, projetos e carreira.", highlight: true },
+            { name: "Suprema", price: "R$ 46", period: "/mês", desc: "Trilha Suprema + projeto final SaaS." },
+          ].map((p, i) => (
+            <Reveal key={p.name} delay={(i % 4) * 0.06}>
+              <div
+                className={cn(
+                  "flex h-full flex-col rounded-2xl border p-6",
+                  p.highlight ? "border-primary/40 bg-surface" : "border-border bg-card",
+                )}
+              >
+                <p className="text-sm font-semibold uppercase tracking-wider text-text-secondary">
+                  {p.name}
+                </p>
+                <div className="mt-3 flex items-end gap-1">
+                  <span className="text-3xl font-bold">{p.price}</span>
+                  <span className="pb-1 text-sm text-text-secondary">{p.period}</span>
+                </div>
+                <p className="mt-2 flex-1 text-sm text-text-secondary">{p.desc}</p>
+                <Link
+                  href="/precos"
+                  className={cn(
+                    "mt-5 inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold transition-opacity hover:opacity-90",
+                    p.highlight
+                      ? "bg-gradient-to-r from-primary to-primary-light text-white"
+                      : "border border-border bg-surface-2 text-foreground",
+                  )}
+                >
+                  Ver detalhes
+                </Link>
+              </div>
+            </Reveal>
+          ))}
         </div>
+        <Reveal className="mt-5">
+          <div className="flex flex-col items-center justify-between gap-3 rounded-2xl border border-primary/40 bg-surface p-6 text-center sm:flex-row sm:text-left">
+            <p className="text-sm text-text-secondary">
+              <span className="font-bold text-primary-light">👑 Vitalício — R$ 697</span>{" "}
+              · pague uma vez e tenha acesso a <strong>tudo para sempre</strong>, incluindo atualizações futuras.
+            </p>
+            <Link
+              href="/precos"
+              className="inline-flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-primary to-primary-light px-5 py-2.5 text-sm font-semibold text-white"
+            >
+              Ver planos
+            </Link>
+          </div>
+        </Reveal>
       </section>
 
       {/* FAQ */}

@@ -81,34 +81,48 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // gating de assinatura (freemium): rotas pagas do dashboard exigem plano válido.
-  // Rotas gratuitas (/inicio, /ide, catálogo + 1º módulo, /perfil, /configuracoes)
-  // ficam liberadas. Se o billing não estiver configurado, libera tudo.
+  // gating de acesso. Se o billing não estiver configurado, libera tudo.
   const billingEnabled = Boolean(
     process.env.STRIPE_SECRET_KEY && process.env.STRIPE_PRICE_ID,
   );
-  if (
-    user &&
-    !isPublic &&
-    billingEnabled &&
-    !isFreeDashboardPath(pathname)
-  ) {
+  if (user && !isPublic && billingEnabled) {
+    // sempre acessível (para pagar/gerenciar a conta)
+    const essential =
+      pathname === "/assinar" ||
+      pathname === "/configuracoes" ||
+      pathname.startsWith("/configuracoes/");
+
     const { data: sub } = await supabase
       .from("subscriptions")
       .select("status, current_period_end, stripe_price_id, metadata")
       .eq("user_id", user.id)
       .maybeSingle();
-    if (!hasDashboardAccess(sub)) {
+
+    if (hasDashboardAccess(sub)) {
+      // assinante / cortesia → gating por tier (recursos exclusivos do Completo)
+      if (requiresCompleto(pathname) && !tierAtLeast(tierOf(sub), "completo")) {
+        const url = request.nextUrl.clone();
+        url.pathname = "/assinar";
+        url.searchParams.set("upgrade", "completo");
+        return NextResponse.redirect(url);
+      }
+    } else if (!essential) {
+      // usuário no plano grátis (sem assinatura paga): acesso por 7 dias
+      const createdMs = user.created_at
+        ? new Date(user.created_at).getTime()
+        : Date.now();
+      const days = (Date.now() - createdMs) / 86400000;
       const url = request.nextUrl.clone();
       url.pathname = "/assinar";
-      return NextResponse.redirect(url);
-    }
-    // recursos exclusivos do plano Completo (Suprema também acessa)
-    if (requiresCompleto(pathname) && !tierAtLeast(tierOf(sub), "completo")) {
-      const url = request.nextUrl.clone();
-      url.pathname = "/assinar";
-      url.searchParams.set("upgrade", "completo");
-      return NextResponse.redirect(url);
+      if (days > 7) {
+        // período grátis de 7 dias expirou → bloqueia tudo até assinar
+        url.searchParams.set("trial", "expired");
+        return NextResponse.redirect(url);
+      }
+      if (!isFreeDashboardPath(pathname)) {
+        // dentro dos 7 dias, mas a rota é de plano pago
+        return NextResponse.redirect(url);
+      }
     }
   }
 

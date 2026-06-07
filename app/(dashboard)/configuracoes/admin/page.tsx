@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ShieldCheck, Crown, Users } from "lucide-react";
+import { ShieldCheck, Crown, Users, Inbox } from "lucide-react";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { isAdmin } from "@/lib/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -49,6 +50,28 @@ export default async function AdminPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* atalhos */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Link href="/configuracoes/admin/clientes" className="card card-hover flex items-center gap-3 p-5">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-green/10 text-green">
+            <Users className="h-5 w-5" />
+          </span>
+          <div>
+            <p className="font-semibold">Clientes & receita</p>
+            <p className="text-sm text-text-secondary">MRR, assinaturas, planos e Stripe.</p>
+          </div>
+        </Link>
+        <Link href="/configuracoes/admin/mensagens" className="card card-hover flex items-center gap-3 p-5">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary-light">
+            <Inbox className="h-5 w-5" />
+          </span>
+          <div>
+            <p className="font-semibold">Mensagens</p>
+            <p className="text-sm text-text-secondary">Canal de comunicação com os usuários.</p>
+          </div>
+        </Link>
+      </div>
 
       <Card>
         <CardHeader>

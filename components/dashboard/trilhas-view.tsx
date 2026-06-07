@@ -19,6 +19,7 @@ const TIER_BADGE: Record<Tier, string> = {
   essencial: "border-secondary/30 bg-secondary/10 text-secondary",
   completo: "border-primary/30 bg-primary/10 text-primary-light",
   suprema: "border-primary/40 bg-gradient-to-r from-primary/20 to-magenta/10 text-primary-light",
+  vitalicio: "border-primary/50 bg-gradient-to-r from-primary/25 to-magenta/15 text-primary-light",
 };
 
 const FILTERS = [
