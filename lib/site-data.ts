@@ -51,7 +51,7 @@ export interface Feature {
 }
 
 export const FEATURES: Feature[] = [
-  { icon: BookOpen, title: "Conteúdos organizados", description: "74 módulos e centenas de lições do básico ao avançado, em trilhas guiadas." },
+  { icon: BookOpen, title: "Conteúdos organizados", description: "80+ módulos e centenas de lições do básico ao avançado, em 16 trilhas guiadas." },
   { icon: LineChart, title: "Evolução visual", description: "Dashboard com progresso, XP, gráficos e seu nível no ecossistema Python." },
   { icon: Layers, title: "Stack Python completa", description: "Conheça as tecnologias essenciais com logos reais e links da documentação." },
   { icon: GraduationCap, title: "Aulas da Udemy e YouTube", description: "Organize cursos e playlists com importação automática de banner e dados." },

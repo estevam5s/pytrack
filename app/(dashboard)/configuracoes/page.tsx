@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowRight,
+  Bot,
   CreditCard,
   Database,
   Gift,
@@ -25,6 +26,7 @@ const SECTIONS = [
   { href: "/configuracoes/conta", label: "Conta", desc: "E-mail, dados da conta e plano atual.", icon: UserCircle, accent: "text-primary-light bg-primary/10" },
   { href: "/configuracoes/perfil", label: "Perfil", desc: "Nome, avatar e informações públicas.", icon: UserCog, accent: "text-blue bg-blue/10" },
   { href: "/configuracoes/plano", label: "Plano e cobrança", desc: "Upgrade, downgrade, reembolso e faturas.", icon: CreditCard, accent: "text-green bg-green/10" },
+  { href: "/configuracoes/ia", label: "IA & Modelos", desc: "Use sua própria IA (OpenRouter, Claude, Gemini…).", icon: Bot, accent: "text-primary-light bg-primary/10" },
   { href: "/configuracoes/indicacoes", label: "Indique e ganhe", desc: "Convide amigos e ganhe meses grátis.", icon: Gift, accent: "text-magenta bg-magenta/10" },
   { href: "/configuracoes/aparencia", label: "Aparência", desc: "Tema claro/escuro e preferências.", icon: Palette, accent: "text-blue bg-blue/10" },
   { href: "/configuracoes/plataforma", label: "Plataforma", desc: "Preferências gerais da plataforma.", icon: Database, accent: "text-green bg-green/10" },

@@ -76,10 +76,10 @@ export function HeroSection() {
             className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-text-secondary"
           >
             {[
-              ["74", "módulos"],
+              ["16", "trilhas"],
+              ["80+", "módulos"],
               ["2.4k+", "exercícios"],
               ["1.3k+", "projetos"],
-              ["8", "trilhas"],
             ].map(([n, l]) => (
               <div key={l}>
                 <span className="text-xl font-bold text-foreground">{n}</span>{" "}

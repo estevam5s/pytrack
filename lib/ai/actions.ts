@@ -1,6 +1,13 @@
 "use server";
 
-import { chatJson } from "./openrouter";
+import { chatJson, type ChatMessage, type ChatOptions } from "./openrouter";
+import { getUserAiOverride } from "./user-settings";
+
+/** chatJson usando a IA própria do usuário (se configurada) ou o padrão. */
+async function aiJson<T>(messages: ChatMessage[], opts: ChatOptions = {}) {
+  const override = await getUserAiOverride();
+  return chatJson<T>(messages, opts, override ?? undefined);
+}
 
 // ============================== Exercícios ==============================
 export interface ExerciseAnalysis {
@@ -35,7 +42,7 @@ export async function analyzeExercise(input: {
     return { ...empty, error: "Escreva seu código antes de analisar." };
   }
 
-  const res = await chatJson<Partial<ExerciseAnalysis>>(
+  const res = await aiJson<Partial<ExerciseAnalysis>>(
     [
       {
         role: "system",
@@ -134,7 +141,7 @@ export async function analyzeCareer(
     .map((a) => `${a.area}: ${a.percentage}%`)
     .join(", ");
 
-  const res = await chatJson<Partial<CareerAssessment>>(
+  const res = await aiJson<Partial<CareerAssessment>>(
     [
       {
         role: "system",
@@ -227,7 +234,7 @@ export async function analyzeUdemyCourse(input: {
     tips: [],
   };
 
-  const res = await chatJson<Partial<CourseAnalysis>>(
+  const res = await aiJson<Partial<CourseAnalysis>>(
     [
       {
         role: "system",
@@ -309,7 +316,7 @@ export async function analyzeUdemyCollection(input: {
     )
     .join("\n");
 
-  const res = await chatJson<Partial<CollectionAnalysis>>(
+  const res = await aiJson<Partial<CollectionAnalysis>>(
     [
       {
         role: "system",

@@ -13,7 +13,7 @@ const MODELS = [
   "nvidia/nemotron-nano-9b-v2:free",
 ];
 
-const ENDPOINT = "https://openrouter.ai/api/v1/chat/completions";
+const DEFAULT_BASE = "https://openrouter.ai/api/v1";
 
 export interface ChatOptions {
   maxTokens?: number;
@@ -21,18 +21,30 @@ export interface ChatOptions {
   json?: boolean;
 }
 
+/** Configuração de IA personalizada do usuário (provider próprio). */
+export interface AiOverride {
+  apiKey?: string;
+  model?: string;
+  baseUrl?: string;
+}
+
 export async function chatComplete(
   messages: ChatMessage[],
   opts: ChatOptions = {},
+  override?: AiOverride,
 ): Promise<{ content?: string; model?: string; error?: string }> {
-  const key = process.env.OPENROUTER_API_KEY;
-  if (!key) return { error: "OPENROUTER_API_KEY não configurada." };
+  const key = override?.apiKey || process.env.OPENROUTER_API_KEY;
+  if (!key) return { error: "Nenhuma chave de IA configurada." };
+
+  const base = (override?.baseUrl || DEFAULT_BASE).replace(/\/+$/, "");
+  const endpoint = `${base}/chat/completions`;
+  const models = override?.model ? [override.model] : MODELS;
 
   let lastError = "Nenhum modelo disponível.";
 
-  for (const model of MODELS) {
+  for (const model of models) {
     try {
-      const res = await fetch(ENDPOINT, {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${key}`,
@@ -74,12 +86,13 @@ export async function chatComplete(
 export async function chatJson<T>(
   messages: ChatMessage[],
   opts: ChatOptions = {},
+  override?: AiOverride,
 ): Promise<{ data?: T; model?: string; raw?: string; error?: string }> {
   let lastErr = "Resposta inválida da IA.";
   let lastRaw: string | undefined;
   let lastModel: string | undefined;
   for (let attempt = 0; attempt < 2; attempt++) {
-    const res = await chatComplete(messages, { ...opts, json: true });
+    const res = await chatComplete(messages, { ...opts, json: true }, override);
     if (res.error || !res.content) {
       lastErr = res.error ?? lastErr;
       continue;
