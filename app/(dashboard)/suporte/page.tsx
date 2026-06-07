@@ -1,10 +1,11 @@
 import { LifeBuoy, MessageSquare } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageHeader } from "@/components/dashboard/page-header";
 import { SupportForm } from "@/components/support/support-form";
 import { cn } from "@/lib/utils";
 
-export const metadata = { title: "Suporte · Configurações · PyTrack" };
+export const metadata = { title: "Suporte · PyTrack" };
 export const dynamic = "force-dynamic";
 
 export default async function SuportePage() {
@@ -32,7 +33,12 @@ export default async function SuportePage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="mx-auto max-w-3xl">
+      <PageHeader
+        title="Suporte"
+        description="Fale com a equipe PyTrack: dúvidas, problemas no plano, sugestões e melhorias."
+      />
+      <div className="space-y-6">
       <Card className="border-primary/30">
         <CardContent className="flex items-center gap-3 p-5">
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary-light">
@@ -88,6 +94,7 @@ export default async function SuportePage() {
           </CardContent>
         </Card>
       )}
+      </div>
     </div>
   );
 }

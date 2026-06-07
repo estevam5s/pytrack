@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 
 export default async function ClientesPage() {
   const me = await getCurrentUser();
-  if (!isAdmin(me?.email)) redirect("/configuracoes");
+  if (!isAdmin(me?.email)) redirect("/inicio");
 
   const admin = createAdminClient();
 

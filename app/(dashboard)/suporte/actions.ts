@@ -31,6 +31,6 @@ export async function sendSupportMessage(
   });
   if (error) return { error: error.message };
 
-  revalidatePath("/configuracoes/suporte");
+  revalidatePath("/suporte");
   return { success: "Mensagem enviada! Nossa equipe responde por aqui." };
 }

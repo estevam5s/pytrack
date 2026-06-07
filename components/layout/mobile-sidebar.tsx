@@ -6,7 +6,15 @@ import { useUIStore } from "@/store/ui";
 import { SidebarContent } from "./sidebar";
 import type { Tier } from "@/lib/billing-access";
 
-export function MobileSidebar({ tier = "free", notif = 0 }: { tier?: Tier; notif?: number }) {
+export function MobileSidebar({
+  tier = "free",
+  notif = 0,
+  isAdmin = false,
+}: {
+  tier?: Tier;
+  notif?: number;
+  isAdmin?: boolean;
+}) {
   const { mobileSidebarOpen, setMobileSidebar } = useUIStore();
 
   return (
@@ -34,7 +42,7 @@ export function MobileSidebar({ tier = "free", notif = 0 }: { tier?: Tier; notif
             >
               <X className="h-5 w-5" />
             </button>
-            <SidebarContent tier={tier} notif={notif} onNavigate={() => setMobileSidebar(false)} />
+            <SidebarContent tier={tier} notif={notif} isAdmin={isAdmin} onNavigate={() => setMobileSidebar(false)} />
           </motion.aside>
         </div>
       )}

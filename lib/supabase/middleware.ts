@@ -89,6 +89,9 @@ export async function updateSession(request: NextRequest) {
     // sempre acessível (para pagar/gerenciar a conta)
     const essential =
       pathname === "/assinar" ||
+      pathname === "/suporte" ||
+      pathname === "/admin" ||
+      pathname.startsWith("/admin/") ||
       pathname === "/configuracoes" ||
       pathname.startsWith("/configuracoes/");
 

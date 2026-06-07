@@ -5,6 +5,7 @@ import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { isAdmin } from "@/lib/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageHeader } from "@/components/dashboard/page-header";
 import { CreateUserForm } from "@/components/admin/create-user-form";
 
 export const metadata = { title: "Admin · PyTrack" };
@@ -12,7 +13,7 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
   const user = await getCurrentUser();
-  if (!isAdmin(user?.email)) redirect("/configuracoes");
+  if (!isAdmin(user?.email)) redirect("/inicio");
 
   // lista de usuários com plano vitalício (comp)
   let compUsers: { email: string; created_at: string }[] = [];
@@ -36,7 +37,12 @@ export default async function AdminPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div>
+      <PageHeader
+        title="Administração"
+        description="Crie usuários, gerencie acessos vitalícios e abra as ferramentas de gestão."
+      />
+      <div className="space-y-6">
       <Card className="border-primary/30">
         <CardContent className="flex items-center gap-3 p-5">
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary-light">
@@ -53,7 +59,7 @@ export default async function AdminPage() {
 
       {/* atalhos */}
       <div className="grid gap-4 sm:grid-cols-2">
-        <Link href="/configuracoes/admin/clientes" className="card card-hover flex items-center gap-3 p-5">
+        <Link href="/admin/clientes" className="card card-hover flex items-center gap-3 p-5">
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-green/10 text-green">
             <Users className="h-5 w-5" />
           </span>
@@ -62,7 +68,7 @@ export default async function AdminPage() {
             <p className="text-sm text-text-secondary">MRR, assinaturas, planos e Stripe.</p>
           </div>
         </Link>
-        <Link href="/configuracoes/admin/mensagens" className="card card-hover flex items-center gap-3 p-5">
+        <Link href="/admin/mensagens" className="card card-hover flex items-center gap-3 p-5">
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary-light">
             <Inbox className="h-5 w-5" />
           </span>
@@ -111,6 +117,7 @@ export default async function AdminPage() {
           )}
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

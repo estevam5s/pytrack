@@ -31,10 +31,12 @@ export default async function DashboardLayout({
   const hasAccess = await userHasAccess(user.id);
   const tier = await getUserTier(user.id);
 
+  const admin = isAdmin(user.email);
+
   // notificações de mensagens não lidas (badge no menu)
   let notif = 0;
   try {
-    if (isAdmin(user.email)) {
+    if (admin) {
       const adminDb = createAdminClient();
       const { count } = await adminDb
         .from("support_messages")
@@ -70,9 +72,9 @@ export default async function DashboardLayout({
         <LevelUpNotifier serverCounts={levelCounts} />
         <PomodoroProvider />
         <OnboardingTour />
-        <MobileSidebar tier={tier} notif={notif} />
+        <MobileSidebar tier={tier} notif={notif} isAdmin={admin} />
         <CommandMenu index={searchIndex} />
-        <DashboardShell tier={tier} notif={notif}>
+        <DashboardShell tier={tier} notif={notif} isAdmin={admin}>
           <Header
             name={profile?.name ?? null}
             email={user.email ?? ""}

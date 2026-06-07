@@ -6,7 +6,7 @@ import { AlertCircle, CheckCircle2, Send } from "lucide-react";
 import {
   sendSupportMessage,
   type SupportResult,
-} from "@/app/(dashboard)/configuracoes/suporte/actions";
+} from "@/app/(dashboard)/suporte/actions";
 import { Input } from "@/components/ui/input";
 
 function SubmitBtn() {

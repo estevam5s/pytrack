@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { UserPlus, CheckCircle2, AlertCircle } from "lucide-react";
-import { createSupremaUser, type CreateUserResult } from "@/app/(dashboard)/configuracoes/admin/actions";
+import { createSupremaUser, type CreateUserResult } from "@/app/(dashboard)/admin/actions";
 import { Input } from "@/components/ui/input";
 
 function SubmitButton() {

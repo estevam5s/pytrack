@@ -4,6 +4,7 @@ import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { isAdmin } from "@/lib/admin";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { Card, CardContent } from "@/components/ui/card";
+import { PageHeader } from "@/components/dashboard/page-header";
 import { ReplyForm } from "@/components/admin/reply-form";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +23,7 @@ interface Msg {
 
 export default async function AdminMensagensPage() {
   const me = await getCurrentUser();
-  if (!isAdmin(me?.email)) redirect("/configuracoes");
+  if (!isAdmin(me?.email)) redirect("/inicio");
 
   const admin = createAdminClient();
   const { data: msgs = [] } = await admin
@@ -63,7 +64,12 @@ export default async function AdminMensagensPage() {
   ).length;
 
   return (
-    <div className="space-y-6">
+    <div>
+      <PageHeader
+        title="Canal de comunicação"
+        description="Mensagens dos usuários e suporte. Responda diretamente por aqui."
+      />
+      <div className="space-y-6">
       <Card className="border-primary/30">
         <CardContent className="flex items-center gap-3 p-5">
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary-light">
@@ -128,6 +134,7 @@ export default async function AdminMensagensPage() {
           );
         })
       )}
+      </div>
     </div>
   );
 }

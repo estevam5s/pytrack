@@ -37,7 +37,7 @@ export async function replyToUser(
       .eq("user_id", userId)
       .eq("sender", "user");
 
-    revalidatePath("/configuracoes/admin/mensagens");
+    revalidatePath("/admin/mensagens");
     return { success: "Resposta enviada." };
   } catch (e) {
     return { error: e instanceof Error ? e.message : "Erro ao responder." };

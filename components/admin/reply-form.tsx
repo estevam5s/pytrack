@@ -3,7 +3,7 @@
 import { useActionState, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { AlertCircle, CheckCircle2, Send } from "lucide-react";
-import { replyToUser, type ReplyResult } from "@/app/(dashboard)/configuracoes/admin/mensagens/actions";
+import { replyToUser, type ReplyResult } from "@/app/(dashboard)/admin/mensagens/actions";
 
 function Btn() {
   const { pending } = useFormStatus();

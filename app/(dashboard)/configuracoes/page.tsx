@@ -6,20 +6,15 @@ import {
   Database,
   Gift,
   Info,
-  Inbox,
-  LifeBuoy,
   Palette,
   ShieldAlert,
-  ShieldCheck,
   UserCircle,
   UserCog,
-  Users,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { getUserTier } from "@/lib/stripe/subscriptions";
 import { TIER_LABEL, type Tier } from "@/lib/billing-access";
-import { isAdmin } from "@/lib/admin";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -31,17 +26,10 @@ const SECTIONS = [
   { href: "/configuracoes/perfil", label: "Perfil", desc: "Nome, avatar e informações públicas.", icon: UserCog, accent: "text-blue bg-blue/10" },
   { href: "/configuracoes/plano", label: "Plano e cobrança", desc: "Upgrade, downgrade, reembolso e faturas.", icon: CreditCard, accent: "text-green bg-green/10" },
   { href: "/configuracoes/indicacoes", label: "Indique e ganhe", desc: "Convide amigos e ganhe meses grátis.", icon: Gift, accent: "text-magenta bg-magenta/10" },
-  { href: "/configuracoes/suporte", label: "Suporte", desc: "Fale com a equipe: dúvidas e sugestões.", icon: LifeBuoy, accent: "text-primary-light bg-primary/10" },
   { href: "/configuracoes/aparencia", label: "Aparência", desc: "Tema claro/escuro e preferências.", icon: Palette, accent: "text-blue bg-blue/10" },
   { href: "/configuracoes/plataforma", label: "Plataforma", desc: "Preferências gerais da plataforma.", icon: Database, accent: "text-green bg-green/10" },
   { href: "/configuracoes/dados", label: "Dados e privacidade", desc: "Seus dados, exportação e exclusão.", icon: ShieldAlert, accent: "text-magenta bg-magenta/10" },
   { href: "/configuracoes/sobre", label: "Sobre", desc: "Sobre a plataforma e ajuda.", icon: Info, accent: "text-text-secondary bg-surface-2" },
-];
-
-const ADMIN_SECTIONS = [
-  { href: "/configuracoes/admin", label: "Admin", desc: "Criar usuários e gerenciar acessos.", icon: ShieldCheck, accent: "text-primary-light bg-primary/10" },
-  { href: "/configuracoes/admin/clientes", label: "Clientes & receita", desc: "MRR, assinaturas, planos e Stripe.", icon: Users, accent: "text-green bg-green/10" },
-  { href: "/configuracoes/admin/mensagens", label: "Mensagens", desc: "Canal de comunicação com usuários.", icon: Inbox, accent: "text-magenta bg-magenta/10" },
 ];
 
 const TIER_BADGE: Record<Tier, string> = {
@@ -80,7 +68,6 @@ export default async function ConfiguracoesHomePage() {
     supabase.from("users_profile").select("name, avatar_url").eq("user_id", user?.id ?? "").maybeSingle(),
     user ? getUserTier(user.id) : Promise.resolve("free" as Tier),
   ]);
-  const admin = isAdmin(user?.email);
   const memberSince = user?.created_at
     ? new Date(user.created_at).toLocaleDateString("pt-BR", { month: "long", year: "numeric" })
     : "—";
@@ -119,19 +106,7 @@ export default async function ConfiguracoesHomePage() {
       </Card>
 
       {/* seções */}
-      <div>
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-text-secondary">Geral</h2>
-        <SectionGrid items={SECTIONS} />
-      </div>
-
-      {admin && (
-        <div>
-          <h2 className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
-            <ShieldCheck className="h-4 w-4 text-primary-light" /> Administração
-          </h2>
-          <SectionGrid items={ADMIN_SECTIONS} />
-        </div>
-      )}
+      <SectionGrid items={SECTIONS} />
     </div>
   );
 }

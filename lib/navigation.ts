@@ -18,14 +18,21 @@ import {
   Users,
   Route,
   Smartphone,
+  LifeBuoy,
+  ShieldCheck,
+  Inbox,
+  LineChart,
   type LucideIcon,
 } from "lucide-react";
+
+export type NavGroup = "Estudar" | "Recursos" | "Carreira" | "Conta" | "Admin";
 
 export interface NavItem {
   title: string;
   href: string;
   icon: LucideIcon;
-  group: "Estudar" | "Recursos" | "Carreira" | "Conta";
+  group: NavGroup;
+  adminOnly?: boolean;
 }
 
 export const NAV_ITEMS: NavItem[] = [
@@ -93,12 +100,17 @@ export const NAV_ITEMS: NavItem[] = [
     group: "Carreira",
   },
   { title: "Perfil", href: "/perfil", icon: User, group: "Conta" },
+  { title: "Suporte", href: "/suporte", icon: LifeBuoy, group: "Conta" },
   {
     title: "Configurações",
     href: "/configuracoes",
     icon: Settings,
     group: "Conta",
   },
+  // ── Admin (somente administradores) ──
+  { title: "Admin", href: "/admin", icon: ShieldCheck, group: "Admin", adminOnly: true },
+  { title: "Clientes & receita", href: "/admin/clientes", icon: LineChart, group: "Admin", adminOnly: true },
+  { title: "Mensagens", href: "/admin/mensagens", icon: Inbox, group: "Admin", adminOnly: true },
 ];
 
-export const NAV_GROUPS = ["Estudar", "Recursos", "Carreira", "Conta"] as const;
+export const NAV_GROUPS = ["Estudar", "Recursos", "Carreira", "Conta", "Admin"] as const;

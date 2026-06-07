@@ -12,13 +12,16 @@ import { cn } from "@/lib/utils";
 export function SidebarContent({
   tier = "free",
   notif = 0,
+  isAdmin = false,
   onNavigate,
 }: {
   tier?: Tier;
   notif?: number;
+  isAdmin?: boolean;
   onNavigate?: () => void;
 }) {
   const toggleSidebar = useUIStore((s) => s.toggleSidebar);
+  const badgeHref = isAdmin ? "/admin/mensagens" : "/suporte";
   return (
     <div className="flex h-full flex-col">
       <div className="flex h-16 items-center gap-2.5 border-b border-border px-5">
@@ -47,22 +50,28 @@ export function SidebarContent({
       </div>
 
       <nav className="flex-1 space-y-6 overflow-y-auto px-3 py-5">
-        {NAV_GROUPS.map((group) => (
-          <div key={group} className="space-y-1">
-            <p className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/70">
-              {group}
-            </p>
-            {NAV_ITEMS.filter((i) => i.group === group).map((item) => (
-              <SidebarItem
-                key={item.href}
-                item={item}
-                tier={tier}
-                badge={item.href === "/configuracoes" ? notif : 0}
-                onNavigate={onNavigate}
-              />
-            ))}
-          </div>
-        ))}
+        {NAV_GROUPS.map((group) => {
+          const items = NAV_ITEMS.filter(
+            (i) => i.group === group && (!i.adminOnly || isAdmin),
+          );
+          if (items.length === 0) return null;
+          return (
+            <div key={group} className="space-y-1">
+              <p className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-wider text-text-secondary/70">
+                {group}
+              </p>
+              {items.map((item) => (
+                <SidebarItem
+                  key={item.href}
+                  item={item}
+                  tier={tier}
+                  badge={item.href === badgeHref ? notif : 0}
+                  onNavigate={onNavigate}
+                />
+              ))}
+            </div>
+          );
+        })}
       </nav>
 
       <div className="space-y-2.5 border-t border-border p-4">
@@ -90,10 +99,12 @@ export function DesktopSidebar({
   collapsed,
   tier = "free",
   notif = 0,
+  isAdmin = false,
 }: {
   collapsed?: boolean;
   tier?: Tier;
   notif?: number;
+  isAdmin?: boolean;
 }) {
   return (
     <aside
@@ -102,7 +113,7 @@ export function DesktopSidebar({
         collapsed && "-translate-x-full",
       )}
     >
-      <SidebarContent tier={tier} notif={notif} />
+      <SidebarContent tier={tier} notif={notif} isAdmin={isAdmin} />
     </aside>
   );
 }

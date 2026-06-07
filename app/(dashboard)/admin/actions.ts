@@ -53,7 +53,7 @@ export async function createSupremaUser(
     );
     if (subErr) return { error: `Usuário criado, mas falhou a assinatura: ${subErr.message}` };
 
-    revalidatePath("/configuracoes/admin");
+    revalidatePath("/admin");
     return { success: `Usuário ${email} criado com plano Suprema vitalício.` };
   } catch (e) {
     return { error: e instanceof Error ? e.message : "Erro inesperado." };

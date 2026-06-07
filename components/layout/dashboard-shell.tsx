@@ -10,10 +10,12 @@ export function DashboardShell({
   children,
   tier = "free",
   notif = 0,
+  isAdmin = false,
 }: {
   children: React.ReactNode;
   tier?: Tier;
   notif?: number;
+  isAdmin?: boolean;
 }) {
   const collapsed = useUIStore((s) => s.sidebarCollapsed);
   const setCollapsed = useUIStore((s) => s.setSidebarCollapsed);
@@ -30,7 +32,7 @@ export function DashboardShell({
 
   return (
     <>
-      <DesktopSidebar collapsed={collapsed} tier={tier} notif={notif} />
+      <DesktopSidebar collapsed={collapsed} tier={tier} notif={notif} isAdmin={isAdmin} />
       <div
         className={cn(
           "transition-[padding] duration-300 ease-in-out",

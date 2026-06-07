@@ -90,6 +90,8 @@ export const FREE_MODULE_SLUG = "parte-1-basico";
 /** Rotas do dashboard acessíveis no plano gratuito (sem assinatura). */
 export function isFreeDashboardPath(pathname: string): boolean {
   if (pathname === "/assinar") return true; // página de assinatura (evita loop)
+  if (pathname === "/suporte") return true; // canal de suporte sempre acessível
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) return true; // gating de admin é na própria página
   if (pathname === "/inicio") return true; // hub com upsell
   if (pathname === "/minhas-trilhas" || pathname.startsWith("/minhas-trilhas/"))
     return true; // navegar/escolher trilhas é livre (módulos é que travam)
