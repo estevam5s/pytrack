@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { DataFastInit } from "@/components/datafast-init";
 import "./globals.css";
 
 const inter = Inter({
@@ -100,6 +101,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${mono.variable} font-sans`}>
+        <DataFastInit />
         {children}
       </body>
     </html>

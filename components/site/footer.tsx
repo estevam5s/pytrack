@@ -7,7 +7,6 @@ import {
   Linkedin,
   Mail,
   Twitter,
-  Youtube,
 } from "lucide-react";
 import { BRAND, NAV_LINKS, SIGNUP_URL, LOGIN_URL } from "@/lib/site-links";
 import { Button } from "@/components/site/site-button";
@@ -51,11 +50,15 @@ const COLS = [
   },
 ];
 
-const SOCIALS = [
-  { Icon: Github, label: "GitHub" },
-  { Icon: Linkedin, label: "LinkedIn" },
-  { Icon: Twitter, label: "Twitter" },
-  { Icon: Youtube, label: "YouTube" },
+const SOCIALS: { Icon: typeof Github; label: string; href: string | null }[] = [
+  { Icon: Github, label: "GitHub", href: "https://github.com/PyTrackOrganization" },
+  {
+    Icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/pytrack/about/?viewAsMember=true",
+  },
+  { Icon: Twitter, label: "Twitter (em breve)", href: null },
+  { Icon: Mail, label: "E-mail", href: "mailto:contato@estevamsouza.com.br" },
 ];
 
 export function Footer() {
@@ -115,16 +118,29 @@ export function Footer() {
               básico à carreira profissional.
             </p>
             <div className="mt-5 flex gap-2">
-              {SOCIALS.map(({ Icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  className="group flex h-10 w-10 items-center justify-center rounded-xl border border-border text-text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-primary/10 hover:text-foreground"
-                >
-                  <Icon className="h-4 w-4 transition-transform group-hover:scale-110" />
-                </a>
-              ))}
+              {SOCIALS.map(({ Icon, label, href }) =>
+                href ? (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    aria-label={label}
+                    className="group flex h-10 w-10 items-center justify-center rounded-xl border border-border text-text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-primary/10 hover:text-foreground"
+                  >
+                    <Icon className="h-4 w-4 transition-transform group-hover:scale-110" />
+                  </a>
+                ) : (
+                  <span
+                    key={label}
+                    aria-label={label}
+                    title="Em breve"
+                    className="flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-xl border border-border/60 text-text-secondary/40"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </span>
+                ),
+              )}
             </div>
           </Reveal>
 

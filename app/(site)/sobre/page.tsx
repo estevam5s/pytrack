@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Compass, GraduationCap, Rocket, Target } from "lucide-react";
+import { Compass, GraduationCap, Github, Linkedin, Mail, Rocket, Target } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeader } from "@/components/site/section-header";
 import { Reveal } from "@/components/site/reveal";
@@ -87,6 +87,52 @@ export default function SobrePage() {
           title={<>Aprender, praticar e <GradientText>evoluir</GradientText></>}
           description="Cada módulo combina teoria objetiva, exemplos de código, exercícios com feedback de IA e projetos aplicados — sempre com seu progresso registrado."
         />
+      </section>
+
+      {/* Contato & comunidade */}
+      <section className="container py-12">
+        <SectionHeader
+          badge="Contato"
+          title={<>Fale com a <GradientText>PyTrack</GradientText></>}
+          description="Acompanhe o projeto, conecte-se e tire dúvidas pelos nossos canais oficiais."
+        />
+        <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
+          {[
+            {
+              icon: Github,
+              label: "GitHub",
+              desc: "@PyTrackOrganization",
+              href: "https://github.com/PyTrackOrganization",
+            },
+            {
+              icon: Linkedin,
+              label: "LinkedIn",
+              desc: "PyTrack",
+              href: "https://www.linkedin.com/company/pytrack/about/?viewAsMember=true",
+            },
+            {
+              icon: Mail,
+              label: "E-mail",
+              desc: "contato@estevamsouza.com.br",
+              href: "mailto:contato@estevamsouza.com.br",
+            },
+          ].map((c) => (
+            <Reveal key={c.label}>
+              <a
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="card card-hover flex h-full flex-col items-center gap-2 p-6 text-center"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary-light">
+                  <c.icon className="h-6 w-6" />
+                </span>
+                <p className="font-semibold">{c.label}</p>
+                <p className="break-all text-sm text-text-secondary">{c.desc}</p>
+              </a>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <CTASection />
