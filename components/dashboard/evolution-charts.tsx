@@ -1,5 +1,6 @@
 "use client";
 
+import { Target } from "lucide-react";
 import {
   Bar,
   BarChart,
@@ -68,6 +69,22 @@ export function SkillRadar({
 }: {
   data: { area: string; percentage: number }[];
 }) {
+  // estado vazio: sem nenhuma proficiência o radar vira um ponto no centro e
+  // parece quebrado — mostramos uma orientação no lugar.
+  if (!data.length || data.every((d) => d.percentage === 0)) {
+    return (
+      <div className="flex h-[300px] flex-col items-center justify-center gap-2 text-center">
+        <Target className="h-9 w-9 text-primary/60" />
+        <p className="text-sm font-medium text-foreground">
+          Seu mapa de proficiência aparece aqui
+        </p>
+        <p className="max-w-xs text-xs text-text-secondary">
+          Comece a estudar e concluir conteúdos para ver seu domínio crescer por
+          área do ecossistema Python.
+        </p>
+      </div>
+    );
+  }
   return (
     <ResponsiveContainer width="100%" height={300}>
       <RadarChart data={data} outerRadius="72%">

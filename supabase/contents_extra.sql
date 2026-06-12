@@ -1,5 +1,4 @@
 -- GERADO por gen-ecosystem-content.mjs
-delete from public.contents where slug like 'ext-%';
 insert into public.contents
   (title, description, category, level, area, order_index, estimated_hours, slug, lessons_count)
 values
@@ -58,4 +57,21 @@ values
 ('Web Scraping com Playwright', 'Trilha prática e direta sobre web scraping com playwright, com pontos-chave, exemplos de código e boas práticas.', 'Scraping', 'intermediario', 'Automação', 153, 6, 'ext-web-scraping-com-playwright', 2),
 ('Observabilidade com OpenTelemetry', 'Trilha prática e direta sobre observabilidade com opentelemetry, com pontos-chave, exemplos de código e boas práticas.', 'Observabilidade', 'avancado', 'DevOps', 154, 6, 'ext-observabilidade-com-opentelemetry', 2),
 ('Qualidade com mypy e Ruff', 'Trilha prática e direta sobre qualidade com mypy e ruff, com pontos-chave, exemplos de código e boas práticas.', 'Qualidade', 'intermediario', 'Backend', 155, 6, 'ext-qualidade-com-mypy-e-ruff', 2),
-('Construindo um LLM do Zero', 'Trilha prática e direta sobre construindo um llm do zero, com pontos-chave, exemplos de código e boas práticas.', 'IA Generativa', 'avancado', 'Machine Learning', 156, 27, 'ext-construindo-um-llm-do-zero', 9);
+('Construindo um LLM do Zero', 'Trilha prática e direta sobre construindo um llm do zero, com pontos-chave, exemplos de código e boas práticas.', 'IA Generativa', 'avancado', 'Machine Learning', 156, 27, 'ext-construindo-um-llm-do-zero', 9),
+('Django na Prática', 'Trilha prática e direta sobre django na prática, com pontos-chave, exemplos de código e boas práticas.', 'Web Framework', 'intermediario', 'Web', 157, 9, 'ext-django-na-pratica', 3),
+('Flask e APIs Leves', 'Trilha prática e direta sobre flask e apis leves, com pontos-chave, exemplos de código e boas práticas.', 'Web Framework', 'intermediario', 'Web', 158, 9, 'ext-flask-e-apis-leves', 3),
+('HTMX e Frontend Hipermídia', 'Trilha prática e direta sobre htmx e frontend hipermídia, com pontos-chave, exemplos de código e boas práticas.', 'Frontend', 'intermediario', 'Web', 159, 6, 'ext-htmx-e-frontend-hipermidia', 2),
+('Pytest Avançado e TDD', 'Trilha prática e direta sobre pytest avançado e tdd, com pontos-chave, exemplos de código e boas práticas.', 'Testes', 'intermediario', 'Qualidade', 160, 9, 'ext-pytest-avancado-e-tdd', 3),
+('Testes de Carga, Propriedade e Mutação', 'Trilha prática e direta sobre testes de carga, propriedade e mutação, com pontos-chave, exemplos de código e boas práticas.', 'Testes', 'avancado', 'Qualidade', 161, 6, 'ext-testes-de-carga-propriedade-e-mutacao', 2),
+('Profiling e Otimização de Python', 'Trilha prática e direta sobre profiling e otimização de python, com pontos-chave, exemplos de código e boas práticas.', 'Performance', 'avancado', 'Performance & Async', 162, 9, 'ext-profiling-e-otimizacao-de-python', 3),
+('Cython, Extensões C e CPython', 'Trilha prática e direta sobre cython, extensões c e cpython, com pontos-chave, exemplos de código e boas práticas.', 'Performance', 'avancado', 'Performance & Async', 163, 6, 'ext-cython-extensoes-c-e-cpython', 2),
+('MLOps: Deploy e Serving de Modelos', 'Trilha prática e direta sobre mlops: deploy e serving de modelos, com pontos-chave, exemplos de código e boas práticas.', 'MLOps', 'avancado', 'MLOps', 164, 9, 'ext-mlops-deploy-e-serving-de-modelos', 3),
+('Monitoramento e Pipelines de ML', 'Trilha prática e direta sobre monitoramento e pipelines de ml, com pontos-chave, exemplos de código e boas práticas.', 'MLOps', 'avancado', 'MLOps', 165, 6, 'ext-monitoramento-e-pipelines-de-ml', 2),
+('RAG: Geração Aumentada por Recuperação', 'Trilha prática e direta sobre rag: geração aumentada por recuperação, com pontos-chave, exemplos de código e boas práticas.', 'LLMs Aplicados', 'avancado', 'IA Generativa', 166, 9, 'ext-rag-geracao-aumentada-por-recuperacao', 3),
+('Agentes de IA com Tool Use', 'Trilha prática e direta sobre agentes de ia com tool use, com pontos-chave, exemplos de código e boas práticas.', 'LLMs Aplicados', 'avancado', 'IA Generativa', 167, 9, 'ext-agentes-de-ia-com-tool-use', 3),
+('SciPy, Simulação e Monte Carlo', 'Trilha prática e direta sobre scipy, simulação e monte carlo, com pontos-chave, exemplos de código e boas práticas.', 'Científico', 'avancado', 'Computação Científica', 168, 9, 'ext-scipy-simulacao-e-monte-carlo', 3),
+('Kubernetes e Cloud Native para Pythonistas', 'Trilha prática e direta sobre kubernetes e cloud native para pythonistas, com pontos-chave, exemplos de código e boas práticas.', 'Cloud Native', 'avancado', 'DevOps', 169, 9, 'ext-kubernetes-e-cloud-native-para-pythonistas', 3)
+on conflict (slug) where slug is not null do update set
+  title=excluded.title, description=excluded.description, category=excluded.category,
+  level=excluded.level, area=excluded.area, order_index=excluded.order_index,
+  estimated_hours=excluded.estimated_hours, lessons_count=excluded.lessons_count;

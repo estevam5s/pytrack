@@ -120,13 +120,15 @@ export async function POST(req: Request) {
         // já está nesse plano
         return NextResponse.json({ url: `${APP_URL}/configuracoes/plano` });
       }
-      await stripe.subscriptions.update(prior.stripe_subscription_id, {
-        items: [{ id: item.id, price: priceId }],
-        proration_behavior: "create_prorations",
-        cancel_at_period_end: false,
-      });
+      // upgrade = imediato + proração; downgrade = agendado p/ o fim do período
+      const { applyPlanChange } = await import("@/lib/stripe/change-plan");
+      const result = await applyPlanChange(
+        user.id,
+        prior.stripe_subscription_id,
+        priceId,
+      );
       return NextResponse.json({
-        url: `${APP_URL}/configuracoes/plano?upgraded=1`,
+        url: `${APP_URL}/configuracoes/plano?${result.kind === "downgrade" ? "scheduled" : "upgraded"}=1`,
       });
     }
 

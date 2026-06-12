@@ -2,14 +2,18 @@
 
 Isole dependências e meça o que é testado.
 
-## Pontos-chave
+> **Tema:** Testes · **Nível:** intermediario · **Trilha:** Pytest Avançado
 
-- unittest.mock e monkeypatch
-- responses/respx para HTTP
-- pytest-cov para cobertura
-- freezegun para tempo
+## Conceitos-chave
 
-## Exemplo
+Nesta lição você vai entender:
+
+- **unittest.mock e monkeypatch**
+- **responses/respx para HTTP**
+- **pytest-cov para cobertura**
+- **freezegun para tempo**
+
+## Exemplo prático
 
 ```python
 def test_api(mocker):
@@ -18,10 +22,27 @@ def test_api(mocker):
     mock.assert_called_once()
 ```
 
+Leia o exemplo linha a linha e rode-o no seu ambiente. Em seguida, altere os valores e observe o que muda — entender *por que* o código se comporta assim vale mais do que decorar a sintaxe.
+
 ## Boas práticas
 
 - Mocke nas fronteiras (I/O)
 - Cobertura é sinal, não meta
+
+## Pratique
+
+Para fixar, escreva um pequeno script que combine **unittest.mock e monkeypatch** e **responses/respx para http** em um caso do seu dia a dia. Depois refatore aplicando "Mocke nas fronteiras (I/O)".
+
+Desafio extra: explique, em uma frase, quando **não** usar esta abordagem — saber os limites de uma ferramenta é tão importante quanto saber usá-la.
+
+## Checklist de domínio
+
+Você domina esta lição quando consegue:
+
+- [ ] Explicar e aplicar: unittest.mock e monkeypatch
+- [ ] Explicar e aplicar: responses/respx para HTTP
+- [ ] Explicar e aplicar: pytest-cov para cobertura
+- [ ] Explicar e aplicar: freezegun para tempo
 
 ## Saiba mais
 

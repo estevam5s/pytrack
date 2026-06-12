@@ -289,23 +289,32 @@ export function computeStats(
   let completed = 0;
   let hoursStudied = 0;
   let totalHours = 0;
-  const areaMap: Record<string, { total: number; completed: number }> = {};
+  // `units` acumula crédito fracionário: concluído = 1.0, em andamento = % /100.
+  // Assim a proficiência reflete também o que está em progresso (antes era ignorado,
+  // o que zerava o radar mesmo com várias lições começadas).
+  const areaMap: Record<
+    string,
+    { total: number; completed: number; units: number }
+  > = {};
 
   for (const c of contents) {
     totalHours += Number(c.estimated_hours) || 0;
     const p = progress[c.id];
     const status = p?.status ?? "nao_iniciado";
-    areaMap[c.area] ??= { total: 0, completed: 0 };
+    areaMap[c.area] ??= { total: 0, completed: 0, units: 0 };
     areaMap[c.area].total += 1;
+
+    const pct = Math.max(0, Math.min(100, Number(p?.progress_percentage) || 0));
 
     if (status === "em_andamento") started += 1;
     if (status === "concluido") {
       completed += 1;
       hoursStudied += Number(c.estimated_hours) || 0;
       areaMap[c.area].completed += 1;
-    } else if (p?.progress_percentage) {
-      hoursStudied +=
-        ((Number(c.estimated_hours) || 0) * p.progress_percentage) / 100;
+      areaMap[c.area].units += 1;
+    } else if (pct > 0) {
+      hoursStudied += ((Number(c.estimated_hours) || 0) * pct) / 100;
+      areaMap[c.area].units += pct / 100;
     }
   }
 
@@ -314,7 +323,10 @@ export function computeStats(
       area,
       total: v.total,
       completed: v.completed,
-      percentage: v.total ? Math.round((v.completed / v.total) * 100) : 0,
+      // proficiência ponderada (conta progresso parcial), limitada a 100
+      percentage: v.total
+        ? Math.min(100, Math.round((v.units / v.total) * 100))
+        : 0,
     }))
     .sort((a, b) => b.percentage - a.percentage);
 

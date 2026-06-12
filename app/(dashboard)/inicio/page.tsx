@@ -215,10 +215,20 @@ export default async function HomePage() {
           </CardHeader>
           <CardContent>
             <SkillRadar
-              data={[...stats.byArea]
-                .sort((a, b) => b.total - a.total)
-                .slice(0, 8)
-                .map((a) => ({ area: a.area, percentage: a.percentage }))}
+              data={(() => {
+                // mostra primeiro as áreas onde o usuário tem proficiência (para o
+                // radar refletir o progresso real), completando com as áreas de maior
+                // volume até no máximo 8 eixos.
+                const withProgress = stats.byArea
+                  .filter((a) => a.percentage > 0)
+                  .sort((a, b) => b.percentage - a.percentage);
+                const rest = stats.byArea
+                  .filter((a) => a.percentage === 0)
+                  .sort((a, b) => b.total - a.total);
+                return [...withProgress, ...rest]
+                  .slice(0, 8)
+                  .map((a) => ({ area: a.area, percentage: a.percentage }));
+              })()}
             />
           </CardContent>
         </Card>

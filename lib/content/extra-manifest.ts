@@ -1507,5 +1507,410 @@ export const EXTRA_MODULES: ContentModule[] = [
         "order": 9
       }
     ]
+  },
+  {
+    "slug": "ext-django-na-pratica",
+    "title": "Django na Prática",
+    "description": "Trilha prática e direta sobre django na prática, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "django-na-pratica",
+    "area": "Web",
+    "level": "intermediario",
+    "category": "Web Framework",
+    "orderIndex": 157,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "models-orm-e-migrations",
+        "title": "Models, ORM e migrations",
+        "file": "doc/Conteudos/Ecossistema/django-na-pratica/01_models-orm-e-migrations.md",
+        "order": 1
+      },
+      {
+        "slug": "views-urls-e-templates",
+        "title": "Views, URLs e templates",
+        "file": "doc/Conteudos/Ecossistema/django-na-pratica/02_views-urls-e-templates.md",
+        "order": 2
+      },
+      {
+        "slug": "forms-auth-e-admin",
+        "title": "Forms, auth e admin",
+        "file": "doc/Conteudos/Ecossistema/django-na-pratica/03_forms-auth-e-admin.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-flask-e-apis-leves",
+    "title": "Flask e APIs Leves",
+    "description": "Trilha prática e direta sobre flask e apis leves, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "flask-e-apis-leves",
+    "area": "Web",
+    "level": "intermediario",
+    "category": "Web Framework",
+    "orderIndex": 158,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "rotas-blueprints-e-contexto",
+        "title": "Rotas, blueprints e contexto",
+        "file": "doc/Conteudos/Ecossistema/flask-e-apis-leves/01_rotas-blueprints-e-contexto.md",
+        "order": 1
+      },
+      {
+        "slug": "templates-jinja-e-formularios",
+        "title": "Templates Jinja e formulários",
+        "file": "doc/Conteudos/Ecossistema/flask-e-apis-leves/02_templates-jinja-e-formularios.md",
+        "order": 2
+      },
+      {
+        "slug": "deploy-com-gunicorn-e-producao",
+        "title": "Deploy com Gunicorn e produção",
+        "file": "doc/Conteudos/Ecossistema/flask-e-apis-leves/03_deploy-com-gunicorn-e-producao.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-htmx-e-frontend-hipermidia",
+    "title": "HTMX e Frontend Hipermídia",
+    "description": "Trilha prática e direta sobre htmx e frontend hipermídia, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "htmx-e-frontend-hipermidia",
+    "area": "Web",
+    "level": "intermediario",
+    "category": "Frontend",
+    "orderIndex": 159,
+    "estimatedHours": 6,
+    "lessons": [
+      {
+        "slug": "interatividade-sem-spa",
+        "title": "Interatividade sem SPA",
+        "file": "doc/Conteudos/Ecossistema/htmx-e-frontend-hipermidia/01_interatividade-sem-spa.md",
+        "order": 1
+      },
+      {
+        "slug": "padroes-com-django-flask",
+        "title": "Padrões com Django/Flask",
+        "file": "doc/Conteudos/Ecossistema/htmx-e-frontend-hipermidia/02_padroes-com-django-flask.md",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "ext-pytest-avancado-e-tdd",
+    "title": "Pytest Avançado e TDD",
+    "description": "Trilha prática e direta sobre pytest avançado e tdd, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "pytest-avancado-e-tdd",
+    "area": "Qualidade",
+    "level": "intermediario",
+    "category": "Testes",
+    "orderIndex": 160,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "fixtures-parametrizacao-e-escopo",
+        "title": "Fixtures, parametrização e escopo",
+        "file": "doc/Conteudos/Ecossistema/pytest-avancado-e-tdd/01_fixtures-parametrizacao-e-escopo.md",
+        "order": 1
+      },
+      {
+        "slug": "tdd-o-ciclo-red-green-refactor",
+        "title": "TDD: o ciclo red-green-refactor",
+        "file": "doc/Conteudos/Ecossistema/pytest-avancado-e-tdd/02_tdd-o-ciclo-red-green-refactor.md",
+        "order": 2
+      },
+      {
+        "slug": "mocks-cobertura-e-ci",
+        "title": "Mocks, cobertura e CI",
+        "file": "doc/Conteudos/Ecossistema/pytest-avancado-e-tdd/03_mocks-cobertura-e-ci.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-testes-de-carga-propriedade-e-mutacao",
+    "title": "Testes de Carga, Propriedade e Mutação",
+    "description": "Trilha prática e direta sobre testes de carga, propriedade e mutação, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "testes-de-carga-propriedade-e-mutacao",
+    "area": "Qualidade",
+    "level": "avancado",
+    "category": "Testes",
+    "orderIndex": 161,
+    "estimatedHours": 6,
+    "lessons": [
+      {
+        "slug": "property-based-com-hypothesis",
+        "title": "Property-based com Hypothesis",
+        "file": "doc/Conteudos/Ecossistema/testes-de-carga-propriedade-e-mutacao/01_property-based-com-hypothesis.md",
+        "order": 1
+      },
+      {
+        "slug": "carga-com-locust-e-mutacao",
+        "title": "Carga com Locust e mutação",
+        "file": "doc/Conteudos/Ecossistema/testes-de-carga-propriedade-e-mutacao/02_carga-com-locust-e-mutacao.md",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "ext-profiling-e-otimizacao-de-python",
+    "title": "Profiling e Otimização de Python",
+    "description": "Trilha prática e direta sobre profiling e otimização de python, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "profiling-e-otimizacao-de-python",
+    "area": "Performance & Async",
+    "level": "avancado",
+    "category": "Performance",
+    "orderIndex": 162,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "medir-antes-de-otimizar",
+        "title": "Medir antes de otimizar",
+        "file": "doc/Conteudos/Ecossistema/profiling-e-otimizacao-de-python/01_medir-antes-de-otimizar.md",
+        "order": 1
+      },
+      {
+        "slug": "estruturas-e-algoritmos-certos",
+        "title": "Estruturas e algoritmos certos",
+        "file": "doc/Conteudos/Ecossistema/profiling-e-otimizacao-de-python/02_estruturas-e-algoritmos-certos.md",
+        "order": 2
+      },
+      {
+        "slug": "paralelismo-threads-processos-e-async",
+        "title": "Paralelismo: threads, processos e async",
+        "file": "doc/Conteudos/Ecossistema/profiling-e-otimizacao-de-python/03_paralelismo-threads-processos-e-async.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-cython-extensoes-c-e-cpython",
+    "title": "Cython, Extensões C e CPython",
+    "description": "Trilha prática e direta sobre cython, extensões c e cpython, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "cython-extensoes-c-e-cpython",
+    "area": "Performance & Async",
+    "level": "avancado",
+    "category": "Performance",
+    "orderIndex": 163,
+    "estimatedHours": 6,
+    "lessons": [
+      {
+        "slug": "acelerando-com-cython",
+        "title": "Acelerando com Cython",
+        "file": "doc/Conteudos/Ecossistema/cython-extensoes-c-e-cpython/01_acelerando-com-cython.md",
+        "order": 1
+      },
+      {
+        "slug": "cpython-por-dentro",
+        "title": "CPython por dentro",
+        "file": "doc/Conteudos/Ecossistema/cython-extensoes-c-e-cpython/02_cpython-por-dentro.md",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "ext-mlops-deploy-e-serving-de-modelos",
+    "title": "MLOps: Deploy e Serving de Modelos",
+    "description": "Trilha prática e direta sobre mlops: deploy e serving de modelos, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "mlops-deploy-e-serving-de-modelos",
+    "area": "MLOps",
+    "level": "avancado",
+    "category": "MLOps",
+    "orderIndex": 164,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "empacotar-e-servir-um-modelo",
+        "title": "Empacotar e servir um modelo",
+        "file": "doc/Conteudos/Ecossistema/mlops-deploy-e-serving-de-modelos/01_empacotar-e-servir-um-modelo.md",
+        "order": 1
+      },
+      {
+        "slug": "rastreamento-de-experimentos",
+        "title": "Rastreamento de experimentos",
+        "file": "doc/Conteudos/Ecossistema/mlops-deploy-e-serving-de-modelos/02_rastreamento-de-experimentos.md",
+        "order": 2
+      },
+      {
+        "slug": "ci-cd-para-machine-learning",
+        "title": "CI/CD para machine learning",
+        "file": "doc/Conteudos/Ecossistema/mlops-deploy-e-serving-de-modelos/03_ci-cd-para-machine-learning.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-monitoramento-e-pipelines-de-ml",
+    "title": "Monitoramento e Pipelines de ML",
+    "description": "Trilha prática e direta sobre monitoramento e pipelines de ml, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "monitoramento-e-pipelines-de-ml",
+    "area": "MLOps",
+    "level": "avancado",
+    "category": "MLOps",
+    "orderIndex": 165,
+    "estimatedHours": 6,
+    "lessons": [
+      {
+        "slug": "drift-e-monitoramento-em-producao",
+        "title": "Drift e monitoramento em produção",
+        "file": "doc/Conteudos/Ecossistema/monitoramento-e-pipelines-de-ml/01_drift-e-monitoramento-em-producao.md",
+        "order": 1
+      },
+      {
+        "slug": "orquestracao-de-pipelines",
+        "title": "Orquestração de pipelines",
+        "file": "doc/Conteudos/Ecossistema/monitoramento-e-pipelines-de-ml/02_orquestracao-de-pipelines.md",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "ext-rag-geracao-aumentada-por-recuperacao",
+    "title": "RAG: Geração Aumentada por Recuperação",
+    "description": "Trilha prática e direta sobre rag: geração aumentada por recuperação, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "rag-geracao-aumentada-por-recuperacao",
+    "area": "IA Generativa",
+    "level": "avancado",
+    "category": "LLMs Aplicados",
+    "orderIndex": 166,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "embeddings-e-busca-semantica",
+        "title": "Embeddings e busca semântica",
+        "file": "doc/Conteudos/Ecossistema/rag-geracao-aumentada-por-recuperacao/01_embeddings-e-busca-semantica.md",
+        "order": 1
+      },
+      {
+        "slug": "montando-o-pipeline-rag",
+        "title": "Montando o pipeline RAG",
+        "file": "doc/Conteudos/Ecossistema/rag-geracao-aumentada-por-recuperacao/02_montando-o-pipeline-rag.md",
+        "order": 2
+      },
+      {
+        "slug": "avaliacao-e-qualidade-do-rag",
+        "title": "Avaliação e qualidade do RAG",
+        "file": "doc/Conteudos/Ecossistema/rag-geracao-aumentada-por-recuperacao/03_avaliacao-e-qualidade-do-rag.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-agentes-de-ia-com-tool-use",
+    "title": "Agentes de IA com Tool Use",
+    "description": "Trilha prática e direta sobre agentes de ia com tool use, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "agentes-de-ia-com-tool-use",
+    "area": "IA Generativa",
+    "level": "avancado",
+    "category": "LLMs Aplicados",
+    "orderIndex": 167,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "tool-use-e-function-calling",
+        "title": "Tool use e function calling",
+        "file": "doc/Conteudos/Ecossistema/agentes-de-ia-com-tool-use/01_tool-use-e-function-calling.md",
+        "order": 1
+      },
+      {
+        "slug": "padroes-de-agentes-e-orquestracao",
+        "title": "Padrões de agentes e orquestração",
+        "file": "doc/Conteudos/Ecossistema/agentes-de-ia-com-tool-use/02_padroes-de-agentes-e-orquestracao.md",
+        "order": 2
+      },
+      {
+        "slug": "seguranca-e-guardrails",
+        "title": "Segurança e guardrails",
+        "file": "doc/Conteudos/Ecossistema/agentes-de-ia-com-tool-use/03_seguranca-e-guardrails.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-scipy-simulacao-e-monte-carlo",
+    "title": "SciPy, Simulação e Monte Carlo",
+    "description": "Trilha prática e direta sobre scipy, simulação e monte carlo, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "scipy-simulacao-e-monte-carlo",
+    "area": "Computação Científica",
+    "level": "avancado",
+    "category": "Científico",
+    "orderIndex": 168,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "scipy-otimizacao-e-algebra",
+        "title": "SciPy: otimização e álgebra",
+        "file": "doc/Conteudos/Ecossistema/scipy-simulacao-e-monte-carlo/01_scipy-otimizacao-e-algebra.md",
+        "order": 1
+      },
+      {
+        "slug": "simulacao-de-monte-carlo",
+        "title": "Simulação de Monte Carlo",
+        "file": "doc/Conteudos/Ecossistema/scipy-simulacao-e-monte-carlo/02_simulacao-de-monte-carlo.md",
+        "order": 2
+      },
+      {
+        "slug": "matematica-simbolica-com-sympy",
+        "title": "Matemática simbólica com SymPy",
+        "file": "doc/Conteudos/Ecossistema/scipy-simulacao-e-monte-carlo/03_matematica-simbolica-com-sympy.md",
+        "order": 3
+      }
+    ]
+  },
+  {
+    "slug": "ext-kubernetes-e-cloud-native-para-pythonistas",
+    "title": "Kubernetes e Cloud Native para Pythonistas",
+    "description": "Trilha prática e direta sobre kubernetes e cloud native para pythonistas, com pontos-chave, exemplos de código e boas práticas.",
+    "part": 11,
+    "partLabel": "Ecossistema",
+    "folder": "kubernetes-e-cloud-native-para-pythonistas",
+    "area": "DevOps",
+    "level": "avancado",
+    "category": "Cloud Native",
+    "orderIndex": 169,
+    "estimatedHours": 9,
+    "lessons": [
+      {
+        "slug": "containerizar-apps-python",
+        "title": "Containerizar apps Python",
+        "file": "doc/Conteudos/Ecossistema/kubernetes-e-cloud-native-para-pythonistas/01_containerizar-apps-python.md",
+        "order": 1
+      },
+      {
+        "slug": "deploy-no-kubernetes",
+        "title": "Deploy no Kubernetes",
+        "file": "doc/Conteudos/Ecossistema/kubernetes-e-cloud-native-para-pythonistas/02_deploy-no-kubernetes.md",
+        "order": 2
+      },
+      {
+        "slug": "infra-como-codigo-com-python",
+        "title": "Infra como código com Python",
+        "file": "doc/Conteudos/Ecossistema/kubernetes-e-cloud-native-para-pythonistas/03_infra-como-codigo-com-python.md",
+        "order": 3
+      }
+    ]
   }
 ];

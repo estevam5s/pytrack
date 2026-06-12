@@ -2,14 +2,18 @@
 
 Gere e publique distribuições.
 
-## Pontos-chave
+> **Tema:** Packaging · **Nível:** intermediario · **Trilha:** Empacotamento e Publicação
 
-- build gera wheel e sdist
-- twine para enviar ao PyPI
-- Teste no TestPyPI
-- CI para publicar em tags
+## Conceitos-chave
 
-## Exemplo
+Nesta lição você vai entender:
+
+- **build gera wheel e sdist**
+- **twine para enviar ao PyPI**
+- **Teste no TestPyPI**
+- **CI para publicar em tags**
+
+## Exemplo prático
 
 ```python
 # python -m build
@@ -17,10 +21,27 @@ Gere e publique distribuições.
 # pip install meu-pacote
 ```
 
+Leia o exemplo linha a linha e rode-o no seu ambiente. Em seguida, altere os valores e observe o que muda — entender *por que* o código se comporta assim vale mais do que decorar a sintaxe.
+
 ## Boas práticas
 
 - Publique a partir do CI em tags
 - Assine/valide artefatos
+
+## Pratique
+
+Para fixar, escreva um pequeno script que combine **build gera wheel e sdist** e **twine para enviar ao pypi** em um caso do seu dia a dia. Depois refatore aplicando "Publique a partir do CI em tags".
+
+Desafio extra: explique, em uma frase, quando **não** usar esta abordagem — saber os limites de uma ferramenta é tão importante quanto saber usá-la.
+
+## Checklist de domínio
+
+Você domina esta lição quando consegue:
+
+- [ ] Explicar e aplicar: build gera wheel e sdist
+- [ ] Explicar e aplicar: twine para enviar ao PyPI
+- [ ] Explicar e aplicar: Teste no TestPyPI
+- [ ] Explicar e aplicar: CI para publicar em tags
 
 ## Saiba mais
 

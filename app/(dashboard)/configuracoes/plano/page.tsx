@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { CreditCard, Sparkles, ArrowDownCircle, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CreditCard, Sparkles, RefreshCw, ShieldCheck } from "lucide-react";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import {
   getUserSubscription,
@@ -9,17 +8,16 @@ import {
   hasDashboardAccess,
 } from "@/lib/stripe/subscriptions";
 import { billingEnabled } from "@/lib/stripe/server";
-import { TIER_LABEL, TIER_RANK, type Tier } from "@/lib/billing-access";
+import { type Tier } from "@/lib/billing-access";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SubscriptionStatusCard } from "@/components/billing/SubscriptionStatusCard";
 import { ManageSubscriptionButton } from "@/components/billing/ManageSubscriptionButton";
 import { SubscribeButton } from "@/components/billing/SubscribeButton";
 import { RefundButton } from "@/components/billing/RefundButton";
+import { PlanChangePanel } from "@/components/billing/PlanChangePanel";
 
 export const metadata = { title: "Plano · Configurações · PyTrack" };
 export const dynamic = "force-dynamic";
-
-const RECURRING_TIERS: Tier[] = ["essencial", "completo", "suprema"];
 
 export default async function PlanoPage() {
   const user = await getCurrentUser();
@@ -35,12 +33,11 @@ export default async function PlanoPage() {
   const isLifetime = !!meta.lifetime || tier === "vitalicio";
   const recurringId = (subscription as unknown as { stripe_subscription_id?: string } | null)
     ?.stripe_subscription_id;
-  const isRecurring = !!recurringId && !isLifetime;
+  const isRecurring = !!recurringId && !isLifetime && active;
 
-  // planos abaixo do atual (downgrade) — só para assinaturas recorrentes
-  const lowerTiers = isRecurring
-    ? RECURRING_TIERS.filter((t) => TIER_RANK[t] < TIER_RANK[tier])
-    : [];
+  // troca de plano agendada (downgrade aplicado no fim do período)
+  const pendingTier = (subscription?.pending_tier as Tier | null) ?? null;
+  const pendingEffectiveAt = subscription?.pending_effective_at ?? null;
 
   // janela de reembolso (7 dias a partir da compra) — fonte: created_at da assinatura
   const REFUND_WINDOW_DAYS = 7;
@@ -55,50 +52,43 @@ export default async function PlanoPage() {
     <div className="space-y-6">
       <SubscriptionStatusCard subscription={subscription} tier={tier} />
 
-      {/* upgrade (quem ainda não está no topo) */}
+      {/* troca de plano (upgrade imediato / downgrade agendado) — assinaturas recorrentes */}
+      {isRecurring && billingEnabled && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <RefreshCw className="h-4 w-4 text-primary" /> Trocar de plano
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <PlanChangePanel
+              currentTier={tier}
+              pendingTier={pendingTier}
+              pendingEffectiveAt={pendingEffectiveAt}
+              periodEnd={subscription?.current_period_end ?? null}
+            />
+          </CardContent>
+        </Card>
+      )}
+
+      {/* upgrade para Vitalício (pagamento único) — fora da grade recorrente */}
       {active && tier !== "vitalicio" && billingEnabled && (
         <Card className="border-primary/30">
           <CardContent className="flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="flex items-center gap-1.5 font-semibold">
-                <Sparkles className="h-4 w-4 text-primary-light" /> Quer mais? Faça upgrade
+                <Sparkles className="h-4 w-4 text-primary-light" /> Acesso vitalício
               </p>
               <p className="mt-1 text-sm text-text-secondary">
-                Suba para um plano maior (até o Vitalício) e desbloqueie mais
-                trilhas e recursos. A diferença é cobrada proporcionalmente.
+                Pague uma vez e tenha acesso para sempre, sem mensalidade. Veja a
+                condição na página de planos.
               </p>
             </div>
-            <Button asChild>
-              <Link href="/assinar">Ver planos</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* downgrade — voltar para um plano menor */}
-      {lowerTiers.length > 0 && billingEnabled && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <ArrowDownCircle className="h-4 w-4 text-text-secondary" /> Mudar para um plano menor
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <p className="text-sm text-text-secondary">
-              Você pode voltar para um plano anterior quando quiser. O ajuste de
-              valor é proporcional (você recebe crédito da diferença).
-            </p>
-            <div className="flex flex-col gap-2 sm:flex-row">
-              {lowerTiers.map((t) => (
-                <div key={t} className="sm:max-w-[240px]">
-                  <SubscribeButton
-                    plan={`${t}_monthly`}
-                    label={`Mudar para ${TIER_LABEL[t]}`}
-                    className="!from-surface-2 !to-surface-2 !text-foreground !shadow-none ring-1 ring-border hover:!opacity-80"
-                  />
-                </div>
-              ))}
-            </div>
+            <SubscribeButton
+              plan="vitalicio"
+              label="Ver Vitalício"
+              className="sm:max-w-[200px]"
+            />
           </CardContent>
         </Card>
       )}

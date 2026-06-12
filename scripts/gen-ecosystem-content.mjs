@@ -588,6 +588,186 @@ const M = [
   ]],
   ["Construindo um LLM do Zero", "Machine Learning", "avancado", "IA Generativa", [["Tokenização e vocabulário (BPE)", "Antes de treinar um modelo de linguagem, o texto vira tokens. O Byte-Pair Encoding (BPE) é o algoritmo padrão.", ["Tokens são subpalavras, não letras nem palavras inteiras", "BPE funde os pares mais frequentes iterativamente", "Vocabulário típico: 30k a 100k tokens", "tiktoken (OpenAI) e o tokenizer do HuggingFace"], "from collections import Counter\n\ndef pares(tokens):\n    return Counter(zip(tokens, tokens[1:]))\n\ntoks = list('banana')\nprint(pares(toks).most_common(1))", ["Reutilize um tokenizer treinado quando possível", "O tamanho do vocabulário afeta memória e velocidade"], "https://huggingface.co/learn/nlp-course/chapter6/5"], ["Embeddings e representação", "Cada token vira um vetor denso (embedding) que o modelo aprende durante o treino.", ["nn.Embedding mapeia id de token para vetor", "Dimensão do embedding (d_model): 256, 768, 4096", "Vetores próximos = significados próximos", "Embeddings são treináveis (aprendidos por gradiente)"], "import torch, torch.nn as nn\n\nemb = nn.Embedding(num_embeddings=50000, embedding_dim=768)\nids = torch.tensor([10, 42, 7])\nprint(emb(ids).shape)  # [3, 768]", ["Compartilhe pesos entre embedding e camada de saída", "Normalize embeddings quando fizer sentido"], "https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html"], ["Self-attention", "O coração do Transformer: cada token olha para os outros e decide no que prestar atenção.", ["Query, Key e Value são projeções lineares do input", "Atenção = softmax(QK^T / sqrt(d)) V", "Máscara causal impede ver o futuro (modelos GPT)", "Complexidade O(n^2) no tamanho da sequência"], "import torch, torch.nn.functional as F\n\ndef attention(q, k, v, mask=None):\n    d = q.size(-1)\n    scores = q @ k.transpose(-2, -1) / d**0.5\n    if mask is not None:\n        scores = scores.masked_fill(mask == 0, float('-inf'))\n    return F.softmax(scores, dim=-1) @ v", ["Use máscara causal para geração autoregressiva", "Flash Attention acelera muito o treino"], "https://arxiv.org/abs/1706.03762"], ["Multi-head attention e bloco Transformer", "Várias cabeças de atenção em paralelo capturam relações diferentes; o bloco junta atenção + MLP.", ["Multi-head divide d_model em h cabeças", "Residual connections + LayerNorm estabilizam o treino", "Feed-forward (MLP) expande e contrai a dimensão", "Empilhar N blocos forma o modelo"], "import torch.nn as nn\n\nclass Bloco(nn.Module):\n    def __init__(self, d, h):\n        super().__init__()\n        self.attn = nn.MultiheadAttention(d, h, batch_first=True)\n        self.ln1, self.ln2 = nn.LayerNorm(d), nn.LayerNorm(d)\n        self.mlp = nn.Sequential(nn.Linear(d, 4*d), nn.GELU(), nn.Linear(4*d, d))\n    def forward(self, x):\n        a, _ = self.attn(self.ln1(x), self.ln1(x), self.ln1(x))\n        x = x + a\n        return x + self.mlp(self.ln2(x))", ["Pre-norm treina mais estável que post-norm", "GELU costuma superar ReLU em Transformers"], "https://nlp.seas.harvard.edu/annotated-transformer/"], ["Positional encoding", "Atenção não tem noção de ordem; a posição precisa ser injetada (senoidal ou RoPE).", ["Encoding senoidal (Transformer original)", "Embeddings de posição aprendidos (GPT-2)", "RoPE (rotary) usado em LLaMA e modelos modernos", "ALiBi como alternativa para extrapolar contexto"], "import torch, math\n\ndef pos_encoding(seq_len, d):\n    pe = torch.zeros(seq_len, d)\n    pos = torch.arange(seq_len).unsqueeze(1)\n    div = torch.exp(torch.arange(0, d, 2) * -(math.log(10000)/d))\n    pe[:, 0::2] = torch.sin(pos*div)\n    pe[:, 1::2] = torch.cos(pos*div)\n    return pe", ["RoPE generaliza melhor para sequências longas", "Some o encoding aos embeddings antes do primeiro bloco"], "https://arxiv.org/abs/2104.09864"], ["Loop de treino com PyTorch", "Treinar = prever o próximo token e minimizar a cross-entropy em muitos textos.", ["Objetivo: prever token t+1 dado tokens até t", "Loss = cross-entropy entre logits e o próximo token", "Otimizador AdamW + warmup + cosine decay", "Gradient clipping evita explosão de gradiente"], "import torch.nn.functional as F\n\nfor x, y in loader:  # y = x deslocado em 1\n    logits = model(x)\n    loss = F.cross_entropy(logits.view(-1, V), y.view(-1))\n    loss.backward()\n    torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)\n    opt.step(); opt.zero_grad()", ["Comece pequeno (nanoGPT) para entender o fluxo", "Monitore a loss de validação para overfitting"], "https://github.com/karpathy/nanoGPT"], ["Pré-treino, fine-tuning e LoRA", "Pré-treino aprende linguagem geral; fine-tuning especializa. LoRA torna isso barato.", ["Pré-treino: muito texto, caro, feito uma vez", "Fine-tuning supervisionado (SFT) com pares instrução-resposta", "LoRA treina matrizes de baixa rank, congelando o resto", "QLoRA: LoRA + quantização em 4 bits"], "from peft import LoraConfig, get_peft_model\n\ncfg = LoraConfig(r=8, lora_alpha=16, target_modules=['q_proj','v_proj'])\nmodel = get_peft_model(base_model, cfg)\nmodel.print_trainable_parameters()", ["LoRA permite treinar 7B+ numa GPU de consumo", "Salve só os adaptadores, não o modelo inteiro"], "https://huggingface.co/docs/peft"], ["Alinhamento (RLHF/DPO) e geração", "Depois do SFT, alinhar o modelo às preferências humanas e gerar texto com sampling.", ["RLHF: modelo de recompensa + PPO", "DPO: alinhamento direto, mais simples que RLHF", "Geração: greedy, temperatura, top-k, top-p", "Guardrails e avaliação antes de produzir"], "import torch.nn.functional as F\n\ndef sample(logits, temperatura=0.8):\n    probs = F.softmax(logits / temperatura, dim=-1)\n    return torch.multinomial(probs, 1)", ["DPO virou padrão por ser estável e barato", "Avalie sempre com um conjunto de testes próprio"], "https://arxiv.org/abs/2305.18290"], ["Quantização, inferência e servir", "Para usar o modelo em produção: quantizar, otimizar e servir com alta vazão.", ["Quantização 8/4 bits reduz memória drasticamente", "KV cache acelera a geração autoregressiva", "vLLM e TGI servem com batching contínuo", "GGUF/llama.cpp roda em CPU e dispositivos locais"], "from vllm import LLM, SamplingParams\n\nllm = LLM(model='meta-llama/Llama-3.1-8B')\nout = llm.generate(['Explique atenção:'], SamplingParams(max_tokens=128))\nprint(out[0].outputs[0].text)", ["KV cache é essencial para latência baixa", "Quantize para caber na sua GPU sem perder muito"], "https://docs.vllm.ai/"]]],
 
+  // ───────── Web Full-Stack com Python ─────────
+  ["Django na Prática", "Web", "intermediario", "Web Framework", [
+    ["Models, ORM e migrations", "Django é um framework 'baterias inclusas': ORM, admin, auth e mais. Tudo começa pelos models.",
+      ["models.Model mapeia classes para tabelas", "makemigrations e migrate versionam o schema", "QuerySets são lazy e encadeáveis", "select_related/prefetch_related evitam o N+1"],
+      "from django.db import models\n\nclass Post(models.Model):\n    titulo = models.CharField(max_length=200)\n    corpo = models.TextField()\n    criado = models.DateTimeField(auto_now_add=True)\n    autor = models.ForeignKey('auth.User', on_delete=models.CASCADE)\n\n    def __str__(self):\n        return self.titulo",
+      ["Use migrations sempre — nunca altere o schema na mão", "Defina __str__ para objetos legíveis no admin"], "https://docs.djangoproject.com/en/stable/topics/db/models/"],
+    ["Views, URLs e templates", "O ciclo request→view→response, com roteamento por URLconf e renderização de templates.",
+      ["Function-based e class-based views", "URLconf com path() e nomes de rota", "Templates com herança ({% extends %})", "Context processors injetam dados globais"],
+      "from django.shortcuts import render, get_object_or_404\nfrom .models import Post\n\ndef detalhe(request, pk):\n    post = get_object_or_404(Post, pk=pk)\n    return render(request, 'blog/detalhe.html', {'post': post})",
+      ["Prefira get_object_or_404 a try/except manual", "Mantenha a lógica de negócio fora dos templates"], "https://docs.djangoproject.com/en/stable/topics/http/views/"],
+    ["Forms, auth e admin", "Validação com Forms, autenticação pronta e o admin gerado automaticamente.",
+      ["ModelForm gera formulários a partir de models", "Sistema de auth (login, permissões, grupos)", "admin.site.register expõe CRUD instantâneo", "CSRF e validação de formulário embutidos"],
+      "from django.contrib import admin\nfrom .models import Post\n\n@admin.register(Post)\nclass PostAdmin(admin.ModelAdmin):\n    list_display = ('titulo', 'autor', 'criado')\n    search_fields = ('titulo',)",
+      ["Nunca desative o CSRF em formulários de mutação", "Use o admin para operações internas, não como API pública"], "https://docs.djangoproject.com/en/stable/ref/contrib/admin/"],
+  ]],
+  ["Flask e APIs Leves", "Web", "intermediario", "Web Framework", [
+    ["Rotas, blueprints e contexto", "Flask é minimalista e flexível — você monta só o que precisa.",
+      ["@app.route define rotas e métodos HTTP", "Blueprints organizam apps grandes em módulos", "request/session/g para o contexto da requisição", "jsonify para respostas JSON"],
+      "from flask import Flask, jsonify, request\napp = Flask(__name__)\n\n@app.post('/eco')\ndef eco():\n    dados = request.get_json()\n    return jsonify(recebido=dados), 201",
+      ["Use blueprints assim que o app crescer", "Valide o corpo da requisição antes de usá-lo"], "https://flask.palletsprojects.com/"],
+    ["Templates Jinja e formulários", "Renderização server-side com Jinja2 e formulários seguros.",
+      ["Jinja2: variáveis, filtros, loops e herança", "url_for evita URLs hardcoded", "Flask-WTF para forms com CSRF", "Flash messages para feedback"],
+      "from flask import render_template\n\n@app.get('/')\ndef home():\n    return render_template('home.html', titulo='PyTrack')",
+      ["Escape de saída é automático no Jinja — não desative", "Centralize layout com um template base"], "https://jinja.palletsprojects.com/"],
+    ["Deploy com Gunicorn e produção", "Servir Flask de forma robusta com um WSGI server e boas práticas.",
+      ["Gunicorn como servidor WSGI de produção", "Variáveis de ambiente para config (12-factor)", "Proxy reverso (Nginx) à frente", "Healthcheck e logs estruturados"],
+      "# gunicorn -w 4 -b 0.0.0.0:8000 app:app\nimport os\napp.config['SECRET_KEY'] = os.environ['SECRET_KEY']",
+      ["Nunca rode o servidor de desenvolvimento em produção", "Mantenha segredos fora do código"], "https://docs.gunicorn.org/"],
+  ]],
+  ["HTMX e Frontend Hipermídia", "Web", "intermediario", "Frontend", [
+    ["Interatividade sem SPA", "HTMX adiciona AJAX, swaps e eventos via atributos HTML — sem escrever JavaScript.",
+      ["hx-get/hx-post disparam requisições", "hx-target e hx-swap atualizam pedaços da página", "O servidor responde com HTML, não JSON", "Progressive enhancement: funciona sem JS"],
+      "<button hx-post=\"/curtir/42\"\n        hx-target=\"#contador\"\n        hx-swap=\"innerHTML\">\n  Curtir\n</button>\n<span id=\"contador\">10</span>",
+      ["Responda com fragmentos HTML pequenos e focados", "Use no-JS como linha de base e melhore progressivamente"], "https://htmx.org/docs/"],
+    ["Padrões com Django/Flask", "Combinar HTMX com templates server-side gera apps reativos e simples.",
+      ["Endpoints que retornam parciais de template", "hx-trigger para eventos (load, change, intervalo)", "Indicadores de loading com hx-indicator", "Boosting de links e formulários"],
+      "# Flask: retorna só o fragmento\n@app.post('/curtir/<int:id>')\ndef curtir(id):\n    n = incrementar(id)\n    return f'<span id=\"contador\">{n}</span>'",
+      ["Reaproveite parciais entre página cheia e resposta HTMX", "Cuide do CSRF também nas requisições HTMX"], "https://htmx.org/examples/"],
+  ]],
+
+  // ───────── Testes & Qualidade (QA) ─────────
+  ["Pytest Avançado e TDD", "Qualidade", "intermediario", "Testes", [
+    ["Fixtures, parametrização e escopo", "Pytest escala de testes simples a suítes complexas com fixtures reutilizáveis.",
+      ["@pytest.fixture injeta dependências nos testes", "scope (function/module/session) controla o ciclo de vida", "@pytest.mark.parametrize roda o mesmo teste com vários dados", "conftest.py compartilha fixtures entre arquivos"],
+      "import pytest\n\n@pytest.fixture\ndef carrinho():\n    return Carrinho()\n\n@pytest.mark.parametrize('itens,total', [([10,20],30), ([],0)])\ndef test_total(carrinho, itens, total):\n    for i in itens: carrinho.add(i)\n    assert carrinho.total() == total",
+      ["Fixtures pequenas e compostas são melhores que setups gigantes", "Parametrize para cobrir casos de borda sem duplicar código"], "https://docs.pytest.org/"],
+    ["TDD: o ciclo red-green-refactor", "Test-Driven Development guia o design escrevendo o teste antes do código.",
+      ["Red: escreva um teste que falha", "Green: o código mínimo para passar", "Refactor: melhore sem quebrar os testes", "Testes viram especificação executável"],
+      "# 1) Red\ndef test_soma():\n    assert soma(2, 3) == 5  # soma ainda não existe\n\n# 2) Green\ndef soma(a, b):\n    return a + b\n\n# 3) Refactor com a rede de segurança dos testes",
+      ["Escreva o menor teste que captura o próximo comportamento", "Refatore só com a suíte verde"], "https://docs.pytest.org/en/stable/explanation/goodpractices.html"],
+    ["Mocks, cobertura e CI", "Isolar dependências externas, medir cobertura e rodar tudo no pipeline.",
+      ["monkeypatch e unittest.mock para isolar I/O", "pytest-cov mede cobertura de linhas/branches", "Marcadores para separar unit/integration", "Falhe o CI abaixo de um limite de cobertura"],
+      "def test_envia(monkeypatch):\n    chamadas = []\n    monkeypatch.setattr('app.smtp.send', lambda m: chamadas.append(m))\n    notificar('oi')\n    assert chamadas == ['oi']",
+      ["Mocke a borda (rede, disco), não a sua lógica", "Cobertura é um piso, não uma garantia de qualidade"], "https://pytest-cov.readthedocs.io/"],
+  ]],
+  ["Testes de Carga, Propriedade e Mutação", "Qualidade", "avancado", "Testes", [
+    ["Property-based com Hypothesis", "Em vez de exemplos fixos, gere centenas de entradas e teste invariantes.",
+      ["@given gera dados aleatórios estruturados", "Strategies descrevem o espaço de entradas", "Hypothesis encolhe (shrink) o contra-exemplo mínimo", "Ótimo para encontrar casos de borda esquecidos"],
+      "from hypothesis import given, strategies as st\n\n@given(st.lists(st.integers()))\ndef test_reverso_duplo(xs):\n    assert list(reversed(list(reversed(xs)))) == xs",
+      ["Teste invariantes (propriedades), não saídas exatas", "Deixe o Hypothesis achar o menor caso que quebra"], "https://hypothesis.readthedocs.io/"],
+    ["Carga com Locust e mutação", "Meça o sistema sob carga e avalie a qualidade da própria suíte de testes.",
+      ["Locust simula milhares de usuários em Python", "Métricas: throughput, latência p95/p99, erros", "Mutation testing (mutmut) muda o código e vê se os testes pegam", "Testes que sobrevivem a mutações são fracos"],
+      "from locust import HttpUser, task\n\nclass Usuario(HttpUser):\n    @task\n    def home(self):\n        self.client.get('/')",
+      ["Teste carga em ambiente parecido com produção", "Mutation score revela testes que não testam nada"], "https://locust.io/"],
+  ]],
+
+  // ───────── Performance & Otimização ─────────
+  ["Profiling e Otimização de Python", "Performance & Async", "avancado", "Performance", [
+    ["Medir antes de otimizar", "Otimização sem medição é chute. Profile primeiro, depois aja no gargalo real.",
+      ["cProfile mostra onde o tempo é gasto", "timeit mede trechos pequenos com precisão", "py-spy faz profiling de produção sem parar o app", "A regra: 90% do tempo está em 10% do código"],
+      "import cProfile\n\ncProfile.run('processar(dados)', sort='cumulative')\n# ou: python -m cProfile -s cumulative script.py",
+      ["Nunca otimize sem um profile na mão", "Otimize o gargalo medido, não o que você 'acha'"], "https://docs.python.org/3/library/profile.html"],
+    ["Estruturas e algoritmos certos", "A maior otimização quase sempre é trocar a estrutura de dados ou o algoritmo.",
+      ["set/dict para busca O(1) vs list O(n)", "collections (deque, Counter, defaultdict)", "Geradores poupam memória em grandes volumes", "Big-O domina constantes em escala"],
+      "# Lento: O(n) por busca\nif x in lista: ...\n# Rápido: O(1)\nvistos = set(lista)\nif x in vistos: ...",
+      ["Escolha a estrutura pelo padrão de acesso", "Meça memória além de tempo"], "https://wiki.python.org/moin/TimeComplexity"],
+    ["Paralelismo: threads, processos e async", "Escapar do GIL quando faz sentido e escolher o modelo de concorrência certo.",
+      ["GIL serializa bytecode — threads não aceleram CPU", "multiprocessing para trabalho CPU-bound", "asyncio para I/O-bound concorrente", "concurrent.futures unifica a API"],
+      "from concurrent.futures import ProcessPoolExecutor\n\nwith ProcessPoolExecutor() as ex:\n    resultados = list(ex.map(tarefa_pesada, itens))",
+      ["CPU-bound → processos; I/O-bound → async/threads", "Meça: paralelizar tem custo de coordenação"], "https://docs.python.org/3/library/concurrent.futures.html"],
+  ]],
+  ["Cython, Extensões C e CPython", "Performance & Async", "avancado", "Performance", [
+    ["Acelerando com Cython", "Cython compila Python anotado para C, ganhando ordens de magnitude em loops numéricos.",
+      ["Tipos estáticos (cdef) removem overhead", "Compilação para módulo de extensão", "Libera o GIL em seções numéricas", "Ótimo para hot loops já identificados no profile"],
+      "# arquivo.pyx\ncdef double soma_quadrados(int n):\n    cdef double s = 0\n    cdef int i\n    for i in range(n):\n        s += i * i\n    return s",
+      ["Cythonize só o gargalo, não o programa todo", "Meça o ganho real antes de manter a complexidade"], "https://cython.org/"],
+    ["CPython por dentro", "Entender o interpretador explica o desempenho e os limites do Python.",
+      ["Tudo é objeto (PyObject) com contagem de referência", "Bytecode executado pela máquina virtual (ceval)", "GIL protege o gerenciamento de memória", "dis mostra o bytecode de qualquer função"],
+      "import dis\n\ndef f(x):\n    return x + 1\n\ndis.dis(f)  # mostra LOAD_FAST, BINARY_OP, RETURN_VALUE...",
+      ["Use dis para entender por que algo é lento", "Conheça as otimizações do CPython (ex.: interning de ints)"], "https://docs.python.org/3/library/dis.html"],
+  ]],
+
+  // ───────── MLOps & IA em Produção ─────────
+  ["MLOps: Deploy e Serving de Modelos", "MLOps", "avancado", "MLOps", [
+    ["Empacotar e servir um modelo", "Tirar um modelo do notebook e colocá-lo atrás de uma API confiável.",
+      ["Serialização com joblib/pickle ou ONNX", "API de inferência com FastAPI", "Validação de entrada com Pydantic", "Versionar o modelo junto com o código"],
+      "from fastapi import FastAPI\nimport joblib\n\nmodelo = joblib.load('modelo.pkl')\napp = FastAPI()\n\n@app.post('/prever')\ndef prever(features: list[float]):\n    return {'classe': int(modelo.predict([features])[0])}",
+      ["Valide e normalize a entrada igual ao treino", "Fixe versões de libs — modelo e ambiente andam juntos"], "https://fastapi.tiangolo.com/"],
+    ["Rastreamento de experimentos", "Reproduzir resultados exige registrar parâmetros, métricas e artefatos.",
+      ["MLflow registra params, metrics e modelos", "Model Registry versiona e promove modelos", "Reprodutibilidade: seed, dados e ambiente fixos", "Compare experimentos lado a lado"],
+      "import mlflow\n\nwith mlflow.start_run():\n    mlflow.log_param('lr', 0.01)\n    mlflow.log_metric('acc', 0.93)\n    mlflow.sklearn.log_model(modelo, 'modelo')",
+      ["Registre tudo que afeta o resultado", "Promova modelos por estágio (staging → production)"], "https://mlflow.org/docs/latest/index.html"],
+    ["CI/CD para machine learning", "Automatizar treino, teste e deploy de modelos com qualidade.",
+      ["Pipelines que treinam e validam automaticamente", "Testes de dados (schema, distribuição)", "Gate de métrica: só promove se melhorar", "Rollback rápido quando o modelo degrada"],
+      "# pseudo-pipeline\n# 1. validar dados  2. treinar  3. avaliar\n# 4. if metrica > baseline: registrar e promover\nassert acc >= baseline_acc, 'modelo pior que o atual'",
+      ["Teste os dados, não só o código", "Tenha um caminho de rollback sempre pronto"], "https://ml-ops.org/"],
+  ]],
+  ["Monitoramento e Pipelines de ML", "MLOps", "avancado", "MLOps", [
+    ["Drift e monitoramento em produção", "Modelos degradam quando o mundo muda. Monitorar é parte do MLOps.",
+      ["Data drift: a distribuição de entrada mudou", "Concept drift: a relação X→y mudou", "Monitore métricas de negócio, não só técnicas", "Alertas quando a performance cai"],
+      "# compara distribuição atual vs treino\nfrom scipy.stats import ks_2samp\nstat, p = ks_2samp(treino_col, producao_col)\nif p < 0.05:\n    alertar('possível data drift')",
+      ["Monitore entrada, saída e métricas de negócio", "Reentreine com gatilho, não por calendário cego"], "https://evidentlyai.com/"],
+    ["Orquestração de pipelines", "Pipelines de dados e ML precisam de orquestração confiável e observável.",
+      ["DAGs definem dependências entre tarefas", "Airflow/Prefect/Dagster agendam e monitoram", "Retries, alertas e backfill", "Idempotência: rodar de novo não corrompe"],
+      "from prefect import flow, task\n\n@task\ndef extrair(): ...\n@task\ndef treinar(d): ...\n\n@flow\ndef pipeline():\n    treinar(extrair())",
+      ["Tarefas idempotentes facilitam reprocessar", "Observabilidade no pipeline economiza horas de debug"], "https://docs.prefect.io/"],
+  ]],
+
+  // ───────── Agentes de IA & Automação com LLMs ─────────
+  ["RAG: Geração Aumentada por Recuperação", "IA Generativa", "avancado", "LLMs Aplicados", [
+    ["Embeddings e busca semântica", "RAG dá ao LLM acesso aos seus dados buscando trechos relevantes por significado.",
+      ["Embeddings transformam texto em vetores", "Busca por similaridade (cosseno) acha trechos relevantes", "Vector DBs: FAISS, Chroma, pgvector", "Chunking: dividir documentos em pedaços úteis"],
+      "from sentence_transformers import SentenceTransformer\nimport numpy as np\n\nm = SentenceTransformer('all-MiniLM-L6-v2')\nvs = m.encode(['gato', 'felino', 'carro'])\nprint(np.dot(vs[0], vs[1]))  # alto: gato~felino",
+      ["Ajuste o tamanho do chunk ao seu conteúdo", "Guarde metadados junto dos vetores para filtrar"], "https://www.sbert.net/"],
+    ["Montando o pipeline RAG", "Recuperar contexto, montar o prompt e gerar a resposta fundamentada.",
+      ["Indexar: documentos → chunks → embeddings → DB", "Recuperar: top-k trechos mais similares à pergunta", "Aumentar: injetar trechos no prompt do LLM", "Gerar: resposta citando as fontes"],
+      "def responder(pergunta, db, llm):\n    trechos = db.buscar(pergunta, k=4)\n    contexto = '\\n'.join(trechos)\n    prompt = f'Contexto:\\n{contexto}\\n\\nPergunta: {pergunta}'\n    return llm(prompt)",
+      ["Cite as fontes para o usuário confiar", "Recupere o suficiente, sem estourar a janela de contexto"], "https://python.langchain.com/docs/tutorials/rag/"],
+    ["Avaliação e qualidade do RAG", "Sem avaliação, você não sabe se o RAG ajuda ou alucina.",
+      ["Relevância da recuperação (recall@k)", "Fidelidade: a resposta vem do contexto?", "Frameworks: RAGAS, DeepEval", "Conjunto de perguntas-resposta de referência"],
+      "# métrica simples de recuperação\ndef recall_at_k(esperados, recuperados, k):\n    return len(set(esperados) & set(recuperados[:k])) / len(esperados)",
+      ["Monte um dataset de avaliação cedo", "Meça recuperação e geração separadamente"], "https://docs.ragas.io/"],
+  ]],
+  ["Agentes de IA com Tool Use", "IA Generativa", "avancado", "LLMs Aplicados", [
+    ["Tool use e function calling", "Um agente é um LLM que decide chamar ferramentas (funções) para agir no mundo.",
+      ["O modelo escolhe a função e os argumentos", "Você define ferramentas com schema (nome, params)", "O loop: pensar → chamar tool → observar → repetir", "Ferramentas: busca, código, APIs, banco de dados"],
+      "def buscar_clima(cidade: str) -> str:\n    '''Retorna o clima atual de uma cidade.'''\n    return consultar_api(cidade)\n\n# o LLM recebe o schema e decide chamar buscar_clima('SP')",
+      ["Descreva bem cada ferramenta — o modelo lê a docstring", "Valide os argumentos antes de executar a ação"], "https://docs.anthropic.com/en/docs/build-with-claude/tool-use"],
+    ["Padrões de agentes e orquestração", "Do agente único a sistemas multi-agente com memória e planejamento.",
+      ["ReAct: alterna raciocínio e ação", "Memória de curto e longo prazo", "Planejar-executar para tarefas complexas", "Multi-agente: especialistas que colaboram"],
+      "while not tarefa.concluida:\n    pensamento = llm.pensar(estado)\n    acao = pensamento.acao\n    obs = executar(acao)\n    estado.adicionar(obs)",
+      ["Limite o número de passos para evitar loops infinitos", "Comece com um agente simples antes de multi-agente"], "https://www.anthropic.com/research/building-effective-agents"],
+    ["Segurança e guardrails", "Agentes que agem no mundo precisam de limites, validação e supervisão.",
+      ["Sandbox para execução de código/ferramentas", "Allowlist de ações permitidas", "Human-in-the-loop para ações irreversíveis", "Limites de custo, tempo e taxa"],
+      "ACOES_PERMITIDAS = {'buscar', 'ler'}\n\ndef executar(acao):\n    if acao.nome not in ACOES_PERMITIDAS:\n        raise PermissionError(acao.nome)\n    return acao.run()",
+      ["Peça confirmação humana para ações destrutivas", "Nunca dê ao agente mais permissão do que a tarefa exige"], "https://www.anthropic.com/research/building-effective-agents"],
+  ]],
+
+  // ───────── Computação Científica & Simulação ─────────
+  ["SciPy, Simulação e Monte Carlo", "Computação Científica", "avancado", "Científico", [
+    ["SciPy: otimização e álgebra", "SciPy estende o NumPy com algoritmos científicos de alto nível.",
+      ["optimize: minimização e ajuste de curvas", "integrate: integração numérica e EDOs", "stats: distribuições e testes de hipótese", "linalg/sparse para álgebra avançada"],
+      "from scipy import optimize\n\ndef f(x):\n    return (x - 3) ** 2\n\nres = optimize.minimize(f, x0=0)\nprint(res.x)  # ~3",
+      ["Escolha o algoritmo conforme o problema (convexo?)", "Forneça gradiente quando possível para convergir melhor"], "https://docs.scipy.org/doc/scipy/"],
+    ["Simulação de Monte Carlo", "Resolver problemas por amostragem aleatória — de risco financeiro a física.",
+      ["Amostragem aleatória para estimar valores", "Lei dos grandes números garante convergência", "Estimar π, integrais e risco", "Reprodutibilidade com seed fixa"],
+      "import numpy as np\n\nrng = np.random.default_rng(42)\npontos = rng.random((1_000_000, 2))\ndentro = (pontos ** 2).sum(axis=1) <= 1\nprint(4 * dentro.mean())  # estimativa de pi",
+      ["Mais amostras = menos variância (custa tempo)", "Vetorize a simulação com NumPy para velocidade"], "https://numpy.org/doc/stable/reference/random/"],
+    ["Matemática simbólica com SymPy", "Quando você precisa de respostas exatas, não numéricas.",
+      ["Símbolos, expressões e simplificação", "Derivadas, integrais e limites exatos", "Resolver equações algébricas e EDOs", "Gerar código a partir de fórmulas (lambdify)"],
+      "import sympy as sp\n\nx = sp.symbols('x')\nexpr = sp.integrate(sp.sin(x) * x, x)\nprint(expr)  # -x*cos(x) + sin(x)",
+      ["Use SymPy para deduzir, NumPy para calcular em massa", "lambdify converte fórmula simbólica em função rápida"], "https://docs.sympy.org/"],
+  ]],
+
+  // ───────── Cloud Native & Platform Engineering ─────────
+  ["Kubernetes e Cloud Native para Pythonistas", "DevOps", "avancado", "Cloud Native", [
+    ["Containerizar apps Python", "O primeiro passo cloud native: empacotar a app em uma imagem reprodutível.",
+      ["Dockerfile multi-stage reduz a imagem final", "Imagens slim e usuário não-root", "12-factor: config por ambiente", "Healthcheck para orquestradores"],
+      "FROM python:3.12-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY . .\nUSER 1000\nCMD [\"gunicorn\", \"-b\", \"0.0.0.0:8000\", \"app:app\"]",
+      ["Imagens pequenas sobem e escalam mais rápido", "Nunca rode containers como root"], "https://docs.docker.com/language/python/"],
+    ["Deploy no Kubernetes", "K8s orquestra containers: escala, recupera falhas e faz rollout.",
+      ["Pod, Deployment e Service", "Replicas e self-healing automático", "ConfigMap e Secret para configuração", "Readiness/liveness probes"],
+      "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: api\nspec:\n  replicas: 3\n  selector:\n    matchLabels: {app: api}\n  template:\n    metadata:\n      labels: {app: api}\n    spec:\n      containers:\n      - name: api\n        image: minha-api:1.0",
+      ["Defina requests/limits de CPU e memória", "Use probes para o K8s saber se o pod está saudável"], "https://kubernetes.io/docs/home/"],
+    ["Infra como código com Python", "Provisionar nuvem de forma versionada e reproduzível usando Python.",
+      ["Pulumi escreve infraestrutura em Python puro", "Estado versionado e previews antes de aplicar", "Reutilização com funções e classes", "Mesma linguagem para app e infra"],
+      "import pulumi\nimport pulumi_aws as aws\n\nbucket = aws.s3.Bucket('dados')\npulumi.export('bucket', bucket.id)",
+      ["Versione a infra junto com o código", "Sempre revise o preview antes de aplicar em produção"], "https://www.pulumi.com/docs/"],
+  ]],
+
 ];
 
 // limpa e regera
@@ -603,10 +783,42 @@ M.forEach(([title, area, level, category, lessons], mi) => {
   mkdirSync(dir, { recursive: true });
 
   const lessonObjs = lessons.map(([t, s, p, c, bp, d], li) => {
+    // Template pedagógico enriquecido: cada seção é construída a partir dos
+    // dados reais da lição (pontos, código, boas práticas) — sem texto genérico.
     let md = `# ${t}\n\n${s}\n\n`;
-    md += `## Pontos-chave\n\n` + p.map((x) => `- ${x}`).join("\n") + "\n\n";
-    if (c) md += "## Exemplo\n\n```python\n" + c + "\n```\n\n";
-    if (bp?.length) md += `## Boas práticas\n\n` + bp.map((x) => `- ${x}`).join("\n") + "\n\n";
+    md += `> **Tema:** ${category} · **Nível:** ${level} · **Trilha:** ${title}\n\n`;
+
+    md += `## Conceitos-chave\n\nNesta lição você vai entender:\n\n`;
+    md += p.map((x) => `- **${x}**`).join("\n") + "\n\n";
+
+    if (c) {
+      md += "## Exemplo prático\n\n```python\n" + c + "\n```\n\n";
+      md +=
+        "Leia o exemplo linha a linha e rode-o no seu ambiente. " +
+        "Em seguida, altere os valores e observe o que muda — entender *por que* " +
+        "o código se comporta assim vale mais do que decorar a sintaxe.\n\n";
+    }
+
+    if (bp?.length) {
+      md += `## Boas práticas\n\n` + bp.map((x) => `- ${x}`).join("\n") + "\n\n";
+    }
+
+    // Exercício específico, montado a partir dos pontos e boas práticas reais
+    const p0 = p[0] ? p[0].toLowerCase() : "o conceito principal";
+    const p1 = p[1] ? p[1].toLowerCase() : p0;
+    md += `## Pratique\n\n`;
+    md +=
+      `Para fixar, escreva um pequeno script que combine **${p0}** e ` +
+      `**${p1}** em um caso do seu dia a dia.` +
+      (bp?.length ? ` Depois refatore aplicando "${bp[0]}".` : "") +
+      `\n\nDesafio extra: explique, em uma frase, quando **não** usar esta ` +
+      `abordagem — saber os limites de uma ferramenta é tão importante quanto ` +
+      `saber usá-la.\n\n`;
+
+    // Checklist de autoavaliação derivado dos pontos
+    md += `## Checklist de domínio\n\nVocê domina esta lição quando consegue:\n\n`;
+    md += p.map((x) => `- [ ] Explicar e aplicar: ${x}`).join("\n") + "\n\n";
+
     if (d) md += `## Saiba mais\n\n- [Documentação oficial](${d})\n`;
 
     const fname = `${String(li + 1).padStart(2, "0")}_${slug(t)}.md`;
@@ -646,7 +858,8 @@ const esc = (s) => String(s ?? "").replace(/'/g, "''");
 const rows = extraModules
   .map((m) => `('${esc(m.title)}', '${esc(m.description)}', '${esc(m.category)}', '${m.level}', '${esc(m.area)}', ${m.orderIndex}, ${m.estimatedHours}, '${m.slug}', ${m.lessons.length})`)
   .join(",\n");
-const sql = `-- GERADO por gen-ecosystem-content.mjs\ndelete from public.contents where slug like 'ext-%';\ninsert into public.contents\n  (title, description, category, level, area, order_index, estimated_hours, slug, lessons_count)\nvalues\n${rows};\n`;
+// upsert por slug (não-destrutivo): preserva os ids e o progresso já gravado
+const sql = `-- GERADO por gen-ecosystem-content.mjs\ninsert into public.contents\n  (title, description, category, level, area, order_index, estimated_hours, slug, lessons_count)\nvalues\n${rows}\non conflict (slug) where slug is not null do update set\n  title=excluded.title, description=excluded.description, category=excluded.category,\n  level=excluded.level, area=excluded.area, order_index=excluded.order_index,\n  estimated_hours=excluded.estimated_hours, lessons_count=excluded.lessons_count;\n`;
 writeFileSync(join(ROOT, "supabase", "contents_extra.sql"), sql);
 
 const totalLessons = extraModules.reduce((a, m) => a + m.lessons.length, 0);

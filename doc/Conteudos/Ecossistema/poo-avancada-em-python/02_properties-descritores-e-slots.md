@@ -2,14 +2,18 @@
 
 Controle de acesso a atributos e otimização de memória.
 
-## Pontos-chave
+> **Tema:** POO · **Nível:** avancado · **Trilha:** POO Avançada em Python
 
-- @property cria getters/setters pythônicos
-- Descritores reutilizam lógica de atributos
-- __slots__ economiza memória
-- Validação no setter
+## Conceitos-chave
 
-## Exemplo
+Nesta lição você vai entender:
+
+- **@property cria getters/setters pythônicos**
+- **Descritores reutilizam lógica de atributos**
+- **__slots__ economiza memória**
+- **Validação no setter**
+
+## Exemplo prático
 
 ```python
 class Conta:
@@ -22,10 +26,27 @@ class Conta:
         self._saldo = v
 ```
 
+Leia o exemplo linha a linha e rode-o no seu ambiente. Em seguida, altere os valores e observe o que muda — entender *por que* o código se comporta assim vale mais do que decorar a sintaxe.
+
 ## Boas práticas
 
 - Use property só quando há lógica real
 - __slots__ em classes com muitas instâncias
+
+## Pratique
+
+Para fixar, escreva um pequeno script que combine **@property cria getters/setters pythônicos** e **descritores reutilizam lógica de atributos** em um caso do seu dia a dia. Depois refatore aplicando "Use property só quando há lógica real".
+
+Desafio extra: explique, em uma frase, quando **não** usar esta abordagem — saber os limites de uma ferramenta é tão importante quanto saber usá-la.
+
+## Checklist de domínio
+
+Você domina esta lição quando consegue:
+
+- [ ] Explicar e aplicar: @property cria getters/setters pythônicos
+- [ ] Explicar e aplicar: Descritores reutilizam lógica de atributos
+- [ ] Explicar e aplicar: __slots__ economiza memória
+- [ ] Explicar e aplicar: Validação no setter
 
 ## Saiba mais
 

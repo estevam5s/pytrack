@@ -25,6 +25,12 @@ export interface SubscriptionRow {
   trial_end: string | null;
   created_at: string;
   updated_at: string;
+  // troca de plano agendada para o fim do período (downgrade)
+  pending_price_id?: string | null;
+  pending_tier?: string | null;
+  pending_effective_at?: string | null;
+  stripe_schedule_id?: string | null;
+  metadata?: Record<string, unknown> | null;
 }
 
 export async function getUserSubscription(

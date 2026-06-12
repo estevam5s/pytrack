@@ -70,12 +70,13 @@ async function resolveUserId(
 async function upsertSubscription(admin: Admin, sub: any, userId: string) {
   const item = sub.items?.data?.[0];
   const customerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
+  const currentPriceId = item?.price?.id ?? null;
   await admin.from("subscriptions").upsert(
     {
       user_id: userId,
       stripe_customer_id: customerId ?? null,
       stripe_subscription_id: sub.id,
-      stripe_price_id: item?.price?.id ?? null,
+      stripe_price_id: currentPriceId,
       status: sub.status,
       current_period_start: tsFromUnix(sub.current_period_start ?? item?.current_period_start),
       current_period_end: tsFromUnix(sub.current_period_end ?? item?.current_period_end),
@@ -87,6 +88,44 @@ async function upsertSubscription(admin: Admin, sub: any, userId: string) {
     },
     { onConflict: "user_id" },
   );
+  // Downgrade agendado entrou em vigor (o preço já é o que estava pendente, ou o
+  // schedule foi solto) → limpa as colunas pending_* para a UI parar de mostrar.
+  await reconcilePending(admin, userId, currentPriceId, sub.schedule);
+}
+
+/** Limpa o agendamento pendente quando a troca já aconteceu (preço == pendente). */
+async function reconcilePending(
+  admin: Admin,
+  userId: string,
+  currentPriceId: string | null,
+  scheduleRef: any,
+) {
+  try {
+    const { data: row } = await admin
+      .from("subscriptions")
+      .select("pending_price_id")
+      .eq("user_id", userId)
+      .maybeSingle();
+    const pending = (row as { pending_price_id?: string | null } | null)
+      ?.pending_price_id;
+    if (!pending) return;
+    const scheduleId =
+      typeof scheduleRef === "string" ? scheduleRef : scheduleRef?.id;
+    // sem schedule ativo, ou o preço atual já é o agendado → troca concluída
+    if (!scheduleId || currentPriceId === pending) {
+      await admin
+        .from("subscriptions")
+        .update({
+          pending_price_id: null,
+          pending_tier: null,
+          pending_effective_at: null,
+          stripe_schedule_id: null,
+        })
+        .eq("user_id", userId);
+    }
+  } catch (e) {
+    console.error("[billing] reconcilePending falhou:", e);
+  }
 }
 
 async function syncSubscriptionById(admin: Admin, subId: string, userHint?: string | null) {
