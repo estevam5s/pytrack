@@ -16,6 +16,19 @@
     --text-primary: 255 255 255;
     --text-secondary: 161 161 170;
     --muted: 28 28 31;
+
+    /* escala de elevação (sombras mais profundas no dark) */
+    --elev-1: 0 1px 2px rgb(0 0 0 / 0.4);
+    --elev-2: 0 2px 8px -2px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.3);
+    --elev-3: 0 12px 32px -12px rgb(0 0 0 / 0.55), 0 2px 8px -4px rgb(0 0 0 / 0.4);
+    --elev-4: 0 24px 64px -16px rgb(0 0 0 / 0.65);
+
+    /* tokens de movimento (ritmo único em toda a UI) */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --dur-fast: 150ms;
+    --dur-base: 220ms;
+    --dur-slow: 350ms;
   }
 
   /* Tema claro */
@@ -31,6 +44,12 @@
     --text-primary: 9 9 11;
     --text-secondary: 82 82 91;
     --muted: 244 244 245;
+
+    /* elevação no claro: sombras suaves e difusas, sem peso */
+    --elev-1: 0 1px 2px rgb(24 24 27 / 0.06);
+    --elev-2: 0 2px 8px -2px rgb(24 24 27 / 0.08), 0 1px 2px rgb(24 24 27 / 0.05);
+    --elev-3: 0 12px 32px -12px rgb(24 24 27 / 0.14), 0 2px 8px -4px rgb(24 24 27 / 0.06);
+    --elev-4: 0 24px 64px -16px rgb(24 24 27 / 0.22);
   }
 
   * {
@@ -43,6 +62,27 @@
     transition:
       background-color 0.25s ease,
       color 0.25s ease;
+  }
+
+  ::selection {
+    background: rgba(130, 87, 229, 0.35);
+    color: rgb(var(--text-primary));
+  }
+
+  /* remove o delay de 300ms no toque e evita double-tap zoom acidental */
+  button,
+  a,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
   }
 
   ::-webkit-scrollbar {
@@ -90,7 +130,10 @@
     @apply rounded-2xl border border-border bg-surface transition-all duration-300;
   }
   .input {
-    @apply w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm outline-none focus:border-primary;
+    @apply w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm outline-none transition-[border-color,box-shadow] duration-200 hover:border-text-secondary/40 focus:border-primary;
+  }
+  .input:focus {
+    box-shadow: 0 0 0 3px rgba(130, 87, 229, 0.18);
   }
   .card-hover:hover {
     @apply -translate-y-1 border-primary/40;
@@ -422,4 +465,14 @@ body { top: 0 !important; }
   .text-gradient, .anim-float, .anim-fade-up, .anim-pulse-glow, .orbit-ring, .orbit-ring-rev, .orbit-item,
   .aurora, .aurora-1, .aurora-2, .aurora-3, .gradient-border::before { animation: none !important; }
   .card:hover, .glow-hover:hover { transform: none; }
+
+  /* regra geral: qualquer animação/transição vira instantânea */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

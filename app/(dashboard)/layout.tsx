@@ -91,7 +91,7 @@ export default async function DashboardLayout({
   return (
     <TooltipProvider delayDuration={200}>
      <LanguageProvider>
-      <div className="min-h-screen overflow-x-hidden bg-background">
+      <div className="min-h-dvh overflow-x-hidden bg-background">
         <LevelUpNotifier serverCounts={levelCounts} />
         <PomodoroProvider />
         <OnboardingTour initialOpen={!profile?.tutorial_done} />
