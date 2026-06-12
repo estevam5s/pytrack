@@ -1,0 +1,33 @@
+# Crontab de referência — scrum-master
+# Cole no crontab do servidor com: crontab -e
+# Gerado em: 2026-05-01
+
+# heartbeat e métricas periódicas
+0 */6 * * *   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_6h_heartbeat.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# backup e limpeza de dados temporários
+0 2 * * *   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_daily_2am.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# processamento de filas e status
+*/10 * * * *   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_10min_queue.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# sincronização e atualização de dashboards
+0 * * * *   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_hourly_sync.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# relatórios semanais e consolidação
+0 3 * * 1   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_weekly_report.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# fechamento mensal e arquivamento
+0 0 1 * *   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_monthly_close.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# limpeza de dados antigos e logs
+0 1 * * *   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_daily_cleanup.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# backup automático do banco
+0 4 * * *   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_daily_backup.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# reindexação e otimização do banco
+0 4 * * 0   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_weekly_reindex.sh >> /var/log/scrum-master-cron.log 2>&1
+
+# processamento em lote
+0 9,15,21 * * *   /Users/estevamsouza/Desktop/LTD/ltd-Analise-de-Business-Plans/scrum-master/cron/cron_batch_3x_daily.sh >> /var/log/scrum-master-cron.log 2>&1

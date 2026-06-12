@@ -1,0 +1,61 @@
+[
+  {
+    "id": "422bee31-b7cf-462c-b014-3b32ba55fdf2",
+    "user_id": "fa31bc0c-9abd-47f1-bf0f-9a619d589092",
+    "stripe_customer_id": null,
+    "stripe_subscription_id": null,
+    "stripe_price_id": "price_1TfPAnCB6Dz1wPei2nOAIofK",
+    "status": "active",
+    "current_period_start": "2026-06-06T18:44:41.768157+00:00",
+    "current_period_end": "2126-06-06T18:44:41.768157+00:00",
+    "cancel_at_period_end": false,
+    "canceled_at": null,
+    "trial_start": null,
+    "trial_end": null,
+    "metadata": {
+      "comp": true,
+      "reason": "owner"
+    },
+    "created_at": "2026-06-06T18:44:41.768157+00:00",
+    "updated_at": "2026-06-06T18:44:41.768157+00:00"
+  },
+  {
+    "id": "b44cdbda-8246-49ff-9a54-8bf2d661ca8f",
+    "user_id": "f04468ea-79ff-4249-b9f9-3ba5f1001bbc",
+    "stripe_customer_id": "cus_UeijF8X5hwaD1g",
+    "stripe_subscription_id": "sub_1TfPJfCB6Dz1wPeiDO3W63dV",
+    "stripe_price_id": "price_1TfPAnCB6Dz1wPei2nOAIofK",
+    "status": "active",
+    "current_period_start": "2026-06-06T18:51:27+00:00",
+    "current_period_end": "2026-07-06T18:51:27+00:00",
+    "cancel_at_period_end": false,
+    "canceled_at": null,
+    "trial_start": null,
+    "trial_end": null,
+    "metadata": {
+      "user_id": "f04468ea-79ff-4249-b9f9-3ba5f1001bbc"
+    },
+    "created_at": "2026-06-06T19:00:16.67667+00:00",
+    "updated_at": "2026-06-06T19:52:17.998381+00:00"
+  },
+  {
+    "id": "35905321-6641-4466-80b9-93ede61eb70b",
+    "user_id": "ea839ab8-aaae-41fd-893f-016185469ee0",
+    "stripe_customer_id": null,
+    "stripe_subscription_id": null,
+    "stripe_price_id": "price_1TfUEdCB6Dz1wPeiyag2DQIn",
+    "status": "active",
+    "current_period_start": "2026-06-07T00:58:03.806815+00:00",
+    "current_period_end": "2126-06-06T00:00:00+00:00",
+    "cancel_at_period_end": false,
+    "canceled_at": null,
+    "trial_start": null,
+    "trial_end": null,
+    "metadata": {
+      "comp": true,
+      "admin": true
+    },
+    "created_at": "2026-06-07T00:58:03.806815+00:00",
+    "updated_at": "2026-06-07T00:58:03.806815+00:00"
+  }
+]

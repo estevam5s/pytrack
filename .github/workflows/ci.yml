@@ -1,0 +1,47 @@
+name: CI
+
+# Roda lint, typecheck e build em cada push/PR — gate de qualidade antes do deploy.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint · Typecheck · Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Security audit (npm)
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+        env:
+          # valores dummy: o build não acessa serviços reais (páginas dinâmicas
+          # só leem env em runtime). Os segredos reais ficam na Vercel.
+          NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: dummy-anon-key
+          NEXT_PUBLIC_APP_URL: https://www.pytrack.com.br
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: pk_test_dummy

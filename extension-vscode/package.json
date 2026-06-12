@@ -1,0 +1,125 @@
+{
+  "name": "pytrack",
+  "displayName": "PyTrack — Python na sua IDE",
+  "description": "Gerencie sua assinatura PyTrack, importe projetos, aulas e exercícios, use snippets de Python, instale pacotes e conte com uma IA para programar — direto no VS Code.",
+  "version": "1.0.1",
+  "publisher": "EstevamSouza",
+  "icon": "media/icon.png",
+  "license": "MIT",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Education", "Snippets", "Machine Learning", "Other"],
+  "keywords": ["python", "pytrack", "cursos", "exercícios", "ia", "snippets"],
+  "galleryBanner": { "color": "#0b0b0f", "theme": "dark" },
+  "homepage": "https://www.pytrack.com.br/extensao",
+  "bugs": { "url": "https://www.pytrack.com.br/contato" },
+  "repository": { "type": "git", "url": "https://github.com/PyTrackOrganization/pytrack-vscode" },
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "pytrack",
+          "title": "PyTrack",
+          "icon": "media/sidebar.svg"
+        }
+      ]
+    },
+    "views": {
+      "pytrack": [
+        { "id": "pytrack.account", "name": "Minha conta" },
+        { "id": "pytrack.projects", "name": "Projetos" },
+        { "id": "pytrack.lessons", "name": "Aulas" },
+        { "id": "pytrack.exercises", "name": "Exercícios" },
+        { "id": "pytrack.tools", "name": "Ferramentas" }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "pytrack.account",
+        "contents": "Bem-vindo(a) à PyTrack 🐍\n\nFaça login para gerenciar sua assinatura e importar seus projetos, aulas e exercícios.\n\n[Entrar na PyTrack](command:pytrack.login)\n\nAinda não tem conta? [Conheça a PyTrack](https://www.pytrack.com.br)\n\nA extensão completa é exclusiva do plano [Suprema](https://www.pytrack.com.br/precos)."
+      }
+    ],
+    "commands": [
+      { "command": "pytrack.login", "title": "PyTrack: Entrar", "icon": "$(sign-in)" },
+      { "command": "pytrack.logout", "title": "PyTrack: Sair da conta", "icon": "$(sign-out)" },
+      { "command": "pytrack.sync", "title": "PyTrack: Sincronizar", "icon": "$(sync)" },
+      { "command": "pytrack.dashboard", "title": "PyTrack: Abrir Dashboard", "icon": "$(dashboard)" },
+      { "command": "pytrack.openDashboard", "title": "PyTrack: Abrir painel na web", "icon": "$(globe)" },
+      { "command": "pytrack.openSite", "title": "PyTrack: Conheça a PyTrack", "icon": "$(globe)" },
+      { "command": "pytrack.manageSubscription", "title": "PyTrack: Gerenciar assinatura" },
+      { "command": "pytrack.importProject", "title": "PyTrack: Importar projeto" },
+      { "command": "pytrack.openExercise", "title": "PyTrack: Abrir exercício" },
+      { "command": "pytrack.openLesson", "title": "PyTrack: Abrir aula" },
+      { "command": "pytrack.installPackage", "title": "PyTrack: Instalar pacote Python (pip)", "icon": "$(package)" },
+      { "command": "pytrack.aiAssistant", "title": "PyTrack: Assistente de IA", "icon": "$(sparkle)" },
+      { "command": "pytrack.aiExplain", "title": "PyTrack: IA — Explicar seleção" },
+      { "command": "pytrack.aiRefactor", "title": "PyTrack: IA — Refatorar seleção" },
+      { "command": "pytrack.aiTests", "title": "PyTrack: IA — Gerar testes (pytest)" },
+      { "command": "pytrack.aiDocstring", "title": "PyTrack: IA — Gerar docstring" },
+      { "command": "pytrack.configureAI", "title": "PyTrack: Configurar IA (sua chave)" },
+      { "command": "pytrack.insertSyntax", "title": "PyTrack: Inserir sintaxe (por versão)" },
+      { "command": "pytrack.runFile", "title": "PyTrack: Rodar arquivo Python", "icon": "$(play)" },
+      { "command": "pytrack.createVenv", "title": "PyTrack: Criar ambiente virtual (venv)" },
+      { "command": "pytrack.freeze", "title": "PyTrack: Gerar requirements.txt" },
+      { "command": "pytrack.formatRuff", "title": "PyTrack: Formatar com Ruff" },
+      { "command": "pytrack.searchExercises", "title": "PyTrack: Buscar exercício", "icon": "$(search)" },
+      { "command": "pytrack.dailyChallenge", "title": "PyTrack: Desafio do dia" }
+    ],
+    "menus": {
+      "view/title": [
+        { "command": "pytrack.dashboard", "when": "view == pytrack.account", "group": "navigation@1" },
+        { "command": "pytrack.sync", "when": "view == pytrack.account", "group": "navigation@2" },
+        { "command": "pytrack.logout", "when": "view == pytrack.account", "group": "navigation@3" },
+        { "command": "pytrack.searchExercises", "when": "view == pytrack.exercises", "group": "navigation" }
+      ],
+      "editor/context": [
+        { "command": "pytrack.aiExplain", "when": "editorLangId == python", "group": "pytrack@1" },
+        { "command": "pytrack.aiRefactor", "when": "editorLangId == python", "group": "pytrack@2" },
+        { "command": "pytrack.aiTests", "when": "editorLangId == python", "group": "pytrack@3" }
+      ]
+    },
+    "snippets": [
+      { "language": "python", "path": "./snippets/python.json" }
+    ],
+    "configuration": {
+      "title": "PyTrack",
+      "properties": {
+        "pytrack.apiBaseUrl": {
+          "type": "string",
+          "default": "https://www.pytrack.com.br",
+          "description": "URL base da API da PyTrack."
+        },
+        "pytrack.ai.provider": {
+          "type": "string",
+          "enum": ["openai", "openrouter", "anthropic", "nvidia", "custom"],
+          "default": "openai",
+          "description": "Provedor de IA usado pelo assistente (você fornece a sua própria chave)."
+        },
+        "pytrack.ai.model": {
+          "type": "string",
+          "default": "gpt-4o-mini",
+          "description": "Modelo de IA a ser usado (ex.: gpt-4o-mini, claude-3-5-sonnet, meta/llama-3.3-70b-instruct)."
+        },
+        "pytrack.ai.baseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "URL base da API de IA (apenas para o provedor 'custom')."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "package": "npm run compile -- --minify",
+    "watch": "npm run compile -- --sourcemap --watch",
+    "lint": "echo 'ok'"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.4.0"
+  }
+}

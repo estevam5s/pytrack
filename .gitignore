@@ -1,0 +1,31 @@
+node_modules
+.next
+out
+.env*.local
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+.vercel
+.env
+novos-sistemas-saasbackups/
+aplicativos
+
+# Sub-projeto: bot do Telegram (código vai pro repo; segredos e deps NÃO)
+bot-telegran/node_modules/
+bot-telegran/dist/
+bot-telegran/.env
+# Trava de segurança: nenhum .env real entra no repositório
+**/.env
+**/.env.*
+!**/.env.example
+
+# Arquivos de segredos/credenciais (nunca versionar)
+*.pem
+*.key
+*.p12
+*_rsa
+secrets.*
+**/credentials*.json
+**/service-account*.json
+.tauri/*.key

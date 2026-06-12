@@ -1,0 +1,602 @@
+[
+  {
+    "id": "019a04dc-09f2-4485-bc72-c96f450819ad",
+    "name": "Python",
+    "description": "Linguagem base do ecossistema. Foque em Python 3.11+/3.12+.",
+    "category": "Linguagem",
+    "level": "basico",
+    "documentation_url": "https://docs.python.org/3/",
+    "icon": "code",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "4ab1775f-125a-4fc2-9c96-358f30a95947",
+    "name": "FastAPI",
+    "description": "Framework moderno para APIs com type hints, validação e OpenAPI automático.",
+    "category": "Web/APIs",
+    "level": "intermediario",
+    "documentation_url": "https://fastapi.tiangolo.com/",
+    "icon": "zap",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "ad30afc7-6f25-4f9f-a18e-c328dee9eee8",
+    "name": "Django",
+    "description": "Framework completo: admin, ORM, autenticação e convenções fortes.",
+    "category": "Web/APIs",
+    "level": "intermediario",
+    "documentation_url": "https://docs.djangoproject.com/",
+    "icon": "layout",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "2a479f38-49a9-4b02-bde2-c7d5805cdc3a",
+    "name": "Flask",
+    "description": "Micro-framework flexível para apps e APIs pequenos.",
+    "category": "Web/APIs",
+    "level": "basico",
+    "documentation_url": "https://flask.palletsprojects.com/",
+    "icon": "feather",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "fa4dfac3-ed05-4281-bf57-339e31d70f39",
+    "name": "Pandas",
+    "description": "Análise tabular, limpeza e transformação de dados.",
+    "category": "Data Science",
+    "level": "intermediario",
+    "documentation_url": "https://pandas.pydata.org/docs/",
+    "icon": "table",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "3887d66e-f7ac-44b3-9d95-4160948028a5",
+    "name": "NumPy",
+    "description": "Arrays, álgebra linear e vetorização — base do stack científico.",
+    "category": "Data Science",
+    "level": "intermediario",
+    "documentation_url": "https://numpy.org/doc/",
+    "icon": "sigma",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "578bbe5c-9a14-4352-aca7-c4f4a9aaf5ab",
+    "name": "Matplotlib",
+    "description": "Biblioteca base de visualização com controle fino.",
+    "category": "Data Science",
+    "level": "intermediario",
+    "documentation_url": "https://matplotlib.org/stable/",
+    "icon": "bar-chart-3",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "a799fe5d-31bb-4bc2-bd31-44f9e8dcac4b",
+    "name": "Seaborn",
+    "description": "Estatística visual rápida sobre Matplotlib.",
+    "category": "Data Science",
+    "level": "intermediario",
+    "documentation_url": "https://seaborn.pydata.org/",
+    "icon": "line-chart",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "aa1f7c0a-9b64-40df-9e71-dea47491b130",
+    "name": "Jupyter",
+    "description": "Notebooks interativos para exploração e prototipação.",
+    "category": "Data Science",
+    "level": "basico",
+    "documentation_url": "https://jupyter.org/",
+    "icon": "notebook",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "0dee1c0f-c5b9-4fdb-bcf9-13480dc810b4",
+    "name": "SQLAlchemy",
+    "description": "ORM e Core poderosos para arquiteturas desacopladas.",
+    "category": "Banco de Dados",
+    "level": "avancado",
+    "documentation_url": "https://docs.sqlalchemy.org/",
+    "icon": "database",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "9fa4fb00-fbe2-4147-b8ff-75bcff2f7344",
+    "name": "PostgreSQL",
+    "description": "Banco relacional padrão para sistemas profissionais.",
+    "category": "Banco de Dados",
+    "level": "intermediario",
+    "documentation_url": "https://www.postgresql.org/docs/",
+    "icon": "database",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "f294d925-3567-4e99-9ea4-26f6a29af891",
+    "name": "Supabase",
+    "description": "Backend-as-a-service sobre Postgres: auth, storage e realtime.",
+    "category": "Banco de Dados",
+    "level": "intermediario",
+    "documentation_url": "https://supabase.com/docs",
+    "icon": "cloud",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "21a07f01-1167-4600-bbb5-3828665ce572",
+    "name": "Docker",
+    "description": "Empacotamento de aplicações em containers reproduzíveis.",
+    "category": "DevOps",
+    "level": "intermediario",
+    "documentation_url": "https://docs.docker.com/",
+    "icon": "container",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "598b274a-f9f2-4d93-94bb-a884c290fa63",
+    "name": "Git",
+    "description": "Controle de versão distribuído.",
+    "category": "DevOps",
+    "level": "basico",
+    "documentation_url": "https://git-scm.com/doc",
+    "icon": "git-branch",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "0b15f99c-e9ca-40be-b1f8-eec7a8933da5",
+    "name": "GitHub",
+    "description": "Hospedagem de repositórios, Actions e colaboração.",
+    "category": "DevOps",
+    "level": "basico",
+    "documentation_url": "https://docs.github.com/",
+    "icon": "github",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "5c389bb0-61fd-469d-9c2d-739a11ecac5e",
+    "name": "MQTT",
+    "description": "Protocolo leve de mensageria para IoT (paho-mqtt).",
+    "category": "IoT",
+    "level": "intermediario",
+    "documentation_url": "https://mqtt.org/",
+    "icon": "radio",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "6a76fd88-6a55-4c9a-92ca-978928a868a6",
+    "name": "Raspberry Pi",
+    "description": "Plataforma de hardware para projetos IoT e embarcados.",
+    "category": "IoT",
+    "level": "intermediario",
+    "documentation_url": "https://www.raspberrypi.com/documentation/",
+    "icon": "cpu",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "d63b74a1-96fa-46a6-ac0b-d2191ceca4f2",
+    "name": "Airflow",
+    "description": "Orquestração de pipelines de dados via DAGs agendadas.",
+    "category": "Engenharia de Dados",
+    "level": "avancado",
+    "documentation_url": "https://airflow.apache.org/docs/",
+    "icon": "workflow",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "9fb2aa4c-fcce-4205-af51-fdfff9d364a2",
+    "name": "Spark",
+    "description": "Processamento distribuído de Big Data com PySpark.",
+    "category": "Engenharia de Dados",
+    "level": "avancado",
+    "documentation_url": "https://spark.apache.org/docs/latest/api/python/",
+    "icon": "flame",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "ef0df787-1c57-4fb9-8b7f-6fbb996d7f0b",
+    "name": "Pytest",
+    "description": "Framework padrão de testes profissionais em Python.",
+    "category": "Qualidade",
+    "level": "intermediario",
+    "documentation_url": "https://docs.pytest.org/",
+    "icon": "check-check",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "b5159452-8b14-4d45-b0bf-9fbd595677ae",
+    "name": "Pydantic",
+    "description": "Validação de dados e settings com type hints — base de FastAPI.",
+    "category": "Web/APIs",
+    "level": "intermediario",
+    "documentation_url": "https://docs.pydantic.dev/",
+    "icon": "zap",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "6b3cb39a-8482-45ff-bce9-0e2d68512fb7",
+    "name": "Ruff",
+    "description": "Linter e formatador extremamente rápido para Python.",
+    "category": "Qualidade",
+    "level": "intermediario",
+    "documentation_url": "https://docs.astral.sh/ruff/",
+    "icon": "check-check",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "aee0d7c8-db53-43ff-a62c-f283453e57c5",
+    "name": "mypy",
+    "description": "Checagem estática de tipos para Python.",
+    "category": "Qualidade",
+    "level": "intermediario",
+    "documentation_url": "https://mypy.readthedocs.io/",
+    "icon": "check-check",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "6bf2cbd5-de30-42a0-a323-8b04bfea6ec7",
+    "name": "Black",
+    "description": "Formatador de código opinativo e determinístico.",
+    "category": "Qualidade",
+    "level": "basico",
+    "documentation_url": "https://black.readthedocs.io/",
+    "icon": "check-check",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "cc49e726-ba1f-40e0-a1c9-5cf80da6ec94",
+    "name": "Typer",
+    "description": "CLIs modernas com type hints, sobre o Click.",
+    "category": "Automação",
+    "level": "basico",
+    "documentation_url": "https://typer.tiangolo.com/",
+    "icon": "code",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "9fb569d9-23a1-4308-9f48-7f9b0b7b0ce9",
+    "name": "Rich",
+    "description": "Saída de terminal bonita: tabelas, progresso, logs e markdown.",
+    "category": "Automação",
+    "level": "basico",
+    "documentation_url": "https://rich.readthedocs.io/",
+    "icon": "code",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "4e3c2029-f879-4355-8bdf-82b966f1feed",
+    "name": "GraphQL",
+    "description": "Linguagem de consulta para APIs (Strawberry, Graphene, Ariadne).",
+    "category": "Web/APIs",
+    "level": "avancado",
+    "documentation_url": "https://strawberry.rocks/",
+    "icon": "zap",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "17b11c39-3671-431d-a8a2-5462d0f7dbd5",
+    "name": "gRPC",
+    "description": "RPC binário de alto desempenho com contratos protobuf.",
+    "category": "Web/APIs",
+    "level": "avancado",
+    "documentation_url": "https://grpc.io/docs/languages/python/",
+    "icon": "zap",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "1b677ae1-1739-41f9-a9bd-10e498c90c23",
+    "name": "WebSockets",
+    "description": "Comunicação bidirecional em tempo real.",
+    "category": "Web/APIs",
+    "level": "intermediario",
+    "documentation_url": "https://websockets.readthedocs.io/",
+    "icon": "radio",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "70c1075d-750c-4742-997d-7177bf314afb",
+    "name": "httpx",
+    "description": "Cliente HTTP moderno com suporte sync e async.",
+    "category": "Web/APIs",
+    "level": "intermediario",
+    "documentation_url": "https://www.python-httpx.org/",
+    "icon": "zap",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "7a53670e-525b-427a-a364-1963d44a63c5",
+    "name": "SQLModel",
+    "description": "Une SQLAlchemy e Pydantic para APIs modernas.",
+    "category": "Banco de Dados",
+    "level": "intermediario",
+    "documentation_url": "https://sqlmodel.tiangolo.com/",
+    "icon": "database",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "84070608-dde7-404d-a9ed-810e84d925a0",
+    "name": "Alembic",
+    "description": "Migrations versionadas para SQLAlchemy.",
+    "category": "Banco de Dados",
+    "level": "intermediario",
+    "documentation_url": "https://alembic.sqlalchemy.org/",
+    "icon": "database",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "8e3ab58c-c01e-42b6-a888-6ff2afcda7ad",
+    "name": "Redis",
+    "description": "Cache, filas, locks, rate limiting e pub/sub em memória.",
+    "category": "Banco de Dados",
+    "level": "intermediario",
+    "documentation_url": "https://redis.io/docs/",
+    "icon": "database",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "6ffacc0f-9954-4c5f-9acb-933e292a0472",
+    "name": "asyncio",
+    "description": "Concorrência cooperativa nativa: event loop, tasks e futures.",
+    "category": "Async",
+    "level": "avancado",
+    "documentation_url": "https://docs.python.org/3/library/asyncio.html",
+    "icon": "workflow",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "7710ef77-9bad-427b-9cc7-541cee5a684b",
+    "name": "Celery",
+    "description": "Workers distribuídos e ecossistema maduro de filas.",
+    "category": "Async",
+    "level": "avancado",
+    "documentation_url": "https://docs.celeryq.dev/",
+    "icon": "workflow",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "4422e0db-81bb-4ddb-bd4c-0577cbc83059",
+    "name": "RabbitMQ",
+    "description": "Broker de mensageria e filas tradicionais (AMQP).",
+    "category": "Async",
+    "level": "avancado",
+    "documentation_url": "https://www.rabbitmq.com/",
+    "icon": "radio",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "16121eea-306d-4864-810b-f44027118248",
+    "name": "Kafka",
+    "description": "Streaming durável, escalável e orientado a eventos.",
+    "category": "Async",
+    "level": "avancado",
+    "documentation_url": "https://kafka.apache.org/documentation/",
+    "icon": "flame",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "ed26a46a-4243-4202-9ef2-79399c5e603f",
+    "name": "Polars",
+    "description": "DataFrames de alta performance com execução lazy.",
+    "category": "Data Science",
+    "level": "intermediario",
+    "documentation_url": "https://docs.pola.rs/",
+    "icon": "table",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "21db366e-7b3f-4ba0-aeed-2ad57685f2c8",
+    "name": "DuckDB",
+    "description": "SQL analítico local e leitura direta de Parquet/CSV.",
+    "category": "Data Science",
+    "level": "intermediario",
+    "documentation_url": "https://duckdb.org/docs/",
+    "icon": "database",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "7ddefbaa-f4d8-486b-8e0d-77198636a48f",
+    "name": "SciPy",
+    "description": "Estatística, otimização e funções científicas sobre NumPy.",
+    "category": "Data Science",
+    "level": "intermediario",
+    "documentation_url": "https://docs.scipy.org/doc/scipy/",
+    "icon": "sigma",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "dce6e0b6-4f35-4e00-8df1-75b3ccb71fed",
+    "name": "Plotly",
+    "description": "Gráficos interativos e dashboards.",
+    "category": "Data Science",
+    "level": "intermediario",
+    "documentation_url": "https://plotly.com/python/",
+    "icon": "line-chart",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "4f4dd026-e222-4ee6-9bb3-8af49bc3c775",
+    "name": "Streamlit",
+    "description": "Apps de dados interativos em Python puro.",
+    "category": "Data Science",
+    "level": "basico",
+    "documentation_url": "https://docs.streamlit.io/",
+    "icon": "bar-chart-3",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "2210f951-0cd4-41f4-adff-715924e35ec5",
+    "name": "scikit-learn",
+    "description": "Pipelines, modelos e validação de machine learning clássico.",
+    "category": "Machine Learning",
+    "level": "intermediario",
+    "documentation_url": "https://scikit-learn.org/stable/",
+    "icon": "sigma",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "1fab11fa-ee96-441e-85f6-e07eb8f1552b",
+    "name": "PyTorch",
+    "description": "Deep learning flexível com ecossistema moderno.",
+    "category": "Machine Learning",
+    "level": "avancado",
+    "documentation_url": "https://pytorch.org/docs/",
+    "icon": "flame",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "88b099c8-aadd-4979-9660-fc84c4f8b2f1",
+    "name": "Hugging Face",
+    "description": "Transformers, datasets e modelos de NLP/IA generativa.",
+    "category": "Machine Learning",
+    "level": "avancado",
+    "documentation_url": "https://huggingface.co/docs",
+    "icon": "flame",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "c0a79826-c8af-4980-916c-04a614a7e4c9",
+    "name": "OpenCV",
+    "description": "Processamento de imagem e visão computacional.",
+    "category": "Machine Learning",
+    "level": "avancado",
+    "documentation_url": "https://docs.opencv.org/",
+    "icon": "code",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "e47b6a0a-f875-4e7c-8588-0bcd59d00a1e",
+    "name": "Scrapy",
+    "description": "Framework de crawlers estruturados e pipelines.",
+    "category": "Automação",
+    "level": "intermediario",
+    "documentation_url": "https://docs.scrapy.org/",
+    "icon": "code",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "16658a87-4baa-4648-b101-345757eceac9",
+    "name": "Playwright",
+    "description": "Automação moderna de browser para testes e scraping.",
+    "category": "Automação",
+    "level": "intermediario",
+    "documentation_url": "https://playwright.dev/python/",
+    "icon": "code",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "1d097ad5-d020-40b9-8dc5-d14703ce704e",
+    "name": "BeautifulSoup",
+    "description": "Parsing de HTML/XML para extração de dados.",
+    "category": "Automação",
+    "level": "basico",
+    "documentation_url": "https://www.crummy.com/software/BeautifulSoup/bs4/doc/",
+    "icon": "code",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "477a4e68-8f01-41aa-97b6-d328c1646b99",
+    "name": "paho-mqtt",
+    "description": "Cliente MQTT para IoT em Python.",
+    "category": "IoT",
+    "level": "intermediario",
+    "documentation_url": "https://eclipse.dev/paho/",
+    "icon": "radio",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "c6ec6c13-7d67-4cc4-98ff-2970033dd45a",
+    "name": "Kubernetes",
+    "description": "Orquestração de containers em escala.",
+    "category": "DevOps",
+    "level": "avancado",
+    "documentation_url": "https://kubernetes.io/docs/",
+    "icon": "container",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "fb5e2152-ee52-4db6-aaab-e7b43569d078",
+    "name": "Terraform",
+    "description": "Infraestrutura como código multi-cloud.",
+    "category": "DevOps",
+    "level": "avancado",
+    "documentation_url": "https://developer.hashicorp.com/terraform/docs",
+    "icon": "container",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "32538468-44fd-4030-b00f-5742de1d5332",
+    "name": "GitHub Actions",
+    "description": "CI/CD integrado ao GitHub.",
+    "category": "DevOps",
+    "level": "intermediario",
+    "documentation_url": "https://docs.github.com/actions",
+    "icon": "git-branch",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "be96b4a6-2f29-46d6-a069-5804cb00bc00",
+    "name": "Nginx",
+    "description": "Reverse proxy, load balancer e servidor web.",
+    "category": "DevOps",
+    "level": "intermediario",
+    "documentation_url": "https://nginx.org/en/docs/",
+    "icon": "container",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "9df82c21-7c78-43c3-95d1-afcc2f655dce",
+    "name": "Gunicorn",
+    "description": "Servidor WSGI/ASGI para produção.",
+    "category": "DevOps",
+    "level": "intermediario",
+    "documentation_url": "https://docs.gunicorn.org/",
+    "icon": "container",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "457e19ea-b844-4fee-ac5e-5c71528cda07",
+    "name": "Uvicorn",
+    "description": "Servidor ASGI rápido para FastAPI/Starlette.",
+    "category": "DevOps",
+    "level": "intermediario",
+    "documentation_url": "https://www.uvicorn.org/",
+    "icon": "zap",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "b9f2cfa1-99dc-4d48-80ff-332cc5752c30",
+    "name": "Prometheus",
+    "description": "Coleta de métricas e alertas.",
+    "category": "DevOps",
+    "level": "avancado",
+    "documentation_url": "https://prometheus.io/docs/",
+    "icon": "line-chart",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "b39027fc-3bfd-4507-af90-d330d14f36e1",
+    "name": "Grafana",
+    "description": "Dashboards de métricas e observabilidade.",
+    "category": "DevOps",
+    "level": "avancado",
+    "documentation_url": "https://grafana.com/docs/",
+    "icon": "bar-chart-3",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "2448e15c-c9aa-4992-a86f-8cc5bf319443",
+    "name": "OpenTelemetry",
+    "description": "Traces, métricas e logs padronizados.",
+    "category": "DevOps",
+    "level": "avancado",
+    "documentation_url": "https://opentelemetry.io/docs/languages/python/",
+    "icon": "workflow",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "3cc38308-442b-4125-92af-f64a422b96a9",
+    "name": "Sentry",
+    "description": "Monitoramento de erros de aplicação.",
+    "category": "DevOps",
+    "level": "intermediario",
+    "documentation_url": "https://docs.sentry.io/platforms/python/",
+    "icon": "radio",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  }
+]

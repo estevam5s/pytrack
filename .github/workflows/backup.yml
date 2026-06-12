@@ -1,0 +1,45 @@
+name: Backup Supabase
+
+# Backup seguro semanal (banco + storage) — protege contra ban/perda da conta.
+# Tambem pode ser disparado manualmente em Actions → Run workflow.
+on:
+  schedule:
+    - cron: "0 4 * * 0" # todo domingo 04:00 UTC
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Rodar backup
+        env:
+          SUPABASE_MANAGEMENT_TOKEN: ${{ secrets.SUPABASE_MANAGEMENT_TOKEN }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE: ${{ secrets.SUPABASE_SERVICE_ROLE }}
+        run: node scripts/backup-supabase.mjs
+
+      - name: Compactar
+        run: |
+          cd backups
+          tar -czf "../pytrack-backup-$(date +%F).tar.gz" .
+
+      - name: Guardar como artifact (90 dias)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytrack-backup-${{ github.run_id }}
+          path: pytrack-backup-*.tar.gz
+          retention-days: 90
+
+      # Opcional: enviar para um bucket externo (S3/R2) — descomente e configure os secrets.
+      # - name: Upload para S3/R2
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.BACKUP_S3_KEY }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.BACKUP_S3_SECRET }}
+      #   run: aws s3 cp pytrack-backup-*.tar.gz s3://SEU-BUCKET/backups/

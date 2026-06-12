@@ -1,0 +1,42 @@
+[
+  {
+    "id": "43010e5e-3af6-4786-abad-bc32e883aea9",
+    "user_id": null,
+    "anon_id": "test-1781009288",
+    "visitor_name": null,
+    "visitor_email": null,
+    "status": "bot",
+    "last_message_at": "2026-06-09T12:48:09.372+00:00",
+    "created_at": "2026-06-09T12:48:09.322549+00:00"
+  },
+  {
+    "id": "2d8aad08-b422-48b4-9828-8a6ee0f8851e",
+    "user_id": null,
+    "anon_id": "t-1781010857",
+    "visitor_name": null,
+    "visitor_email": null,
+    "status": "bot",
+    "last_message_at": "2026-06-09T13:14:20.153+00:00",
+    "created_at": "2026-06-09T13:14:20.025983+00:00"
+  },
+  {
+    "id": "5a4a6e35-bba0-415c-aeee-01c81441d9a9",
+    "user_id": "ea839ab8-aaae-41fd-893f-016185469ee0",
+    "anon_id": null,
+    "visitor_name": null,
+    "visitor_email": "contato@estevamsouza.com.br",
+    "status": "human",
+    "last_message_at": "2026-06-09T19:00:23.107+00:00",
+    "created_at": "2026-06-09T13:02:01.610899+00:00"
+  },
+  {
+    "id": "7bae18e8-506f-40b9-9d6b-c5b5efe6144a",
+    "user_id": null,
+    "anon_id": "f9b6b777-fc65-4fc8-95f5-c391db670ee8",
+    "visitor_name": null,
+    "visitor_email": null,
+    "status": "bot",
+    "last_message_at": "2026-06-09T19:00:59.726+00:00",
+    "created_at": "2026-06-09T19:00:59.677515+00:00"
+  }
+]

@@ -1,0 +1,1 @@
+export { markNotificationsRead } from "./actions";

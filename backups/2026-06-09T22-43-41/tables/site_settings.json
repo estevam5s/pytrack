@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "default_locale": "pt",
+    "maintenance": false,
+    "signups_enabled": true,
+    "announcement": null,
+    "primary_contact": "contato@estevamsouza.com.br",
+    "social_github": "https://github.com/PyTrackOrganization",
+    "social_linkedin": "https://www.linkedin.com/company/pytrack/about/?viewAsMember=true",
+    "updated_at": "2026-06-09T13:17:02.263029+00:00"
+  }
+]

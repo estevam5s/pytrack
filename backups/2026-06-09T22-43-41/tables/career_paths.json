@@ -1,0 +1,393 @@
+[
+  {
+    "id": "6c437eab-e877-42dc-94ce-ac9284e1397a",
+    "title": "Python Developer",
+    "description": "Desenvolvedor generalista capaz de construir scripts, APIs e aplicações com Python.",
+    "area": "Backend",
+    "skills": [
+      "Python moderno",
+      "POO",
+      "Git",
+      "Testes",
+      "SQL básico"
+    ],
+    "roadmap": [
+      "Fundamentos da linguagem",
+      "POO e estruturas de dados",
+      "APIs simples",
+      "Banco de dados",
+      "Projetos com CLI e API"
+    ],
+    "technologies": [
+      "Python",
+      "Git",
+      "SQLite",
+      "Flask",
+      "Pytest"
+    ],
+    "salary_range": "R$ 3.000 - R$ 8.000",
+    "level": "basico",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "ab0a56fd-838d-478f-a9be-0ea06bd7de87",
+    "title": "Backend Developer",
+    "description": "Especialista em APIs, persistência, autenticação e arquitetura de serviços.",
+    "area": "Backend",
+    "skills": [
+      "FastAPI/Django",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "Auth JWT/OAuth2",
+      "Docker"
+    ],
+    "roadmap": [
+      "Frameworks web",
+      "REST e OpenAPI",
+      "ORM e migrations",
+      "Autenticação e segurança",
+      "Deploy com Docker"
+    ],
+    "technologies": [
+      "FastAPI",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Redis",
+      "Docker"
+    ],
+    "salary_range": "R$ 6.000 - R$ 15.000",
+    "level": "intermediario",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "94573d5d-2b1d-4acb-96f4-ccc6d874caa0",
+    "title": "Data Analyst",
+    "description": "Profissional que transforma dados em insights através de análise e visualização.",
+    "area": "Data Science",
+    "skills": [
+      "Pandas",
+      "SQL",
+      "Visualização",
+      "Estatística",
+      "Storytelling"
+    ],
+    "roadmap": [
+      "Python para dados",
+      "Pandas e NumPy",
+      "SQL analítico",
+      "Visualização",
+      "Dashboards"
+    ],
+    "technologies": [
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "DuckDB"
+    ],
+    "salary_range": "R$ 4.000 - R$ 12.000",
+    "level": "intermediario",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "07c73aee-9019-41c7-8716-3bd125abc5ea",
+    "title": "Data Engineer",
+    "description": "Constrói pipelines, ETLs e plataformas de dados escaláveis.",
+    "area": "Engenharia de Dados",
+    "skills": [
+      "SQL avançado",
+      "Spark/Dask",
+      "Airflow",
+      "Modelagem de dados",
+      "Cloud"
+    ],
+    "roadmap": [
+      "Fundamentos de dados",
+      "ETL com Python",
+      "Orquestração",
+      "Big Data e streaming",
+      "Lakehouse e warehouses"
+    ],
+    "technologies": [
+      "PySpark",
+      "Airflow",
+      "Kafka",
+      "Parquet",
+      "Snowflake"
+    ],
+    "salary_range": "R$ 8.000 - R$ 20.000",
+    "level": "avancado",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "f42a78e1-d506-4760-b4a4-5829e1d6bfa7",
+    "title": "IoT Developer",
+    "description": "Desenvolve soluções conectadas com sensores, microcontroladores e mensageria.",
+    "area": "IoT",
+    "skills": [
+      "MicroPython",
+      "MQTT",
+      "Eletrônica básica",
+      "Redes",
+      "Cloud IoT"
+    ],
+    "roadmap": [
+      "Python para hardware",
+      "GPIO e sensores",
+      "MQTT e mensageria",
+      "Integração com nuvem",
+      "Dashboards IoT"
+    ],
+    "technologies": [
+      "MicroPython",
+      "paho-mqtt",
+      "Raspberry Pi",
+      "MQTT",
+      "InfluxDB"
+    ],
+    "salary_range": "R$ 5.000 - R$ 14.000",
+    "level": "intermediario",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "98f00e4e-20a7-4564-9bda-94f07a7710b1",
+    "title": "Software Engineer",
+    "description": "Engenheiro com domínio de arquitetura, qualidade, testes e operação.",
+    "area": "Engenharia de Software",
+    "skills": [
+      "Design patterns",
+      "SOLID",
+      "Testes",
+      "CI/CD",
+      "Observabilidade"
+    ],
+    "roadmap": [
+      "POO e design",
+      "Arquitetura limpa",
+      "Testes e qualidade",
+      "Async e performance",
+      "DevOps e observabilidade"
+    ],
+    "technologies": [
+      "Python",
+      "Docker",
+      "Kubernetes",
+      "Pytest",
+      "OpenTelemetry"
+    ],
+    "salary_range": "R$ 8.000 - R$ 22.000",
+    "level": "avancado",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "461cb84c-9b08-4bbf-984f-b396b8fd2b27",
+    "title": "Automation Developer",
+    "description": "Cria automações, bots e integrações que eliminam trabalho repetitivo.",
+    "area": "Automação",
+    "skills": [
+      "Scripting",
+      "Web scraping",
+      "APIs",
+      "CLIs",
+      "Agendamento"
+    ],
+    "roadmap": [
+      "Automação de tarefas",
+      "Web scraping",
+      "Bots e integrações",
+      "CLIs com Typer/Rich",
+      "Agendamento e deploy"
+    ],
+    "technologies": [
+      "Playwright",
+      "BeautifulSoup",
+      "Typer",
+      "Rich",
+      "APScheduler"
+    ],
+    "salary_range": "R$ 4.000 - R$ 11.000",
+    "level": "intermediario",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "05316fbf-4ff4-460b-bddc-8ab2d781a3a3",
+    "title": "DevOps Engineer",
+    "description": "Automatiza build, deploy e operação de sistemas, garantindo entrega contínua e confiável.",
+    "area": "DevOps",
+    "skills": [
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "IaC",
+      "Observabilidade"
+    ],
+    "roadmap": [
+      "Linux e redes",
+      "Containers e Docker",
+      "CI/CD e GitHub Actions",
+      "Kubernetes e Helm",
+      "Terraform e cloud",
+      "Observabilidade e SRE"
+    ],
+    "technologies": [
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "GitHub Actions",
+      "Prometheus"
+    ],
+    "salary_range": "R$ 8.000 - R$ 20.000",
+    "level": "avancado",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "55cfb10f-86e7-474e-ae41-6bb47536ac90",
+    "title": "Machine Learning Engineer",
+    "description": "Leva modelos de ML do notebook à produção com pipelines, serving e monitoramento.",
+    "area": "Machine Learning",
+    "skills": [
+      "scikit-learn",
+      "PyTorch",
+      "MLOps",
+      "APIs",
+      "Cloud"
+    ],
+    "roadmap": [
+      "Python para dados",
+      "ML clássico",
+      "Deep learning",
+      "MLOps e tracking",
+      "Serving e monitoramento de drift"
+    ],
+    "technologies": [
+      "scikit-learn",
+      "PyTorch",
+      "Hugging Face",
+      "FastAPI",
+      "Docker"
+    ],
+    "salary_range": "R$ 10.000 - R$ 25.000",
+    "level": "avancado",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "c6431cc4-6d69-47af-b960-93ccd7c536f2",
+    "title": "Cybersecurity Analyst",
+    "description": "Protege aplicações e dados, aplicando OWASP, criptografia e testes de segurança.",
+    "area": "Segurança",
+    "skills": [
+      "OWASP Top 10",
+      "Criptografia",
+      "JWT/OAuth2",
+      "SAST/DAST",
+      "Hardening"
+    ],
+    "roadmap": [
+      "Fundamentos de segurança",
+      "Criptografia e hashing",
+      "Segurança de APIs",
+      "OWASP e vulnerabilidades",
+      "Ferramentas SAST e secrets"
+    ],
+    "technologies": [
+      "cryptography",
+      "PyJWT",
+      "Bandit",
+      "pip-audit",
+      "Scapy"
+    ],
+    "salary_range": "R$ 8.000 - R$ 22.000",
+    "level": "avancado",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "a926a7c1-a754-445c-9384-92f3c7562ef2",
+    "title": "QA / Automation Engineer",
+    "description": "Garante qualidade com testes automatizados, TDD, cobertura e pipelines de CI.",
+    "area": "Qualidade",
+    "skills": [
+      "pytest",
+      "TDD",
+      "Mocking",
+      "Coverage",
+      "CI"
+    ],
+    "roadmap": [
+      "Fundamentos de testes",
+      "pytest e fixtures",
+      "Unit e integration tests",
+      "Mocking e TDD",
+      "Cobertura, benchmark e CI"
+    ],
+    "technologies": [
+      "pytest",
+      "Playwright",
+      "mypy",
+      "Ruff",
+      "GitHub Actions"
+    ],
+    "salary_range": "R$ 5.000 - R$ 14.000",
+    "level": "intermediario",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "31e369a4-526a-4c27-9194-adb2ad625376",
+    "title": "Quant Developer",
+    "description": "Modela estratégias financeiras com Python: dados de mercado, risco e backtesting.",
+    "area": "Finanças",
+    "skills": [
+      "NumPy/Pandas",
+      "Séries temporais",
+      "Risco",
+      "Backtesting",
+      "Estatística"
+    ],
+    "roadmap": [
+      "Matemática e estatística",
+      "Dados de mercado e retornos",
+      "Séries temporais",
+      "Risco e portfólio",
+      "Backtesting e execução"
+    ],
+    "technologies": [
+      "Pandas",
+      "NumPy",
+      "SciPy",
+      "Backtrader",
+      "statsmodels"
+    ],
+    "salary_range": "R$ 10.000 - R$ 30.000",
+    "level": "avancado",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  },
+  {
+    "id": "7c2f54ef-7aa8-4d22-907f-df9b721e391a",
+    "title": "Cloud / Platform Engineer",
+    "description": "Constrói plataformas internas escaláveis e resilientes em nuvem.",
+    "area": "DevOps",
+    "skills": [
+      "Cloud (AWS/GCP)",
+      "Kubernetes",
+      "IaC",
+      "Escalabilidade",
+      "Serverless"
+    ],
+    "roadmap": [
+      "Fundamentos de cloud",
+      "Containers e orquestração",
+      "IaC e GitOps",
+      "Escalabilidade e balanceamento",
+      "Serverless e custo"
+    ],
+    "technologies": [
+      "Kubernetes",
+      "Terraform",
+      "Docker",
+      "Nginx",
+      "OpenTelemetry"
+    ],
+    "salary_range": "R$ 10.000 - R$ 26.000",
+    "level": "avancado",
+    "created_at": "2026-06-05T01:46:20.32699+00:00"
+  }
+]

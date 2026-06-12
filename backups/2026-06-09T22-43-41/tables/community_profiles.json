@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ccdbea92-f151-419e-bf7d-a76e611015e5",
+    "user_id": "ea839ab8-aaae-41fd-893f-016185469ee0",
+    "display_name": "Estevam",
+    "username": "user_ea839ab8aa",
+    "bio": null,
+    "avatar_url": null,
+    "headline": "Estudante de Python",
+    "current_track": "Fundamentos de Python",
+    "level": "Iniciante",
+    "xp": 0,
+    "github_url": null,
+    "linkedin_url": null,
+    "portfolio_url": null,
+    "is_online": true,
+    "last_seen_at": "2026-06-09T21:57:43.894+00:00",
+    "created_at": "2026-06-06T11:51:49.390881+00:00",
+    "updated_at": "2026-06-09T21:57:43.922453+00:00",
+    "referral_code": "ea839ab8",
+    "is_blocked": false
+  }
+]

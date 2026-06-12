@@ -1,0 +1,114 @@
+[
+  {
+    "id": "ecb89c5b-cba5-4edb-b537-b738a02eea43",
+    "title": "FizzBuzz",
+    "description": "Imprima de 1 a n: \"Fizz\" para múltiplos de 3, \"Buzz\" para 5 e \"FizzBuzz\" para ambos.",
+    "difficulty": "basico",
+    "category": "Fundamentos",
+    "tags": [
+      "loops",
+      "condicionais"
+    ],
+    "starter_code": "def fizzbuzz(n: int) -> None:\\n    # seu código aqui\\n    pass\\n\\nfizzbuzz(15)",
+    "solution": "def fizzbuzz(n: int) -> None:\\n    for i in range(1, n + 1):\\n        out = \"\"\\n        if i % 3 == 0:\\n            out += \"Fizz\"\\n        if i % 5 == 0:\\n            out += \"Buzz\"\\n        print(out or i)\\n\\nfizzbuzz(15)",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "a3d6713d-0e91-4ad1-a51e-7a92711800e5",
+    "title": "Inverter string",
+    "description": "Escreva uma função que inverte uma string sem usar reversed().",
+    "difficulty": "basico",
+    "category": "Fundamentos",
+    "tags": [
+      "strings",
+      "slicing"
+    ],
+    "starter_code": "def reverse(s: str) -> str:\\n    # seu código aqui\\n    return s",
+    "solution": "def reverse(s: str) -> str:\\n    return s[::-1]",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "72823721-fe3b-4c05-987e-e917bef2210e",
+    "title": "Contar palavras",
+    "description": "Conte a frequência de cada palavra em um texto e retorne um dicionário ordenado.",
+    "difficulty": "intermediario",
+    "category": "Estruturas de Dados",
+    "tags": [
+      "dict",
+      "collections"
+    ],
+    "starter_code": "from collections import Counter\\n\\ndef word_count(text: str) -> dict[str, int]:\\n    # seu código aqui\\n    return {}",
+    "solution": "from collections import Counter\\n\\ndef word_count(text: str) -> dict[str, int]:\\n    words = text.lower().split()\\n    return dict(Counter(words).most_common())",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "0d8cc94a-e9d3-4b13-9b9b-9a9b153d5ab3",
+    "title": "Fibonacci com memoization",
+    "description": "Calcule o n-ésimo termo de Fibonacci de forma eficiente.",
+    "difficulty": "intermediario",
+    "category": "Algoritmos",
+    "tags": [
+      "recursão",
+      "dp"
+    ],
+    "starter_code": "def fib(n: int) -> int:\\n    # use functools.lru_cache\\n    pass",
+    "solution": "from functools import lru_cache\\n\\n@lru_cache(maxsize=None)\\ndef fib(n: int) -> int:\\n    if n < 2:\\n        return n\\n    return fib(n - 1) + fib(n - 2)",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "64b2773a-516b-4336-afbc-25c73883584c",
+    "title": "Validador de parênteses",
+    "description": "Verifique se uma expressão tem parênteses, colchetes e chaves balanceados.",
+    "difficulty": "avancado",
+    "category": "Algoritmos",
+    "tags": [
+      "pilha",
+      "stack"
+    ],
+    "starter_code": "def is_balanced(s: str) -> bool:\\n    # use uma pilha\\n    return False",
+    "solution": "def is_balanced(s: str) -> bool:\\n    pairs = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\\n    stack: list[str] = []\\n    for ch in s:\\n        if ch in \"([{\":\\n            stack.append(ch)\\n        elif ch in pairs:\\n            if not stack or stack.pop() != pairs[ch]:\\n                return False\\n    return not stack",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "09e9bc08-78ce-4a17-bd14-7e210e05a07f",
+    "title": "Endpoint de health check",
+    "description": "Crie um endpoint GET /health em FastAPI que retorna {\"status\": \"ok\"} tipado.",
+    "difficulty": "avancado",
+    "category": "APIs",
+    "tags": [
+      "fastapi",
+      "pydantic"
+    ],
+    "starter_code": "from fastapi import FastAPI\\n\\napp = FastAPI()\\n\\n# crie o endpoint /health",
+    "solution": "from fastapi import FastAPI\\nfrom pydantic import BaseModel\\n\\nclass Health(BaseModel):\\n    status: str\\n\\napp = FastAPI()\\n\\n@app.get(\"/health\", response_model=Health)\\ndef health() -> Health:\\n    return Health(status=\"ok\")",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "84e3ea28-726e-41eb-9e7f-dd6d9c3e1371",
+    "title": "Rate limiter com Redis",
+    "description": "Implemente um rate limiter de janela fixa usando Redis (sliding opcional).",
+    "difficulty": "desafio",
+    "category": "Backend",
+    "tags": [
+      "redis",
+      "async"
+    ],
+    "starter_code": "import redis.asyncio as redis\\n\\nasync def allow(key: str, limit: int, window: int) -> bool:\\n    # implemente o rate limiting\\n    return True",
+    "solution": "import redis.asyncio as redis\\n\\nr = redis.Redis()\\n\\nasync def allow(key: str, limit: int, window: int) -> bool:\\n    count = await r.incr(key)\\n    if count == 1:\\n        await r.expire(key, window)\\n    return count <= limit",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  },
+  {
+    "id": "4696b396-acfc-4759-9adb-c48c50c3a617",
+    "title": "Pipeline ETL simples",
+    "description": "Leia um CSV, limpe valores nulos, agregue por categoria e escreva um Parquet.",
+    "difficulty": "desafio",
+    "category": "Engenharia de Dados",
+    "tags": [
+      "pandas",
+      "etl"
+    ],
+    "starter_code": "import pandas as pd\\n\\ndef etl(src: str, dst: str) -> None:\\n    # extract, transform, load\\n    pass",
+    "solution": "import pandas as pd\\n\\ndef etl(src: str, dst: str) -> None:\\n    df = pd.read_csv(src)\\n    df = df.dropna()\\n    agg = df.groupby(\"categoria\", as_index=False).sum(numeric_only=True)\\n    agg.to_parquet(dst, index=False)",
+    "created_at": "2026-06-05T01:14:02.923004+00:00"
+  }
+]

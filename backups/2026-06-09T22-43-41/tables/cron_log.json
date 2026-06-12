@@ -1,0 +1,4342 @@
+[
+  {
+    "id": 1,
+    "num": 0,
+    "job_name": "manual_test",
+    "description": "teste de execução",
+    "ran_at": "2026-06-06T11:22:51.640268+00:00"
+  },
+  {
+    "id": 2,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T11:30:00.199979+00:00"
+  },
+  {
+    "id": 3,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T11:40:00.076752+00:00"
+  },
+  {
+    "id": 4,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T11:50:00.067336+00:00"
+  },
+  {
+    "id": 6,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T12:00:00.205851+00:00"
+  },
+  {
+    "id": 5,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T12:00:00.210162+00:00"
+  },
+  {
+    "id": 7,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-06T12:00:00.209093+00:00"
+  },
+  {
+    "id": 8,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T12:10:00.255618+00:00"
+  },
+  {
+    "id": 9,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T12:20:00.160853+00:00"
+  },
+  {
+    "id": 10,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T12:30:00.08264+00:00"
+  },
+  {
+    "id": 11,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T12:40:00.068246+00:00"
+  },
+  {
+    "id": 12,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T12:50:00.080526+00:00"
+  },
+  {
+    "id": 14,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T13:00:00.139893+00:00"
+  },
+  {
+    "id": 13,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T13:00:00.137598+00:00"
+  },
+  {
+    "id": 15,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T13:10:00.183573+00:00"
+  },
+  {
+    "id": 16,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T13:20:00.084728+00:00"
+  },
+  {
+    "id": 17,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T13:30:00.183593+00:00"
+  },
+  {
+    "id": 18,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T13:40:00.099845+00:00"
+  },
+  {
+    "id": 19,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T13:50:00.088806+00:00"
+  },
+  {
+    "id": 20,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T14:00:00.102047+00:00"
+  },
+  {
+    "id": 21,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T14:00:00.105087+00:00"
+  },
+  {
+    "id": 22,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T14:10:00.079489+00:00"
+  },
+  {
+    "id": 23,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T14:20:00.065722+00:00"
+  },
+  {
+    "id": 24,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T14:30:00.083459+00:00"
+  },
+  {
+    "id": 25,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T14:40:00.079715+00:00"
+  },
+  {
+    "id": 26,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T14:50:00.094432+00:00"
+  },
+  {
+    "id": 27,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T15:00:00.098743+00:00"
+  },
+  {
+    "id": 29,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-06T15:00:00.101215+00:00"
+  },
+  {
+    "id": 28,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T15:00:00.100738+00:00"
+  },
+  {
+    "id": 30,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T15:10:00.060369+00:00"
+  },
+  {
+    "id": 31,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T15:20:00.086572+00:00"
+  },
+  {
+    "id": 32,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T15:30:00.069289+00:00"
+  },
+  {
+    "id": 33,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T15:40:00.074453+00:00"
+  },
+  {
+    "id": 34,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T15:50:00.080209+00:00"
+  },
+  {
+    "id": 35,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T16:00:00.086489+00:00"
+  },
+  {
+    "id": 36,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T16:00:00.084575+00:00"
+  },
+  {
+    "id": 37,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T16:10:00.074128+00:00"
+  },
+  {
+    "id": 38,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T16:20:00.089972+00:00"
+  },
+  {
+    "id": 39,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T16:30:00.072142+00:00"
+  },
+  {
+    "id": 40,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T16:40:00.075105+00:00"
+  },
+  {
+    "id": 41,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T16:50:00.081576+00:00"
+  },
+  {
+    "id": 43,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T17:00:00.107851+00:00"
+  },
+  {
+    "id": 42,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T17:00:00.106736+00:00"
+  },
+  {
+    "id": 44,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T17:10:00.083341+00:00"
+  },
+  {
+    "id": 45,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T17:20:00.080185+00:00"
+  },
+  {
+    "id": 46,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T17:30:00.08155+00:00"
+  },
+  {
+    "id": 47,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T17:40:00.092675+00:00"
+  },
+  {
+    "id": 48,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T17:50:00.087953+00:00"
+  },
+  {
+    "id": 49,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T18:00:00.102788+00:00"
+  },
+  {
+    "id": 50,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-06T18:00:00.107578+00:00"
+  },
+  {
+    "id": 51,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T18:00:00.10873+00:00"
+  },
+  {
+    "id": 52,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T18:10:00.088147+00:00"
+  },
+  {
+    "id": 53,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T18:20:00.063524+00:00"
+  },
+  {
+    "id": 54,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T18:30:00.090215+00:00"
+  },
+  {
+    "id": 55,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T18:40:00.084265+00:00"
+  },
+  {
+    "id": 56,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T18:50:00.072027+00:00"
+  },
+  {
+    "id": 57,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T19:00:00.181822+00:00"
+  },
+  {
+    "id": 58,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T19:00:00.185393+00:00"
+  },
+  {
+    "id": 59,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T19:10:00.078137+00:00"
+  },
+  {
+    "id": 60,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T19:20:00.088713+00:00"
+  },
+  {
+    "id": 61,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T19:30:00.082067+00:00"
+  },
+  {
+    "id": 62,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T19:40:00.154865+00:00"
+  },
+  {
+    "id": 63,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T19:50:00.08468+00:00"
+  },
+  {
+    "id": 64,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T20:00:00.10818+00:00"
+  },
+  {
+    "id": 65,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T20:00:00.108931+00:00"
+  },
+  {
+    "id": 66,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T20:10:00.109474+00:00"
+  },
+  {
+    "id": 67,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T20:20:00.091672+00:00"
+  },
+  {
+    "id": 68,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T20:30:00.074703+00:00"
+  },
+  {
+    "id": 69,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T20:40:00.070955+00:00"
+  },
+  {
+    "id": 70,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T20:50:00.071792+00:00"
+  },
+  {
+    "id": 71,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T21:00:00.102865+00:00"
+  },
+  {
+    "id": 72,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-06T21:00:00.108838+00:00"
+  },
+  {
+    "id": 73,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T21:00:00.109703+00:00"
+  },
+  {
+    "id": 74,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T21:10:00.078384+00:00"
+  },
+  {
+    "id": 75,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T21:20:00.080759+00:00"
+  },
+  {
+    "id": 76,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T21:30:00.09204+00:00"
+  },
+  {
+    "id": 77,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T21:40:00.091469+00:00"
+  },
+  {
+    "id": 78,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T21:50:00.177729+00:00"
+  },
+  {
+    "id": 80,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T22:00:00.090736+00:00"
+  },
+  {
+    "id": 159,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T08:30:00.066858+00:00"
+  },
+  {
+    "id": 79,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T22:00:00.087916+00:00"
+  },
+  {
+    "id": 81,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T22:10:00.071031+00:00"
+  },
+  {
+    "id": 82,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T22:20:00.202376+00:00"
+  },
+  {
+    "id": 83,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T22:30:00.172801+00:00"
+  },
+  {
+    "id": 84,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T22:40:00.210145+00:00"
+  },
+  {
+    "id": 85,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T22:50:00.086563+00:00"
+  },
+  {
+    "id": 86,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T23:00:00.085241+00:00"
+  },
+  {
+    "id": 87,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-06T23:00:00.086308+00:00"
+  },
+  {
+    "id": 88,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T23:10:00.074861+00:00"
+  },
+  {
+    "id": 89,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T23:20:00.076695+00:00"
+  },
+  {
+    "id": 90,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T23:30:00.071444+00:00"
+  },
+  {
+    "id": 91,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T23:40:00.129936+00:00"
+  },
+  {
+    "id": 92,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-06T23:50:00.090781+00:00"
+  },
+  {
+    "id": 93,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T00:00:00.104589+00:00"
+  },
+  {
+    "id": 94,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-07T00:00:00.112606+00:00"
+  },
+  {
+    "id": 95,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T00:00:00.114797+00:00"
+  },
+  {
+    "id": 96,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T00:10:00.08604+00:00"
+  },
+  {
+    "id": 97,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T00:20:00.071909+00:00"
+  },
+  {
+    "id": 98,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T00:30:00.093553+00:00"
+  },
+  {
+    "id": 99,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T00:40:00.068005+00:00"
+  },
+  {
+    "id": 100,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T00:50:00.203803+00:00"
+  },
+  {
+    "id": 101,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T01:00:00.200349+00:00"
+  },
+  {
+    "id": 102,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T01:00:00.203619+00:00"
+  },
+  {
+    "id": 103,
+    "num": 7,
+    "job_name": "pytrack_daily_cleanup",
+    "description": "limpeza de dados antigos e logs",
+    "ran_at": "2026-06-07T01:00:00.202529+00:00"
+  },
+  {
+    "id": 104,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T01:10:00.080608+00:00"
+  },
+  {
+    "id": 105,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T01:20:00.077293+00:00"
+  },
+  {
+    "id": 106,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T01:30:00.102418+00:00"
+  },
+  {
+    "id": 107,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T01:40:00.079583+00:00"
+  },
+  {
+    "id": 108,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T01:50:00.083871+00:00"
+  },
+  {
+    "id": 109,
+    "num": 2,
+    "job_name": "pytrack_daily_2am",
+    "description": "backup e limpeza de dados temporários",
+    "ran_at": "2026-06-07T02:00:00.089345+00:00"
+  },
+  {
+    "id": 110,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T02:00:00.090509+00:00"
+  },
+  {
+    "id": 111,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T02:00:00.092773+00:00"
+  },
+  {
+    "id": 112,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T02:10:00.080638+00:00"
+  },
+  {
+    "id": 113,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T02:20:00.083675+00:00"
+  },
+  {
+    "id": 114,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T02:30:00.098028+00:00"
+  },
+  {
+    "id": 115,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T02:40:00.104182+00:00"
+  },
+  {
+    "id": 116,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T02:50:00.109096+00:00"
+  },
+  {
+    "id": 117,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T03:00:00.099598+00:00"
+  },
+  {
+    "id": 118,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T03:00:00.098461+00:00"
+  },
+  {
+    "id": 119,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T03:10:00.088043+00:00"
+  },
+  {
+    "id": 120,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T03:20:00.097934+00:00"
+  },
+  {
+    "id": 121,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T03:30:00.071973+00:00"
+  },
+  {
+    "id": 122,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T03:40:00.065582+00:00"
+  },
+  {
+    "id": 123,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T03:50:00.076134+00:00"
+  },
+  {
+    "id": 124,
+    "num": 8,
+    "job_name": "pytrack_daily_backup",
+    "description": "backup automático do banco",
+    "ran_at": "2026-06-07T04:00:00.119625+00:00"
+  },
+  {
+    "id": 125,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T04:00:00.127612+00:00"
+  },
+  {
+    "id": 126,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T04:00:00.134115+00:00"
+  },
+  {
+    "id": 127,
+    "num": 9,
+    "job_name": "pytrack_weekly_reindex",
+    "description": "reindexação e otimização do banco",
+    "ran_at": "2026-06-07T04:00:00.13623+00:00"
+  },
+  {
+    "id": 128,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T04:10:00.067604+00:00"
+  },
+  {
+    "id": 129,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T04:20:00.083125+00:00"
+  },
+  {
+    "id": 130,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T04:30:00.084647+00:00"
+  },
+  {
+    "id": 131,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T04:40:00.071415+00:00"
+  },
+  {
+    "id": 132,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T04:50:00.082359+00:00"
+  },
+  {
+    "id": 133,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T05:00:00.071505+00:00"
+  },
+  {
+    "id": 134,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T05:00:00.072609+00:00"
+  },
+  {
+    "id": 135,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T05:10:00.071773+00:00"
+  },
+  {
+    "id": 136,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T05:20:00.070686+00:00"
+  },
+  {
+    "id": 137,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T05:30:00.076396+00:00"
+  },
+  {
+    "id": 138,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T05:40:00.075165+00:00"
+  },
+  {
+    "id": 139,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T05:50:00.075812+00:00"
+  },
+  {
+    "id": 140,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T06:00:00.085938+00:00"
+  },
+  {
+    "id": 141,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-07T06:00:00.090277+00:00"
+  },
+  {
+    "id": 142,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T06:00:00.093492+00:00"
+  },
+  {
+    "id": 143,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T06:10:00.074914+00:00"
+  },
+  {
+    "id": 144,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T06:20:00.072758+00:00"
+  },
+  {
+    "id": 145,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T06:30:00.085588+00:00"
+  },
+  {
+    "id": 146,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T06:40:00.096907+00:00"
+  },
+  {
+    "id": 147,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T06:50:00.068069+00:00"
+  },
+  {
+    "id": 148,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T07:00:00.075052+00:00"
+  },
+  {
+    "id": 149,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T07:00:00.077202+00:00"
+  },
+  {
+    "id": 150,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T07:10:00.094546+00:00"
+  },
+  {
+    "id": 151,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T07:20:00.083198+00:00"
+  },
+  {
+    "id": 152,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T07:30:00.078991+00:00"
+  },
+  {
+    "id": 153,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T07:40:00.066968+00:00"
+  },
+  {
+    "id": 154,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T07:50:00.084612+00:00"
+  },
+  {
+    "id": 155,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T08:00:00.073031+00:00"
+  },
+  {
+    "id": 156,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T08:00:00.074361+00:00"
+  },
+  {
+    "id": 157,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T08:10:00.075674+00:00"
+  },
+  {
+    "id": 158,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T08:20:00.067666+00:00"
+  },
+  {
+    "id": 160,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T08:40:00.082638+00:00"
+  },
+  {
+    "id": 161,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T08:50:00.076623+00:00"
+  },
+  {
+    "id": 162,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-07T09:00:00.093184+00:00"
+  },
+  {
+    "id": 163,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T09:00:00.092369+00:00"
+  },
+  {
+    "id": 164,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T09:00:00.094231+00:00"
+  },
+  {
+    "id": 165,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T09:10:00.077121+00:00"
+  },
+  {
+    "id": 166,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T09:20:00.08191+00:00"
+  },
+  {
+    "id": 167,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T09:30:00.087757+00:00"
+  },
+  {
+    "id": 168,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T09:40:00.071956+00:00"
+  },
+  {
+    "id": 169,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T09:50:00.067116+00:00"
+  },
+  {
+    "id": 170,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T10:00:00.078031+00:00"
+  },
+  {
+    "id": 171,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T10:00:00.079347+00:00"
+  },
+  {
+    "id": 172,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T10:10:00.086618+00:00"
+  },
+  {
+    "id": 173,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T10:20:00.099052+00:00"
+  },
+  {
+    "id": 174,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T10:30:00.205854+00:00"
+  },
+  {
+    "id": 175,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T10:40:00.094425+00:00"
+  },
+  {
+    "id": 176,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T10:50:00.096916+00:00"
+  },
+  {
+    "id": 177,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T11:00:00.098466+00:00"
+  },
+  {
+    "id": 178,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T11:00:00.097524+00:00"
+  },
+  {
+    "id": 179,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T11:10:00.173402+00:00"
+  },
+  {
+    "id": 180,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T11:20:00.209449+00:00"
+  },
+  {
+    "id": 181,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T11:30:00.203608+00:00"
+  },
+  {
+    "id": 182,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T11:40:00.094091+00:00"
+  },
+  {
+    "id": 183,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T11:50:00.095883+00:00"
+  },
+  {
+    "id": 184,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-07T12:00:00.220736+00:00"
+  },
+  {
+    "id": 186,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T12:00:00.211852+00:00"
+  },
+  {
+    "id": 185,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T12:00:00.215377+00:00"
+  },
+  {
+    "id": 187,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T12:10:00.069285+00:00"
+  },
+  {
+    "id": 188,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T12:20:00.087225+00:00"
+  },
+  {
+    "id": 189,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T12:30:00.084583+00:00"
+  },
+  {
+    "id": 190,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T12:40:00.087479+00:00"
+  },
+  {
+    "id": 191,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T12:50:00.090604+00:00"
+  },
+  {
+    "id": 192,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T13:00:00.11587+00:00"
+  },
+  {
+    "id": 193,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T13:00:00.114756+00:00"
+  },
+  {
+    "id": 194,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T13:10:00.08531+00:00"
+  },
+  {
+    "id": 195,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T13:20:00.092762+00:00"
+  },
+  {
+    "id": 196,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T13:30:00.084463+00:00"
+  },
+  {
+    "id": 197,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T13:40:00.099598+00:00"
+  },
+  {
+    "id": 198,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T13:50:00.100199+00:00"
+  },
+  {
+    "id": 199,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T14:00:00.093669+00:00"
+  },
+  {
+    "id": 200,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T14:00:00.10058+00:00"
+  },
+  {
+    "id": 201,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T14:10:00.090221+00:00"
+  },
+  {
+    "id": 202,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T14:20:00.100003+00:00"
+  },
+  {
+    "id": 203,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T14:30:00.066477+00:00"
+  },
+  {
+    "id": 204,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T14:40:00.079528+00:00"
+  },
+  {
+    "id": 205,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T14:50:00.078353+00:00"
+  },
+  {
+    "id": 206,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T15:00:00.105485+00:00"
+  },
+  {
+    "id": 207,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T15:00:00.114588+00:00"
+  },
+  {
+    "id": 208,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-07T15:00:00.115511+00:00"
+  },
+  {
+    "id": 209,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T15:10:00.063548+00:00"
+  },
+  {
+    "id": 210,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T15:20:00.060682+00:00"
+  },
+  {
+    "id": 211,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T15:30:00.20756+00:00"
+  },
+  {
+    "id": 212,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T15:40:00.10632+00:00"
+  },
+  {
+    "id": 213,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T15:50:00.180522+00:00"
+  },
+  {
+    "id": 214,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T16:00:00.115555+00:00"
+  },
+  {
+    "id": 215,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T16:00:00.119121+00:00"
+  },
+  {
+    "id": 216,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T16:10:00.125159+00:00"
+  },
+  {
+    "id": 217,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T16:20:00.07827+00:00"
+  },
+  {
+    "id": 218,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T16:30:00.069139+00:00"
+  },
+  {
+    "id": 219,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T16:40:00.096456+00:00"
+  },
+  {
+    "id": 220,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T16:50:00.100618+00:00"
+  },
+  {
+    "id": 221,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T17:00:00.114749+00:00"
+  },
+  {
+    "id": 222,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T17:00:00.115944+00:00"
+  },
+  {
+    "id": 223,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T17:10:00.15313+00:00"
+  },
+  {
+    "id": 224,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T17:20:00.068111+00:00"
+  },
+  {
+    "id": 225,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T17:30:00.085713+00:00"
+  },
+  {
+    "id": 226,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T17:40:00.117811+00:00"
+  },
+  {
+    "id": 227,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T17:50:00.075693+00:00"
+  },
+  {
+    "id": 228,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T18:00:00.145676+00:00"
+  },
+  {
+    "id": 229,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-07T18:00:00.147493+00:00"
+  },
+  {
+    "id": 230,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T18:00:00.14849+00:00"
+  },
+  {
+    "id": 231,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T18:10:00.100615+00:00"
+  },
+  {
+    "id": 232,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T18:20:00.09519+00:00"
+  },
+  {
+    "id": 233,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T18:30:00.095033+00:00"
+  },
+  {
+    "id": 234,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T18:40:00.101047+00:00"
+  },
+  {
+    "id": 235,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T18:50:00.110736+00:00"
+  },
+  {
+    "id": 236,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T19:00:00.087159+00:00"
+  },
+  {
+    "id": 237,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T19:00:00.088764+00:00"
+  },
+  {
+    "id": 238,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T19:10:00.094184+00:00"
+  },
+  {
+    "id": 239,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T19:20:00.08987+00:00"
+  },
+  {
+    "id": 240,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T19:30:00.09167+00:00"
+  },
+  {
+    "id": 241,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T19:40:00.08508+00:00"
+  },
+  {
+    "id": 242,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T19:50:00.094818+00:00"
+  },
+  {
+    "id": 243,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T20:00:00.114302+00:00"
+  },
+  {
+    "id": 244,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T20:00:00.115406+00:00"
+  },
+  {
+    "id": 245,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T20:10:00.093881+00:00"
+  },
+  {
+    "id": 246,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T20:20:00.075289+00:00"
+  },
+  {
+    "id": 247,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T20:30:00.104682+00:00"
+  },
+  {
+    "id": 248,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T20:40:00.080064+00:00"
+  },
+  {
+    "id": 249,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T20:50:00.108418+00:00"
+  },
+  {
+    "id": 250,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T21:00:00.124354+00:00"
+  },
+  {
+    "id": 252,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T21:00:00.122372+00:00"
+  },
+  {
+    "id": 251,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-07T21:00:00.12518+00:00"
+  },
+  {
+    "id": 253,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T21:10:00.091637+00:00"
+  },
+  {
+    "id": 254,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T21:20:00.096926+00:00"
+  },
+  {
+    "id": 255,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T21:30:00.085042+00:00"
+  },
+  {
+    "id": 256,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T21:40:00.107364+00:00"
+  },
+  {
+    "id": 257,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T21:50:00.095371+00:00"
+  },
+  {
+    "id": 259,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T22:00:00.102904+00:00"
+  },
+  {
+    "id": 258,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T22:00:00.10383+00:00"
+  },
+  {
+    "id": 260,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T22:10:00.090462+00:00"
+  },
+  {
+    "id": 261,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T22:20:00.080066+00:00"
+  },
+  {
+    "id": 262,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T22:30:00.08418+00:00"
+  },
+  {
+    "id": 263,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T22:40:00.214212+00:00"
+  },
+  {
+    "id": 264,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T22:50:00.095062+00:00"
+  },
+  {
+    "id": 265,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-07T23:00:00.099632+00:00"
+  },
+  {
+    "id": 266,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T23:00:00.102801+00:00"
+  },
+  {
+    "id": 267,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T23:10:00.223717+00:00"
+  },
+  {
+    "id": 268,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T23:20:00.084495+00:00"
+  },
+  {
+    "id": 269,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T23:30:00.23931+00:00"
+  },
+  {
+    "id": 270,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T23:40:00.089171+00:00"
+  },
+  {
+    "id": 271,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-07T23:50:00.097128+00:00"
+  },
+  {
+    "id": 272,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-08T00:00:00.101145+00:00"
+  },
+  {
+    "id": 273,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T00:00:00.102266+00:00"
+  },
+  {
+    "id": 274,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T00:00:00.103312+00:00"
+  },
+  {
+    "id": 275,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T00:10:00.082477+00:00"
+  },
+  {
+    "id": 276,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T00:20:00.105952+00:00"
+  },
+  {
+    "id": 277,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T00:30:00.110825+00:00"
+  },
+  {
+    "id": 278,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T00:40:00.106554+00:00"
+  },
+  {
+    "id": 279,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T00:50:00.100289+00:00"
+  },
+  {
+    "id": 280,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T01:00:00.110161+00:00"
+  },
+  {
+    "id": 281,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T01:00:00.113076+00:00"
+  },
+  {
+    "id": 282,
+    "num": 7,
+    "job_name": "pytrack_daily_cleanup",
+    "description": "limpeza de dados antigos e logs",
+    "ran_at": "2026-06-08T01:00:00.115229+00:00"
+  },
+  {
+    "id": 283,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T01:10:00.087759+00:00"
+  },
+  {
+    "id": 284,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T01:20:00.108568+00:00"
+  },
+  {
+    "id": 285,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T01:30:00.076928+00:00"
+  },
+  {
+    "id": 286,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T01:40:00.103032+00:00"
+  },
+  {
+    "id": 287,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T01:50:00.087234+00:00"
+  },
+  {
+    "id": 290,
+    "num": 2,
+    "job_name": "pytrack_daily_2am",
+    "description": "backup e limpeza de dados temporários",
+    "ran_at": "2026-06-08T02:00:00.162235+00:00"
+  },
+  {
+    "id": 288,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T02:00:00.165819+00:00"
+  },
+  {
+    "id": 289,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T02:00:00.166673+00:00"
+  },
+  {
+    "id": 291,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T02:10:00.079529+00:00"
+  },
+  {
+    "id": 292,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T02:20:00.089553+00:00"
+  },
+  {
+    "id": 293,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T02:30:00.083334+00:00"
+  },
+  {
+    "id": 294,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T02:40:00.094398+00:00"
+  },
+  {
+    "id": 295,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T02:50:00.087957+00:00"
+  },
+  {
+    "id": 296,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T03:00:00.09983+00:00"
+  },
+  {
+    "id": 297,
+    "num": 5,
+    "job_name": "pytrack_weekly_report",
+    "description": "relatórios semanais e consolidação",
+    "ran_at": "2026-06-08T03:00:00.100893+00:00"
+  },
+  {
+    "id": 298,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T03:00:00.106472+00:00"
+  },
+  {
+    "id": 299,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T03:10:00.090044+00:00"
+  },
+  {
+    "id": 300,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T03:20:00.098815+00:00"
+  },
+  {
+    "id": 301,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T03:30:00.101338+00:00"
+  },
+  {
+    "id": 302,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T03:40:00.102297+00:00"
+  },
+  {
+    "id": 303,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T03:50:00.095075+00:00"
+  },
+  {
+    "id": 304,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T04:00:00.111832+00:00"
+  },
+  {
+    "id": 305,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T04:00:00.114736+00:00"
+  },
+  {
+    "id": 306,
+    "num": 8,
+    "job_name": "pytrack_daily_backup",
+    "description": "backup automático do banco",
+    "ran_at": "2026-06-08T04:00:00.10928+00:00"
+  },
+  {
+    "id": 307,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T04:10:00.098771+00:00"
+  },
+  {
+    "id": 308,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T04:20:00.097596+00:00"
+  },
+  {
+    "id": 309,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T04:30:00.092356+00:00"
+  },
+  {
+    "id": 310,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T04:40:00.103017+00:00"
+  },
+  {
+    "id": 311,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T04:50:00.096622+00:00"
+  },
+  {
+    "id": 312,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T05:00:00.101485+00:00"
+  },
+  {
+    "id": 313,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T05:00:00.100408+00:00"
+  },
+  {
+    "id": 314,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T05:10:00.084598+00:00"
+  },
+  {
+    "id": 315,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T05:20:00.091333+00:00"
+  },
+  {
+    "id": 316,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T05:30:00.099644+00:00"
+  },
+  {
+    "id": 317,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T05:40:00.07816+00:00"
+  },
+  {
+    "id": 318,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T05:50:00.117374+00:00"
+  },
+  {
+    "id": 319,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T06:00:00.094625+00:00"
+  },
+  {
+    "id": 320,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-08T06:00:00.095303+00:00"
+  },
+  {
+    "id": 321,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T06:00:00.102872+00:00"
+  },
+  {
+    "id": 322,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T06:10:00.108209+00:00"
+  },
+  {
+    "id": 323,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T06:20:00.101835+00:00"
+  },
+  {
+    "id": 324,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T06:30:00.088503+00:00"
+  },
+  {
+    "id": 325,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T06:40:00.092857+00:00"
+  },
+  {
+    "id": 326,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T06:50:00.104577+00:00"
+  },
+  {
+    "id": 327,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T07:00:00.131229+00:00"
+  },
+  {
+    "id": 328,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T07:00:00.132436+00:00"
+  },
+  {
+    "id": 329,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T07:10:00.092715+00:00"
+  },
+  {
+    "id": 330,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T07:20:00.081424+00:00"
+  },
+  {
+    "id": 331,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T07:30:00.07529+00:00"
+  },
+  {
+    "id": 332,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T07:40:00.094604+00:00"
+  },
+  {
+    "id": 333,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T07:50:00.090114+00:00"
+  },
+  {
+    "id": 334,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T08:00:00.112202+00:00"
+  },
+  {
+    "id": 335,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T08:00:00.112964+00:00"
+  },
+  {
+    "id": 336,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T08:10:00.099288+00:00"
+  },
+  {
+    "id": 337,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T08:20:00.085128+00:00"
+  },
+  {
+    "id": 338,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T08:30:00.094011+00:00"
+  },
+  {
+    "id": 339,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T08:40:00.086002+00:00"
+  },
+  {
+    "id": 340,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T08:50:00.104682+00:00"
+  },
+  {
+    "id": 341,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T09:00:00.091698+00:00"
+  },
+  {
+    "id": 342,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T09:00:00.093354+00:00"
+  },
+  {
+    "id": 343,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-08T09:00:00.094456+00:00"
+  },
+  {
+    "id": 344,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T09:10:00.091895+00:00"
+  },
+  {
+    "id": 345,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T09:20:00.093213+00:00"
+  },
+  {
+    "id": 346,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T09:30:00.104219+00:00"
+  },
+  {
+    "id": 347,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T09:40:00.088611+00:00"
+  },
+  {
+    "id": 348,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T09:50:00.096398+00:00"
+  },
+  {
+    "id": 349,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T10:00:00.102485+00:00"
+  },
+  {
+    "id": 350,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T10:00:00.101241+00:00"
+  },
+  {
+    "id": 351,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T10:10:00.079451+00:00"
+  },
+  {
+    "id": 352,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T10:20:00.087583+00:00"
+  },
+  {
+    "id": 353,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T10:30:00.094125+00:00"
+  },
+  {
+    "id": 354,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T10:40:00.091666+00:00"
+  },
+  {
+    "id": 355,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T10:50:00.094561+00:00"
+  },
+  {
+    "id": 356,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T11:00:00.098679+00:00"
+  },
+  {
+    "id": 357,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T11:00:00.097774+00:00"
+  },
+  {
+    "id": 358,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T11:10:00.096165+00:00"
+  },
+  {
+    "id": 359,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T11:20:00.099742+00:00"
+  },
+  {
+    "id": 360,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T11:30:00.086049+00:00"
+  },
+  {
+    "id": 361,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T11:40:00.086163+00:00"
+  },
+  {
+    "id": 362,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T11:50:00.093035+00:00"
+  },
+  {
+    "id": 363,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T12:00:00.107148+00:00"
+  },
+  {
+    "id": 364,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-08T12:00:00.107851+00:00"
+  },
+  {
+    "id": 365,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T12:00:00.111549+00:00"
+  },
+  {
+    "id": 366,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T12:10:00.090337+00:00"
+  },
+  {
+    "id": 367,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T12:20:00.092368+00:00"
+  },
+  {
+    "id": 368,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T12:30:00.102428+00:00"
+  },
+  {
+    "id": 369,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T12:40:00.098803+00:00"
+  },
+  {
+    "id": 370,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T12:50:00.082889+00:00"
+  },
+  {
+    "id": 371,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T13:00:00.103823+00:00"
+  },
+  {
+    "id": 372,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T13:00:00.107916+00:00"
+  },
+  {
+    "id": 373,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T13:10:00.078488+00:00"
+  },
+  {
+    "id": 374,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T13:20:00.096518+00:00"
+  },
+  {
+    "id": 375,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T13:30:00.08823+00:00"
+  },
+  {
+    "id": 376,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T13:40:00.089505+00:00"
+  },
+  {
+    "id": 377,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T13:50:00.095113+00:00"
+  },
+  {
+    "id": 378,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T14:00:00.076345+00:00"
+  },
+  {
+    "id": 379,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T14:00:00.078045+00:00"
+  },
+  {
+    "id": 380,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T14:10:00.098095+00:00"
+  },
+  {
+    "id": 381,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T14:20:00.100398+00:00"
+  },
+  {
+    "id": 382,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T14:30:00.098326+00:00"
+  },
+  {
+    "id": 383,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T14:40:00.087603+00:00"
+  },
+  {
+    "id": 384,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T14:50:00.088719+00:00"
+  },
+  {
+    "id": 385,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T15:00:00.093281+00:00"
+  },
+  {
+    "id": 386,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T15:00:00.102584+00:00"
+  },
+  {
+    "id": 387,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-08T15:00:00.102666+00:00"
+  },
+  {
+    "id": 388,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T15:10:00.087456+00:00"
+  },
+  {
+    "id": 389,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T15:20:00.09529+00:00"
+  },
+  {
+    "id": 390,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T15:30:00.090251+00:00"
+  },
+  {
+    "id": 391,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T15:40:00.104904+00:00"
+  },
+  {
+    "id": 392,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T15:50:00.073226+00:00"
+  },
+  {
+    "id": 393,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T16:00:00.097463+00:00"
+  },
+  {
+    "id": 394,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T16:00:00.098951+00:00"
+  },
+  {
+    "id": 395,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T16:10:00.119927+00:00"
+  },
+  {
+    "id": 396,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T16:20:00.087104+00:00"
+  },
+  {
+    "id": 397,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T16:30:00.094958+00:00"
+  },
+  {
+    "id": 398,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T16:40:00.161188+00:00"
+  },
+  {
+    "id": 399,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T16:50:00.0751+00:00"
+  },
+  {
+    "id": 401,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T17:00:00.109126+00:00"
+  },
+  {
+    "id": 400,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T17:00:00.107808+00:00"
+  },
+  {
+    "id": 402,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T17:10:00.097352+00:00"
+  },
+  {
+    "id": 403,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T17:20:00.072653+00:00"
+  },
+  {
+    "id": 404,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T17:30:00.098022+00:00"
+  },
+  {
+    "id": 405,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T17:40:00.097645+00:00"
+  },
+  {
+    "id": 406,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T17:50:00.110957+00:00"
+  },
+  {
+    "id": 407,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T18:00:00.128215+00:00"
+  },
+  {
+    "id": 408,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-08T18:00:00.132369+00:00"
+  },
+  {
+    "id": 409,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T18:00:00.13342+00:00"
+  },
+  {
+    "id": 410,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T18:10:00.075565+00:00"
+  },
+  {
+    "id": 411,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T18:20:00.107156+00:00"
+  },
+  {
+    "id": 412,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T18:30:00.090684+00:00"
+  },
+  {
+    "id": 413,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T18:40:00.088728+00:00"
+  },
+  {
+    "id": 414,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T18:50:00.092796+00:00"
+  },
+  {
+    "id": 415,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T19:00:00.085449+00:00"
+  },
+  {
+    "id": 416,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T19:00:00.086229+00:00"
+  },
+  {
+    "id": 417,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T19:10:00.123979+00:00"
+  },
+  {
+    "id": 418,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T19:20:00.213873+00:00"
+  },
+  {
+    "id": 419,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T19:30:00.197751+00:00"
+  },
+  {
+    "id": 420,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T19:40:00.106558+00:00"
+  },
+  {
+    "id": 421,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T19:50:00.235007+00:00"
+  },
+  {
+    "id": 422,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T20:00:00.1097+00:00"
+  },
+  {
+    "id": 423,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T20:00:00.111702+00:00"
+  },
+  {
+    "id": 424,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T20:10:00.093205+00:00"
+  },
+  {
+    "id": 425,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T20:20:00.111756+00:00"
+  },
+  {
+    "id": 426,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T20:30:00.092486+00:00"
+  },
+  {
+    "id": 427,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T20:40:00.090698+00:00"
+  },
+  {
+    "id": 428,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T20:50:00.098062+00:00"
+  },
+  {
+    "id": 429,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T21:00:00.106683+00:00"
+  },
+  {
+    "id": 430,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T21:00:00.11247+00:00"
+  },
+  {
+    "id": 431,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-08T21:00:00.113586+00:00"
+  },
+  {
+    "id": 432,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T21:10:00.10805+00:00"
+  },
+  {
+    "id": 433,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T21:20:00.091504+00:00"
+  },
+  {
+    "id": 434,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T21:30:00.086792+00:00"
+  },
+  {
+    "id": 435,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T21:40:00.100097+00:00"
+  },
+  {
+    "id": 436,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T21:50:00.088429+00:00"
+  },
+  {
+    "id": 437,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T22:00:00.124213+00:00"
+  },
+  {
+    "id": 438,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T22:00:00.126319+00:00"
+  },
+  {
+    "id": 439,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T22:10:00.090744+00:00"
+  },
+  {
+    "id": 440,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T22:20:00.087745+00:00"
+  },
+  {
+    "id": 441,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T22:30:00.093709+00:00"
+  },
+  {
+    "id": 442,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T22:40:00.115332+00:00"
+  },
+  {
+    "id": 443,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T22:50:00.079222+00:00"
+  },
+  {
+    "id": 445,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T23:00:00.101167+00:00"
+  },
+  {
+    "id": 444,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-08T23:00:00.102622+00:00"
+  },
+  {
+    "id": 446,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T23:10:00.099791+00:00"
+  },
+  {
+    "id": 447,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T23:20:00.098707+00:00"
+  },
+  {
+    "id": 448,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T23:30:00.098167+00:00"
+  },
+  {
+    "id": 449,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T23:40:00.085809+00:00"
+  },
+  {
+    "id": 450,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-08T23:50:00.10679+00:00"
+  },
+  {
+    "id": 451,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T00:00:00.120037+00:00"
+  },
+  {
+    "id": 452,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T00:00:00.121706+00:00"
+  },
+  {
+    "id": 453,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-09T00:00:00.122876+00:00"
+  },
+  {
+    "id": 454,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T00:10:00.096463+00:00"
+  },
+  {
+    "id": 455,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T00:20:00.119568+00:00"
+  },
+  {
+    "id": 456,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T00:30:00.081034+00:00"
+  },
+  {
+    "id": 457,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T00:40:00.109755+00:00"
+  },
+  {
+    "id": 458,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T00:50:00.081416+00:00"
+  },
+  {
+    "id": 459,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T01:00:00.108502+00:00"
+  },
+  {
+    "id": 460,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T01:00:00.111471+00:00"
+  },
+  {
+    "id": 461,
+    "num": 7,
+    "job_name": "pytrack_daily_cleanup",
+    "description": "limpeza de dados antigos e logs",
+    "ran_at": "2026-06-09T01:00:00.112482+00:00"
+  },
+  {
+    "id": 462,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T01:10:00.080812+00:00"
+  },
+  {
+    "id": 463,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T01:20:00.112371+00:00"
+  },
+  {
+    "id": 464,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T01:30:00.123185+00:00"
+  },
+  {
+    "id": 465,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T01:40:00.098807+00:00"
+  },
+  {
+    "id": 466,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T01:50:00.103954+00:00"
+  },
+  {
+    "id": 467,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T02:00:00.118432+00:00"
+  },
+  {
+    "id": 468,
+    "num": 2,
+    "job_name": "pytrack_daily_2am",
+    "description": "backup e limpeza de dados temporários",
+    "ran_at": "2026-06-09T02:00:00.116556+00:00"
+  },
+  {
+    "id": 469,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T02:00:00.117567+00:00"
+  },
+  {
+    "id": 470,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T02:10:00.090675+00:00"
+  },
+  {
+    "id": 471,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T02:20:00.102124+00:00"
+  },
+  {
+    "id": 472,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T02:30:00.10126+00:00"
+  },
+  {
+    "id": 473,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T02:40:00.098198+00:00"
+  },
+  {
+    "id": 474,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T02:50:00.096348+00:00"
+  },
+  {
+    "id": 475,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T03:00:00.110131+00:00"
+  },
+  {
+    "id": 476,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T03:00:00.1109+00:00"
+  },
+  {
+    "id": 477,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T03:10:00.087081+00:00"
+  },
+  {
+    "id": 478,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T03:20:00.095482+00:00"
+  },
+  {
+    "id": 479,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T03:30:00.116685+00:00"
+  },
+  {
+    "id": 480,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T03:40:00.103704+00:00"
+  },
+  {
+    "id": 481,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T03:50:00.090356+00:00"
+  },
+  {
+    "id": 482,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T04:00:00.128048+00:00"
+  },
+  {
+    "id": 484,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T04:00:00.130385+00:00"
+  },
+  {
+    "id": 483,
+    "num": 8,
+    "job_name": "pytrack_daily_backup",
+    "description": "backup automático do banco",
+    "ran_at": "2026-06-09T04:00:00.129108+00:00"
+  },
+  {
+    "id": 485,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T04:10:00.117423+00:00"
+  },
+  {
+    "id": 486,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T04:20:00.096985+00:00"
+  },
+  {
+    "id": 487,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T04:30:00.274272+00:00"
+  },
+  {
+    "id": 488,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T04:40:00.090612+00:00"
+  },
+  {
+    "id": 489,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T04:50:00.106352+00:00"
+  },
+  {
+    "id": 490,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T05:00:00.106932+00:00"
+  },
+  {
+    "id": 491,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T05:00:00.1086+00:00"
+  },
+  {
+    "id": 492,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T05:10:00.10453+00:00"
+  },
+  {
+    "id": 493,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T05:20:00.087296+00:00"
+  },
+  {
+    "id": 494,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T05:30:00.110369+00:00"
+  },
+  {
+    "id": 495,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T05:40:00.097173+00:00"
+  },
+  {
+    "id": 496,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T05:50:00.111878+00:00"
+  },
+  {
+    "id": 497,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T06:00:00.110825+00:00"
+  },
+  {
+    "id": 498,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T06:00:00.115343+00:00"
+  },
+  {
+    "id": 499,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-09T06:00:00.116581+00:00"
+  },
+  {
+    "id": 500,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T06:10:00.095699+00:00"
+  },
+  {
+    "id": 501,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T06:20:00.094057+00:00"
+  },
+  {
+    "id": 502,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T06:30:00.109624+00:00"
+  },
+  {
+    "id": 503,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T06:40:00.096894+00:00"
+  },
+  {
+    "id": 504,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T06:50:00.111625+00:00"
+  },
+  {
+    "id": 506,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T07:00:00.115552+00:00"
+  },
+  {
+    "id": 505,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T07:00:00.116581+00:00"
+  },
+  {
+    "id": 507,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T07:10:00.097923+00:00"
+  },
+  {
+    "id": 508,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T07:20:00.094995+00:00"
+  },
+  {
+    "id": 509,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T07:30:00.101074+00:00"
+  },
+  {
+    "id": 510,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T07:40:00.09282+00:00"
+  },
+  {
+    "id": 511,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T07:50:00.097876+00:00"
+  },
+  {
+    "id": 512,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T08:00:00.114817+00:00"
+  },
+  {
+    "id": 513,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T08:00:00.112784+00:00"
+  },
+  {
+    "id": 514,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T08:10:00.092835+00:00"
+  },
+  {
+    "id": 515,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T08:20:00.092783+00:00"
+  },
+  {
+    "id": 516,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T08:30:00.107414+00:00"
+  },
+  {
+    "id": 517,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T08:40:00.099514+00:00"
+  },
+  {
+    "id": 518,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T08:50:00.092244+00:00"
+  },
+  {
+    "id": 519,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-09T09:00:00.114337+00:00"
+  },
+  {
+    "id": 520,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T09:00:00.115528+00:00"
+  },
+  {
+    "id": 521,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T09:00:00.117651+00:00"
+  },
+  {
+    "id": 522,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T09:10:00.108601+00:00"
+  },
+  {
+    "id": 523,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T09:20:00.097571+00:00"
+  },
+  {
+    "id": 524,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T09:30:00.104826+00:00"
+  },
+  {
+    "id": 525,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T09:40:00.099118+00:00"
+  },
+  {
+    "id": 526,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T09:50:00.089138+00:00"
+  },
+  {
+    "id": 527,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T10:00:00.112723+00:00"
+  },
+  {
+    "id": 528,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T10:00:00.115186+00:00"
+  },
+  {
+    "id": 529,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T10:10:00.102015+00:00"
+  },
+  {
+    "id": 530,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T10:20:00.095976+00:00"
+  },
+  {
+    "id": 531,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T10:30:00.09057+00:00"
+  },
+  {
+    "id": 532,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T10:40:00.091164+00:00"
+  },
+  {
+    "id": 533,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T10:50:00.102298+00:00"
+  },
+  {
+    "id": 534,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T11:00:00.09992+00:00"
+  },
+  {
+    "id": 535,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T11:00:00.09917+00:00"
+  },
+  {
+    "id": 536,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T11:10:00.109295+00:00"
+  },
+  {
+    "id": 537,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T11:20:00.095905+00:00"
+  },
+  {
+    "id": 538,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T11:30:00.104477+00:00"
+  },
+  {
+    "id": 539,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T11:40:00.097285+00:00"
+  },
+  {
+    "id": 540,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T11:50:00.097471+00:00"
+  },
+  {
+    "id": 541,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-09T12:00:00.109887+00:00"
+  },
+  {
+    "id": 542,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T12:00:00.11213+00:00"
+  },
+  {
+    "id": 543,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T12:00:00.116088+00:00"
+  },
+  {
+    "id": 544,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T12:10:00.094248+00:00"
+  },
+  {
+    "id": 545,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T12:20:00.10236+00:00"
+  },
+  {
+    "id": 546,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T12:30:00.097678+00:00"
+  },
+  {
+    "id": 547,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T12:40:00.111951+00:00"
+  },
+  {
+    "id": 548,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T12:50:00.170933+00:00"
+  },
+  {
+    "id": 549,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T13:00:00.101692+00:00"
+  },
+  {
+    "id": 550,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T13:00:00.104775+00:00"
+  },
+  {
+    "id": 551,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T13:10:00.228777+00:00"
+  },
+  {
+    "id": 552,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T13:20:00.23464+00:00"
+  },
+  {
+    "id": 553,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T13:30:00.085573+00:00"
+  },
+  {
+    "id": 554,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T13:40:00.115811+00:00"
+  },
+  {
+    "id": 555,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T13:50:00.091173+00:00"
+  },
+  {
+    "id": 556,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T14:00:00.11974+00:00"
+  },
+  {
+    "id": 557,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T14:00:00.123335+00:00"
+  },
+  {
+    "id": 558,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T14:10:00.105105+00:00"
+  },
+  {
+    "id": 559,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T14:20:00.101135+00:00"
+  },
+  {
+    "id": 560,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T14:30:00.107618+00:00"
+  },
+  {
+    "id": 561,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T14:40:00.105547+00:00"
+  },
+  {
+    "id": 562,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T14:50:00.118457+00:00"
+  },
+  {
+    "id": 563,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T15:00:00.100674+00:00"
+  },
+  {
+    "id": 565,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-09T15:00:00.102561+00:00"
+  },
+  {
+    "id": 564,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T15:00:00.102301+00:00"
+  },
+  {
+    "id": 566,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T15:10:00.079484+00:00"
+  },
+  {
+    "id": 567,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T15:20:00.113742+00:00"
+  },
+  {
+    "id": 568,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T15:30:00.109779+00:00"
+  },
+  {
+    "id": 569,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T15:40:00.332042+00:00"
+  },
+  {
+    "id": 570,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T15:50:00.202715+00:00"
+  },
+  {
+    "id": 572,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T16:00:00.120216+00:00"
+  },
+  {
+    "id": 571,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T16:00:00.121234+00:00"
+  },
+  {
+    "id": 573,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T16:10:00.097807+00:00"
+  },
+  {
+    "id": 574,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T16:20:00.094543+00:00"
+  },
+  {
+    "id": 575,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T16:30:00.103719+00:00"
+  },
+  {
+    "id": 576,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T16:40:00.104232+00:00"
+  },
+  {
+    "id": 577,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T16:50:00.102523+00:00"
+  },
+  {
+    "id": 578,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T17:00:00.082666+00:00"
+  },
+  {
+    "id": 579,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T17:00:00.08864+00:00"
+  },
+  {
+    "id": 580,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T17:10:00.078665+00:00"
+  },
+  {
+    "id": 581,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T17:20:00.11375+00:00"
+  },
+  {
+    "id": 582,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T17:30:00.091072+00:00"
+  },
+  {
+    "id": 583,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T17:40:00.203246+00:00"
+  },
+  {
+    "id": 584,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T17:50:00.102013+00:00"
+  },
+  {
+    "id": 586,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T18:00:00.1296+00:00"
+  },
+  {
+    "id": 585,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T18:00:00.128056+00:00"
+  },
+  {
+    "id": 587,
+    "num": 1,
+    "job_name": "pytrack_6h_heartbeat",
+    "description": "heartbeat e métricas periódicas",
+    "ran_at": "2026-06-09T18:00:00.131222+00:00"
+  },
+  {
+    "id": 588,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T18:10:00.145843+00:00"
+  },
+  {
+    "id": 589,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T18:20:00.106504+00:00"
+  },
+  {
+    "id": 590,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T18:30:00.093892+00:00"
+  },
+  {
+    "id": 591,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T18:40:00.076969+00:00"
+  },
+  {
+    "id": 592,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T18:50:00.104227+00:00"
+  },
+  {
+    "id": 593,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T19:00:00.224821+00:00"
+  },
+  {
+    "id": 594,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T19:00:00.22412+00:00"
+  },
+  {
+    "id": 595,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T19:10:00.231588+00:00"
+  },
+  {
+    "id": 596,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T19:20:00.205851+00:00"
+  },
+  {
+    "id": 597,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T19:30:00.259796+00:00"
+  },
+  {
+    "id": 598,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T19:40:00.119958+00:00"
+  },
+  {
+    "id": 599,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T19:50:00.159483+00:00"
+  },
+  {
+    "id": 600,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T20:00:00.12766+00:00"
+  },
+  {
+    "id": 601,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T20:00:00.130874+00:00"
+  },
+  {
+    "id": 602,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T20:10:00.071848+00:00"
+  },
+  {
+    "id": 603,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T20:20:00.080175+00:00"
+  },
+  {
+    "id": 604,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T20:30:00.113023+00:00"
+  },
+  {
+    "id": 605,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T20:40:00.113857+00:00"
+  },
+  {
+    "id": 606,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T20:50:00.094911+00:00"
+  },
+  {
+    "id": 607,
+    "num": 10,
+    "job_name": "pytrack_batch_3x_daily",
+    "description": "processamento em lote",
+    "ran_at": "2026-06-09T21:00:00.113822+00:00"
+  },
+  {
+    "id": 608,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T21:00:00.117096+00:00"
+  },
+  {
+    "id": 609,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T21:00:00.116475+00:00"
+  },
+  {
+    "id": 610,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T21:10:00.098944+00:00"
+  },
+  {
+    "id": 611,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T21:20:00.078963+00:00"
+  },
+  {
+    "id": 612,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T21:30:00.111794+00:00"
+  },
+  {
+    "id": 613,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T21:40:00.102129+00:00"
+  },
+  {
+    "id": 614,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T21:50:00.093349+00:00"
+  },
+  {
+    "id": 615,
+    "num": 4,
+    "job_name": "pytrack_hourly_sync",
+    "description": "sincronização e atualização de dashboards",
+    "ran_at": "2026-06-09T22:00:00.135037+00:00"
+  },
+  {
+    "id": 616,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T22:00:00.136351+00:00"
+  },
+  {
+    "id": 617,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T22:10:00.226573+00:00"
+  },
+  {
+    "id": 618,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T22:20:00.204573+00:00"
+  },
+  {
+    "id": 619,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T22:30:00.113336+00:00"
+  },
+  {
+    "id": 620,
+    "num": 3,
+    "job_name": "pytrack_10min_queue",
+    "description": "processamento de filas e status",
+    "ran_at": "2026-06-09T22:40:00.20923+00:00"
+  }
+]

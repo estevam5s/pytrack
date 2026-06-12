@@ -1,0 +1,13 @@
+{
+  "curso": "Introdução a Python — Turma 2026.1",
+  "gerado_em": "2026-06-10T00:42:14.898345",
+  "alunos": [
+    {
+      "nome": "Estevam",
+      "nivel": "intermediario",
+      "xp": 0,
+      "modulos_concluidos": 0,
+      "situacao": "INICIANTE"
+    }
+  ]
+}

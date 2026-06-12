@@ -1,0 +1,214 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Bell, BellOff, CheckCheck, Settings, MessageSquare, Heart, UserPlus, Award, Megaphone, Info } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
+import { playNotificationSound } from "@/lib/notification-sound";
+import { cn } from "@/lib/utils";
+
+interface Notif {
+  id: string;
+  type: string;
+  title: string;
+  body: string | null;
+  link: string | null;
+  is_read: boolean;
+  created_at: string;
+}
+
+type Tab = "all" | "unread";
+
+// ícone por tipo de notificação
+function typeIcon(type: string) {
+  const t = type.toLowerCase();
+  if (t.includes("message") || t.includes("coment") || t.includes("reply")) return MessageSquare;
+  if (t.includes("like") || t.includes("react")) return Heart;
+  if (t.includes("follow") || t.includes("connect") || t.includes("conex")) return UserPlus;
+  if (t.includes("badge") || t.includes("cert") || t.includes("conquist")) return Award;
+  if (t.includes("broadcast") || t.includes("aviso") || t.includes("promo") || t.includes("oferta")) return Megaphone;
+  return Info;
+}
+
+function timeAgo(iso: string): string {
+  const diff = Date.now() - new Date(iso).getTime();
+  const m = Math.floor(diff / 60000);
+  if (m < 1) return "agora";
+  if (m < 60) return `${m}min`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h`;
+  const d = Math.floor(h / 24);
+  if (d < 7) return `${d}d`;
+  return new Date(iso).toLocaleDateString("pt-BR");
+}
+
+export function NotificationBell({ initialCount = 0 }: { initialCount?: number }) {
+  const [open, setOpen] = useState(false);
+  const [count, setCount] = useState(initialCount);
+  const [items, setItems] = useState<Notif[]>([]);
+  const [tab, setTab] = useState<Tab>("all");
+  const ref = useRef<HTMLDivElement>(null);
+
+  async function load() {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from("notifications")
+      .select("id, type, title, body, link, is_read, created_at")
+      .order("created_at", { ascending: false })
+      .limit(30);
+    setItems((data ?? []) as Notif[]);
+    setCount((data ?? []).filter((n) => !n.is_read).length);
+  }
+
+  useEffect(() => {
+    if (open) load();
+  }, [open]);
+
+  // realtime: novas notificações incrementam o contador
+  useEffect(() => {
+    const supabase = createClient();
+    let channel: ReturnType<typeof supabase.channel> | null = null;
+    supabase.auth.getUser().then(({ data }) => {
+      const uid = data.user?.id;
+      if (!uid) return;
+      channel = supabase
+        .channel("notif-bell")
+        .on(
+          "postgres_changes",
+          { event: "INSERT", schema: "public", table: "notifications", filter: `user_id=eq.${uid}` },
+          (payload) => {
+            setCount((c) => c + 1);
+            try {
+              if (localStorage.getItem("pytrack-notif-sound") !== "off") playNotificationSound();
+            } catch { /* ignore */ }
+            const m = payload.new as Notif;
+            setItems((prev) => (prev.some((x) => x.id === m.id) ? prev : [m, ...prev]));
+          },
+        )
+        .subscribe();
+    });
+    return () => {
+      if (channel) supabase.removeChannel(channel);
+    };
+  }, []);
+
+  // fecha ao clicar fora
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, []);
+
+  async function markAll() {
+    const supabase = createClient();
+    await supabase.from("notifications").update({ is_read: true }).eq("is_read", false);
+    setCount(0);
+    setItems((prev) => prev.map((n) => ({ ...n, is_read: true })));
+  }
+
+  async function markOne(id: string) {
+    const target = items.find((n) => n.id === id);
+    if (!target || target.is_read) return;
+    const supabase = createClient();
+    await supabase.from("notifications").update({ is_read: true }).eq("id", id);
+    setItems((prev) => prev.map((n) => (n.id === id ? { ...n, is_read: true } : n)));
+    setCount((c) => Math.max(0, c - 1));
+  }
+
+  const unreadCount = items.filter((n) => !n.is_read).length;
+  const shown = tab === "unread" ? items.filter((n) => !n.is_read) : items;
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="relative flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-card hover:text-foreground"
+        aria-label="Notificações"
+      >
+        <Bell className="h-5 w-5" />
+        {count > 0 && (
+          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white anim-pulse-glow">
+            {count > 9 ? "9+" : count}
+          </span>
+        )}
+      </button>
+
+      {open && (
+        <div className="absolute right-0 top-11 z-50 w-[360px] max-w-[calc(100vw-1.5rem)] overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
+          {/* header */}
+          <div className="flex items-center justify-between border-b border-border p-4 pb-3">
+            <h3 className="text-sm font-bold">Suas notificações</h3>
+            <div className="flex items-center gap-1">
+              <button onClick={markAll} title="Marcar todas como lidas" className="flex h-8 w-8 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-surface-2 hover:text-foreground">
+                <CheckCheck className="h-4 w-4" />
+              </button>
+              <Link href="/notificacoes" onClick={() => setOpen(false)} title="Configurações" className="flex h-8 w-8 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-surface-2 hover:text-foreground">
+                <Settings className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* tabs */}
+          <div className="flex gap-1 border-b border-border px-3 py-2">
+            {([["all", "Todas", items.length], ["unread", "Não lidas", unreadCount]] as [Tab, string, number][]).map(([key, label, n]) => (
+              <button
+                key={key}
+                onClick={() => setTab(key)}
+                className={cn(
+                  "inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
+                  tab === key ? "bg-primary/15 text-primary-light" : "text-text-secondary hover:bg-surface-2",
+                )}
+              >
+                {label}
+                <span className={cn("rounded-full px-1.5 text-[10px] font-bold", tab === key ? "bg-primary/25" : "bg-surface-2")}>{n}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* lista */}
+          <div className="max-h-[360px] overflow-y-auto">
+            {shown.length === 0 ? (
+              <div className="flex flex-col items-center justify-center gap-2.5 py-12 text-center">
+                <div className="rounded-full bg-surface-2 p-4"><BellOff className="h-6 w-6 text-text-secondary" /></div>
+                <p className="text-sm font-medium text-text-secondary">{tab === "unread" ? "Tudo em dia! Nenhuma não lida." : "Sem notificações ainda."}</p>
+              </div>
+            ) : (
+              <div className="divide-y divide-dashed divide-border/60">
+                {shown.map((n) => {
+                  const Icon = typeIcon(n.type);
+                  const Inner = (
+                    <div className={cn("flex gap-3 p-3.5 transition-colors hover:bg-surface-2", !n.is_read && "bg-primary/[0.06]")}>
+                      <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-full", !n.is_read ? "bg-primary/15 text-primary-light" : "bg-surface-2 text-text-secondary")}>
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="text-sm font-semibold leading-snug">{n.title}</p>
+                          {!n.is_read && <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary" />}
+                        </div>
+                        {n.body && <p className="mt-0.5 line-clamp-2 text-xs text-text-secondary">{n.body}</p>}
+                        <p className="mt-1 text-[11px] text-text-secondary/70">{timeAgo(n.created_at)}</p>
+                      </div>
+                    </div>
+                  );
+                  return n.link ? (
+                    <Link key={n.id} href={n.link} onClick={() => { markOne(n.id); setOpen(false); }}>{Inner}</Link>
+                  ) : (
+                    <button key={n.id} onClick={() => markOne(n.id)} className="block w-full text-left">{Inner}</button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* rodapé */}
+          <Link href="/notificacoes" onClick={() => setOpen(false)} className="block border-t border-border p-3 text-center text-xs font-semibold text-primary-light transition-colors hover:bg-surface-2">
+            Ver todas as notificações
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+}

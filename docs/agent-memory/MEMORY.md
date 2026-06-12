@@ -1,0 +1,16 @@
+- [PyTrack platform](pytrack-platform.md) — Next.js+Supabase Python learning dashboard; curriculum from doc/Conteudos, schema pushed via Management API
+- [Theme & routes](theme-and-routes.md) — light/dark theme (CSS vars), /especializacoes, /configuracoes subroutes; deployed on Vercel
+- [Supabase cron](supabase-cron.md) — 10 pg_cron jobs from cron/scripts; SQL in cron/supabase-cron.sql; applied via Management API
+- [Community](community.md) — /comunidade social route; 10 community_* tables + RLS + triggers + realtime; lib/community + components/community
+- [Stripe billing](stripe-billing.md) — tiers Essencial(R$10)/Completo(R$19) + freemium + trial; domínio www.pytrack.com.br; webhook + /assinar + /configuracoes/plano
+- [Trilhas](trilhas.md) — /minhas-trilhas: 12 trilhas de aprendizado por tier + gating de conteúdo por plano em /conteudos
+- [Perfil/Suporte/Email](profile-support-email.md) — perfil avançado (capa/skills/conexões), suporte realtime+presença, tutorial no banco, SMTP Gmail; token mgmt novo sbp_5651...
+- [Extensão VS Code](vscode-extension.md) — extensão Suprema em extension-vscode/, API /api/extension/*, rota /extensao + admin; publicada EstevamSouza.pytrack v1.0.1
+- [App mobile](mobile-app.md) — Expo+RN em aplicativos/mobile; APK buildado (EAS) + hospedado em GitHub Release estevam5s/pytrack; rota /aplicativo
+- [App desktop](desktop-app.md) — Tauri 2 + React em aplicativos/desktop; Win/Mac/Linux; prompt em prompts/app-desktop.md; IDE Pyodide; CI cross-OS; updater automático
+- [Distribuição apps](apps-distribution.md) — CLI/curl/Docker(GHCR), contadores download, stats do site do banco, /apps gating Suprema
+- [Ferramentas admin](admin-tools.md) — broadcast/avisos+popup, site settings (banner/manutenção), SEO editável, painel downloads, currículo 12 templates reais
+- [Bot Telegram](telegram-bot.md) — @PyTrack_SaaS_Bot em bot-telegran/, Telegraf+Supabase, login/exercícios IA/admin; CI auto-broadcast; /docs/apps
+- [Features por plano](plan-features.md) — Roadmaps(grátis)/Desafios Diários+Debug+Desafios(Essencial)/Planejamento+Plano Carreira IA(Completo)/Construa SaaS+boilerplate IA(Suprema); Resend ATIVO
+- [Melhorias UI](ui-improvements.md) — fix notif DELETE policy, certificado PNG/OG/PDF, +5 trilhas (22 total), vídeo painel home autoplay-scroll, sidebar redesign + card perfil XP/streak; carreira IA Suprema; hero editor código; release GitHub a cada deploy (estevam5s/pytrack)
+- [Newsletter & Auth](newsletter-auth.md) — newsletter popup+admin+campanhas, templates email Resend profissionais, login/registro com orbiting tech

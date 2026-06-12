@@ -1,0 +1,83 @@
+[
+  {
+    "id": "b5b5dbf2-8fbc-4f43-aecc-df78148eb332",
+    "conversation_id": "43010e5e-3af6-4786-abad-bc32e883aea9",
+    "role": "user",
+    "content": "Quanto custa o plano completo?",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T12:48:09.357784+00:00"
+  },
+  {
+    "id": "6ff5425d-8fe4-4471-ba8f-43c8d0c0e9c8",
+    "conversation_id": "43010e5e-3af6-4786-abad-bc32e883aea9",
+    "role": "assistant",
+    "content": "Tive um probleminha para responder agora. Você pode tentar de novo ou falar com o suporte humano. 🙏",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T12:48:09.688469+00:00"
+  },
+  {
+    "id": "455052fc-6a7e-4a4b-9fd1-ae5daeb7acb7",
+    "conversation_id": "5a4a6e35-bba0-415c-aeee-01c81441d9a9",
+    "role": "assistant",
+    "content": "Beleza! Já avisei a equipe de suporte. Assim que alguém estiver disponível, responde por aqui. Você também pode continuar tirando dúvidas comigo enquanto isso. 😊",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T13:02:01.681434+00:00"
+  },
+  {
+    "id": "7d97d9cf-f263-46b7-8735-329634f88466",
+    "conversation_id": "5a4a6e35-bba0-415c-aeee-01c81441d9a9",
+    "role": "admin",
+    "content": "oi",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T13:02:28.218234+00:00"
+  },
+  {
+    "id": "65abbe8c-6a1e-470e-9c70-e983fa6c36d2",
+    "conversation_id": "2d8aad08-b422-48b4-9828-8a6ee0f8851e",
+    "role": "user",
+    "content": "Em 1 frase: o que é a PyTrack?",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T13:14:20.135642+00:00"
+  },
+  {
+    "id": "ef4edfa5-2a4a-4cdf-87f0-7f0bd754ac41",
+    "conversation_id": "2d8aad08-b422-48b4-9828-8a6ee0f8851e",
+    "role": "assistant",
+    "content": "A PyTrack é uma plataforma de educação que oferece trilhas, conteúdos, exercícios com IA, IDE Python no navegador e outros recursos para ajudar os usuários a dominar o ecossistema Python, desde o zero até a carreira.",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T13:14:35.038805+00:00"
+  },
+  {
+    "id": "1c4728cb-e3a4-4ddf-9bec-50903cbcc339",
+    "conversation_id": "5a4a6e35-bba0-415c-aeee-01c81441d9a9",
+    "role": "user",
+    "content": "sair",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T19:00:23.086248+00:00"
+  },
+  {
+    "id": "169f7c44-f044-49fe-887e-707b46d76483",
+    "conversation_id": "7bae18e8-506f-40b9-9d6b-c5b5efe6144a",
+    "role": "user",
+    "content": "Oi, gostaria de saber como que funciona essa plataforma",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T19:00:59.713583+00:00"
+  },
+  {
+    "id": "66e7490e-cf4f-4345-9116-88084682d513",
+    "conversation_id": "7bae18e8-506f-40b9-9d6b-c5b5efe6144a",
+    "role": "assistant",
+    "content": "Olá! A PyTrack é uma plataforma de educação que visa ajudar você a dominar o ecossistema Python, desde o zero até a carreira. Aqui está uma visão geral de como funciona:\n\n* **Trilhas**: A plataforma oferece 16 trilhas de aprendizado, divididas em quatro planos: Grátis, Essencial, Completo e Suprema. Cada trilha é composta por módulos e lições que abordam tópicos específicos do Python.\n* **Recursos**:\n + **IDE Python no navegador**: Você pode escrever e executar código Python diretamente no navegador, sem precisar instalar nada.\n + **Exercícios com IA**: A plataforma oferece mais de 2.400 exercícios com correção por inteligência artificial.\n + **Projetos**: Você terá acesso a mais de 1.300 projetos para praticar e aplicar seus conhecimentos.\n + **Comunidade**: A plataforma inclui uma rede social onde você pode se conectar com outros usuários, compartilhar conhecimentos e obter ajuda.\n + **Consultor de carreira com IA**: A plataforma oferece um consultor de carreira que ajuda você a definir seus objetivos e criar um plano de carreira personalizado.\n* **Planos e preços**: A PyTrack oferece cinco planos: Grátis (7 dias de acesso), Essencial (R$10/mês), Completo (R$19/mês), Suprema (R$46/mês) e Vitalício (R$697, pagamento único). Cada plano oferece recursos e benefícios diferentes.\n* **Como começar**: Para começar, basta criar uma conta em www.pytrack.com.br, escolher seu objetivo no onboarding e começar pela trilha recomendada. Você terá 7 dias de acesso gratuito para testar a plataforma.\n\nSe tiver alguma dúvida específica ou precisar de ajuda, sinta-se à vontade para perguntar! Se não souber a resposta, posso acionar o suporte humano para ajudar.",
+    "read_by_admin": false,
+    "read_by_user": false,
+    "created_at": "2026-06-09T19:01:29.989321+00:00"
+  }
+]
