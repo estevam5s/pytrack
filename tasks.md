@@ -1,4 +1,5 @@
 Primeira conta claude-code:
     - Tenho um novo logo para o saas "public/logo-pytrack.png", deve ser possivel alterar o logo em todas as partes do saas, seja no site, na plataforma, as extensoes do vscode, aplicativos, o SEO, etc ... Deve ter uma rota no painel do admin que configura o logo do sass e salvar no supabase.
     - As extensoes "extension-vsocde-theme", "extension-vscode" e "extension-vsocde-autocomplete", devem ser movidas para o diretorio "extensions" sem afetar o saas.
+    - Deve adicionar uma funcionalidade altamente completa na plataforma que seria a parte de logs igual ao da imagem "docs/Captura de Tela 2026-06-12 às 22.39.06.png" onde cada funcionalidade em que os usuario acessam, as vezes pode ocorrer erro entao deve conter uma rota no painel do admin onde o admin para gerenciar todos os logs de erro e tambem logs do sistema como um todo e deve salvar no supabase.
 Segunda conta claude-code:

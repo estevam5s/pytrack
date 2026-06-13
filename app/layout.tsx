@@ -133,7 +133,7 @@ const JSON_LD = {
       "@id": `${SITE_URL}/#course`,
       name: "Aprenda Python — do básico à carreira",
       description:
-        "Curso completo de Python com 17 trilhas, +5.000 exercícios com IA, IDE no navegador, projetos reais e carreira.",
+        "Curso completo de Python com dezenas de trilhas guiadas, milhares de exercícios com IA, IDE no navegador, projetos reais e carreira.",
       provider: { "@id": `${SITE_URL}/#organization` },
       url: `${SITE_URL}/trilhas`,
       hasCourseInstance: {
@@ -184,7 +184,7 @@ const JSON_LD = {
           name: "Quais áreas de Python a PyTrack cobre?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Backend, Dados, Machine Learning & IA, DevOps & Cloud, Arquitetura, IoT, Segurança, Automação e mais — 17 trilhas no total.",
+            text: "Backend, Dados, Machine Learning & IA, DevOps & Cloud, Arquitetura, IoT, Segurança, Automação, Web Full-Stack, MLOps, Agentes de IA e mais — dezenas de trilhas guiadas.",
           },
         },
       ],
