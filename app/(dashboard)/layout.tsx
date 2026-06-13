@@ -107,7 +107,7 @@ export default async function DashboardLayout({
             levelCounts={levelCounts}
             notifCount={notifCount}
           />
-          <main className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-6 sm:py-8 lg:px-10 xl:px-12">
+          <main className="w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-8 xl:px-10 2xl:px-12">
             {!hasAccess && <UpgradeBanner createdAt={user.created_at} />}
             {children}
           </main>

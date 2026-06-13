@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Github, Linkedin, Crown, Sparkles, Flame } from "lucide-react";
+import { ExternalLink, Github, Linkedin, Crown, Sparkles, Flame, PanelLeftClose } from "lucide-react";
+import { useUIStore } from "@/store/ui";
 import { computeXp, levelFromXp, type ActivityCounts } from "@/lib/level";
 import { readLocalActivity } from "@/lib/client-progress";
 import { NAV_GROUPS, NAV_ITEMS } from "@/lib/navigation";
@@ -35,6 +36,7 @@ export function SidebarContent({
   isAdmin = false,
   profile,
   onNavigate,
+  showCollapse = false,
 }: {
   tier?: Tier;
   notif?: number;
@@ -42,9 +44,11 @@ export function SidebarContent({
   isAdmin?: boolean;
   profile?: SidebarProfile;
   onNavigate?: () => void;
+  showCollapse?: boolean;
 }) {
   const badgeHref = isAdmin ? "/admin/mensagens" : "/suporte";
   const topTier = tier === "suprema" || tier === "vitalicio";
+  const toggleSidebar = useUIStore((s) => s.toggleSidebar);
 
   // XP/nível computado igual ao header (serverCounts + atividade local)
   const [local, setLocal] = useState({ lessons: 0, exercises: 0, questions: 0 });
@@ -82,6 +86,16 @@ export function SidebarContent({
           <p className="text-sm font-bold tracking-tight text-foreground">PyTrack</p>
           <p className="text-[11px] text-text-secondary">Python Learning</p>
         </div>
+        {showCollapse && (
+          <button
+            onClick={toggleSidebar}
+            className="relative ml-auto hidden h-8 w-8 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-card hover:text-foreground lg:inline-flex"
+            aria-label="Recolher menu"
+            title="Recolher menu"
+          >
+            <PanelLeftClose className="h-[18px] w-[18px]" />
+          </button>
+        )}
       </div>
 
       {/* badge do plano */}
@@ -216,7 +230,7 @@ export function DesktopSidebar({
         collapsed && "-translate-x-full",
       )}
     >
-      <SidebarContent tier={tier} notif={notif} notifCount={notifCount} isAdmin={isAdmin} profile={profile} />
+      <SidebarContent tier={tier} notif={notif} notifCount={notifCount} isAdmin={isAdmin} profile={profile} showCollapse />
     </aside>
   );
 }

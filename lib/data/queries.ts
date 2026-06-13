@@ -144,6 +144,20 @@ export async function getPracticeExercises(): Promise<PracticeExercise[]> {
   return all;
 }
 
+/** ex_ids concluídos pelo usuário atual (plataforma + bot do Telegram). */
+export async function getExerciseCompletions(): Promise<string[]> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return [];
+  const { data } = await supabase
+    .from("exercise_completions")
+    .select("ex_id")
+    .eq("user_id", user.id);
+  return (data ?? []).map((r) => r.ex_id as string);
+}
+
 export async function getYoutubeContent(): Promise<YoutubeItem[]> {
   const supabase = await createClient();
   const { data } = await supabase

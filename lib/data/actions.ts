@@ -4,6 +4,40 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import type { ContentStatus } from "@/types";
 
+/**
+ * Marca/desmarca um exercício de prática como concluído para o usuário atual.
+ * Grava em `exercise_completions` (mesma tabela que o bot do Telegram usa),
+ * sincronizando o progresso entre a plataforma e o bot. Idempotente.
+ */
+export async function setExerciseDone(exId: string, done: boolean) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "Não autenticado" };
+
+  if (done) {
+    const { error } = await supabase.from("exercise_completions").upsert(
+      {
+        user_id: user.id,
+        ex_id: exId,
+        source: "platform",
+        completed_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id,ex_id" },
+    );
+    if (error) return { error: error.message };
+  } else {
+    const { error } = await supabase
+      .from("exercise_completions")
+      .delete()
+      .eq("user_id", user.id)
+      .eq("ex_id", exId);
+    if (error) return { error: error.message };
+  }
+  return { ok: true };
+}
+
 /** Define o status de um conteúdo para o usuário atual (upsert em progress). */
 export async function setContentStatus(
   contentId: string,

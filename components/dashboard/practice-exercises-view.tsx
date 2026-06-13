@@ -12,6 +12,7 @@ import {
   Target,
 } from "lucide-react";
 import type { PracticeExercise } from "@/types";
+import { setExerciseDone } from "@/lib/data/actions";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -36,12 +37,15 @@ function ExerciseCard({
   ex,
   done,
   onToggleDone,
+  open,
+  onToggleOpen,
 }: {
   ex: PracticeExercise;
   done: boolean;
   onToggleDone: () => void;
+  open: boolean;
+  onToggleOpen: () => void;
 }) {
-  const [open, setOpen] = useState(false);
   const [checked, setChecked] = useState<boolean[]>([]);
 
   useEffect(() => {
@@ -67,9 +71,16 @@ function ExerciseCard({
   };
 
   return (
-    <Card className={cn(done && "border-secondary/40 bg-secondary/[0.03]")}>
+    <Card
+      className={cn(
+        "scroll-mt-24 transition-all duration-200",
+        done && "border-secondary/40 bg-secondary/[0.03]",
+        open && "border-primary/40 shadow-elev-3 ring-1 ring-primary/20",
+      )}
+    >
       <button
-        onClick={() => setOpen((o) => !o)}
+        onClick={onToggleOpen}
+        aria-expanded={open}
         className="flex w-full items-center gap-3 p-4 text-left"
       >
         <span
@@ -110,7 +121,7 @@ function ExerciseCard({
       </button>
 
       {open && (
-        <CardContent className="space-y-4 border-t border-border pt-4">
+        <CardContent className="animate-slide-up-fade space-y-4 border-t border-border pt-4">
           <div className="flex flex-wrap gap-2 text-xs">
             <Badge className="border-primary/30 bg-primary/10 text-primary">
               {ex.type}
@@ -217,8 +228,11 @@ function ExerciseCard({
 
 export function PracticeExercisesView({
   exercises,
+  serverDone = [],
 }: {
   exercises: PracticeExercise[];
+  /** ex_ids já concluídos no servidor (inclui os feitos pelo bot do Telegram) */
+  serverDone?: string[];
 }) {
   const [done, setDone] = useState<Set<string>>(new Set());
   const [query, setQuery] = useState("");
@@ -226,17 +240,33 @@ export function PracticeExercisesView({
   const [level, setLevel] = useState("todos");
   const [onlyTodo, setOnlyTodo] = useState(false);
   const [visible, setVisible] = useState(PAGE);
+  // accordion de abertura única: só um exercício aberto por vez
+  const [openId, setOpenId] = useState<string | null>(null);
 
-  useEffect(() => setDone(loadDone()), []);
+  // mescla o que está no servidor (plataforma + bot do Telegram) com o cache local
+  useEffect(() => {
+    const local = loadDone();
+    for (const id of serverDone) local.add(id);
+    setDone(local);
+    localStorage.setItem(DONE_KEY, JSON.stringify([...local]));
+  }, [serverDone]);
 
   const toggleDone = (id: string) => {
+    let nowDone = false;
     setDone((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+        nowDone = true;
+      }
       localStorage.setItem(DONE_KEY, JSON.stringify([...next]));
       window.dispatchEvent(new Event("pytrack-progress"));
       return next;
     });
+    // persiste no servidor (sincroniza com o bot e outros dispositivos)
+    void setExerciseDone(id, nowDone).catch(() => {});
   };
 
   const groups = useMemo(() => {
@@ -369,6 +399,10 @@ export function PracticeExercisesView({
                   ex={ex}
                   done={done.has(ex.ex_id)}
                   onToggleDone={() => toggleDone(ex.ex_id)}
+                  open={openId === ex.ex_id}
+                  onToggleOpen={() =>
+                    setOpenId((cur) => (cur === ex.ex_id ? null : ex.ex_id))
+                  }
                 />
               ))}
             </div>

@@ -22,6 +22,7 @@ export function Header({
   notifCount?: number;
 }) {
   const { setMobileSidebar, setCommandOpen, toggleSidebar } = useUIStore();
+  const collapsed = useUIStore((s) => s.sidebarCollapsed);
 
   return (
     <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-border bg-background/80 px-4 backdrop-blur-md lg:px-8">
@@ -32,14 +33,18 @@ export function Header({
       >
         <Menu className="h-5 w-5" />
       </button>
-      <button
-        onClick={toggleSidebar}
-        className="hidden rounded-md p-2 text-text-secondary transition-colors hover:bg-card hover:text-foreground lg:inline-flex"
-        aria-label="Mostrar ou esconder menu"
-        title="Mostrar/esconder menu"
-      >
-        <PanelLeft className="h-5 w-5" />
-      </button>
+      {/* botão de reabrir o menu — só quando o sidebar está recolhido
+          (o botão de recolher fica no topo do próprio sidebar, ao lado do logo) */}
+      {collapsed && (
+        <button
+          onClick={toggleSidebar}
+          className="hidden rounded-md p-2 text-text-secondary transition-colors hover:bg-card hover:text-foreground lg:inline-flex"
+          aria-label="Mostrar menu"
+          title="Mostrar menu"
+        >
+          <PanelLeft className="h-5 w-5" />
+        </button>
+      )}
 
       <button
         onClick={() => setCommandOpen(true)}

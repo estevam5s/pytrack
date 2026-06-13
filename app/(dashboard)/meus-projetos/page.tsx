@@ -18,7 +18,7 @@ export default async function ProjetosPage() {
     <div>
       <PageHeader
         title="Projetos práticos"
-        description="Mais de 100 projetos para aprender construindo — cada um com objetivo, requisitos, tecnologias e passo a passo, do básico ao desafio real."
+        description="Milhares de projetos para aprender construindo — cada um com objetivo, requisitos, tecnologias e passo a passo, do básico ao desafio real. Filtre por área, dificuldade ou tecnologia, favorite e acompanhe seu progresso."
       />
 
       <div className="mb-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
