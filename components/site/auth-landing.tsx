@@ -7,7 +7,7 @@ import { LOGIN_URL, SIGNUP_URL, BRAND } from "@/lib/site-links";
 const PERKS = [
   "Acesso a todas as trilhas Python",
   "Exercícios com feedback de IA",
-  "Mais de 1300 projetos práticos",
+  "Milhares de projetos práticos",
   "Dashboard de evolução com XP e níveis",
 ];
 

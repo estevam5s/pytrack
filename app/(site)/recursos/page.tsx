@@ -9,6 +9,7 @@ import { CTASection } from "@/components/site/cta-section";
 import { Button } from "@/components/site/site-button";
 import { SIGNUP_URL } from "@/lib/site-links";
 import { DASHBOARD_FEATURES, FEATURES } from "@/lib/site-data";
+import { getPlatformStats, fmtStat } from "@/lib/data/platform-stats";
 
 export const metadata: Metadata = {
   title: "Recursos",
@@ -16,7 +17,8 @@ export const metadata: Metadata = {
     "Conteúdos, evolução visual, stack, aulas, materiais, livros, exercícios com IA, projetos e carreira em uma só plataforma.",
 };
 
-export default function RecursosPage() {
+export default async function RecursosPage() {
+  const s = await getPlatformStats();
   return (
     <>
       <PageHero
@@ -40,10 +42,10 @@ export default function RecursosPage() {
       <section className="container pb-8">
         <Reveal className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-surface/40 p-8 sm:grid-cols-4">
           {[
-            ["74", "módulos de conteúdo"],
-            ["2.4k+", "exercícios com IA"],
-            ["1.3k+", "projetos práticos"],
-            ["1.7k+", "perguntas de entrevista"],
+            [fmtStat(s.modulos), "módulos de conteúdo"],
+            [fmtStat(s.exercicios), "exercícios com IA"],
+            [fmtStat(s.projetos), "projetos práticos"],
+            [fmtStat(s.perguntas), "perguntas de entrevista"],
           ].map(([n, l]) => (
             <div key={l} className="text-center">
               <p className="text-3xl font-bold text-gradient">{n}</p>

@@ -6,21 +6,23 @@ import { SectionHeader } from "@/components/site/section-header";
 import { GradientText } from "@/components/site/gradient-text";
 import { CTASection } from "@/components/site/cta-section";
 import { PROJECTS } from "@/lib/site-data";
+import { getPlatformStats, fmtStat } from "@/lib/data/platform-stats";
 
 export const metadata: Metadata = {
   title: "Projetos",
   description:
-    "Mais de 1.300 projetos práticos de Python para o seu portfólio — de CLIs e APIs a dashboards, ETL, IoT e full-stack.",
+    "Milhares de projetos práticos de Python para o seu portfólio — de CLIs e APIs a dashboards, ETL, IoT e full-stack.",
 };
 
-export default function ProjetosPage() {
+export default async function ProjetosPage() {
+  const s = await getPlatformStats();
   return (
     <>
       <PageHero
         badge="Projetos de alto nível"
         title="Projetos que provam que você"
         highlight="está pronto"
-        description="Nada de tutoriais de brinquedo. Aqui você constrói SaaS, IA com RAG, pipelines de dados, microsserviços e sistemas em produção — no nível de empresas de tecnologia. São +1.300 projetos na plataforma."
+        description={`Nada de tutoriais de brinquedo. Aqui você constrói SaaS, IA com RAG, pipelines de dados, microsserviços e sistemas em produção — no nível de empresas de tecnologia. São ${fmtStat(s.projetos)} projetos na plataforma.`}
       />
 
       <section className="container py-16">

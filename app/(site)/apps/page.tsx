@@ -71,7 +71,7 @@ export default async function AppsPage() {
           <Reveal delay={0.08}>
             <ProductCard accent="#29E0A9" icon={Smartphone} tag="Android" title="App Mobile"
               desc="Estude no celular e tablet: trilhas, +5.000 exercícios (com correção por IA), comunidade e carreira — tudo sincronizado com a web."
-              features={["Login + GitHub + 2FA", "17 trilhas e exercícios", "Correção de código por IA", "Sessão segura (keychain)"]}
+              features={["Login + GitHub + 2FA", "Trilhas e exercícios", "Correção de código por IA", "Sessão segura (keychain)"]}
               downloads={dl.android} downloadsLabel="downloads">
               {canDownload ? (
                 <DownloadBtn href="/api/download?platform=android" accent="#29E0A9" icon={Download}>Baixar APK</DownloadBtn>

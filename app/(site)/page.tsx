@@ -57,7 +57,7 @@ const DEPOIS = [
   "Trilhas organizadas do básico ao avançado",
   "Dashboard com progresso, XP e nível",
   "Materiais, livros e cursos centralizados",
-  "Mais de 1300 projetos reais para o portfólio",
+  "Milhares de projetos reais para o portfólio",
   "Roadmap profissional e consultor de IA",
 ];
 
@@ -111,7 +111,7 @@ export default async function HomePage() {
       <section className="container py-20">
         <SectionHeader
           badge="Trilhas de aprendizado"
-          title={<>17 trilhas, um <GradientText>caminho em Python</GradientText></>}
+          title={<>{raw.trilhas} trilhas, um <GradientText>caminho em Python</GradientText></>}
           description="Trilhas guiadas para cada objetivo — dos fundamentos às especializações mais buscadas do mercado (Backend, Dados, IA, DevOps, Arquitetura, IoT, Segurança e mais)."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

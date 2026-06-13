@@ -191,17 +191,23 @@ export function Footer() {
             <Reveal key={col.title} delay={0.05 + i * 0.05}>
               <p className="text-sm font-semibold text-foreground">{col.title}</p>
               <ul className="mt-4 space-y-2.5">
-                {col.links.map((l) => (
-                  <li key={l.label}>
-                    <Link
-                      href={l.href}
-                      className="group inline-flex items-center gap-1 text-sm text-text-secondary transition-colors hover:text-foreground"
-                    >
-                      <span className="h-px w-0 bg-primary-light transition-all duration-200 group-hover:w-3" />
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
+                {col.links.map((l) => {
+                  // a documentação abre em uma nova aba do navegador
+                  const newTab = l.href.startsWith("http") || l.href.startsWith("/docs");
+                  return (
+                    <li key={l.label}>
+                      <Link
+                        href={l.href}
+                        target={newTab ? "_blank" : undefined}
+                        rel={newTab ? "noopener noreferrer" : undefined}
+                        className="group inline-flex items-center gap-1 text-sm text-text-secondary transition-colors hover:text-foreground"
+                      >
+                        <span className="h-px w-0 bg-primary-light transition-all duration-200 group-hover:w-3" />
+                        {l.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </Reveal>
           ))}

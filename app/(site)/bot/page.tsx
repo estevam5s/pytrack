@@ -20,7 +20,7 @@ const FEATURES = [
   { icon: Code2, title: "Exercícios com IA", desc: "Escolha um exercício, envie seu .py e a IA corrige na hora." },
   { icon: Target, title: "Desafio do dia", desc: "Um exercício novo todo dia para manter o ritmo." },
   { icon: Trophy, title: "Ranking & Conquistas", desc: "Acompanhe o top da comunidade e seus exercícios concluídos." },
-  { icon: BookOpen, title: "Trilhas & Projetos", desc: "Liste as 17 trilhas e projetos para o portfólio." },
+  { icon: BookOpen, title: "Trilhas & Projetos", desc: "Liste as trilhas e projetos para o portfólio." },
   { icon: Sparkles, title: "Menu profissional", desc: "Interface limpa por botões, com /limpar para zerar o histórico." },
 ];
 

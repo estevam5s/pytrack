@@ -51,14 +51,14 @@ export interface Feature {
 }
 
 export const FEATURES: Feature[] = [
-  { icon: BookOpen, title: "Conteúdos organizados", description: "80+ módulos e centenas de lições do básico ao avançado, em 16 trilhas guiadas." },
+  { icon: BookOpen, title: "Conteúdos organizados", description: "Dezenas de módulos e centenas de lições do básico ao avançado, em trilhas guiadas." },
   { icon: LineChart, title: "Evolução visual", description: "Dashboard com progresso, XP, gráficos e seu nível no ecossistema Python." },
   { icon: Layers, title: "Stack Python completa", description: "Conheça as tecnologias essenciais com logos reais e links da documentação." },
   { icon: GraduationCap, title: "Aulas da Udemy e YouTube", description: "Organize cursos e playlists com importação automática de banner e dados." },
   { icon: FileText, title: "Materiais extras", description: "Documentação, artigos, cheatsheets e repositórios centralizados." },
   { icon: Library, title: "Livros recomendados", description: "Biblioteca curada com upload de capa e do próprio arquivo do livro." },
-  { icon: Trophy, title: "Exercícios com IA", description: "Mais de 2400 exercícios. Escreva o código e a IA dá feedback e a melhor solução." },
-  { icon: FolderGit2, title: "Projetos para portfólio", description: "Mais de 1300 projetos com requisitos, tecnologias e passo a passo." },
+  { icon: Trophy, title: "Exercícios com IA", description: "Milhares de exercícios. Escreva o código e a IA dá feedback e a melhor solução." },
+  { icon: FolderGit2, title: "Projetos para portfólio", description: "Milhares de projetos com requisitos, tecnologias e passo a passo." },
   { icon: Briefcase, title: "Roadmap de carreira", description: "Trilhas profissionais e um consultor de IA que avalia sua prontidão." },
   { icon: ShieldCheck, title: "Persistência com Supabase", description: "Seu progresso salvo com segurança, autenticação e dados sempre sincronizados." },
 ];
@@ -253,8 +253,8 @@ export const TESTIMONIALS: Testimonial[] = [
 export const PRICING_FEATURES = [
   "Acesso completo ao dashboard",
   "Todas as trilhas do ecossistema Python",
-  "Mais de 2400 exercícios com IA",
-  "Mais de 1300 projetos práticos",
+  "Milhares de exercícios com IA",
+  "Milhares de projetos práticos",
   "Materiais, livros e cursos organizados",
   "Área de carreira e consultor de IA",
   "Evolução personalizada com XP e níveis",
@@ -265,7 +265,7 @@ export const FAQS = [
   { q: "Para quem é a plataforma?", a: "Para quem quer aprender ou se aprofundar em Python — do iniciante absoluto a quem busca especialização em backend, dados, IoT, automação ou engenharia de software." },
   { q: "Preciso saber programar?", a: "Não. A trilha de Fundamentos começa do zero, com sintaxe, lógica e os primeiros programas, evoluindo de forma guiada até temas avançados." },
   { q: "A plataforma ensina Python do zero?", a: "Sim. Você começa pelos fundamentos e avança no seu ritmo por trilhas estruturadas, com exercícios e projetos a cada etapa." },
-  { q: "Tem projetos práticos?", a: "Mais de 1300 projetos, de calculadoras CLI a APIs, pipelines de dados e sistemas full-stack — com requisitos e passo a passo para o seu portfólio." },
+  { q: "Tem projetos práticos?", a: "Milhares de projetos, de calculadoras CLI a APIs, pipelines de dados e sistemas full-stack — com requisitos e passo a passo para o seu portfólio." },
   { q: "Posso acompanhar minha evolução?", a: "Sim. O dashboard mostra progresso, horas estudadas, XP e seu nível no ecossistema Python, com gráficos e mapa de proficiência." },
   { q: "O conteúdo serve para dados, backend e IoT?", a: "Sim. Há trilhas dedicadas para análise e engenharia de dados, backend, IoT, automação e engenharia de software." },
   { q: "Preciso pagar cursos externos?", a: "Não. Tudo o que você precisa está centralizado: conteúdos, exercícios, projetos, materiais e livros. Você ainda pode organizar cursos da Udemy e YouTube que já tenha." },

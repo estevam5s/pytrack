@@ -61,7 +61,7 @@ const PLANS: Plan[] = [
       "🤖 Plano de Estudos com IA",
       "📅 Planejamento semanal",
       "🧭 Guia de carreira + 💰 financeiro",
-      "+1.300 projetos para portfólio",
+      "Milhares de projetos para portfólio",
       "Especializações + consultor IA",
       "Vagas e perguntas de entrevista",
       "App Android e Desktop",

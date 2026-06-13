@@ -7,7 +7,7 @@ import { ArrowRight, Search } from "lucide-react";
 
 const ITEMS = [
   { label: "Início", href: "/", desc: "Página inicial" },
-  { label: "Trilhas", href: "/trilhas", desc: "17 trilhas de Python" },
+  { label: "Trilhas", href: "/trilhas", desc: "Trilhas guiadas de Python" },
   { label: "Recursos", href: "/recursos", desc: "Conteúdos, exercícios, IDE" },
   { label: "Projetos", href: "/projetos", desc: "Projetos para portfólio" },
   { label: "Carreira", href: "/carreira", desc: "Roadmap e mercado" },

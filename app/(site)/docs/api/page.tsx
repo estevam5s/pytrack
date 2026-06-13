@@ -78,7 +78,7 @@ export default function ApiDocsPage() {
 }`}</code></pre>
 
         <h3>GET /tracks — trilhas e cursos disponíveis</h3>
-        <p>Lista as 17 trilhas da PyTrack com nível, plano, módulos, horas e tópicos. Ótimo para catálogos e integrações de LMS.</p>
+        <p>Lista as trilhas da PyTrack com nível, plano, módulos, horas e tópicos. Ótimo para catálogos e integrações de LMS.</p>
         <pre><code>{`curl https://www.pytrack.com.br/api/v1/tracks \\
   -H "Authorization: Bearer pytk_live_xxxxxxxxxxxx"`}</code></pre>
 

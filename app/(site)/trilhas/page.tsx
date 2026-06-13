@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Trilhas de aprendizado",
   description:
-    "17 trilhas guiadas de Python: do zero ao avançado — Backend, Dados, IA, DevOps & Cloud, Arquitetura, IoT, Segurança e a Trilha Suprema Python Mastery.",
+    "Trilhas guiadas de Python: do zero ao avançado — Backend, Dados, IA, DevOps & Cloud, Arquitetura, IoT, Segurança e a Trilha Suprema Python Mastery.",
 };
 
 const TIER_BADGE: Record<Tier, string> = {
@@ -36,7 +36,7 @@ export default function TrilhasPage() {
         badge="Trilhas"
         title="Escolha o seu caminho em"
         highlight="Python"
-        description="17 trilhas guiadas — do primeiro print() à Trilha Suprema Python Mastery. Cada trilha combina conteúdos, exercícios e projetos para você evoluir com direção."
+        description={`${TRILHAS.length} trilhas guiadas — do primeiro print() à Trilha Suprema Python Mastery. Cada trilha combina conteúdos, exercícios e projetos para você evoluir com direção.`}
       />
 
       {GROUPS.map((g) => {

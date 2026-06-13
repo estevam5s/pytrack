@@ -8,25 +8,28 @@ export interface PlatformStats {
   modulos: number;
   exercicios: number;
   projetos: number;
+  perguntas: number;
 }
 
 async function fetchStats(): Promise<PlatformStats> {
   try {
     const admin = createAdminClient();
-    const [contents, exercises, projects] = await Promise.all([
+    const [contents, exercises, projects, questions] = await Promise.all([
       admin.from("contents").select("id", { count: "exact", head: true }),
       admin.from("practice_exercises").select("id", { count: "exact", head: true }),
       admin.from("projects").select("id", { count: "exact", head: true }),
+      admin.from("interview_questions").select("id", { count: "exact", head: true }),
     ]);
     return {
       trilhas: TRILHAS.length,
-      modulos: contents.count ?? 86,
-      exercicios: exercises.count ?? 5269,
-      projetos: projects.count ?? 1364,
+      modulos: contents.count ?? 99,
+      exercicios: exercises.count ?? 10237,
+      projetos: projects.count ?? 4178,
+      perguntas: questions.count ?? 1719,
     };
   } catch {
     // fallback se o banco falhar — números conhecidos
-    return { trilhas: TRILHAS.length, modulos: 86, exercicios: 5269, projetos: 1364 };
+    return { trilhas: TRILHAS.length, modulos: 99, exercicios: 10237, projetos: 4178, perguntas: 1719 };
   }
 }
 
