@@ -1,0 +1,33 @@
+name: Publish VS Code Extensions
+
+# Publica as extensões no Marketplace ao criar uma tag ext-v* (ex.: ext-v1.0.0).
+# Requer o secret VSCE_PAT (Personal Access Token do publisher EstevamSouza).
+on:
+  push:
+    tags:
+      - "ext-v*"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ext:
+          - extension-vscode
+          - extension-vsocde-theme
+          - extension-vsocde-autocomplete
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install deps
+        working-directory: ${{ matrix.ext }}
+        run: npm ci || npm install
+      - name: Publish
+        working-directory: ${{ matrix.ext }}
+        run: npx @vscode/vsce publish --no-dependencies
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
