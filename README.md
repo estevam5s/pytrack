@@ -10,6 +10,12 @@ PyTrack é uma plataforma educacional completa: site institucional público + da
 
 🔗 **Produção:** [www.pytrack.com.br](https://www.pytrack.com.br)
 
+> 🤝 **Vai continuar o projeto (você ou outro agente/dev)?** Leia
+> [`docs/AGENT-HANDOFF.md`](docs/AGENT-HANDOFF.md) e a pasta [`docs/agent-memory/`](docs/agent-memory/)
+> e rode `bash scripts/agent-onboard.sh` (valida o ambiente, varre segredos e imprime o
+> prompt de onboarding). Antes de operar, **rotacione as credenciais**:
+> [`docs/ROTACAO-CREDENCIAIS.md`](docs/ROTACAO-CREDENCIAIS.md).
+
 <br/>
 
 ![Next.js](https://img.shields.io/badge/Next.js_15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)

@@ -49,6 +49,8 @@ import {
   Activity,
   Tag,
   ThumbsUp,
+  Image as ImageIcon,
+  ScrollText,
   type LucideIcon,
 } from "lucide-react";
 
@@ -165,6 +167,8 @@ export const ADMIN_NAV = {
   hub: { title: "Admin", href: "/admin", icon: ShieldCheck },
   items: [
     { title: "Configuração do site", href: "/admin/site", icon: SlidersHorizontal },
+    { title: "Marca / Logo", href: "/admin/marca", icon: ImageIcon },
+    { title: "Logs do sistema", href: "/admin/logs", icon: ScrollText },
     { title: "Avisos & Notificações", href: "/admin/avisos", icon: Megaphone },
     { title: "Newsletter", href: "/admin/newsletter", icon: Mail },
     { title: "Visitantes", href: "/admin/visitantes", icon: Globe },

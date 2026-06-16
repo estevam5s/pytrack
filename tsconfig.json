@@ -19,5 +19,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "extension-vscode", "extension-vsocde-theme", "extension-vsocde-autocomplete", "aplicativos", "supabase/functions", "bot-telegran"]
+  "exclude": ["node_modules", "extensions", "aplicativos", "supabase/functions", "bot-telegran", "novos-sistemas-saas"]
 }

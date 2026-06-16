@@ -12,6 +12,7 @@ export interface SiteSettings {
   primary_contact: string;
   social_github: string;
   social_linkedin: string;
+  logo_url?: string | null;
 }
 
 const FALLBACK: SiteSettings = {
@@ -24,7 +25,14 @@ const FALLBACK: SiteSettings = {
   primary_contact: "contato@estevamsouza.com.br",
   social_github: "https://github.com/PyTrackOrganization",
   social_linkedin: "",
+  logo_url: null,
 };
+
+// URL do logo: a configurada no painel ou o arquivo padrão.
+export async function getLogoUrl(): Promise<string> {
+  const s = await getSiteSettings();
+  return s.logo_url || "/new-logo.png";
+}
 
 async function fetchSettings(): Promise<SiteSettings> {
   try {

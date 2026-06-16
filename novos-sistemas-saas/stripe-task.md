@@ -1,1 +1,0 @@
-- Outra funcionalidade legal que pode ser adicionada no site seria a parte de que sera possivel colocar ofertas por tempo limitado, promocoes, descontos nas mensalidades, configure para mim e coloque valores que voce achar melhor e deve configurar na stripe e webhook, e deve vincular com uma rota de oferta la no painel do admin e essa rota dever ser avancada e completa.

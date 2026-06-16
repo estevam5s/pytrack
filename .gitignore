@@ -33,3 +33,7 @@ secrets.*
 backups/
 docs/tasks.md
 docs/stripe.md
+
+# Histórico/credenciais — NUNCA versionar
+historico.txt
+*.credentials.txt

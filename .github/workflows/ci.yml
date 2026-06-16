@@ -11,6 +11,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  secrets:
+    name: Scan de segredos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Varredura de segredos em arquivos rastreados
+        run: |
+          PAT='ghp_[A-Za-z0-9]{36}|sbp_[a-f0-9]{40}|sk_live_[A-Za-z0-9]{24}|rk_live_[A-Za-z0-9]{24}|whsec_[A-Za-z0-9]{30}|re_[A-Za-z0-9]{8}_[A-Za-z0-9]{20}|[0-9]{9,10}:AA[A-Za-z0-9_-]{33}|sntryu_[a-f0-9]{60}'
+          HITS=$(git grep -lE "$PAT" -- . ':!docs/ROTACAO-CREDENCIAIS.md' ':!doc/' ':!backups/' ':!supabase/*.json' || true)
+          if [ -n "$HITS" ]; then
+            echo "::error::Possíveis segredos encontrados nos arquivos:"; echo "$HITS"; exit 1
+          fi
+          echo "✓ Nenhum segredo conhecido em arquivos rastreados"
+
   quality:
     name: Lint · Typecheck · Build
     runs-on: ubuntu-latest
