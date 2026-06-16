@@ -8,8 +8,12 @@ next-env.d.ts
 npm-debug.log*
 .vercel
 .env
-novos-sistemas-saasbackups/
+# Outros SaaS do usuário (repos próprios, não fazem parte do PyTrack)
+novos-sistemas-saas/
 aplicativos
+# Screenshots locais
+docs/Captura*.png
+**/Captura de Tela*.png
 
 # Sub-projeto: bot do Telegram (código vai pro repo; segredos e deps NÃO)
 bot-telegran/node_modules/
@@ -37,3 +41,6 @@ docs/stripe.md
 # Histórico/credenciais — NUNCA versionar
 historico.txt
 *.credentials.txt
+# Rascunhos de prompts (podem conter dados de outros projetos/segredos)
+tarefas-prompt.md
+*-prompt.md

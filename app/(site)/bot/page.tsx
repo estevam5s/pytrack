@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Send, MessageSquare, Code2, Trophy, User, CreditCard, Sparkles, ShieldCheck,
+  Send, MessageSquare, Code2, Trophy, User, Sparkles, ShieldCheck,
   ArrowRight, Bot, Upload, CheckCircle2, Target, Trash2, BookOpen,
+  Brain, Flame, Lightbulb, Library,
 } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
@@ -19,9 +20,12 @@ const FEATURES = [
   { icon: User, title: "Perfil & Plano", desc: "Veja XP, nível e assinatura; faça upgrade num toque." },
   { icon: Code2, title: "Exercícios com IA", desc: "Escolha um exercício, envie seu .py e a IA corrige na hora." },
   { icon: Target, title: "Desafio do dia", desc: "Um exercício novo todo dia para manter o ritmo." },
-  { icon: Trophy, title: "Ranking & Conquistas", desc: "Acompanhe o top da comunidade e seus exercícios concluídos." },
-  { icon: BookOpen, title: "Trilhas & Projetos", desc: "Liste as trilhas e projetos para o portfólio." },
-  { icon: Sparkles, title: "Menu profissional", desc: "Interface limpa por botões, com /limpar para zerar o histórico." },
+  { icon: Brain, title: "Perguntas técnicas", desc: "Centenas de perguntas de entrevista com conceito, aplicação, erros comuns e código." },
+  { icon: Lightbulb, title: "Dica do dia", desc: "Uma dica rápida de Python ou carreira a cada dia." },
+  { icon: Flame, title: "Streak de estudos", desc: "Acompanhe sua sequência de dias ativos e o recorde." },
+  { icon: Trophy, title: "Ranking & Conquistas", desc: "Top da comunidade e seus exercícios concluídos." },
+  { icon: BookOpen, title: "Trilhas & Projetos", desc: "Liste as 17 trilhas e projetos para o portfólio." },
+  { icon: Library, title: "Livros recomendados", desc: "Biblioteca curada de livros de Python e tecnologia." },
 ];
 
 const STEPS = [
@@ -39,7 +43,7 @@ export default function BotPage() {
         badge="Telegram · @PyTrack_SaaS_Bot"
         title="A PyTrack no seu"
         highlight="Telegram"
-        description="Um bot completo e poderoso: gerencie seu plano, resolva exercícios com correção por IA, veja trilhas, projetos e ranking — tudo pelo chat."
+        description="Um bot completo: resolva exercícios com correção por IA, estude perguntas técnicas de entrevista, receba a dica do dia, acompanhe seu streak, trilhas, projetos, livros e ranking — tudo pelo chat, com menu interativo e botão de voltar."
       />
 
       <section className="container max-w-5xl py-12">
@@ -99,7 +103,7 @@ export default function BotPage() {
           <div className="rounded-2xl border border-border bg-surface p-5">
             <p className="mb-2 flex items-center gap-2 text-sm font-semibold"><MessageSquare className="h-4 w-4 text-primary-light" /> Usuário</p>
             <div className="flex flex-wrap gap-1.5 text-xs">
-              {["/menu", "/login", "/perfil", "/plano", "/exercicios", "/desafio", "/conquistas", "/trilhas", "/projetos", "/ranking", "/limpar", "/suporte"].map((c) => (
+              {["/menu", "/login", "/perfil", "/streak", "/plano", "/exercicios", "/desafio", "/perguntas", "/dica", "/conquistas", "/trilhas", "/projetos", "/livros", "/ranking", "/limpar", "/suporte"].map((c) => (
                 <code key={c} className="rounded bg-surface-2 px-2 py-1 text-text-secondary">{c}</code>
               ))}
             </div>
