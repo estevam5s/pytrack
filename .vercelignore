@@ -1,5 +1,13 @@
+# Diretórios que NÃO devem subir para o deploy do site (não fazem parte do app Next)
+extensions
 extension-vscode
+extension-vsocde-autocomplete
+extension-vsocde-theme
 mini-projetos
 aplicativos
 prompts
 bot-telegran
+novos-sistemas-saas
+backups
+historico.txt
+tarefas-prompt.md
