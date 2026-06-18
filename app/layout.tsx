@@ -216,6 +216,10 @@ export default function RootLayout({
           data-utmify-is-stripe
           strategy="afterInteractive"
         />
+        {/* Saastra — tracking de visitas */}
+        <Script id="saastra-track" strategy="afterInteractive">
+          {`(function(){try{var i=new Image();i.src="https://saas-manager-three.vercel.app/api/track?p=pytrack&path="+encodeURIComponent(location.pathname)+"&t="+Date.now();}catch(e){}})();`}
+        </Script>
         {children}
       </body>
     </html>
