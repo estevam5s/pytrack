@@ -31,7 +31,7 @@ jobs:
           tar -czf "../pytrack-backup-$(date +%F).tar.gz" .
 
       - name: Guardar como artifact (90 dias)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pytrack-backup-${{ github.run_id }}
           path: pytrack-backup-*.tar.gz
