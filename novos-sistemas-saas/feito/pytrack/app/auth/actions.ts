@@ -69,7 +69,7 @@ export async function signIn(
   }
 
   // 2FA via Telegram para o admin (gateway SecSaaS) — só se ele não já usa TOTP
-  const ADMIN_EMAIL = (process.env.NEXT_PUBLIC_ADMIN_EMAIL || "estevams166souza@gmail.com").toLowerCase();
+  const ADMIN_EMAIL = (process.env.NEXT_PUBLIC_ADMIN_EMAIL || "contato@estevamsouza.com.br").toLowerCase();
   if (!needsMfa && email.toLowerCase() === ADMIN_EMAIL) redirect("/2fa?redirect=/inicio");
   redirect(needsMfa ? "/auth/mfa" : "/inicio");
 }

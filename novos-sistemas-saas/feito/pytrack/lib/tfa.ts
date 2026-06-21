@@ -1,7 +1,7 @@
 // 2FA via Telegram (gateway central SecSaaS). Camada aditiva: só afeta o admin.
 export const TFA_GATEWAY = process.env.NEXT_PUBLIC_TFA_GATEWAY || "https://secsaas-gateway.vercel.app";
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "PyTrack";
-export const ADMIN_EMAIL = (process.env.NEXT_PUBLIC_ADMIN_EMAIL || "estevams166souza@gmail.com").toLowerCase();
+export const ADMIN_EMAIL = (process.env.NEXT_PUBLIC_ADMIN_EMAIL || "contato@estevamsouza.com.br").toLowerCase();
 export const PROOF_KEY = "tfa_proof";
 export const isAdminEmail = (email?: string | null) => !!email && email.toLowerCase() === ADMIN_EMAIL;
 export async function requestOtp(email: string) {
