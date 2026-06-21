@@ -1,0 +1,9 @@
+{
+  "name": "pytrack-ssh-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ponte WebSocket → SSH para o terminal da IDE PyTrack.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "ws": "^8.18.0", "ssh2": "^1.16.0" }
+}
