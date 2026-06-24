@@ -15,7 +15,7 @@ jobs:
     name: Scan de segredos
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Varredura de segredos em arquivos rastreados
         run: |
           PAT='ghp_[A-Za-z0-9]{36}|sbp_[a-f0-9]{40}|sk_live_[A-Za-z0-9]{24}|rk_live_[A-Za-z0-9]{24}|whsec_[A-Za-z0-9]{30}|re_[A-Za-z0-9]{8}_[A-Za-z0-9]{20}|[0-9]{9,10}:AA[A-Za-z0-9_-]{33}|sntryu_[a-f0-9]{60}'
@@ -29,7 +29,7 @@ jobs:
     name: Lint · Typecheck · Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Setup Node
         uses: actions/setup-node@v4
